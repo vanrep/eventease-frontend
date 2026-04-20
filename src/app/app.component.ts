@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'eventease-frontend';
+
+  constructor(private authService: AuthService) {}
+
+  login() {
+    this.authService.login('vanja@test.com', '123456');
+  }
 }
