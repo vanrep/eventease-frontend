@@ -1,1 +1,60 @@
-<p>register works!</p>
+<h2>Registro de usuario</h2>
+
+<form (ngSubmit)="registrar()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input
+      type="text"
+      id="nombre"
+      name="nombre"
+      [(ngModel)]="usuario.nombre"
+      required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      [(ngModel)]="usuario.email"
+      required>
+  </div>
+
+  <div>
+    <label for="dni">DNI:</label>
+    <input
+      type="text"
+      id="dni"
+      name="dni"
+      [(ngModel)]="usuario.dni"
+      required>
+  </div>
+
+  <div>
+    <label for="password">Contraseña:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="usuario.password"
+      required>
+  </div>
+
+  <div>
+    <label for="rol">Rol:</label>
+    <select
+      id="rol"
+      name="rol"
+      [(ngModel)]="usuario.rol">
+      <option value="CLIENTE">CLIENTE</option>
+      <option value="ASISTENTE">ASISTENTE</option>
+    </select>
+  </div>
+
+  <button type="submit">Registrar</button>
+  <button type="button" routerLink="/login">Cancelar</button>
+</form>
+
+<p *ngIf="mensajeOk" class="ok">{{ mensajeOk }}</p>
+<p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>

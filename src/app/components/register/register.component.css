@@ -1,0 +1,39 @@
+/* estilo general del formulario */
+form {
+  width: 320px;
+}
+
+/* separación entre campos */
+div {
+  margin-bottom: 10px;
+}
+
+/* tamaño fijo para las etiquetas */
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+/* ancho de inputs y select */
+input,
+select {
+  width: 190px;
+}
+
+/* separación de botones */
+button {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+/* mensaje correcto */
+.ok {
+  color: green;
+  margin-top: 10px;
+}
+
+/* mensaje de error */
+.error {
+  color: red;
+  margin-top: 10px;
+}
