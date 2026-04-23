@@ -1,7 +1,21 @@
-<nav>
-  <a routerLink="/inicio">Inicio</a> |
-  <a routerLink="/login">Login</a> |
-  <a routerLink="/register">Register</a> |
-  <a routerLink="/eventos">Mis eventos</a> |
-  <a routerLink="/invitaciones">Invitaciones</a>
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a routerLink="/inicio" class="logo">EventEase</a>
+    </div>
+
+    <ul class="navbar-menu">
+      <ng-container *ngIf="authService.estaLogueado()">
+        <!-- Por simplicidad, si no podemos leer el rol, mostramos ambas -->
+        <li *ngIf="authService.obtenerRol() !== 'ASISTENTE'"><a routerLink="/eventos" class="nav-link">Eventos</a></li>
+        <li *ngIf="authService.obtenerRol() !== 'CLIENTE'"><a routerLink="/invitaciones" class="nav-link">Invitaciones</a></li>
+        <li><button (click)="logout()" class="btn btn-outline nav-btn">Cerrar Sesión</button></li>
+      </ng-container>
+      
+      <ng-container *ngIf="!authService.estaLogueado()">
+        <li><a routerLink="/login" class="nav-link">Login</a></li>
+        <li><a routerLink="/register" class="btn btn-primary nav-btn">Registro</a></li>
+      </ng-container>
+    </ul>
+  </div>
 </nav>

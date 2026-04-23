@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ListaEventosComponent } from './components/eventos/lista-eventos/lista-eventos.component';
 import { CrearEventoComponent } from './components/eventos/crear-evento/crear-evento.component';
+import { DetalleEventoComponent } from './components/eventos/detalle-evento/detalle-evento.component';
 import { ListaInvitacionesComponent } from './components/invitaciones/lista-invitaciones/lista-invitaciones.component';
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
   // eventos
   { path: 'eventos', component: ListaEventosComponent },
   { path: 'eventos/crear', component: CrearEventoComponent },
+  { path: 'eventos/:id', component: DetalleEventoComponent },
 
   // invitaciones
   { path: 'invitaciones', component: ListaInvitacionesComponent },
