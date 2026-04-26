@@ -1,0 +1,124 @@
+.invitaciones-page {
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+  background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.invitaciones-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(157, 80, 187, 0.12);
+  border: 1px solid #E9D5FF;
+}
+
+.invitaciones-title {
+  text-align: center;
+  color: #4C1D95;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+.invitaciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.invitaciones-table th {
+  background: #F5F3FF;
+  color: #4C1D95;
+  padding: 16px;
+  text-align: left;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.invitaciones-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid #F5F3FF;
+  color: #4A5568;
+  font-size: 0.95rem;
+}
+
+.invitaciones-table tr:hover {
+  background: #FDFBFF;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.pendiente {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.aceptada {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.rechazada {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-accion {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-aceptar {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.btn-rechazar {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.empty-box {
+  text-align: center;
+  padding: 50px;
+  border: 2px dashed #E9D5FF;
+  border-radius: 20px;
+  color: #718096;
+  background: #FDFBFF;
+}
+
+.error-alert {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  background: #FEF2F2;
+  color: #991B1B;
+  padding: 18px;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 600;
+}

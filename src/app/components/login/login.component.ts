@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginRequest } from '../../models/login-request';
@@ -8,7 +8,7 @@ import { LoginRequest } from '../../models/login-request';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -18,12 +18,18 @@ export class LoginComponent {
     password: '',
   };
 
+  mostrarPassword: boolean = false;
+
   mensajeError: string = '';
 
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
+
+  toggleMostrarPassword(): void {
+    this.mostrarPassword = !this.mostrarPassword;
+  }
 
   // enviar login
   iniciarSesion(): void {

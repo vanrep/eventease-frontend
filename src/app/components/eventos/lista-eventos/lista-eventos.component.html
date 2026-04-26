@@ -1,41 +1,123 @@
-<div class="container">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-    <h2>Mis Eventos</h2>
-    <a routerLink="/eventos/crear" class="btn btn-primary">Crear Nuevo Evento</a>
-  </div>
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="page-immersive-container" style="min-height: 100vh; background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg'); background-attachment: fixed; background-size: cover;">
+  
+  <!-- HERO CONDICIONAL: Solo se muestra si NO hay eventos -->
+  <section class="contenedor-hero" *ngIf="eventos.length === 0" style="min-height: 85vh;">
+    <div class="hero-content">
+      <h1>MIS EVENTOS</h1>
+      <p>Aún no tienes celebraciones programadas.</p>
+      <a routerLink="/eventos/crear" class="btn-cta">
+        <i class="fa-solid fa-plus"></i> CREAR MI PRIMER EVENTO
+      </a>
+    </div>
+  </section>
 
-  <div *ngIf="mensajeError" class="alert-danger" style="margin-bottom: 2rem;">
-    {{ mensajeError }}
-  </div>
-
-  <div *ngIf="eventos.length === 0 && !mensajeError" class="card text-center" style="padding: 3rem;">
-    <p class="text-muted" style="margin-bottom: 1rem;">No has creado ningún evento todavía.</p>
-    <a routerLink="/eventos/crear" class="btn btn-primary">Empieza creando uno</a>
-  </div>
-
-  <div class="events-grid" *ngIf="eventos.length > 0">
-    <div class="card event-card" *ngFor="let evento of eventos">
-      <div class="event-card-header">
-        <h3>{{ evento.titulo }}</h3>
-        <span class="event-date">{{ evento.fecha }}</span>
-      </div>
-      
-      <div class="event-card-body">
-        <p class="event-desc">{{ evento.descripcion }}</p>
-        
-        <div class="event-details">
-          <div class="detail-item">
-            <strong>Ubicación:</strong> {{ evento.ubicacion }}
-          </div>
-          <div class="detail-item">
-            <strong>Capacidad:</strong> {{ evento.capacidad }} personas
-          </div>
-        </div>
-      </div>
-      
-      <div class="event-card-footer">
-        <a [routerLink]="['/eventos', evento.id]" class="btn btn-outline" style="width: 100%;">Gestionar Evento</a>
+  <!-- LISTADO DE EVENTOS -->
+  <div *ngIf="eventos.length > 0">
+    <div class="list-header-compact">
+      <div class="header-container" style="justify-content: center;">
+        <a routerLink="/eventos/crear" class="btn-cta">
+          <i class="fa-solid fa-plus"></i> NUEVO EVENTO
+        </a>
       </div>
     </div>
+
+    <!-- MENSAJES DE ERROR -->
+    <div *ngIf="mensajeError" class="error-alert" style="max-width: 600px; margin: 2rem auto;">
+      <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
+    </div>
+
+    <!-- CUADRÍCULA DE EVENTOS -->
+    <section class="contenedor-tarjetas" style="padding: 60px 24px; max-width: 1300px; margin: 0 auto; gap: 40px;">
+      <article class="tarjeta" *ngFor="let evento of eventos"
+              [ngClass]="{
+                'border-pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
+                'border-aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
+                'border-rechazada': evento.miEstadoInvitacion === 'RECHAZADA'
+              }"
+              [routerLink]="['/eventos', evento.id]"
+              style="width: 380px; cursor: pointer; transition: all 0.3s ease;">
+        <img src="/assets/images/Tarjeta1.jpeg" alt="Evento">
+        <div class="tarjeta-body" style="position: relative; padding: 30px;">
+
+          <!-- Badge de Rol: Solo si es invitado -->
+          <div *ngIf="!esOrganizador(evento)"
+              class="badge-invitacion"
+              [ngClass]="{
+                'aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
+                'pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
+                'rechazada': evento.miEstadoInvitacion === 'RECHAZADA'
+              }">
+              <ng-container [ngSwitch]="evento.miEstadoInvitacion">
+                <span *ngSwitchCase="'ACEPTADA'">
+                  <i class="fa-solid fa-circle-check"></i> ACEPTADA
+                </span>
+                <span *ngSwitchCase="'PENDIENTE'">
+                  <i class="fa-solid fa-clock"></i> PENDIENTE
+                </span>
+                <span *ngSwitchCase="'RECHAZADA'">
+                  <i class="fa-solid fa-circle-xmark"></i> RECHAZADA
+                </span>
+              </ng-container>
+          </div>
+
+        <div class="invited-by">
+          <ng-container *ngIf="!esOrganizador(evento); else emptyInviter">
+            <i class="fa-solid fa-user"></i>
+            Invitado por: {{ evento.clienteEmail }}
+          </ng-container>
+
+          <ng-template #emptyInviter>
+            &nbsp;
+          </ng-template>
+        </div>
+
+          <!-- Badge de días restantes -->
+          <div class="days-left-badge urgent" 
+               *ngIf="calcularDiasRestantes(evento.fecha) < 10"
+               [title]="'Quedan ' + calcularDiasRestantes(evento.fecha) + ' días'">
+            <i class="fa-solid fa-hourglass-half"></i>
+            <span>{{ calcularDiasRestantes(evento.fecha) }}</span>
+          </div>
+
+          <h2 style="margin-top: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;" 
+              [title]="evento.titulo">
+            {{ evento.titulo }}
+          </h2>
+          <div class="event-meta" style="margin-bottom: 1.5rem; color: #9D50BB; font-weight: 700; font-size: 1.1rem;">
+            <i class="fa-solid fa-calendar-day"></i> {{ evento.fecha | date:'dd/MM/yyyy HH:mm' }}
+          </div>
+          <p style="font-family: 'Open Sans'; color: #4A5568; line-height: 1.6; font-size: 1rem;">{{ evento.descripcion }}</p>
+          <div style="margin-top: 2rem; border-top: 1px solid #F5F3FF; padding-top: 1.5rem;">
+            <p style="margin: 0; color: #718096;"><i class="fa-solid fa-location-dot"></i> {{ evento.ubicacion }}</p>
+          </div>
+        </div>
+      </article>
+    </section>
   </div>
+
 </div>
+
+<!-- SECCIÓN FOOTER INMERSIVO (Deep Navy) -->
+<section id="footer" style="background-color: #1E1B4B; color: #E9D5FF; padding: 100px 24px; text-align: center; border-top: 4px solid #9D50BB;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" style="width: 220px; margin: 0 auto 2.5rem; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+    <h2 style="color: #FFFFFF; font-family: 'Oswald'; font-size: 3rem; margin-bottom: 1.5rem; text-transform: uppercase;">¿TIENES UN NUEVO PLAN?</h2>
+    <p style="margin-bottom: 3rem; font-size: 1.2rem; opacity: 0.8;">Crea invitaciones inolvidables en cuestión de segundos.</p>
+    
+    <div class="social" style="display: flex; gap: 2.5rem; justify-content: center; margin-bottom: 4rem;">
+        <a href="https://www.facebook.com/" style="color: #E9D5FF; font-size: 2.8rem; transition: color 0.3s;"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" style="color: #E9D5FF; font-size: 2.8rem; transition: color 0.3s;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com/" style="color: #E9D5FF; font-size: 2.8rem; transition: color 0.3s;"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem;">
+        <ul style="list-style: none; padding: 0; display: flex; gap: 2.5rem; justify-content: center; font-family: 'Open Sans'; font-weight: 600;">
+          <li><a href="#" style="color: #718096; text-decoration: none; transition: color 0.3s;">Términos</a></li>
+          <li><a href="#" style="color: #718096; text-decoration: none; transition: color 0.3s;">Privacidad</a></li>
+          <li><a href="#" style="color: #718096; text-decoration: none; transition: color 0.3s;">Ayuda</a></li>
+        </ul>
+        <p style="margin-top: 2rem; font-size: 0.95rem; color: #4A5568;">© 2026 EventEase • Organiza. Invita. Disfruta.</p>
+    </div>
+  </div>
+</section>

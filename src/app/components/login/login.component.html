@@ -1,27 +1,56 @@
-<h2>Iniciar sesión</h2>
+<section class="section-snap login-wrapper">
+  <div class="form-card login-card">
+    
+    <div class="form-header">
+      <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
+      <h1>BIENVENIDO</h1>
+      <p>Organiza tus mejores momentos</p>
+    </div>
 
-<form (ngSubmit)="iniciarSesion()">
-  <div>
-    <label for="email">Email:</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      [(ngModel)]="loginData.email"
-      required>
+    <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
+      
+      <!-- EMAIL -->
+      <div class="form-group full-width">
+        <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRÓNICO</label>
+        <div class="input-with-icon">
+          <input type="email" id="email" name="email" 
+                 placeholder="tu@email.com" 
+                 [(ngModel)]="loginData.email" required
+                 #emailInput="ngModel">
+        </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group full-width">
+        <label for="password"><i class="fa-solid fa-lock"></i> CONTRASEÑA</label>
+        <div class="input-with-icon">
+          <input [type]="mostrarPassword ? 'text' : 'password'" id="password" name="password" 
+                 placeholder="••••••••" 
+                 [(ngModel)]="loginData.password" required
+                 #passInput="ngModel">
+          <button type="button" class="toggle-password-btn" (click)="toggleMostrarPassword()" [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+            <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- ERROR MESSAGE -->
+      <div *ngIf="mensajeError" class="error-alert animate-shake">
+        <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="form-actions centered">
+        <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!loginForm.valid">
+          ENTRAR <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        </button>
+      </div>
+
+      <p class="auth-switch-text">
+        No tienes cuenta con nosotros?
+        <a routerLink="/register">Regístrate</a>
+      </p>
+    </form>
   </div>
 
-  <div>
-    <label for="password">Contraseña:</label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      [(ngModel)]="loginData.password"
-      required>
-  </div>
-
-  <button type="submit">Entrar</button>
-</form>
-
-<p *ngIf="mensajeError">{{ mensajeError }}</p>
+</section>

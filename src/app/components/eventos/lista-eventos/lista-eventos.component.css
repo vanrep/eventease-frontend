@@ -1,0 +1,205 @@
+.list-header-compact {
+  padding-top: 140px; 
+  padding-bottom: 20px;
+  background: transparent;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* REDESIGNED BUTTON (FORCED) */
+.btn-cta {
+  padding: 12px 28px !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  background: #9D50BB !important;
+  color: #FFFFFF !important;
+  border-radius: 50px !important; 
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-shadow: 0 10px 15px -3px rgba(157, 80, 187, 0.3) !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+}
+
+.btn-cta:hover {
+  background: #6E48AA !important;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 20px -5px rgba(110, 72, 170, 0.4) !important;
+}
+
+.btn-cta i {
+  font-size: 1.1rem;
+}
+
+/* ERROR ALERT */
+.error-alert {
+  background-color: #FEF2F2;
+  color: #991B1B;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #FECACA;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* DAYS LEFT BADGE */
+.days-left-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #9D50BB;
+  box-shadow: 0 4px 10px rgba(157, 80, 187, 0.15);
+  border: 1px solid rgba(157, 80, 187, 0.1);
+  z-index: 10;
+  transition: all 0.3s ease;
+  cursor: help;
+}
+
+.days-left-badge:hover {
+  background: #9D50BB;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
+}
+
+.days-left-badge i {
+  font-size: 1rem;
+}
+
+
+
+/* URGENT STATE */
+.days-left-badge.urgent {
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  border-color: #FECACA !important;
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.1);
+}
+
+.days-left-badge.urgent:hover {
+  background: #DC2626 !important;
+  color: #FFFFFF !important;
+}
+
+
+
+/* HOURGLASS FLIP ANIMATION */
+@keyframes hourglass-flip {
+  0% { transform: rotate(0); }
+  40% { transform: rotate(0); }
+  50% { transform: rotate(180deg); }
+  90% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.days-left-badge.urgent i {
+  animation: hourglass-flip 3s infinite ease-in-out;
+  display: inline-block;
+}
+
+.days-left-badge.urgent {
+  animation: none !important; /* Remove previous badge blink */
+}
+
+
+
+/* CLICKABLE CARD EFFECTS */
+.tarjeta {
+  overflow: hidden;
+  border-radius: 24px !important;
+  border: 5px solid #E9D5FF !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tarjeta:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -10px rgba(157, 80, 187, 0.2);
+}
+
+.tarjeta:hover h2 {
+  color: #9D50BB;
+}
+
+.tarjeta.border-aceptada {
+  border: 5px solid #16A34A !important;
+}
+
+.tarjeta.border-pendiente {
+  border: 5px solid #D97706 !important;
+}
+
+.tarjeta.border-rechazada {
+  border: 5px solid #DC2626 !important;
+}
+
+.badge-invitacion {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ACEPTADA */
+.badge-invitacion.aceptada {
+  background: #DCFCE7;
+  color: #16A34A;
+  border: 1px solid #BBF7D0;
+}
+
+/* PENDIENTE */
+.badge-invitacion.pendiente {
+  background: #FEF3C7;
+  color: #D97706;
+  border: 1px solid #FDE68A;
+}
+
+/* RECHAZADA */
+.badge-invitacion.rechazada {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+}
+
+.invited-by {
+  height: 20px;
+  margin-top: 38px;
+  margin-bottom: 12px;
+  color: #718096;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.invited-by i {
+  color: #9D50BB;
+}

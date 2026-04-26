@@ -118,6 +118,7 @@ input:focus, textarea:focus {
   cursor: pointer;
   min-width: 200px;
   justify-content: center;
+  /* FORCE VISIBILITY */
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
@@ -138,8 +139,47 @@ input:focus, textarea:focus {
 }
 
 .btn-secondary:hover {
-  background: #FDFBFF !important;
-  border-color: #9D50BB !important;
+  background: #FDFBFF;
+  border-color: #9D50BB;
+}
+
+.btn-danger {
+  background: white !important;
+  border: 2px solid #EF4444 !important;
+  color: #EF4444 !important;
+}
+
+.btn-danger:hover {
+  background: #FEF2F2 !important;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.aceptada {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+
+.pendiente {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.rechazada {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.nuevo {
+  background: #E0E7FF;
+  color: #4F46E5;
 }
 
 /* RESPONSIVE */

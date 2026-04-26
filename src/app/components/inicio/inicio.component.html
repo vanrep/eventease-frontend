@@ -1,2 +1,116 @@
-<h2>Bienvenido a EventEase</h2>
-<p>Aplicación para gestionar eventos e invitaciones</p>
+<!-- NAVEGACIÓN POR PUNTOS (DOTS) -->
+<div class="nav-dots">
+  <div class="dot" [class.active]="activeSection === 'hero'" (click)="scrollToSection('hero')" title="Inicio"></div>
+  <div class="dot" [class.active]="activeSection === 'organiza'" (click)="scrollToSection('organiza')" title="Organiza"></div>
+  <div class="dot" [class.active]="activeSection === 'invita'" (click)="scrollToSection('invita')" title="Invita"></div>
+  <div class="dot" [class.active]="activeSection === 'participa'" (click)="scrollToSection('participa')" title="Participa"></div>
+  <div class="dot" [class.active]="activeSection === 'info'" (click)="scrollToSection('info')" title="Información"></div>
+  <div class="dot" [class.active]="activeSection === 'footer'" (click)="scrollToSection('footer')" title="Contacto"></div>
+</div>
+
+<!-- 1. SECCIÓN HÉROE -->
+<section id="hero" class="section-snap contenedor-hero" [class.active]="activeSection === 'hero'" aria-label="Presentación de EventEase">
+  <div class="hero-content">
+    <h1>
+      Gestión de Eventos Simplificada con <br>EventEase
+    </h1>
+    <p>
+      Organiza, invita y asiste a eventos de manera fácil y rápida.
+    </p>
+
+    <div class="hero-actions" *ngIf="!authService.estaLogueado()">
+      <a class="btn-secondary" routerLink="/login">LOGIN</a>
+      <a class="btn-cta" routerLink="/register">REGISTRO</a>
+    </div>
+    
+    <div class="hero-actions" *ngIf="authService.estaLogueado()">
+      <a class="btn-secondary" routerLink="/eventos">MIS EVENTOS</a>
+      <a class="btn-cta" routerLink="/invitaciones">MIS INVITACIONES</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. SECCIÓN ORGANIZA -->
+<section id="organiza" class="section-snap" [class.active]="activeSection === 'organiza'" style="background-color: #FFFFFF;">
+  <div class="articulo-box" style="border: none; box-shadow: none; background: transparent;">
+    <img class="articulo-img" src="/assets/images/Tarjeta1.jpeg" alt="Organiza Eventos" style="width: 500px; height: 400px; object-fit: cover;">
+    <div class="articulo-text">
+      <h2 style="font-size: 4rem;">ORGANIZA</h2>
+      <p style="font-size: 1.5rem;">
+        Crea eventos y mantén el control total de los detalles y asistentes. 
+        Nuestra plataforma te permite gestionar horarios, ubicaciones y descripciones con total facilidad.
+      </p>
+      <a class="btn-cta" routerLink="/eventos" style="align-self: flex-start;">GESTIONAR AHORA</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. SECCIÓN INVITA -->
+<section id="invita" class="section-snap" [class.active]="activeSection === 'invita'" style="background-color: #F5F3FF;">
+  <div class="articulo-box" style="border: none; box-shadow: none; background: transparent; flex-direction: row-reverse;">
+    <img class="articulo-img" src="/assets/images/Tarjeta2.png" alt="Invita a Amigos" style="width: 500px; height: 400px; object-fit: cover;">
+    <div class="articulo-text">
+      <h2 style="font-size: 4rem;">INVITA</h2>
+      <p style="font-size: 1.5rem;">
+        Envía invitaciones a usuarios para que asistan a tus eventos. 
+        Sigue en tiempo real quién ha aceptado o rechazado tus propuestas.
+      </p>
+      <a class="btn-cta" routerLink="/eventos" style="align-self: flex-start;">ENVIAR INVITACIÓN</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. SECCIÓN PARTICIPA -->
+<section id="participa" class="section-snap" [class.active]="activeSection === 'participa'" style="background-color: #FFFFFF;">
+  <div class="articulo-box" style="border: none; box-shadow: none; background: transparent;">
+    <img class="articulo-img" src="/assets/images/Tarjeta3.jpg" alt="Participa" style="width: 500px; height: 400px; object-fit: cover;">
+    <div class="articulo-text">
+      <h2 style="font-size: 4rem;">PARTICIPA</h2>
+      <p style="font-size: 1.5rem;">
+        Acepta o rechaza invitaciones y mantén un registro de tu asistencia. 
+        No te pierdas ninguna de las celebraciones importantes de tus amigos.
+      </p>
+      <a class="btn-cta" routerLink="/invitaciones" style="align-self: flex-start;">VER MIS INVITACIONES</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. SECCIÓN INFORMACIÓN -->
+<section id="info" class="section-snap" [class.active]="activeSection === 'info'" 
+         style="background-image: linear-gradient(rgba(157, 80, 187, 0.85), rgba(91, 33, 182, 0.85)), url('/assets/images/Banner.jpg'); background-size: cover; background-position: center; color: white; text-align: center; display: flex; align-items: center; justify-content: center;">
+  <div style="max-width: 1000px; padding: 40px;">
+    <h2 style="font-size: 5rem; color: white; margin-bottom: 2rem; text-transform: uppercase; font-weight: 800; line-height: 1;">TU PLATAFORMA TOTAL</h2>
+    <p style="font-size: 1.8rem; line-height: 1.6; margin-bottom: 3rem; font-family: 'Open Sans', sans-serif;">
+      EventEase es la herramienta definitiva para gestionar todo el ciclo de vida de tus eventos. 
+      Desde la primera idea hasta el brindis final, estamos contigo para que todo salga perfecto.
+    </p>
+    <a class="btn-cta" routerLink="/register" *ngIf="!authService.estaLogueado()" 
+       style="background-color: white; color: #9D50BB; border: none; font-size: 1.5rem; padding: 18px 45px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px;">
+       EMPIEZA GRATIS AHORA
+    </a>
+  </div>
+</section>
+
+<!-- 6. SECCIÓN FOOTER (INICIO) -->
+<section id="footer" class="section-snap" [class.active]="activeSection === 'footer'" style="background-color: #1E1B4B; color: #E9D5FF; justify-content: center; align-items: center; text-align: center;">
+  <div style="max-width: 800px; padding: 24px;">
+    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" style="width: 250px; margin: 0 auto 2rem; border-radius: 10px;">
+    <h2 style="color: #FFFFFF; font-size: 3rem; margin-bottom: 1rem;">¿LISTO PARA EMPEZAR?</h2>
+    <p style="font-size: 1.25rem; margin-bottom: 2rem; color: #E9D5FF;">
+      Únete a miles de usuarios que ya organizan sus mejores momentos con EventEase.
+    </p>
+    <div class="social" style="display: flex; gap: 2rem; justify-content: center; margin-bottom: 3rem;">
+        <a href="https://www.facebook.com/" style="color: white; font-size: 3rem;"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" style="color: white; font-size: 3rem;"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com/" style="color: white; font-size: 3rem;"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+        <ul style="list-style: none; padding: 0; display: flex; gap: 2rem; justify-content: center; font-family: 'Open Sans';">
+          <li><a href="#" style="color: #A0AEC0; text-decoration: none;">Privacidad</a></li>
+          <li><a href="#" style="color: #A0AEC0; text-decoration: none;">Cookies</a></li>
+          <li><a href="#" style="color: #A0AEC0; text-decoration: none;">Contacto</a></li>
+        </ul>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #718096;">© 2026 EventEase. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</section>

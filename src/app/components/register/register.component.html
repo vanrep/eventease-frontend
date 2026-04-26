@@ -1,60 +1,96 @@
-<h2>Registro de usuario</h2>
+<section class="section-snap login-wrapper">
+    <div class="form-card login-card">
+        <div class="form-header">
+            <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
+            <h1>CREAR CUENTA</h1>
+            <p>Empieza a organizar y vivir tus eventos</p>
+        </div>
 
-<form (ngSubmit)="registrar()">
-  <div>
-    <label for="nombre">Nombre:</label>
-    <input
-      type="text"
-      id="nombre"
-      name="nombre"
-      [(ngModel)]="usuario.nombre"
-      required>
-  </div>
+        <form (ngSubmit)="registrar()" #registerForm="ngForm">
+            <div class="form-group full-width">
+                <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRONICO <span class="required-mark">*</span></label>
+                <div class="input-with-icon">
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="tu@email.com"
+                        [(ngModel)]="usuario.email"
+                        required>
+                </div>
+            </div>
 
-  <div>
-    <label for="email">Email:</label>
-    <input
-      type="email"
-      id="email"
-      name="email"
-      [(ngModel)]="usuario.email"
-      required>
-  </div>
+            <div class="password-row">
+                <div class="form-group full-width">
+                    <label for="password"><i class="fa-solid fa-lock"></i> CONTRASENA <span class="required-mark">*</span></label>
+                    <div class="input-with-icon">
+                        <input
+                            [type]="mostrarPassword ? 'text' : 'password'"
+                            id="password"
+                            name="password"
+                            placeholder="Elige una contraseña"
+                            [(ngModel)]="usuario.password"
+                            required>
+                        <button *ngIf="usuario.password" type="button" class="toggle-password-btn" (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarPassword()" [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+                            <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                        </button>
+                    </div>
+                </div>
 
-  <div>
-    <label for="dni">DNI:</label>
-    <input
-      type="text"
-      id="dni"
-      name="dni"
-      [(ngModel)]="usuario.dni"
-      required>
-  </div>
+                <div class="form-group full-width">
+                    <label for="confirmarPassword"><i class="fa-solid fa-lock"></i> CONFIRMA TU CONTRASENA <span class="required-mark">*</span></label>
+                    <div class="input-with-icon">
+                        <input
+                            [type]="mostrarConfirmacion ? 'text' : 'password'"
+                            id="confirmarPassword"
+                            name="confirmarPassword"
+                            placeholder="Confirma tu contraseña"
+                            [(ngModel)]="confirmarPassword"
+                            required>
+                        <button *ngIf="confirmarPassword" type="button" class="toggle-password-btn" (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarConfirmacion()" [attr.aria-label]="mostrarConfirmacion ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+                            <i class="fa-solid" [ngClass]="mostrarConfirmacion ? 'fa-eye-slash' : 'fa-eye'"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-  <div>
-    <label for="password">Contraseña:</label>
-    <input
-      type="password"
-      id="password"
-      name="password"
-      [(ngModel)]="usuario.password"
-      required>
-  </div>
+            <div *ngIf="confirmarPassword && !passwordsCoinciden()" class="error-alert password-error">
+                <i class="fa-solid fa-circle-exclamation"></i> Las contraseñas no coinciden
+            </div>
 
-  <div>
-    <label for="rol">Rol:</label>
-    <select
-      id="rol"
-      name="rol"
-      [(ngModel)]="usuario.rol">
-      <option value="CLIENTE">CLIENTE</option>
-      <option value="ASISTENTE">ASISTENTE</option>
-    </select>
-  </div>
+            <hr class="form-divider">
 
-  <button type="submit">Registrar</button>
-  <button type="button" routerLink="/login">Cancelar</button>
-</form>
+            <div class="form-group full-width">
+                <label for="nombre"><i class="fa-solid fa-user"></i> NOMBRE COMPLETO</label>
+                <div class="input-with-icon">
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Tu nombre completo"
+                        [(ngModel)]="usuario.nombre">
+                </div>
+            </div>
 
-<p *ngIf="mensajeOk" class="ok">{{ mensajeOk }}</p>
-<p *ngIf="mensajeError" class="error">{{ mensajeError }}</p>
+            <div *ngIf="mensajeOk" class="success-alert">
+                <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
+            </div>
+
+            <div *ngIf="mensajeError" class="error-alert animate-shake">
+                <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
+            </div>
+
+            <div class="form-actions centered">
+                <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!registerForm.valid || !passwordsCoinciden()">
+                    REGISTRAR <i class="fa-solid fa-user-plus"></i>
+                </button>
+            </div>
+
+            <p class="auth-switch-text">
+                Ya tienes cuenta con nosotros?
+                <a routerLink="/login">Iniciar sesión</a>
+            </p>
+        </form>
+    </div>
+
+</section>

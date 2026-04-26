@@ -1,21 +1,56 @@
-<nav class="navbar">
-  <div class="navbar-container">
-    <div class="navbar-brand">
-      <a routerLink="/inicio" class="logo">EventEase</a>
+<header class="site-header" [class.scrolled]="isScrolled">
+  <nav class="header-nav" aria-label="Navegación principal">
+    <div id="logo">
+      <a routerLink="/inicio" (click)="onInicioClick($event)">
+        <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase" style="height: 40px; width: auto;">
+      </a>
     </div>
 
-    <ul class="navbar-menu">
-      <ng-container *ngIf="authService.estaLogueado()">
-        <!-- Por simplicidad, si no podemos leer el rol, mostramos ambas -->
-        <li *ngIf="authService.obtenerRol() !== 'ASISTENTE'"><a routerLink="/eventos" class="nav-link">Eventos</a></li>
-        <li *ngIf="authService.obtenerRol() !== 'CLIENTE'"><a routerLink="/invitaciones" class="nav-link">Invitaciones</a></li>
-        <li><button (click)="logout()" class="btn btn-outline nav-btn">Cerrar Sesión</button></li>
-      </ng-container>
-      
-      <ng-container *ngIf="!authService.estaLogueado()">
-        <li><a routerLink="/login" class="nav-link">Login</a></li>
-        <li><a routerLink="/register" class="btn btn-primary nav-btn">Registro</a></li>
-      </ng-container>
+    <ul class="menu" *ngIf="authService.estaLogueado()">
+      <li>
+        <a routerLink="/inicio" routerLinkActive="active" (click)="onInicioClick($event)">
+          <i class="fa fa-house icono-fa" aria-hidden="true"></i>
+          INICIO
+        </a>
+      </li>
+      <!-- Ya no hay rol ASISTENTE; todos los usuarios logueados pueden ver estas secciones. -->
+      <li>
+        <a routerLink="/eventos" routerLinkActive="active">
+          <i class="fa fa-calendar-days icono-fa" aria-hidden="true"></i>
+          EVENTOS
+        </a>
+      </li>
+      <li>
+        <a routerLink="/invitaciones" routerLinkActive="active">
+          <i class="fa fa-newspaper icono-fa" aria-hidden="true"></i>
+          INVITACIONES
+        </a>
+      </li>
     </ul>
-  </div>
-</nav>
+
+    <div class="user-header" *ngIf="authService.estaLogueado()">
+      <button id="contraste" type="button" class="header-icon-btn"
+              title="Cambiar modo de contraste"
+              aria-label="Cambiar modo de contraste"
+              (click)="toggleDarkMode()">
+        <i class="fa-solid fa-circle-half-stroke"></i>
+      </button>
+
+      <div class="user-pill">
+        <div class="user-avatar">
+          {{ authService.obtenerInicialUsuario() }}
+        </div>
+
+        <div class="user-info">
+          <span class="user-email">{{ authService.obtenerEmail() }}</span>
+        </div>
+        <button type="button" class="header-icon-btn logout-btn"
+                title="Cerrar sesión"
+                aria-label="Cerrar sesión"
+                (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>

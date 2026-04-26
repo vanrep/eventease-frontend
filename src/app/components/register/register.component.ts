@@ -16,10 +16,12 @@ export class RegisterComponent {
   usuario: Usuario = {
     nombre: '',
     email: '',
-    dni: '',
     password: '',
-    rol: 'CLIENTE',
   };
+
+  confirmarPassword: string = '';
+  mostrarPassword: boolean = false;
+  mostrarConfirmacion: boolean = false;
 
   mensajeOk: string = '';
   mensajeError: string = '';
@@ -29,10 +31,27 @@ export class RegisterComponent {
     private router: Router,
   ) {}
 
+  passwordsCoinciden(): boolean {
+    return this.usuario.password === this.confirmarPassword;
+  }
+
+  toggleMostrarPassword(): void {
+    this.mostrarPassword = !this.mostrarPassword;
+  }
+
+  toggleMostrarConfirmacion(): void {
+    this.mostrarConfirmacion = !this.mostrarConfirmacion;
+  }
+
   // enviar datos de registro
   registrar(): void {
     this.mensajeOk = '';
     this.mensajeError = '';
+
+    if (!this.passwordsCoinciden()) {
+      this.mensajeError = 'Las contraseñas no coinciden';
+      return;
+    }
 
     this.authService.register(this.usuario).subscribe({
       next: (response) => {
