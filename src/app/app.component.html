@@ -1,11 +1,12 @@
 <app-navbar></app-navbar>
 
-<main [class.snap-active]="isInicio" [class.auth-page]="isAuthPage" [@routeAnimations]="prepareRoute(outlet)">
-  <router-outlet #outlet="outlet"></router-outlet>
+<main [class.snap-active]="isInicio" [class.auth-page]="isAuthPage">
+  <router-outlet></router-outlet>
 </main>
 
-<!-- FOOTER GLOBAL (OCULTO EN INICIO) -->
-<footer class="site-footer" *ngIf="!isInicio && !isAuthPage">
+<!-- Footer -->
+<!-- Cambia entre el estilo normal y el estilo compacto segun la ruta -->
+<footer *ngIf="!isInicio" [class.site-footer]="!isAuthPage" [class.auth-footer]="isAuthPage">
   <nav aria-label="Enlaces legales">
     <ul class="footer-links">
       <li><a href="#">Política de cookies</a></li>
@@ -27,29 +28,7 @@
   </div>
 </footer>
 
-<footer class="auth-footer" *ngIf="isAuthPage">
-  <nav aria-label="Enlaces legales">
-    <ul class="footer-links">
-      <li><a href="#">Política de cookies</a></li>
-      <li><a href="#">Privacidad</a></li>
-      <li><a routerLink="/inicio">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <div class="social" aria-label="Redes sociales">
-    <a href="https://www.facebook.com/" aria-label="Facebook">
-      <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-    </a>
-    <a href="https://www.instagram.com/" aria-label="Instagram">
-      <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-    </a>
-    <a href="https://x.com/" aria-label="X (Twitter)">
-      <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-    </a>
-  </div>
-</footer>
-
-<!-- FAB (FLOATING ACTION BUTTON) -->
+<!-- Boton flotante para volver al inicio de la pagina -->
 <button class="fab-top" [class.visible]="showFab" (click)="scrollToTop()" aria-label="Volver arriba">
   <i class="fa fa-chevron-up" aria-hidden="true"></i>
 </button>

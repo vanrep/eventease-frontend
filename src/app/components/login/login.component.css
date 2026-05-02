@@ -1,3 +1,4 @@
+/* Centra la pantalla de acceso sobre el fondo comun de autenticacion */
 .login-wrapper {
   min-height: 100vh;
   display: flex;
@@ -11,6 +12,7 @@
   overflow: hidden;
 }
 
+/* Ajusta la tarjeta principal del formulario de login */
 .login-card {
   max-width: 700px !important;
   width: 100%;
@@ -19,6 +21,7 @@
   text-align: center;
 }
 
+/* Muestra el logo sobre el encabezado del formulario */
 .login-logo {
   width: 120px;
   border-radius: 20px;
@@ -26,6 +29,7 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+/* Destaca el titulo principal del acceso */
 .form-header h1 {
   font-family: 'Oswald', sans-serif;
   color: #4C1D95;
@@ -34,17 +38,20 @@
   margin-bottom: 5px;
 }
 
+/* Introduce el flujo de acceso con un texto breve */
 .form-header p {
   color: #718096;
   font-size: 1.1rem;
   margin-bottom: 40px;
 }
 
+/* Ordena verticalmente cada campo del login */
 .form-group {
   text-align: left;
   margin-bottom: 25px;
 }
 
+/* Refuerza la lectura de las etiquetas */
 .form-group label {
   font-size: 0.9rem;
   margin-bottom: 12px;
@@ -53,10 +60,12 @@
   letter-spacing: 1px;
 }
 
+/* Sirve de ancla para el boton de mostrar contrasena */
 .input-with-icon {
   position: relative;
 }
 
+/* Uniforma el aspecto del input de acceso */
 input {
   width: 100% !important;
   box-sizing: border-box !important;
@@ -68,6 +77,7 @@ input {
   transition: all 0.3s ease !important;
 }
 
+/* Coloca el boton de visibilidad dentro del campo */
 .toggle-password-btn {
   position: absolute;
   top: 50%;
@@ -81,10 +91,12 @@ input {
   padding: 0;
 }
 
+/* Refuerza el hover del boton de visibilidad */
 .toggle-password-btn:hover {
   color: #5B21B6;
 }
 
+/* Resalta el campo activo con color y halo */
 input:focus {
   border-color: #9D50BB !important;
   background: white !important;
@@ -92,6 +104,7 @@ input:focus {
   outline: none;
 }
 
+/* Define el boton principal para iniciar sesion */
 .btn-cta {
   width: 100%;
   padding: 18px !important;
@@ -109,7 +122,7 @@ input:focus {
   align-items: center;
   gap: 12px;
   box-shadow: 0 15px 30px rgba(157, 80, 187, 0.3) !important;
-  /* FORCE VISIBILITY */
+  /* Mantiene visible el boton aunque existan animaciones globales */
   opacity: 1 !important;
   visibility: visible !important;
   transform: none !important;
@@ -117,11 +130,13 @@ input:focus {
   transition: none !important;
 }
 
+/* Eleva ligeramente el boton activo al pasar el cursor */
 .btn-cta:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 18px 34px rgba(157, 80, 187, 0.38) !important;
 }
 
+/* Atenua el boton cuando el formulario no es valido */
 .btn-cta:disabled {
   opacity: 1;
   cursor: not-allowed;
@@ -131,6 +146,7 @@ input:focus {
   filter: none;
 }
 
+/* Presenta el enlace alternativo hacia el registro */
 .auth-switch-text {
   margin-top: 20px;
   margin-bottom: 0;
@@ -138,16 +154,19 @@ input:focus {
   font-size: 0.95rem;
 }
 
+/* Destaca el enlace para crear una cuenta */
 .auth-switch-text a {
   color: #7C3AED;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Subraya el enlace alternativo al pasar el cursor */
 .auth-switch-text a:hover {
   text-decoration: underline;
 }
 
+/* Muestra el error de acceso con contraste alto */
 .error-alert {
   background: #FEF2F2;
   color: #DC2626;
@@ -161,10 +180,12 @@ input:focus {
   font-weight: 600;
 }
 
+/* Aplica una sacudida breve cuando hay error */
 .animate-shake {
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 
+/* Define la animacion de sacudida */
 @keyframes shake {
   10%, 90% { transform: translate3d(-1px, 0, 0); }
   20%, 80% { transform: translate3d(2px, 0, 0); }

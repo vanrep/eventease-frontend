@@ -1,50 +1,176 @@
-.hero-container {
-  min-height: calc(100vh - 70px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--bg-main) 0%, #EEF2FF 100%);
-  padding: 2rem;
-}
 
+
+/* Centra y limita el ancho del contenido principal del hero */
 .hero-content {
   text-align: center;
   max-width: 800px;
 }
 
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  letter-spacing: -1px;
-}
-
-.text-primary {
-  color: var(--primary);
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  margin-bottom: 2.5rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* Alinea horizontalmente las acciones principales del hero */
 .hero-actions {
   display: flex;
   gap: 1rem;
   justify-content: center;
 }
 
-.btn-lg {
-  padding: 0.8rem 1.8rem;
-  font-size: 1.1rem;
+/* Define las variantes claras de las secciones editoriales */
+.inicio-section-white {
+  background-color: #FFFFFF;
 }
 
+.inicio-section-tint {
+  background-color: #F5F3FF;
+}
+
+/* Simplifica la tarjeta editorial para dejar protagonismo al contenido */
+.inicio-article-box {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.inicio-article-box-reverse {
+  flex-direction: row-reverse;
+}
+
+/* Mantiene un formato uniforme para las imagenes editoriales */
+.inicio-article-image {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+}
+
+/* Refuerza los titulares de las secciones editoriales */
+.articulo-text .inicio-article-title {
+  font-size: 4rem;
+}
+
+/* Mejora la lectura del texto editorial */
+.articulo-text .inicio-article-copy {
+  font-size: 1.5rem;
+}
+
+/* Alinea la llamada a la accion con el contenido editorial */
+.articulo-text .inicio-article-button {
+  align-self: flex-start;
+}
+
+/* Construye la seccion promocional central */
+.inicio-info-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background-image: linear-gradient(rgba(157, 80, 187, 0.85), rgba(91, 33, 182, 0.85)), url('/assets/images/Banner.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.inicio-info-content {
+  max-width: 1000px;
+  padding: 40px;
+}
+
+.inicio-info-title {
+  margin-bottom: 2rem;
+  color: white;
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.inicio-info-copy {
+  margin-bottom: 3rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.inicio-info-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 45px;
+  color: #9D50BB;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background-color: white;
+}
+
+/* Construye el bloque final de contacto */
+.inicio-footer-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #E9D5FF;
+  text-align: center;
+  background-color: #1E1B4B;
+}
+
+.inicio-footer-content {
+  max-width: 800px;
+  padding: 24px;
+}
+
+.inicio-footer-logo {
+  width: 250px;
+  margin: 0 auto 2rem;
+  border-radius: 10px;
+}
+
+.inicio-footer-content h2 {
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  font-size: 3rem;
+}
+
+.inicio-footer-content > .inicio-footer-lead {
+  margin-bottom: 2rem;
+  color: #E9D5FF;
+  font-size: 1.25rem;
+}
+
+.inicio-footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.inicio-footer-social a {
+  color: white;
+  font-size: 3rem;
+}
+
+.inicio-footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.inicio-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+  list-style: none;
+  font-family: 'Open Sans';
+}
+
+.inicio-footer-links a {
+  color: #A0AEC0;
+  text-decoration: none;
+}
+
+.inicio-footer-bottom p {
+  margin-top: 1.5rem;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+/* Reordena el hero en pantallas pequenas */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.5rem;

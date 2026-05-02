@@ -2,17 +2,19 @@ import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 /**
- * Interceptor para añadir el token JWT y manejar errores de sesión
+ * Interceptor que adjunta el token JWT y gestiona errores de autenticacion
  */
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
+  const authService = inject(AuthService);
   const token = localStorage.getItem('token');
 
   let authReq = req;
 
-  // Si tenemos un token, clonamos la petición y añadimos la cabecera
+  // Si existe un token, lo añade a la cabecera Authorization
   if (token) {
     authReq = req.clone({
       setHeaders: {
@@ -23,17 +25,19 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      // Si recibimos un 401 (No autorizado) o 403 (Prohibido/Expirado)
+      // Si la sesion ya no es valida, limpia el token y redirige al login
       if (error.status === 401 || error.status === 403) {
         console.warn('Sesión expirada o no autorizada. Redirigiendo a login...');
-        
-        // Limpiamos el token antiguo
-        localStorage.removeItem('token');
-        
-        // Redirigimos al usuario al login
-        router.navigate(['/login']);
+
+        // Elimina el token almacenado
+        authService.logout();
+
+        // Envía al usuario a la pantalla de acceso
+        if (router.url !== '/login') {
+          router.navigate(['/login']);
+        }
       }
-      
+
       return throwError(() => error);
     })
   );

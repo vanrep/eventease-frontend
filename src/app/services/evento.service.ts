@@ -9,7 +9,7 @@ import { EventoDetalles } from '../models/evento-detalles';
   providedIn: 'root',
 })
 export class EventoService {
-  // url base de eventos
+  // Endpoint base para las operaciones relacionadas con eventos
   private apiUrl = 'http://localhost:8080/eventos';
 
   constructor(
@@ -17,36 +17,28 @@ export class EventoService {
     private authService: AuthService
   ) { }
 
-  // crear cabeceras con el token
-  private getHeaders(): HttpHeaders {
-    const token = this.authService.obtenerToken();
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-  }
-
-  // obtener eventos del usuario logueado
+  // Obtiene los eventos asociados al usuario autenticado
   obtenerEventos(): Observable<Evento[]> {
-    return this.http.get<Evento[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Evento[]>(this.apiUrl);
   }
 
-  // crear un evento nuevo
+  // Crea un nuevo evento con los datos enviados desde el formulario
   crearEvento(evento: Evento): Observable<Evento> {
-    return this.http.post<Evento>(this.apiUrl, evento, { headers: this.getHeaders() });
+    return this.http.post<Evento>(this.apiUrl, evento);
   }
 
-  // obtener un evento por su id
+  // Obtiene el detalle de un evento concreto a partir de su id
   obtenerEvento(id: number): Observable<EventoDetalles> {
-    return this.http.get<EventoDetalles>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+    return this.http.get<EventoDetalles>(`${this.apiUrl}/${id}`);
   }
 
-  // actualizar un evento
+  // Actualiza un evento existente identificado por su id
   actualizarEvento(id: number, evento: Evento): Observable<Evento> {
-    return this.http.put<Evento>(`${this.apiUrl}/${id}`, evento, { headers: this.getHeaders() });
+    return this.http.put<Evento>(`${this.apiUrl}/${id}`, evento);
   }
 
-  // eliminar un evento
-  eliminarEvento(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+  // Elimina un evento existente identificado por su id
+  eliminarEvento(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

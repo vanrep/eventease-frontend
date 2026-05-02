@@ -1,6 +1,6 @@
 <section class="section-snap login-wrapper">
   <div class="form-card login-card">
-    
+    <!-- Encabezado del formulario de acceso -->
     <div class="form-header">
       <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
       <h1>BIENVENIDO</h1>
@@ -8,44 +8,42 @@
     </div>
 
     <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
-      
-      <!-- EMAIL -->
-      <div class="form-group full-width">
+      <!-- Campo de email para iniciar sesion -->
+      <div class="form-group">
         <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRÓNICO</label>
         <div class="input-with-icon">
           <input type="email" id="email" name="email" 
                  placeholder="tu@email.com" 
-                 [(ngModel)]="loginData.email" required
-                 #emailInput="ngModel">
+                 [(ngModel)]="loginData.email" required>
         </div>
       </div>
 
-      <!-- PASSWORD -->
-      <div class="form-group full-width">
+      <!-- Campo de contraseña con opcion para mostrar/ocultar el valor -->
+      <div class="form-group">
         <label for="password"><i class="fa-solid fa-lock"></i> CONTRASEÑA</label>
         <div class="input-with-icon">
           <input [type]="mostrarPassword ? 'text' : 'password'" id="password" name="password" 
                  placeholder="••••••••" 
-                 [(ngModel)]="loginData.password" required
-                 #passInput="ngModel">
+                 [(ngModel)]="loginData.password" required>
           <button type="button" class="toggle-password-btn" (click)="toggleMostrarPassword()" [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
             <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
           </button>
         </div>
       </div>
       
-      <!-- ERROR MESSAGE -->
+      <!-- Muestra el mensaje de error cuando el login falla -->
       <div *ngIf="mensajeError" class="error-alert animate-shake">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 
-      <!-- ACTIONS -->
-      <div class="form-actions centered">
+      <!-- Accion principal para enviar el formulario -->
+      <div class="form-actions">
         <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!loginForm.valid">
           ENTRAR <i class="fa-solid fa-arrow-right-to-bracket"></i>
         </button>
       </div>
 
+      <!-- Enlace para cambiar al formulario de registro -->
       <p class="auth-switch-text">
         No tienes cuenta con nosotros?
         <a routerLink="/register">Regístrate</a>

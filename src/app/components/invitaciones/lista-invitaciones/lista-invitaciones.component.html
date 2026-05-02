@@ -1,20 +1,24 @@
 <section class="invitaciones-page">
 
+  <!-- Muestra un aviso cuando falla la carga o la respuesta de invitaciones -->
   <div *ngIf="mensajeError" class="error-alert">
     <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
   </div>
 
   <div class="invitaciones-card">
 
+    <!-- Cabecera principal de la pagina -->
     <h1 class="invitaciones-title">
       <i class="fa-solid fa-envelope-open-text"></i> MIS INVITACIONES
     </h1>
 
+    <!-- Estado vacio cuando no hay invitaciones para mostrar -->
     <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-box">
       <i class="fa-solid fa-inbox" style="font-size: 2rem; margin-bottom: 15px; display: block;"></i>
       No tienes invitaciones.
     </div>
 
+    <!-- Tabla principal con el detalle y las acciones disponibles -->
     <table class="invitaciones-table" *ngIf="invitaciones.length > 0">
       <thead>
         <tr>
@@ -56,17 +60,19 @@
           </td>
 
           <td>
-            <div class="acciones" *ngIf="inv.estado === 'PENDIENTE'">
-              <button type="button" class="btn-accion btn-aceptar" (click)="responder(inv.eventoId, true)">
+            <div class="acciones" *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
+              <button type="button" class="btn-accion btn-aceptar" (click)="responder(inv.id, true)">
                 <i class="fa-solid fa-circle-check"></i> Aceptar
               </button>
 
-              <button type="button" class="btn-accion btn-rechazar" (click)="responder(inv.eventoId, false)">
+              <button type="button" class="btn-accion btn-rechazar" (click)="responder(inv.id, false)">
                 <i class="fa-solid fa-circle-xmark"></i> Rechazar
               </button>
             </div>
 
-            <span *ngIf="inv.estado !== 'PENDIENTE'">Sin acciones</span>
+            <ng-template #sinAcciones>
+              <span>Sin acciones</span>
+            </ng-template>
           </td>
 
         </tr>

@@ -1,5 +1,5 @@
 export interface LoginRequest {
-  // modelo para enviar datos de login al backend  (LoginRequestDto)
+  // Modelo usado para enviar las credenciales al endpoint de login
   email: string;
   password: string;
 }

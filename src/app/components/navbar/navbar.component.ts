@@ -12,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
   isScrolled = false;
-  isMenuOpen = false;
 
   constructor(
     public authService: AuthService,
@@ -27,7 +26,7 @@ export class NavbarComponent {
   onInicioClick(event: Event) {
     if (this.router.url === '/inicio' || this.router.url === '/') {
       event.preventDefault();
-      // Use native smooth scroll for immediate navigation back to top
+      // Mueve la página hasta arriba del todo
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
@@ -46,13 +45,5 @@ export class NavbarComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
-  }
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  closeMenu() {
-    this.isMenuOpen = false;
   }
 }

@@ -2,12 +2,14 @@
 	display: block;
 }
 
+/* Ajusta el contenedor principal en las pantallas de autenticacion */
 main.auth-page {
 	height: 100vh;
 	overflow: hidden;
 	padding-bottom: 0;
 }
 
+/* Pie compacto usado en login y registro */
 .auth-footer {
 	position: fixed;
 	left: 0;
@@ -23,11 +25,12 @@ main.auth-page {
 	border-top: 1px solid rgba(157, 80, 187, 0.2);
 }
 
-
+/* Permite que los enlaces ocupen el ancho disponible */
 .auth-footer nav {
 	flex: 1;
 }
 
+/* Agrupa los enlaces legales del pie compacto */
 .auth-footer .footer-links {
 	list-style: none;
 	margin: 0;
@@ -38,6 +41,7 @@ main.auth-page {
 	flex-wrap: wrap;
 }
 
+/* Mantiene el estilo de los enlaces en el pie compacto */
 .auth-footer .footer-links a {
 	color: #E9D5FF;
 	text-decoration: none;
@@ -46,10 +50,12 @@ main.auth-page {
 	transition: color 0.3s ease;
 }
 
+/* Refuerza el contraste al pasar el cursor por los enlaces */
 .auth-footer .footer-links a:hover {
 	color: #FFFFFF;
 }
 
+/* Alinea los iconos sociales al final del pie compacto */
 .auth-footer .social {
 	display: flex;
 	align-items: center;
@@ -57,17 +63,20 @@ main.auth-page {
 	gap: 16px;
 }
 
+/* Ajusta tamano y transicion de los iconos sociales */
 .auth-footer .social a {
 	color: #E9D5FF;
 	font-size: 1.35rem;
 	transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Amplia ligeramente el icono activo al pasar el cursor */
 .auth-footer .social a:hover {
 	color: #FFFFFF;
 	transform: scale(1.1);
 }
 
+/* Recoloca el pie compacto en pantallas pequenas */
 @media (max-width: 768px) {
 	.auth-footer {
 		flex-direction: column;
@@ -80,11 +89,4 @@ main.auth-page {
 		justify-content: center;
 		gap: 14px;
 	}
-}
-
-.auth-footer p {
-	margin: 0;
-	color: #718096;
-	font-family: 'Oswald', sans-serif;
-	font-size: 0.95rem;
 }

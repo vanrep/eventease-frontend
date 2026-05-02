@@ -1,4 +1,4 @@
 export interface AuthResponse {
-  // modelo para recibir el token desde el backend
+  // Modelo de respuesta que devuelve el token tras el login
   token: string;
 }

@@ -9,89 +9,62 @@ import { Usuario } from '../models/usuario.model';
   providedIn: 'root',
 })
 export class AuthService {
-  // cambiar esta URL si tu backend usa otra
+  // Endpoint base para las operaciones de autenticacion y registro
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
   
-  // 1) REGISTER --> UsuarioController @PostMapping("/register")
+  // Registra un nuevo usuario en el backend
   register(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.apiUrl}/register`, usuario);
   }
 
-  // hacer login
+  // Envía las credenciales y recibe el token de autenticacion
   login(datosLogin: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, datosLogin);
   }
 
-  // guardar token en localStorage
+  // Guarda el token JWT en el almacenamiento local del navegador
   guardarToken(token: string): void {
     localStorage.setItem('token', token);
   }
 
-  // obtener token guardado
+  // Recupera el token JWT almacenado si existe
   obtenerToken(): string | null {
     return localStorage.getItem('token');
   }
 
-  // borrar token al cerrar sesión
+  // Elimina el token almacenado al cerrar sesion
   logout(): void {
     localStorage.removeItem('token');
   }
 
-  // comprobar si hay token guardado
+  // Indica si actualmente hay un token guardado
   estaLogueado(): boolean {
     return this.obtenerToken() != null;
   }
 
-  // obtener id del usuario del token
+  // Extrae el identificador del usuario desde el contenido del token
   obtenerUsuarioId(): number | null {
-    const token = this.obtenerToken();
-    if (!token) return null;
-
-    try {
-      const payload = token.split('.')[1];
-      const decodedPayload = atob(payload);
-      const values = JSON.parse(decodedPayload);
-      return values.userId ? Number(values.userId) : null;
-    } catch (e) {
-      console.error('Error al decodificar ID del token', e);
-      return null;
-    }
+    const payload = this.obtenerPayloadToken();
+    return payload?.['userId'] ? Number(payload['userId']) : null;
   }
 
-  // obtener rol del token (simplificado)
+  // Extrae el rol del usuario desde el contenido del token
   obtenerRol(): string | null {
-    const token = this.obtenerToken();
-    if (!token) return null;
+    const payload = this.obtenerPayloadToken();
+    if (!payload) return null;
 
-    try {
-      // El JWT tiene 3 partes separadas por puntos. La del medio es el payload en Base64.
-      const payload = token.split('.')[1];
-      const decodedPayload = atob(payload);
-      const values = JSON.parse(decodedPayload);
-      return values.rol || values.role || values.authorities || null;
-    } catch (e) {
-      console.error('Error al decodificar token', e);
-      return null;
-    }
+    return String(payload['rol'] || payload['role'] || payload['authorities'] || '') || null;
   }
 
+  // Obtiene el email principal almacenado en el token
   obtenerEmail(): string {
-    const token = this.obtenerToken();
-    if (!token) return '';
-
-    try {
-      const payload = token.split('.')[1];
-      const decodedPayload = atob(payload);
-      const values = JSON.parse(decodedPayload);
-      return values.sub || '';
-    } catch (e) {
-      console.error('Error al decodificar email del token', e);
-      return '';
-    }
+    const payload = this.obtenerPayloadToken();
+    return typeof payload?.['sub'] === 'string' ? payload['sub'] : '';
   }
 
+  // Genera la inicial que se muestra para el usuario autenticado
   obtenerInicialUsuario(): string {
     const email = this.obtenerEmail();
 
@@ -100,5 +73,19 @@ export class AuthService {
     }
 
     return email.charAt(0).toUpperCase();
+  }
+
+  private obtenerPayloadToken(): Record<string, unknown> | null {
+    const token = this.obtenerToken();
+    if (!token) return null;
+
+    try {
+      const payload = token.split('.')[1];
+      const decodedPayload = atob(payload);
+      return JSON.parse(decodedPayload);
+    } catch (e) {
+      console.error('Error al decodificar token', e);
+      return null;
+    }
   }
 }

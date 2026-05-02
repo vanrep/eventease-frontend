@@ -162,7 +162,7 @@ export class DetalleEventoComponent implements OnInit {
 
   // DINÁMICA DE INVITADOS
   agregarInvitado() {
-    this.invitados.push({ estado: 'NUEVO', eventoId: this.evento.id!, emailAsistente: '' });
+    this.invitados.push({ estado: 'NUEVA', eventoId: this.evento.id!, emailAsistente: '' });
   }
 
   quitarInvitado(index: number) {

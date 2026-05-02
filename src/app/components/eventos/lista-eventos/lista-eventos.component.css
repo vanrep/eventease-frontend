@@ -1,20 +1,113 @@
+/* Construye el fondo de la pagina de listado */
+.lista-eventos-page {
+  min-height: 100vh;
+  background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Mantiene la altura en el estado sin eventos */
+.lista-eventos-empty-hero {
+  min-height: 85vh;
+}
+
+/* Ajusta el bloque superior compacto del listado */
 .list-header-compact {
-  padding-top: 140px; 
+  padding-top: 140px;
   padding-bottom: 20px;
   background: transparent;
   width: 100%;
 }
 
-.header-container {
+/* Organiza la barra superior con acciones y filtros */
+.events-toolbar {
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   padding: 0 40px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-evenly;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-/* REDESIGNED BUTTON (FORCED) */
+/* Agrupa el buscador con su icono */
+.search-box {
+  position: relative;
+  width: 320px;
+}
+
+/* Coloca el icono dentro del campo de busqueda */
+.search-box i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9D50BB;
+}
+
+/* Define el aspecto del campo de busqueda */
+.search-box input {
+  width: 100%;
+  padding: 13px 18px 13px 45px;
+  border: 2px solid #E9D5FF;
+  border-radius: 999px;
+  background: #FFFFFF;
+  color: #4A5568;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(157, 80, 187, 0.08);
+}
+
+/* Resalta el buscador activo */
+.search-box input:focus {
+  outline: none;
+  border-color: #9D50BB;
+}
+
+/* Reune los filtros de estado en una capsula */
+.filters-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 2px solid #E9D5FF;
+  border-radius: 999px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 12px rgba(157, 80, 187, 0.08);
+}
+
+/* Alinea cada checkbox con su etiqueta */
+.filter-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #4C1D95;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Aplica el color corporativo al control nativo */
+.filter-check input {
+  accent-color: #9D50BB;
+  cursor: pointer;
+}
+
+/* Diferencia visualmente los estados del filtro */
+.pendiente-check {
+  color: #D97706;
+}
+
+.aceptada-check {
+  color: #16A34A;
+}
+
+.rechazada-check {
+  color: #DC2626;
+}
+
+/* Define el boton principal para crear un evento */
 .btn-cta {
   padding: 12px 28px !important;
   font-family: 'Oswald', sans-serif !important;
@@ -22,7 +115,7 @@
   font-weight: 700 !important;
   background: #9D50BB !important;
   color: #FFFFFF !important;
-  border-radius: 50px !important; 
+  border-radius: 50px !important;
   border: none !important;
   display: flex !important;
   align-items: center !important;
@@ -33,17 +126,19 @@
   text-decoration: none !important;
 }
 
+/* Refuerza el hover del boton principal */
 .btn-cta:hover {
   background: #6E48AA !important;
   transform: translateY(-3px);
   box-shadow: 0 15px 20px -5px rgba(110, 72, 170, 0.4) !important;
 }
 
+/* Ajusta el tamano del icono del boton */
 .btn-cta i {
   font-size: 1.1rem;
 }
 
-/* ERROR ALERT */
+/* Muestra errores de carga con contraste alto */
 .error-alert {
   background-color: #FEF2F2;
   color: #991B1B;
@@ -52,9 +147,39 @@
   border: 1px solid #FECACA;
   text-align: center;
   font-weight: 600;
+  max-width: 600px;
+  margin: 2rem auto;
 }
 
-/* DAYS LEFT BADGE */
+/* Presenta el estado vacio cuando no hay coincidencias */
+.no-results {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 40px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  border: 2px dashed #E9D5FF;
+  color: #718096;
+  font-weight: 600;
+}
+
+.no-results i {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 15px;
+  color: #9D50BB;
+}
+
+/* Define el contenedor de tarjetas visibles */
+.lista-eventos-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 24px;
+  gap: 40px;
+}
+
+/* Muestra los dias restantes sobre la tarjeta */
 .days-left-badge {
   position: absolute;
   top: 15px;
@@ -75,6 +200,7 @@
   cursor: help;
 }
 
+/* Refuerza el hover de la insignia de dias */
 .days-left-badge:hover {
   background: #9D50BB;
   color: #FFFFFF;
@@ -82,48 +208,37 @@
   box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
 }
 
+/* Ajusta el tamano del icono de la insignia */
 .days-left-badge i {
   font-size: 1rem;
 }
 
-
-
-/* URGENT STATE */
+/* Señala con mayor urgencia los eventos cercanos */
 .days-left-badge.urgent {
   background: #FEF2F2 !important;
   color: #DC2626 !important;
   border-color: #FECACA !important;
-  box-shadow: 0 0 15px rgba(220, 38, 38, 0.1);
 }
 
+/* Refuerza el contraste del estado urgente al pasar el cursor */
 .days-left-badge.urgent:hover {
   background: #DC2626 !important;
   color: #FFFFFF !important;
 }
 
-
-
-/* HOURGLASS FLIP ANIMATION */
+/* Define la animacion del icono de urgencia */
 @keyframes hourglass-flip {
   0% { transform: rotate(0); }
-  40% { transform: rotate(0); }
   50% { transform: rotate(180deg); }
-  90% { transform: rotate(180deg); }
   100% { transform: rotate(360deg); }
 }
 
+/* Anima el reloj de arena en eventos urgentes */
 .days-left-badge.urgent i {
   animation: hourglass-flip 3s infinite ease-in-out;
-  display: inline-block;
 }
 
-.days-left-badge.urgent {
-  animation: none !important; /* Remove previous badge blink */
-}
-
-
-
-/* CLICKABLE CARD EFFECTS */
+/* Ajusta la tarjeta visual de cada evento */
 .tarjeta {
   overflow: hidden;
   border-radius: 24px !important;
@@ -131,15 +246,30 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+/* Completa el ancho y la interaccion de cada tarjeta */
+.lista-eventos-card {
+  width: 380px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lista-eventos-card .tarjeta-body {
+  position: relative;
+  padding: 30px;
+}
+
+/* Eleva la tarjeta y destaca su contenido al pasar el cursor */
 .tarjeta:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 30px -10px rgba(157, 80, 187, 0.2);
 }
 
+/* Cambia el tono del titulo cuando la tarjeta esta activa */
 .tarjeta:hover h2 {
   color: #9D50BB;
 }
 
+/* Marca cada tarjeta segun el estado de la invitacion */
 .tarjeta.border-aceptada {
   border: 5px solid #16A34A !important;
 }
@@ -152,6 +282,7 @@
   border: 5px solid #DC2626 !important;
 }
 
+/* Muestra el estado de la invitacion como insignia */
 .badge-invitacion {
   position: absolute;
   top: 15px;
@@ -166,27 +297,23 @@
   gap: 6px;
 }
 
-/* ACEPTADA */
+/* Colores por estado dentro de la insignia */
 .badge-invitacion.aceptada {
   background: #DCFCE7;
   color: #16A34A;
-  border: 1px solid #BBF7D0;
 }
 
-/* PENDIENTE */
 .badge-invitacion.pendiente {
   background: #FEF3C7;
   color: #D97706;
-  border: 1px solid #FDE68A;
 }
 
-/* RECHAZADA */
 .badge-invitacion.rechazada {
   background: #FEE2E2;
   color: #DC2626;
-  border: 1px solid #FECACA;
 }
 
+/* Indica quien ha invitado al usuario al evento */
 .invited-by {
   height: 20px;
   margin-top: 38px;
@@ -200,6 +327,116 @@
   gap: 6px;
 }
 
+/* Mantiene el icono del invitador en el color de marca */
 .invited-by i {
   color: #9D50BB;
+}
+
+.lista-eventos-card h2 {
+  width: 100%;
+  margin-top: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lista-eventos-card .event-meta {
+  margin-bottom: 1.5rem;
+  color: #9D50BB;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.lista-eventos-card p {
+  color: #4A5568;
+  font: 1rem 'Open Sans';
+  line-height: 1.6;
+}
+
+/* Separa la ubicacion del resto del contenido */
+.lista-eventos-card-location {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #F5F3FF;
+}
+
+.lista-eventos-card-location p {
+  margin: 0;
+  color: #718096;
+}
+
+/* Construye el bloque de cierre inferior del listado */
+.lista-eventos-footer {
+  padding: 100px 24px;
+  color: #E9D5FF;
+  text-align: center;
+  background-color: #1E1B4B;
+  border-top: 4px solid #9D50BB;
+}
+
+.lista-eventos-footer > div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lista-eventos-footer img {
+  width: 220px;
+  margin: 0 auto 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.lista-eventos-footer h2 {
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+  font: 3rem 'Oswald';
+  text-transform: uppercase;
+}
+
+/* Introduce la llamada final con un texto de apoyo */
+.lista-eventos-footer-lead {
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.lista-eventos-footer .social {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.lista-eventos-footer .social a {
+  color: #E9D5FF;
+  font-size: 2.8rem;
+  transition: color 0.3s;
+}
+
+/* Agrupa enlaces legales y firma final */
+.lista-eventos-footer-bottom {
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.lista-eventos-footer-bottom ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 0;
+  list-style: none;
+  font-family: 'Open Sans';
+  font-weight: 600;
+}
+
+.lista-eventos-footer-bottom a {
+  color: #718096;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.lista-eventos-footer-bottom p {
+  margin-top: 2rem;
+  color: #4A5568;
+  font-size: 0.95rem;
 }

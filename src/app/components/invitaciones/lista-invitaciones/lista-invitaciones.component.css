@@ -1,3 +1,4 @@
+/* Construye el fondo principal de la pagina de invitaciones */
 .invitaciones-page {
   min-height: 100vh;
   padding: 120px 24px 80px;
@@ -6,6 +7,7 @@
   background-size: cover;
 }
 
+/* Tarjeta central que contiene la tabla de invitaciones */
 .invitaciones-card {
   max-width: 1100px;
   margin: 0 auto;
@@ -16,6 +18,7 @@
   border: 1px solid #E9D5FF;
 }
 
+/* Titulo principal de la pagina */
 .invitaciones-title {
   text-align: center;
   color: #4C1D95;
@@ -24,6 +27,7 @@
   margin-bottom: 40px;
 }
 
+/* Tabla principal con el resumen de invitaciones */
 .invitaciones-table {
   width: 100%;
   border-collapse: collapse;
@@ -31,6 +35,7 @@
   border-radius: 16px;
 }
 
+/* Cabecera fija para cada columna de informacion */
 .invitaciones-table th {
   background: #F5F3FF;
   color: #4C1D95;
@@ -40,6 +45,7 @@
   text-transform: uppercase;
 }
 
+/* Celdas del cuerpo de la tabla */
 .invitaciones-table td {
   padding: 18px 16px;
   border-bottom: 1px solid #F5F3FF;
@@ -47,10 +53,12 @@
   font-size: 0.95rem;
 }
 
+/* Resalta suavemente una fila al pasar el cursor */
 .invitaciones-table tr:hover {
   background: #FDFBFF;
 }
 
+/* Insignia comun para mostrar el estado de una invitacion */
 .badge-status {
   display: inline-flex;
   align-items: center;
@@ -61,6 +69,7 @@
   font-weight: 700;
 }
 
+/* Colores por estado de la invitacion */
 .pendiente {
   background: #FEF3C7;
   color: #D97706;
@@ -76,11 +85,13 @@
   color: #DC2626;
 }
 
+/* Agrupa las acciones disponibles por fila */
 .acciones {
   display: flex;
   gap: 10px;
 }
 
+/* Estilo base para botones de accion rapida */
 .btn-accion {
   border: none;
   border-radius: 12px;
@@ -93,16 +104,19 @@
   gap: 6px;
 }
 
+/* Variante positiva para aceptar una invitacion */
 .btn-aceptar {
   background: #DCFCE7;
   color: #16A34A;
 }
 
+/* Variante negativa para rechazar una invitacion */
 .btn-rechazar {
   background: #FEE2E2;
   color: #DC2626;
 }
 
+/* Estado vacio cuando no existen invitaciones */
 .empty-box {
   text-align: center;
   padding: 50px;
@@ -112,6 +126,7 @@
   background: #FDFBFF;
 }
 
+/* Muestra los errores de carga o respuesta */
 .error-alert {
   max-width: 700px;
   margin: 0 auto 30px;

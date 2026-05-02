@@ -1,3 +1,4 @@
+/* Centra la pantalla de registro sobre el fondo comun de autenticacion */
 .login-wrapper {
   min-height: 100vh;
   display: flex;
@@ -11,6 +12,7 @@
   overflow: hidden;
 }
 
+/* Ajusta la tarjeta para el formulario de alta */
 .login-card {
   max-width: 700px !important;
   width: 100%;
@@ -19,11 +21,13 @@
   text-align: center;
 }
 
+/* Limita el ancho util del formulario */
 form {
   max-width: 610px;
   margin: 0 auto;
 }
 
+/* Presenta el logo encima del encabezado */
 .login-logo {
   width: 120px;
   border-radius: 20px;
@@ -31,6 +35,7 @@ form {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Destaca el titulo principal del alta */
 .form-header h1 {
   font-family: 'Oswald', sans-serif;
   color: #4C1D95;
@@ -39,34 +44,40 @@ form {
   margin-bottom: 5px;
 }
 
+/* Introduce el formulario con una descripcion breve */
 .form-header p {
   color: #718096;
   font-size: 1.1rem;
   margin-bottom: 20px;
 }
 
+/* Ordena cada bloque de campo del formulario */
 .form-group {
   text-align: left;
   margin-bottom: 14px;
 }
 
+/* Coloca las dos contrasenas en paralelo cuando hay espacio */
 .password-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
 
+/* Separa visualmente los datos de acceso del resto del perfil */
 .form-divider {
   border: 0;
   border-top: 1px solid #E9D5FF;
   margin: 20px 0;
 }
 
+/* Ajusta el mensaje de error de confirmacion de contrasena */
 .password-error {
   margin-top: -2px;
   margin-bottom: 18px;
 }
 
+/* Refuerza la lectura de cada etiqueta del formulario */
 .form-group label {
   display: block;
   font-size: 0.9rem;
@@ -76,14 +87,17 @@ form {
   letter-spacing: 1px;
 }
 
+/* Marca visualmente los campos obligatorios */
 .required-mark {
   color: #DC2626;
 }
 
+/* Sirve de ancla para iconos y acciones dentro del input */
 .input-with-icon {
   position: relative;
 }
 
+/* Uniforma el estilo de inputs y select del registro */
 input,
 select {
   width: 100% !important;
@@ -96,6 +110,7 @@ select {
   transition: all 0.3s ease !important;
 }
 
+/* Posiciona el boton para mostrar u ocultar la contrasena */
 .toggle-password-btn {
   position: absolute;
   top: 50%;
@@ -111,10 +126,12 @@ select {
   pointer-events: auto;
 }
 
+/* Refuerza el estado hover del boton de visibilidad */
 .toggle-password-btn:hover {
   color: #5B21B6;
 }
 
+/* Resalta el campo activo con color y halo */
 input:focus,
 select:focus {
   border-color: #9D50BB !important;
@@ -123,6 +140,7 @@ select:focus {
   outline: none;
 }
 
+/* Define el boton principal de registro */
 .btn-cta {
   width: 100%;
   padding: 18px !important;
@@ -147,10 +165,12 @@ select:focus {
   transition: none !important;
 }
 
+/* Mantiene el contenedor del boton como bloque unico */
 .form-actions {
   display: block;
 }
 
+/* Presenta el enlace alternativo hacia el login */
 .auth-switch-text {
   margin-top: 18px;
   margin-bottom: 0;
@@ -159,21 +179,25 @@ select:focus {
   text-align: center;
 }
 
+/* Destaca el enlace de cambio de flujo */
 .auth-switch-text a {
   color: #7C3AED;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Muestra subrayado al pasar por el enlace alternativo */
 .auth-switch-text a:hover {
   text-decoration: underline;
 }
 
+/* Eleva ligeramente el boton activo al pasar el cursor */
 .btn-cta:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 18px 34px rgba(157, 80, 187, 0.38) !important;
 }
 
+/* Atenua el boton cuando el formulario no puede enviarse */
 .btn-cta:disabled {
   opacity: 1;
   cursor: not-allowed;
@@ -183,6 +207,7 @@ select:focus {
   filter: none;
 }
 
+/* Comunica errores con contraste alto */
 .error-alert {
   background: #FEF2F2;
   color: #DC2626;
@@ -196,6 +221,7 @@ select:focus {
   font-weight: 600;
 }
 
+/* Comunica confirmaciones positivas del registro */
 .success-alert {
   background: #ECFDF5;
   color: #047857;
@@ -209,10 +235,12 @@ select:focus {
   font-weight: 600;
 }
 
+/* Aplica una sacudida breve a los errores principales */
 .animate-shake {
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
+/* Define la animacion */
 @keyframes shake {
   10%,
   90% {

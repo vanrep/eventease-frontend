@@ -1,26 +1,39 @@
-/* MODERN FORM CONTAINER */
+/* Contenedor principal del formulario de detalle */
 .section-snap {
   min-height: 100vh;
-  display: block; /* Change from flex to block for natural scrolling */
+  display: block; /* Permite un scroll natural en formularios largos */
   background: linear-gradient(rgba(245, 243, 255, 0.95), rgba(245, 243, 255, 0.95)), url('/assets/images/Banner.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 120px 24px 80px; /* More top padding for the fixed navbar */
-  scroll-snap-align: none; /* Disable snapping for long forms */
+  padding: 120px 24px 80px; /* Deja espacio para la navbar fija */
+  scroll-snap-align: none; /* Evita el snap en pantallas largas */
 }
 
+.section-snap {
+  min-height: 100vh;
+  display: block; /* Permite un scroll natural en formularios largos */
+  padding: 60px 24px 80px;
+  background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  scroll-snap-align: none; /* Evita el snap en pantallas largas */
+}
+
+/* Tarjeta central que envuelve el formulario */
 .form-card {
-  background: #FFFFFF;
-  max-width: 1000px;
   width: 100%;
-  padding: 60px;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 40px 60px 60px;
+  background: #FFFFFF;
+  border: 1px solid #E9D5FF;
   border-radius: 32px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  border: 1px solid #E9D5FF;
-  margin: 0 auto; /* Center horizontally */
 }
 
+/* Cabecera principal del bloque editable */
 .form-header {
   text-align: left;
   margin-bottom: 40px;
@@ -28,6 +41,40 @@
   padding-bottom: 20px;
 }
 
+.form-header {
+  margin-bottom: 30px;
+  border: none;
+  padding: 0;
+}
+
+.form-header label,
+.detalle-evento-invitations-header label {
+  font-size: 1.2rem;
+}
+
+.form-header label {
+  letter-spacing: 1px;
+}
+
+.form-header input {
+  padding: 10px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4C1D95;
+  border-top: none;
+  border-right: none;
+  border-bottom: 3px solid #E9D5FF;
+  border-left: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.detalle-evento-section-gap textarea {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Titulo principal del detalle */
 .form-header h1 {
   font-family: 'Oswald', sans-serif;
   color: #4C1D95;
@@ -36,28 +83,50 @@
   text-transform: uppercase;
 }
 
+/* Texto de apoyo bajo el titulo */
 .form-header p {
   color: #718096;
   font-size: 1.1rem;
 }
 
-/* GRID & INPUTS */
+/* Distribucion general de campos y controles */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
+/* Agrupa verticalmente cada campo */
 .form-group {
   display: flex;
   flex-direction: column; 
   gap: 12px;
 }
 
+/* Permite que un bloque ocupe todo el ancho del grid */
 .full-width {
   grid-column: span 2;
 }
 
+.detalle-evento-section-gap,
+.form-grid {
+  margin-bottom: 40px;
+}
+
+.detalle-evento-info-card {
+  padding: 25px;
+  background: #FDFBFF;
+  border: 1px solid #E9D5FF;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.detalle-evento-info-input {
+  margin-top: 10px;
+  border-color: #F3E8FF;
+}
+
+/* Estilo comun para etiquetas de campo */
 label {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
@@ -70,10 +139,12 @@ label {
   letter-spacing: 0.5px;
 }
 
+/* Mantiene los iconos de etiqueta en el color de marca */
 label i {
   color: #9D50BB;
 }
 
+/* Base visual para inputs y areas de texto */
 input, textarea {
   width: 100%;
   padding: 16px 20px;
@@ -86,6 +157,7 @@ input, textarea {
   background-color: #FDFBFF;
 }
 
+/* Resalta el control activo con halo y contraste */
 input:focus, textarea:focus {
   outline: none;
   border-color: #9D50BB;
@@ -93,7 +165,143 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
 }
 
-/* ACTIONS */
+.venue-picker-layout,
+.detalle-evento-location-input {
+  margin-top: 15px;
+}
+
+.detalle-evento-venue-list {
+  max-height: 400px;
+}
+
+.detalle-evento-venue-list h4 {
+  font-size: 1.1rem;
+}
+
+.detalle-evento-venue-list p {
+  font-size: 0.85rem;
+}
+
+.detalle-evento-map-organizador {
+  height: 400px;
+}
+
+.detalle-evento-map-invitado {
+  height: 450px;
+}
+
+.detalle-evento-location-input {
+  font-weight: 600;
+  color: #9D50BB;
+  border: 2px dashed #E9D5FF;
+  background-color: #F8F7FF;
+}
+
+.detalle-evento-invitations-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 2px solid #F5F3FF;
+}
+
+.detalle-evento-invitations-header,
+.detalle-evento-guest-row,
+.detalle-evento-add-guest-button,
+.detalle-evento-remove-guest-button {
+  display: flex;
+  align-items: center;
+}
+
+.detalle-evento-invitations-header {
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.detalle-evento-invitations-header label {
+  margin: 0;
+}
+
+.detalle-evento-add-guest-button {
+  width: 45px;
+  height: 45px;
+  justify-content: center;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #9D50BB;
+  box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
+  transition: all 0.3s ease;
+}
+
+.detalle-evento-add-guest-button i {
+  font-size: 1.2rem;
+}
+
+.detalle-evento-empty-guests {
+  padding: 40px;
+  color: #718096;
+  text-align: center;
+  background: #FDFBFF;
+  border: 2px dashed #E9D5FF;
+  border-radius: 20px;
+}
+
+.detalle-evento-empty-guests i {
+  display: block;
+  margin-bottom: 15px;
+  color: #E9D5FF;
+  font-size: 2rem;
+}
+
+.detalle-evento-guests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detalle-evento-guest-row {
+  gap: 15px;
+}
+
+.detalle-evento-guest-status {
+  width: 120px;
+}
+
+.detalle-evento-guest-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.detalle-evento-guest-input-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #9D50BB;
+  transform: translateY(-50%);
+}
+
+.detalle-evento-guest-input {
+  padding-left: 50px;
+}
+
+.detalle-evento-remove-guest-button {
+  width: 45px;
+  height: 45px;
+  justify-content: center;
+  color: #EF4444;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #FEE2E2;
+}
+
+.success-alert,
+.error-alert {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+/* Franja final con acciones disponibles segun el rol */
 .form-actions {
   grid-column: span 2;
   margin-top: 50px;
@@ -105,6 +313,7 @@ input:focus, textarea:focus {
   padding-top: 40px;
 }
 
+/* Ajusta el estilo comun de los botones del formulario */
 .form-actions .btn-cta, .form-actions .btn-secondary {
   padding: 18px 45px;
   font-family: 'Oswald', sans-serif;
@@ -126,33 +335,54 @@ input:focus, textarea:focus {
   transition: none !important;
 }
 
+.detalle-evento-primary-action {
+  min-width: 250px;
+  padding: 18px;
+}
+
+.detalle-evento-secondary-action {
+  min-width: 150px;
+  padding: 18px;
+}
+
+.detalle-evento-response-action {
+  min-width: 180px;
+  padding: 18px;
+}
+
+/* Boton principal para guardar o aceptar */
 .btn-cta {
   background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%) !important;
   color: white !important;
   border: none !important;
 }
 
+/* Boton secundario para volver */
 .btn-secondary {
   background: white !important;
   border: 2px solid #E9D5FF !important;
   color: #4C1D95 !important;
 }
 
+/* Refuerza el hover del boton secundario */
 .btn-secondary:hover {
   background: #FDFBFF;
   border-color: #9D50BB;
 }
 
+/* Variante destructiva para eliminar o rechazar */
 .btn-danger {
   background: white !important;
   border: 2px solid #EF4444 !important;
   color: #EF4444 !important;
 }
 
+/* Refuerza el hover de la accion destructiva */
 .btn-danger:hover {
   background: #FEF2F2 !important;
 }
 
+/* Insignia comun para mostrar el estado de cada invitacion */
 .badge-status {
   display: inline-flex;
   align-items: center;
@@ -162,6 +392,7 @@ input:focus, textarea:focus {
   font-size: 0.85rem;
 }
 
+/* Colores por estado de la invitacion */
 .aceptada {
   background: #DCFCE7;
   color: #16A34A;
@@ -177,12 +408,35 @@ input:focus, textarea:focus {
   color: #DC2626;
 }
 
-.nuevo {
+.nueva {
   background: #E0E7FF;
   color: #4F46E5;
 }
 
-/* RESPONSIVE */
+.detalle-evento-footer {
+  padding: 80px 24px;
+  color: #E9D5FF;
+  text-align: center;
+  background-color: #1E1B4B;
+}
+
+.detalle-evento-footer > div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.detalle-evento-footer h2 {
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  font-family: 'Oswald';
+  font-size: 2.5rem;
+}
+
+.detalle-evento-footer p {
+  color: #718096;
+}
+
+/* Ajustes para pantallas moviles */
 @media (max-width: 768px) {
   .form-grid {
     grid-template-columns: 1fr;

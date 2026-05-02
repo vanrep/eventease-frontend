@@ -13,16 +13,19 @@ import { Usuario } from '../../models/usuario.model';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
+  // Modelo enlazado al formulario de registro
   usuario: Usuario = {
     nombre: '',
     email: '',
     password: '',
   };
 
+  // Estados auxiliares para validacion y visibilidad de contrasenas
   confirmarPassword: string = '';
   mostrarPassword: boolean = false;
   mostrarConfirmacion: boolean = false;
 
+  // Mensajes mostrados tras intentar registrar al usuario
   mensajeOk: string = '';
   mensajeError: string = '';
 
@@ -31,19 +34,22 @@ export class RegisterComponent {
     private router: Router,
   ) {}
 
+  // Comprueba si ambas contrasenas introducidas coinciden
   passwordsCoinciden(): boolean {
     return this.usuario.password === this.confirmarPassword;
   }
 
+  // Alterna la visibilidad de la contrasena principal
   toggleMostrarPassword(): void {
     this.mostrarPassword = !this.mostrarPassword;
   }
 
+  // Alterna la visibilidad de la contrasena de confirmacion
   toggleMostrarConfirmacion(): void {
     this.mostrarConfirmacion = !this.mostrarConfirmacion;
   }
 
-  // enviar datos de registro
+  // Envía el formulario de registro al backend
   registrar(): void {
     this.mensajeOk = '';
     this.mensajeError = '';
@@ -54,11 +60,10 @@ export class RegisterComponent {
     }
 
     this.authService.register(this.usuario).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
         this.mensajeOk = 'Usuario registrado correctamente';
 
-        // volver al login después del registro
+        // Vuelve al login tras mostrar el mensaje de confirmacion
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 1000);

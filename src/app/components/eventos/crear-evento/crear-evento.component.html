@@ -1,64 +1,63 @@
-<section class="section-snap" style="min-height: 100vh; padding-top: 60px; padding-bottom: 80px; justify-content: flex-start; background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg'); background-attachment: fixed; background-size: cover;">
-  <div class="form-card" style="margin: 100px auto; max-width: 1000px; padding-top: 40px !important;">
-    
+<section class="section-snap">
+  <div class="form-card">
+
+    <!-- Formulario principal para crear un evento -->
     <form (ngSubmit)="guardar()" #eventoForm="ngForm">
-      
-      <!-- CABECERA: TÍTULO -->
-      <div class="form-header" style="text-align: left; margin-bottom: 30px; border: none; padding: 0;">
+
+      <!-- Cabecera editable con el nombre del evento -->
+      <div class="form-header">
         <div class="form-group full-width">
-          <label style="font-size: 1.2rem; letter-spacing: 1px;"><i class="fa-solid fa-pen-nib"></i> NOMBRE DEL EVENTO</label>
+          <label><i class="fa-solid fa-pen-nib"></i> NOMBRE DEL EVENTO</label>
           <input type="text" id="titulo" name="titulo" 
                  placeholder="Ej: Gran Gala de Aniversario" 
                  [(ngModel)]="evento.titulo" required
-                 style="font-size: 2rem; font-weight: 700; color: #4C1D95; border-bottom: 3px solid #E9D5FF; border-top: none; border-left: none; border-right: none; border-radius: 0; background: transparent; padding: 10px 0;">
+                 >
         </div>
       </div>
 
-      <!-- DESCRIPCIÓN -->
-      <div class="form-group full-width" style="margin-bottom: 40px;">
+      <!-- Descripcion general del evento -->
+      <div class="form-group full-width form-group-section-gap">
         <label><i class="fa-solid fa-align-left"></i> DESCRIPCIÓN DEL EVENTO</label>
         <textarea id="descripcion" name="descripcion" 
                   placeholder="Escribe aquí todos los detalles de tu celebración..." 
-                  [(ngModel)]="evento.descripcion" required rows="4"
-                  style="font-size: 1.1rem; line-height: 1.6;"></textarea>
+                  [(ngModel)]="evento.descripcion" required rows="4"></textarea>
       </div>
 
-      <!-- FILA DE INFO: FECHA Y CAPACIDAD -->
-      <div class="form-grid" style="margin-bottom: 40px; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div class="form-group" style="background: #FDFBFF; padding: 25px; border-radius: 20px; border: 1px solid #E9D5FF; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+              <!-- Bloque con fecha y capacidad del evento -->
+      <div class="form-grid">
+        <div class="form-group crear-evento-info-card">
           <label for="fecha"><i class="fa-solid fa-calendar-check"></i> ¿CUÁNDO SERÁ?</label>
           <input type="datetime-local" id="fecha" name="fecha" [(ngModel)]="evento.fecha" required
-                 style="margin-top: 10px; border-color: #F3E8FF;">
+                 class="crear-evento-info-input">
         </div>
 
-        <div class="form-group" style="background: #FDFBFF; padding: 25px; border-radius: 20px; border: 1px solid #E9D5FF; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+        <div class="form-group crear-evento-info-card">
           <label for="capacidad"><i class="fa-solid fa-users-line"></i> ¿CUÁNTOS ASISTIRÁN?</label>
           <input type="number" id="capacidad" name="capacidad" [(ngModel)]="evento.capacidad" placeholder="Ej: 50" required
-                 style="margin-top: 10px; border-color: #F3E8FF;">
+                 class="crear-evento-info-input">
         </div>
       </div>
 
-      <!-- SECCIÓN MAPA -->
-      <div class="form-group full-width" style="margin-bottom: 40px;">
+      <!-- Seleccion del lugar mediante lista y mapa -->
+      <div class="form-group full-width form-group-section-gap">
         <label><i class="fa-solid fa-map-location-dot"></i> SELECCIÓN DE LUGAR</label>
         
-        <div class="venue-picker-layout" style="margin-top: 15px;">
-          <!-- LISTA DE LUGARES -->
-          <div class="venue-list" style="max-height: 400px;">
+        <div class="venue-picker-layout">
+          <!-- Lista de lugares disponibles -->
+          <div class="venue-list">
             <div class="venue-item" 
                  *ngFor="let lugar of lugares" 
                  [class.selected]="lugarSeleccionado?.id === lugar.id"
                  (mouseenter)="highlightMarker(lugar, true)"
                  (mouseleave)="highlightMarker(lugar, false)"
                  (click)="seleccionarLugar(lugar)">
-              <h4 style="font-size: 1.1rem;">{{ lugar.nombre }}</h4>
-              <p style="font-size: 0.85rem;">{{ lugar.direccion }}</p>
+              <h4>{{ lugar.nombre }}</h4>
+              <p>{{ lugar.direccion }}</p>
             </div>
           </div>
 
-          <!-- MAPA -->
+          <!-- Mapa interactivo para seleccionar la ubicacion -->
           <div class="map-container" 
-               style="height: 400px;"
                leaflet 
                [leafletOptions]="options"
                (leafletMapReady)="onMapReady($event)">
@@ -67,59 +66,60 @@
 
         <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="evento.ubicacion" 
                placeholder="Selecciona en el mapa..." required readonly
-               style="background-color: #F8F7FF; border: 2px dashed #E9D5FF; margin-top: 15px; font-weight: 600; color: #9D50BB;">
+               class="crear-evento-location-input">
       </div>
 
-      <div class="form-group full-width" style="margin-top: 40px; border-top: 2px solid #F5F3FF; padding-top: 40px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
-          <label style="font-size: 1.2rem; margin: 0;"><i class="fa-solid fa-envelope-open-text"></i> GESTIÓN DE INVITACIONES</label>
+            <!-- Gestion de invitaciones a enviar tras crear el evento -->
+      <div class="form-group full-width crear-evento-invitations-section">
+        <div class="crear-evento-invitations-header">
+          <label><i class="fa-solid fa-envelope-open-text"></i> GESTIÓN DE INVITACIONES</label>
           <button type="button" (click)="agregarInvitado()"
-                  style="background: #9D50BB; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3); transition: all 0.3s ease;">
-            <i class="fa-solid fa-plus" style="font-size: 1.2rem;"></i>
+                  class="crear-evento-add-guest-button">
+            <i class="fa-solid fa-plus"></i>
           </button>
         </div>
 
-        <div *ngIf="emailsInvitados.length === 0" style="text-align: center; padding: 40px; background: #FDFBFF; border-radius: 20px; border: 2px dashed #E9D5FF; color: #718096;">
-          <i class="fa-solid fa-users" style="font-size: 2rem; margin-bottom: 15px; display: block; color: #E9D5FF;"></i>
+        <div *ngIf="emailsInvitados.length === 0" class="crear-evento-empty-guests">
+          <i class="fa-solid fa-users"></i>
           No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
         </div>
 
-        <div class="invitados-list" style="display: flex; flex-direction: column; gap: 15px;">
+        <div class="invitados-list">
           <div *ngFor="let invitado of emailsInvitados; let i = index">
-            <div style="display: flex; gap: 15px; align-items: center;">
-              <div style="flex: 1; position: relative;">
-                <i class="fa-solid fa-envelope" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #9D50BB;"></i>
+            <div class="crear-evento-guest-row">
+              <div class="crear-evento-guest-input-wrapper">
+                <i class="fa-solid fa-envelope crear-evento-guest-input-icon"></i>
                 <input type="email" [(ngModel)]="invitado.email" [name]="'invitado' + i"
                        placeholder="correo@ejemplo.com"
                        [style.border-color]="invitado.error ? '#EF4444' : ''"
-                       style="padding-left: 50px;">
+                       >
               </div>
               <button type="button" (click)="quitarInvitado(i)"
-                      style="background: #FEE2E2; color: #EF4444; border: none; width: 45px; height: 45px; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                      class="crear-evento-remove-guest-button">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </div>
-            <p *ngIf="invitado.error" style="color: #EF4444; font-size: 0.85rem; margin: 6px 0 0 8px; display: flex; align-items: center; gap: 6px;">
+            <p *ngIf="invitado.error" class="crear-evento-guest-error">
               <i class="fa-solid fa-circle-exclamation"></i> {{ invitado.error }}
             </p>
           </div>
         </div>
       </div>
 
-      <!-- ALERTAS -->
-      <div *ngIf="mensajeOk" class="success-alert" style="margin-bottom: 30px;">
+      <!-- Mensajes de confirmacion o error -->
+      <div *ngIf="mensajeOk" class="success-alert">
         <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
       </div>
-      <div *ngIf="mensajeError" class="error-alert" style="margin-bottom: 30px;">
+      <div *ngIf="mensajeError" class="error-alert">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 
-      <!-- ACCIONES -->
-      <div class="form-actions" style="margin-top: 20px; border-top: 1px solid #F5F3FF; padding-top: 40px; display: flex; gap: 20px; justify-content: center;">
-        <button type="submit" class="btn-cta" [disabled]="!eventoForm.valid" style="min-width: 250px; padding: 18px;">
+      <!-- Acciones finales para crear o cancelar -->
+      <div class="form-actions">
+        <button type="submit" class="btn-cta" [disabled]="!eventoForm.valid">
           <i class="fa-solid fa-cloud-arrow-up"></i> CREAR EVENTO
         </button>
-        <a routerLink="/eventos" class="btn-secondary" style="min-width: 150px; padding: 18px;">
+        <a routerLink="/eventos" class="btn-secondary">
           <i class="fa-solid fa-xmark"></i> CANCELAR
         </a>
       </div>
@@ -128,10 +128,10 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<section id="footer" style="background-color: #1E1B4B; color: #E9D5FF; padding: 80px 24px; text-align: center;">
-  <div style="max-width: 800px; margin: 0 auto;">
-    <h2 style="color: #FFFFFF; font-family: 'Oswald'; font-size: 2.5rem; margin-bottom: 1rem;">EVENT EASE</h2>
-    <p style="color: #718096;">Tu celebración, perfectamente organizada.</p>
+<!-- Cierre visual de la pagina de creacion -->
+<section id="footer">
+  <div>
+    <h2>EVENT EASE</h2>
+    <p>Tu celebración, perfectamente organizada.</p>
   </div>
 </section>

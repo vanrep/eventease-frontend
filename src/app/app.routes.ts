@@ -10,22 +10,22 @@ import { ListaInvitacionesComponent } from './components/invitaciones/lista-invi
 
 export const routes: Routes = [
 
-  // redirección inicial
+  // Redirige la ruta raiz a la pagina de inicio
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
 
-  // páginas públicas
+  // Rutas publicas de acceso y bienvenida
   { path: 'inicio', component: InicioComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  // eventos
+  // Rutas relacionadas con la gestion de eventos
   { path: 'eventos', component: ListaEventosComponent },
   { path: 'eventos/crear', component: CrearEventoComponent },
   { path: 'eventos/:id', component: DetalleEventoComponent },
 
-  // invitaciones
+  // Ruta para consultar las invitaciones del usuario
   { path: 'invitaciones', component: ListaInvitacionesComponent },
 
-  // página no encontrada
+  // Redirige cualquier ruta desconocida a inicio
   { path: '**', redirectTo: 'inicio' }
 ];

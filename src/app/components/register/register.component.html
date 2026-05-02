@@ -1,5 +1,6 @@
 <section class="section-snap login-wrapper">
     <div class="form-card login-card">
+        <!-- Encabezado del formulario de registro -->
         <div class="form-header">
             <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
             <h1>CREAR CUENTA</h1>
@@ -7,7 +8,8 @@
         </div>
 
         <form (ngSubmit)="registrar()" #registerForm="ngForm">
-            <div class="form-group full-width">
+            <!-- Datos obligatorios para crear la cuenta -->
+            <div class="form-group">
                 <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRONICO <span class="required-mark">*</span></label>
                 <div class="input-with-icon">
                     <input
@@ -20,8 +22,9 @@
                 </div>
             </div>
 
+            <!-- Bloque de contrasena y confirmacion -->
             <div class="password-row">
-                <div class="form-group full-width">
+                <div class="form-group">
                     <label for="password"><i class="fa-solid fa-lock"></i> CONTRASENA <span class="required-mark">*</span></label>
                     <div class="input-with-icon">
                         <input
@@ -37,7 +40,7 @@
                     </div>
                 </div>
 
-                <div class="form-group full-width">
+                <div class="form-group">
                     <label for="confirmarPassword"><i class="fa-solid fa-lock"></i> CONFIRMA TU CONTRASENA <span class="required-mark">*</span></label>
                     <div class="input-with-icon">
                         <input
@@ -60,7 +63,8 @@
 
             <hr class="form-divider">
 
-            <div class="form-group full-width">
+            <!-- Campo opcional para personalizar el perfil -->
+            <div class="form-group">
                 <label for="nombre"><i class="fa-solid fa-user"></i> NOMBRE COMPLETO</label>
                 <div class="input-with-icon">
                     <input
@@ -80,12 +84,13 @@
                 <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
             </div>
 
-            <div class="form-actions centered">
+            <div class="form-actions">
                 <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!registerForm.valid || !passwordsCoinciden()">
                     REGISTRAR <i class="fa-solid fa-user-plus"></i>
                 </button>
             </div>
 
+            <!-- Enlace para volver al flujo de acceso -->
             <p class="auth-switch-text">
                 Ya tienes cuenta con nosotros?
                 <a routerLink="/login">Iniciar sesión</a>

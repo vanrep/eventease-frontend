@@ -8,45 +8,36 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class InvitacionService {
+  // Endpoint base para las operaciones relacionadas con invitaciones
   private apiUrl = 'http://localhost:8080/invitaciones';
 
   constructor(
-    private http: HttpClient,
-    private authService: AuthService,
+    private http: HttpClient
   ) { }
 
-  private getHeaders(): HttpHeaders {
-    const token = this.authService.obtenerToken();
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
+  // Envía una invitacion a un asistente para un evento concreto
+  invitarUsuario(eventoId: number, emailAsistente: string): Observable<Invitacion> {
+    return this.http.post<Invitacion>(this.apiUrl, { eventoId, emailAsistente });
   }
 
-  // Invitar a un usuario por email
-  invitarUsuario(eventoId: number, emailAsistente: string): Observable<any> {
-    return this.http.post<any>(this.apiUrl, { eventoId, emailAsistente }, { headers: this.getHeaders() });
-  }
-
-  // Listar invitaciones recibidas
+  // Obtiene las invitaciones del usuario autenticado
   obtenerInvitaciones(): Observable<Invitacion[]> {
-    return this.http.get<Invitacion[]>(this.apiUrl, { headers: this.getHeaders() });
+    return this.http.get<Invitacion[]>(this.apiUrl);
   }
 
-  // Aceptar invitación
+  // Marca una invitacion como aceptada a partir del id del evento
   aceptarInvitacion(eventoId: number): Observable<Invitacion> {
     return this.http.put<Invitacion>(
       `${this.apiUrl}/evento/${eventoId}/aceptar`,
-      {},
-      { headers: this.getHeaders() }
+      {}
     );
   }
   
-  // Rechazar invitación
+  // Marca una invitacion como rechazada a partir del id del evento
   rechazarInvitacion(eventoId: number): Observable<Invitacion> {
     return this.http.put<Invitacion>(
       `${this.apiUrl}/evento/${eventoId}/rechazar`,
-      {},
-      { headers: this.getHeaders() }
+      {}
     );
   }
 }

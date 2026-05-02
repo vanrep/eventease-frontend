@@ -26,19 +26,19 @@ img {
   display: block;
 }
 
-/* Hide scrollbar globally while keeping functionality */
-/* Free smooth scrolling without any snapping */
+/* Oculta la barra de scroll global sin perder funcionalidad */
+/* Activa desplazamiento suave sin forzar snapping */
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
   /* Firefox */
   -ms-overflow-style: none;
-  /* IE/Edge */
+  /* IE y Edge */
 }
 
 html::-webkit-scrollbar {
   display: none;
-  /* Chrome/Safari/Opera */
+  /* Chrome, Safari y Opera */
 }
 
 /* ============ HEADER ============ */
@@ -130,12 +130,12 @@ html::-webkit-scrollbar {
   color: #9D50BB;
 }
 
-/* BUTTONS SYSTEM */
+/* Sistema global de botones */
 .btn-cta,
 .btn-secondary {
   padding: 12px 28px;
   border-radius: 50px;
-  /* Pill shape */
+  /* Forma de pastilla */
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -206,7 +206,6 @@ html::-webkit-scrollbar {
   justify-content: center;
   text-align: center;
   padding: 40px 24px !important;
-  /* Reduced base padding */
   margin-bottom: 0;
   background-image:
     linear-gradient(rgba(245, 243, 255, 0.75), rgba(245, 243, 255, 0.75)),
@@ -216,7 +215,7 @@ html::-webkit-scrollbar {
   border-bottom: 3px solid #E9D5FF;
 }
 
-/* Only the very first Hero on the home page needs the 120px gap */
+/* Solo el primer hero de inicio necesita el hueco extra superior */
 .snap-active .contenedor-hero {
   padding-top: 120px !important;
 }
@@ -553,7 +552,7 @@ input[type="password"]::-ms-clear {
   }
 }
 
-/* ============ MODO OSCURO (DARK MODE) ============ */
+/* ============ MODO OSCURO ============ */
 [data-theme="dark"] {
   background-color: #121212;
   color: #E2E8F0;
@@ -852,7 +851,7 @@ main.snap-active {
   border-color: #FFFFFF;
 }
 
-/* ============ GLOBAL FORM STYLES ============ */
+/* ============ ESTILOS GLOBALES DE FORM ============ */
 .breadcrumb {
   display: none !important;
 }
@@ -925,7 +924,7 @@ main.snap-active {
   }
 }
 
-/* ============ LEAFLET MAP STYLES ============ */
+/* ============ ESTILOS DEL MAPA ============ */
 
 
 .map-container {
@@ -939,7 +938,7 @@ main.snap-active {
 
 .venue-picker-layout {
   display: grid;
-  grid-template-columns: 280px 1fr; /* Narrower list, Map takes the rest */
+  grid-template-columns: 280px 1fr;
   gap: 24px;
   margin-bottom: 30px;
   width: 100%;
@@ -947,14 +946,14 @@ main.snap-active {
 
 .form-card {
   background: #FFFFFF;
-  max-width: 1100px; /* Max width */
-  width: 95%; /* Responsive width */
+  max-width: 1100px; /* Max ancho */
+  width: 95%; /* Ancho responsive */
   margin: 0 auto;
   padding: 60px !important;
   border-radius: 32px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   border: 1px solid #E9D5FF;
-  box-sizing: border-box; /* Crucial to prevent overflow */
+  box-sizing: border-box; /* para que no se salga */
 }
 
 .venue-item {

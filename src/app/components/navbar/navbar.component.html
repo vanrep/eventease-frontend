@@ -1,11 +1,13 @@
 <header class="site-header" [class.scrolled]="isScrolled">
   <nav class="header-nav" aria-label="Navegación principal">
+    <!-- Logo con acceso rapido a la portada -->
     <div id="logo">
       <a routerLink="/inicio" (click)="onInicioClick($event)">
-        <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase" style="height: 40px; width: auto;">
+        <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">
       </a>
     </div>
 
+    <!-- Menu principal visible solo para usuarios autenticados -->
     <ul class="menu" *ngIf="authService.estaLogueado()">
       <li>
         <a routerLink="/inicio" routerLinkActive="active" (click)="onInicioClick($event)">
@@ -13,7 +15,7 @@
           INICIO
         </a>
       </li>
-      <!-- Ya no hay rol ASISTENTE; todos los usuarios logueados pueden ver estas secciones. -->
+      <!-- Todos los usuarios autenticados comparten estas secciones -->
       <li>
         <a routerLink="/eventos" routerLinkActive="active">
           <i class="fa fa-calendar-days icono-fa" aria-hidden="true"></i>
@@ -28,6 +30,7 @@
       </li>
     </ul>
 
+    <!-- Controles de sesion y accesos rapidos del usuario -->
     <div class="user-header" *ngIf="authService.estaLogueado()">
       <button id="contraste" type="button" class="header-icon-btn"
               title="Cambiar modo de contraste"

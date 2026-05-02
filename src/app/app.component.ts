@@ -3,7 +3,6 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
-import { trigger, transition, style, animate, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +10,6 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
   imports: [RouterOutlet, NavbarComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  animations: [
-    trigger('routeAnimations', [
-      transition('* <=> *', [
-        query(':enter, :leave', [
-          style({
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            opacity: 0
-          })
-        ], { optional: true }),
-        query(':enter', [
-          animate('600ms ease-in-out', style({ opacity: 1 }))
-        ], { optional: true })
-      ])
-    ])
-  ]
 })
 export class AppComponent {
   isInicio = false;
@@ -37,6 +18,7 @@ export class AppComponent {
   showFab = false;
 
   constructor(private router: Router) {
+    // Recupera el tema guardado y lo aplica al cargar la aplicacion
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       document.body.setAttribute('data-theme', 'dark');
@@ -47,12 +29,12 @@ export class AppComponent {
     ).subscribe((event: any) => {
       this.currentUrl = event.urlAfterRedirects || event.url;
 
-      // Force scroll to top on every route change
+      // Lleva la vista al inicio en cada cambio de ruta
       window.scrollTo(0, 0);
 
       this.isAuthPage = this.currentUrl === '/login' || this.currentUrl === '/register';
 
-      // Show immersive footer on Inicio, Create Event, Event List, and Event Details pages
+      // Marca las rutas donde se activa la presentacion principal del sitio
       this.isInicio = this.currentUrl === '/inicio' || this.currentUrl === '/' || 
                       this.currentUrl.includes('inicio') || this.currentUrl.includes('crear') ||
                       this.currentUrl.includes('/eventos');
@@ -61,15 +43,13 @@ export class AppComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    // Muestra el boton flotante cuando el usuario ya ha bajado suficiente
     this.showFab = window.pageYOffset > 300;
   }
 
   scrollToTop() {
-    // Native smooth scroll for instant response and reliability
+    // Desplaza la pagina suavemente hasta la parte superior
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-  }
 }
