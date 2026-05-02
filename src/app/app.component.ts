@@ -15,11 +15,12 @@ export class AppComponent {
   isInicio = false;
   isAuthPage = false;
   currentUrl = '';
-  showFab = false;
+  btnSubir = false;
 
   constructor(private router: Router) {
     // Recupera el tema guardado y lo aplica al cargar la aplicacion
     const savedTheme = localStorage.getItem('theme');
+    // Si el usuario tiene la preferencia de Dark Mode - lo aplica
     if (savedTheme === 'dark') {
       document.body.setAttribute('data-theme', 'dark');
     }
@@ -44,7 +45,7 @@ export class AppComponent {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     // Muestra el boton flotante cuando el usuario ya ha bajado suficiente
-    this.showFab = window.pageYOffset > 300;
+    this.btnSubir = window.pageYOffset > 300;
   }
 
   scrollToTop() {
