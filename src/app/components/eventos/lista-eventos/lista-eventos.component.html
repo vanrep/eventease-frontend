@@ -20,8 +20,7 @@
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text"
                 placeholder="Buscar evento..."
-          [(ngModel)]="textoBusqueda"
-          (ngModelChange)="actualizarEventosVisibles()">
+          [(ngModel)]="textoBusqueda">
         </div>
 
         <a routerLink="/eventos/crear" class="btn-cta">
@@ -70,15 +69,17 @@
       <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
     </div>
 
-    <!-- Estado vacio cuando la busqueda o los filtros no devuelven resultados -->
-    <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="no-results">
-      <i class="fa-solid fa-filter"></i>
-      No hay eventos que coincidan con la búsqueda o el filtro seleccionado.
-    </div>
+    <div *ngIf="eventos | filtroEventos:textoBusqueda:filtroPendiente:filtroAceptada:filtroRechazada as eventosVisibles">
 
-    <!-- Tarjetas con el resumen de cada evento visible -->
-    <section class="contenedor-tarjetas lista-eventos-grid" *ngIf="eventosVisibles.length > 0">
-      <article class="tarjeta lista-eventos-card" *ngFor="let evento of eventosVisibles"
+      <!-- Estado vacio cuando la busqueda o los filtros no devuelven resultados -->
+      <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="no-results">
+        <i class="fa-solid fa-filter"></i>
+        No hay eventos que coincidan con la búsqueda o el filtro seleccionado.
+      </div>
+
+      <!-- Tarjetas con el resumen de cada evento visible -->
+      <section class="contenedor-tarjetas lista-eventos-grid" *ngIf="eventosVisibles.length > 0">
+        <article class="tarjeta lista-eventos-card" *ngFor="let evento of eventosVisibles"
               [ngClass]="{
                 'border-pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
                 'border-aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
@@ -143,8 +144,9 @@
 
         </div>
       </article>
-    </section>
-  </div>
+      </section>
+
+    </div>
 
 </div>
 

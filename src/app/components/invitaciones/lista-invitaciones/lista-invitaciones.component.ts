@@ -33,14 +33,14 @@ export class ListaInvitacionesComponent implements OnInit {
     });
   }
 
-  responder(id: number | undefined, aceptar: boolean): void {
-    if (!id) {
+  responder(eventoId: number | undefined, aceptar: boolean): void {
+    if (!eventoId) {
       return;
     }
 
     const request = aceptar
-      ? this.invitacionService.aceptarInvitacion(id)
-      : this.invitacionService.rechazarInvitacion(id);
+      ? this.invitacionService.aceptarInvitacion(eventoId)
+      : this.invitacionService.rechazarInvitacion(eventoId);
 
     request.subscribe({
       next: () => {

@@ -5,18 +5,18 @@ import { FormsModule } from '@angular/forms';
 import { EventoService } from '../../../services/evento.service';
 import { AuthService } from '../../../services/auth.service';
 import { Evento } from '../../../models/evento.model';
+import { FiltroEventosPipe } from '../filter-eventos.pipe';
 
 @Component({
   selector: 'app-lista-eventos',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, FiltroEventosPipe],
   templateUrl: './lista-eventos.component.html',
   styleUrl: './lista-eventos.component.css',
 })
 export class ListaEventosComponent implements OnInit {
 
   eventos: Evento[] = [];
-  eventosVisibles: Evento[] = [];
   mensajeError: string = '';
 
   textoBusqueda: string = '';
@@ -42,8 +42,6 @@ export class ListaEventosComponent implements OnInit {
         this.eventos.sort((a, b) =>
           new Date(a.fecha).getTime() - new Date(b.fecha).getTime()
         );
-
-        this.actualizarEventosVisibles();
       },
       error: (error) => {
         this.mensajeError = 'Error al cargar los eventos';
@@ -56,7 +54,6 @@ export class ListaEventosComponent implements OnInit {
     this.filtroPendiente = false;
     this.filtroAceptada = false;
     this.filtroRechazada = false;
-    this.actualizarEventosVisibles();
   }
 
   actualizarFiltros(): void {
@@ -65,31 +62,6 @@ export class ListaEventosComponent implements OnInit {
     } else {
       this.filtroTodos = true;
     }
-
-    this.actualizarEventosVisibles();
-  }
-
-  actualizarEventosVisibles(): void {
-    let resultado = this.eventos;
-
-    if (this.textoBusqueda.trim() !== '') {
-      const texto = this.textoBusqueda.toLowerCase();
-
-      resultado = resultado.filter(evento =>
-        evento.titulo.toLowerCase().includes(texto) ||
-        evento.descripcion.toLowerCase().includes(texto)
-      );
-    }
-
-    if (!this.filtroTodos) {
-      resultado = resultado.filter(evento =>
-        (this.filtroPendiente && evento.miEstadoInvitacion === 'PENDIENTE') ||
-        (this.filtroAceptada && evento.miEstadoInvitacion === 'ACEPTADA') ||
-        (this.filtroRechazada && evento.miEstadoInvitacion === 'RECHAZADA')
-      );
-    }
-
-    this.eventosVisibles = resultado;
   }
 
   esOrganizador(evento: Evento): boolean {

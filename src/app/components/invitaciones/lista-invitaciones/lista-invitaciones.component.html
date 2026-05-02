@@ -61,11 +61,11 @@
 
           <td>
             <div class="acciones" *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
-              <button type="button" class="btn-accion btn-aceptar" (click)="responder(inv.id, true)">
+              <button type="button" class="btn-accion btn-aceptar" (click)="responder(inv.eventoId, true)">
                 <i class="fa-solid fa-circle-check"></i> Aceptar
               </button>
 
-              <button type="button" class="btn-accion btn-rechazar" (click)="responder(inv.id, false)">
+              <button type="button" class="btn-accion btn-rechazar" (click)="responder(inv.eventoId, false)">
                 <i class="fa-solid fa-circle-xmark"></i> Rechazar
               </button>
             </div>
