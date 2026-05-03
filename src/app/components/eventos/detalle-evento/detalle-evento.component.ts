@@ -145,21 +145,6 @@ export class DetalleEventoComponent implements OnInit {
     }
   }
 
-  highlightMarker(lugar: Lugar, highlight: boolean) {
-    if (!this.map) return;
-    const marker = this.lugaresMarkers[lugar.id];
-    if (highlight) {
-      marker.openPopup();
-      this.map.panTo([lugar.lat, lugar.lng]);
-    } else {
-      marker.closePopup();
-      if (this.lugarSeleccionado) {
-        this.map.flyTo([this.lugarSeleccionado.lat, this.lugarSeleccionado.lng], 16);
-        this.lugaresMarkers[this.lugarSeleccionado.id].openPopup();
-      }
-    }
-  }
-
   // DINÁMICA DE INVITADOS
   agregarInvitado() {
     this.invitados.push({ estado: 'NUEVA', eventoId: this.evento.id!, emailAsistente: '' });

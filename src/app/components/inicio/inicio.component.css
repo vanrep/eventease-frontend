@@ -1,5 +1,3 @@
-
-
 /* Centra y limita el ancho del contenido principal del hero */
 .hero-content {
   text-align: center;
@@ -127,7 +125,7 @@
   font-size: 3rem;
 }
 
-.inicio-footer-content > .inicio-footer-lead {
+.inicio-footer-content>.inicio-footer-lead {
   margin-bottom: 2rem;
   color: #E9D5FF;
   font-size: 1.25rem;
@@ -147,7 +145,7 @@
 
 .inicio-footer-bottom {
   padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .inicio-footer-links {
@@ -166,7 +164,7 @@
 
 .inicio-footer-bottom p {
   margin-top: 1.5rem;
-  color: #718096;
+  color: #A0AEC0;
   font-size: 0.9rem;
 }
 
@@ -175,6 +173,7 @@
   .hero-title {
     font-size: 2.5rem;
   }
+
   .hero-actions {
     flex-direction: column;
   }

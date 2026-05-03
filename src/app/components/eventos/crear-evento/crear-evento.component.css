@@ -124,29 +124,29 @@ textarea:focus {
   border-color: #F3E8FF;
 }
 
-.venue-picker-layout,
-.crear-evento-location-input {
+.seleccion-lugares,
+.crear-evento-lugar-input {
   margin-top: 15px;
 }
 
-.venue-list {
+.lista-lugares {
   max-height: 400px;
 }
 
-.venue-list h4 {
+.lista-lugares h4 {
   font-size: 1.1rem;
 }
 
-.venue-list p,
-.crear-evento-guest-error {
+.lista-lugares p,
+.crear-evento-invitado-error {
   font-size: 0.85rem;
 }
 
-.map-container {
+.contenedor-mapa {
   height: 400px;
 }
 
-.crear-evento-location-input {
+.crear-evento-lugar-input {
   color: #9D50BB;
   font-weight: 600;
   border-style: dashed;
@@ -160,10 +160,10 @@ textarea:focus {
 }
 
 .crear-evento-invitations-header,
-.crear-evento-guest-row,
-.crear-evento-add-guest-button,
-.crear-evento-remove-guest-button,
-.crear-evento-guest-error {
+.crear-evento-fila-invitado,
+.crear-evento-anadir-invitado-button,
+.crear-evento-quitar-invitado-button,
+.crear-evento-invitado-error {
   display: flex;
   align-items: center;
 }
@@ -177,8 +177,8 @@ textarea:focus {
   margin: 0;
 }
 
-.crear-evento-add-guest-button,
-.crear-evento-remove-guest-button {
+.crear-evento-anadir-invitado-button,
+.crear-evento-quitar-invitado-button {
   width: 45px;
   height: 45px;
   justify-content: center;
@@ -186,18 +186,18 @@ textarea:focus {
   cursor: pointer;
 }
 
-.crear-evento-add-guest-button {
+.crear-evento-anadir-invitado-button {
   color: #fff;
   border-radius: 50%;
   background: #9D50BB;
   box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
 }
 
-.crear-evento-add-guest-button i {
+.crear-evento-anadir-invitado-button i {
   font-size: 1.2rem;
 }
 
-.crear-evento-empty-guests {
+.crear-evento-lista-vacia {
   padding: 40px;
   color: #718096;
   text-align: center;
@@ -206,7 +206,7 @@ textarea:focus {
   border-radius: 20px;
 }
 
-.crear-evento-empty-guests i {
+.crear-evento-lista-vacia i {
   display: block;
   margin-bottom: 15px;
   color: #E9D5FF;
@@ -219,11 +219,11 @@ textarea:focus {
   gap: 15px;
 }
 
-.crear-evento-guest-row {
+.crear-evento-fila-invitado {
   gap: 15px;
 }
 
-.crear-evento-guest-input-wrapper {
+.crear-evento-guest-input-contenedor {
   position: relative;
   flex: 1;
 }
@@ -235,17 +235,17 @@ textarea:focus {
   transform: translateY(-50%);
 }
 
-.crear-evento-guest-input-wrapper input {
+.crear-evento-guest-input-contenedor input {
   padding-left: 50px;
 }
 
-.crear-evento-remove-guest-button {
+.crear-evento-quitar-invitado-button {
   color: #EF4444;
   background: #FEE2E2;
   border-radius: 12px;
 }
 
-.crear-evento-guest-error {
+.crear-evento-invitado-error {
   gap: 6px;
   margin: 6px 0 0 8px;
   color: #EF4444;

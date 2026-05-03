@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css',
 })
-export class InicioComponent implements OnInit, OnDestroy {
+export class InicioComponent implements OnInit {
   activeSection = 'hero';
   sections = ['hero', 'organiza', 'invita', 'participa', 'info', 'footer'];
 
@@ -18,10 +18,6 @@ export class InicioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     document.documentElement.classList.add('snap-page');
-  }
-
-  ngOnDestroy(): void {
-    document.documentElement.classList.remove('snap-page');
   }
 
   @HostListener('window:scroll', [])

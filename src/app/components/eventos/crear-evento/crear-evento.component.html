@@ -42,14 +42,12 @@
       <div class="form-group full-width form-group-section-gap">
         <label><i class="fa-solid fa-map-location-dot"></i> SELECCIÓN DE LUGAR</label>
         
-        <div class="venue-picker-layout">
+        <div class="seleccion-lugares">
           <!-- Lista de lugares disponibles -->
-          <div class="venue-list">
-            <div class="venue-item" 
+          <div class="lista-lugares">
+            <div class="lugar-item" 
                  *ngFor="let lugar of lugares" 
                  [class.selected]="lugarSeleccionado?.id === lugar.id"
-                 (mouseenter)="highlightMarker(lugar, true)"
-                 (mouseleave)="highlightMarker(lugar, false)"
                  (click)="seleccionarLugar(lugar)">
               <h4>{{ lugar.nombre }}</h4>
               <p>{{ lugar.direccion }}</p>
@@ -57,7 +55,7 @@
           </div>
 
           <!-- Mapa interactivo para seleccionar la ubicacion -->
-          <div class="map-container" 
+          <div class="contenedor-mapa" 
                leaflet 
                [leafletOptions]="options"
                (leafletMapReady)="onMapReady($event)">
@@ -66,7 +64,7 @@
 
         <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="evento.ubicacion" 
                placeholder="Selecciona en el mapa..." required readonly
-               class="crear-evento-location-input">
+               class="crear-evento-lugar-input">
       </div>
 
             <!-- Gestion de invitaciones a enviar tras crear el evento -->
@@ -74,20 +72,20 @@
         <div class="crear-evento-invitations-header">
           <label><i class="fa-solid fa-envelope-open-text"></i> GESTIÓN DE INVITACIONES</label>
           <button type="button" (click)="agregarInvitado()"
-                  class="crear-evento-add-guest-button">
+                  class="crear-evento-anadir-invitado-button">
             <i class="fa-solid fa-plus"></i>
           </button>
         </div>
 
-        <div *ngIf="emailsInvitados.length === 0" class="crear-evento-empty-guests">
+        <div *ngIf="emailsInvitados.length === 0" class="crear-evento-lista-vacia">
           <i class="fa-solid fa-users"></i>
           No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
         </div>
 
         <div class="invitados-list">
           <div *ngFor="let invitado of emailsInvitados; let i = index">
-            <div class="crear-evento-guest-row">
-              <div class="crear-evento-guest-input-wrapper">
+            <div class="crear-evento-fila-invitado">
+              <div class="crear-evento-guest-input-contenedor">
                 <i class="fa-solid fa-envelope crear-evento-guest-input-icon"></i>
                 <input type="email" [(ngModel)]="invitado.email" [name]="'invitado' + i"
                        placeholder="correo@ejemplo.com"
@@ -95,11 +93,11 @@
                        >
               </div>
               <button type="button" (click)="quitarInvitado(i)"
-                      class="crear-evento-remove-guest-button">
+                      class="crear-evento-quitar-invitado-button">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </div>
-            <p *ngIf="invitado.error" class="crear-evento-guest-error">
+            <p *ngIf="invitado.error" class="crear-evento-invitado-error">
               <i class="fa-solid fa-circle-exclamation"></i> {{ invitado.error }}
             </p>
           </div>

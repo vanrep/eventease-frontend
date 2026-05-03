@@ -165,20 +165,20 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
 }
 
-.venue-picker-layout,
-.detalle-evento-location-input {
+.seleccion-lugares,
+.detalle-evento-lugar-input {
   margin-top: 15px;
 }
 
-.detalle-evento-venue-list {
+.lista-lugares {
   max-height: 400px;
 }
 
-.detalle-evento-venue-list h4 {
+.lista-lugares h4 {
   font-size: 1.1rem;
 }
 
-.detalle-evento-venue-list p {
+.lista-lugares p {
   font-size: 0.85rem;
 }
 
@@ -190,7 +190,7 @@ input:focus, textarea:focus {
   height: 450px;
 }
 
-.detalle-evento-location-input {
+.detalle-evento-lugar-input {
   font-weight: 600;
   color: #9D50BB;
   border: 2px dashed #E9D5FF;
@@ -204,8 +204,8 @@ input:focus, textarea:focus {
 }
 
 .detalle-evento-invitations-header,
-.detalle-evento-guest-row,
-.detalle-evento-add-guest-button,
+.detalle-evento-fila-invitado,
+.detalle-evento-agregar-invitado-button,
 .detalle-evento-remove-guest-button {
   display: flex;
   align-items: center;
@@ -220,7 +220,7 @@ input:focus, textarea:focus {
   margin: 0;
 }
 
-.detalle-evento-add-guest-button {
+.detalle-evento-agregar-invitado-button {
   width: 45px;
   height: 45px;
   justify-content: center;
@@ -233,11 +233,11 @@ input:focus, textarea:focus {
   transition: all 0.3s ease;
 }
 
-.detalle-evento-add-guest-button i {
+.detalle-evento-agregar-invitado-button i {
   font-size: 1.2rem;
 }
 
-.detalle-evento-empty-guests {
+.detalle-evento-mensaje-vacio {
   padding: 40px;
   color: #718096;
   text-align: center;
@@ -246,24 +246,24 @@ input:focus, textarea:focus {
   border-radius: 20px;
 }
 
-.detalle-evento-empty-guests i {
+.detalle-evento-mensaje-vacio i {
   display: block;
   margin-bottom: 15px;
   color: #E9D5FF;
   font-size: 2rem;
 }
 
-.detalle-evento-guests-list {
+.detalle-evento-lista-invitados {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.detalle-evento-guest-row {
+.detalle-evento-fila-invitado {
   gap: 15px;
 }
 
-.detalle-evento-guest-status {
+.detalle-evento-status-invitado {
   width: 120px;
 }
 

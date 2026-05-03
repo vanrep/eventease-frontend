@@ -114,29 +114,6 @@ export class CrearEventoComponent {
     }
   }
 
-  highlightMarker(lugar: Lugar, highlight: boolean) {
-    if (!this.map) return;
-
-    const marker = this.lugaresMarkers[lugar.id];
-    
-    if (highlight) {
-      // Previewing a location
-      marker.openPopup();
-      this.map.panTo([lugar.lat, lugar.lng]);
-    } else {
-      // Mouse left the item
-      marker.closePopup();
-      
-      // Snap back to selection or city view
-      if (this.lugarSeleccionado) {
-        this.map.flyTo([this.lugarSeleccionado.lat, this.lugarSeleccionado.lng], 16);
-        this.lugaresMarkers[this.lugarSeleccionado.id].openPopup();
-      } else {
-        this.map.flyTo([39.4697, -0.3774], 14);
-      }
-    }
-  }
-
   agregarInvitado(): void {
     this.emailsInvitados.push({ email: '' });
   }

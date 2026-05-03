@@ -927,7 +927,7 @@ main.snap-active {
 /* ============ ESTILOS DEL MAPA ============ */
 
 
-.map-container {
+.contenedor-mapa {
   height: 450px;
   width: 100%;
   border-radius: 20px;
@@ -936,7 +936,7 @@ main.snap-active {
   overflow: hidden;
 }
 
-.venue-picker-layout {
+.seleccion-lugares {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 24px;
@@ -956,7 +956,7 @@ main.snap-active {
   box-sizing: border-box; /* para que no se salga */
 }
 
-.venue-item {
+.lugar-item {
   padding: 15px;
   background: #FFFFFF;
   border: 1px solid #E9D5FF;
@@ -966,23 +966,23 @@ main.snap-active {
   transition: all 0.3s ease;
 }
 
-.venue-item:hover, .venue-item.selected {
+.lugar-item:hover, .lugar-item.selected {
   background: #F5F3FF;
   border-color: #9D50BB;
   transform: translateX(5px);
 }
 
-.venue-item.selected {
+.lugar-item.selected {
   box-shadow: 0 4px 12px rgba(157, 80, 187, 0.1);
 }
 
-.venue-item h4 {
+.lugar-item h4 {
   margin: 0 0 5px 0;
   color: #4C1D95;
   font-family: 'Oswald', sans-serif;
 }
 
-.venue-item p {
+.lugar-item p {
   margin: 0;
   font-size: 0.9rem;
   color: #718096;
