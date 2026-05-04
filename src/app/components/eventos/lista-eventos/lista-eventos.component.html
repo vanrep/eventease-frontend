@@ -1,4 +1,4 @@
-<div class="page-immersive-container lista-eventos-page">
+<div class="lista-eventos-page">
 
   <!-- Estado inicial cuando todavia no existen eventos -->
   <section class="contenedor-hero lista-eventos-empty-hero" *ngIf="eventos.length === 0">
@@ -11,12 +11,12 @@
     </div>
   </section>
 
-  <div *ngIf="eventos.length > 0">
+  <div *ngIf="eventos.length > 0" [style.min-height.vh]="100">
     <!-- Barra superior con buscador, acceso rapido y filtros -->
-    <div class="list-header-compact">
-      <div class="events-toolbar">
+    <div class="lista-eventos-cabecera">
+      <div class="lista-eventos-toolbar">
 
-        <div class="search-box">
+        <div class="lista-eventos-buscador">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text"
                 placeholder="Buscar evento..."
@@ -28,32 +28,32 @@
         </a>
 
       </div>
-      <div class="events-toolbar">
+      <div class="lista-eventos-toolbar">
 
-        <div class="filters-box">
+        <div class="lista-eventos-filtros">
 
-          <label class="filter-check">
+          <label class="lista-eventos-filtro-check">
             <input type="checkbox"
                   [(ngModel)]="filtroTodos"
                   (change)="seleccionarTodos()">
             Todos
           </label>
 
-          <label class="filter-check pendiente-check">
+          <label class="lista-eventos-filtro-check pendiente-check">
             <input type="checkbox"
                   [(ngModel)]="filtroPendiente"
                   (change)="actualizarFiltros()">
             Pendiente
           </label>
 
-          <label class="filter-check aceptada-check">
+          <label class="lista-eventos-filtro-check aceptada-check">
             <input type="checkbox"
                   [(ngModel)]="filtroAceptada"
                   (change)="actualizarFiltros()">
             Aceptada
           </label>
 
-          <label class="filter-check rechazada-check">
+          <label class="lista-eventos-filtro-check rechazada-check">
             <input type="checkbox"
                   [(ngModel)]="filtroRechazada"
                   (change)="actualizarFiltros()">
@@ -65,21 +65,21 @@
     </div>
 
     <!-- Mensaje de error al cargar los eventos -->
-    <div *ngIf="mensajeError" class="error-alert">
+    <div *ngIf="mensajeError" class="alerta-error">
       <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
     </div>
 
     <div *ngIf="eventos | filtroEventos:textoBusqueda:filtroPendiente:filtroAceptada:filtroRechazada as eventosVisibles">
 
       <!-- Estado vacio cuando la busqueda o los filtros no devuelven resultados -->
-      <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="no-results">
+      <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="lista-eventos-sin-resultados">
         <i class="fa-solid fa-filter"></i>
         No hay eventos que coincidan con la búsqueda o el filtro seleccionado.
       </div>
 
       <!-- Tarjetas con el resumen de cada evento visible -->
       <section class="contenedor-tarjetas lista-eventos-grid" *ngIf="eventosVisibles.length > 0">
-        <article class="tarjeta lista-eventos-card" *ngFor="let evento of eventosVisibles"
+        <article class="tarjeta lista-eventos-tarjeta" *ngFor="let evento of eventosVisibles"
               [ngClass]="{
                 'border-pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
                 'border-aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
@@ -109,7 +109,7 @@
               </ng-container>
           </div>
 
-          <div class="invited-by">
+          <div class="lista-eventos-invitado-por">
             <ng-container *ngIf="!esOrganizador(evento); else emptyInviter">
               <i class="fa-solid fa-user"></i>
               Invitado por: {{ evento.clienteEmail }}
@@ -120,7 +120,7 @@
             </ng-template>
           </div>
 
-          <div class="days-left-badge urgent" 
+          <div class="lista-eventos-badge-dias urgente" 
                *ngIf="calcularDiasRestantes(evento.fecha) < 10"
                [title]="'Quedan ' + calcularDiasRestantes(evento.fecha) + ' días'">
             <i class="fa-solid fa-hourglass-half"></i>
@@ -132,13 +132,13 @@
             {{ evento.titulo }}
           </h2>
 
-          <div class="event-meta">
+          <div class="evento-fecha">
             <i class="fa-solid fa-calendar-day"></i> {{ evento.fecha | date:'dd/MM/yyyy HH:mm' }}
           </div>
 
           <p>{{ evento.descripcion }}</p>
 
-          <div class="lista-eventos-card-location">
+          <div>
             <p><i class="fa-solid fa-location-dot"></i> {{ evento.ubicacion }}</p>
           </div>
 

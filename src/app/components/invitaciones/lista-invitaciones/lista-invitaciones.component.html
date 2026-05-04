@@ -1,7 +1,7 @@
 <section class="invitaciones-page">
 
   <!-- Muestra un aviso cuando falla la carga o la respuesta de invitaciones -->
-  <div *ngIf="mensajeError" class="error-alert">
+  <div *ngIf="mensajeError" class="alerta-error">
     <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
   </div>
 
@@ -81,4 +81,28 @@
 
   </div>
 
+</section>
+
+<!-- Cierre visual de la pagina de listado -->
+<section id="footer" class="lista-invitaciones-footer">
+  <div>
+    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo">
+    <h2>¿TIENES UN NUEVO PLAN?</h2>
+    <p class="lista-invitaciones-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
+    
+    <div class="social">
+        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a>
+    </div>
+
+    <div class="lista-invitaciones-footer-bottom">
+        <ul>
+          <li><a href="#">Términos</a></li>
+          <li><a href="#">Privacidad</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+        <p>© 2026 EventEase • Organiza. Invita. Disfruta.</p>
+    </div>
+  </div>
 </section>

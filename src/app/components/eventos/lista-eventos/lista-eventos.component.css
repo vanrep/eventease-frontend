@@ -12,7 +12,7 @@
 }
 
 /* Ajusta el bloque superior compacto del listado */
-.list-header-compact {
+.lista-eventos-cabecera {
   padding-top: 140px;
   padding-bottom: 20px;
   background: transparent;
@@ -20,7 +20,7 @@
 }
 
 /* Organiza la barra superior con acciones y filtros */
-.events-toolbar {
+.lista-eventos-toolbar {
   max-width: 1300px;
   margin: 0 auto 10px auto;
   padding: 0 40px;
@@ -32,13 +32,13 @@
 }
 
 /* Agrupa el buscador con su icono */
-.search-box {
+.lista-eventos-buscador {
   position: relative;
   width: 320px;
 }
 
 /* Coloca el icono dentro del campo de busqueda */
-.search-box i {
+.lista-eventos-buscador i {
   position: absolute;
   left: 16px;
   top: 50%;
@@ -47,7 +47,7 @@
 }
 
 /* Define el aspecto del campo de busqueda */
-.search-box input {
+.lista-eventos-buscador input {
   width: 100%;
   padding: 13px 18px 13px 45px;
   border: 2px solid #E9D5FF;
@@ -59,13 +59,13 @@
 }
 
 /* Resalta el buscador activo */
-.search-box input:focus {
+.lista-eventos-buscador input:focus {
   outline: none;
   border-color: #9D50BB;
 }
 
 /* Reune los filtros de estado en una capsula */
-.filters-box {
+.lista-eventos-filtros {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -77,7 +77,7 @@
 }
 
 /* Alinea cada checkbox con su etiqueta */
-.filter-check {
+.lista-eventos-filtro-check {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -89,7 +89,7 @@
 }
 
 /* Aplica el color corporativo al control nativo */
-.filter-check input {
+.lista-eventos-filtro-check input {
   accent-color: #9D50BB;
   cursor: pointer;
 }
@@ -139,7 +139,7 @@
 }
 
 /* Muestra errores de carga con contraste alto */
-.error-alert {
+.alerta-error {
   background-color: #FEF2F2;
   color: #991B1B;
   padding: 20px;
@@ -152,7 +152,7 @@
 }
 
 /* Presenta el estado vacio cuando no hay coincidencias */
-.no-results {
+.lista-eventos-sin-resultados {
   max-width: 600px;
   margin: 50px auto;
   text-align: center;
@@ -164,7 +164,7 @@
   font-weight: 600;
 }
 
-.no-results i {
+.lista-eventos-sin-resultados i {
   font-size: 2rem;
   display: block;
   margin-bottom: 15px;
@@ -180,7 +180,7 @@
 }
 
 /* Muestra los dias restantes sobre la tarjeta */
-.days-left-badge {
+.lista-eventos-badge-dias {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -201,7 +201,7 @@
 }
 
 /* Refuerza el hover de la insignia de dias */
-.days-left-badge:hover {
+.lista-eventos-badge-dias:hover {
   background: #9D50BB;
   color: #FFFFFF;
   transform: translateY(-2px);
@@ -209,51 +209,47 @@
 }
 
 /* Ajusta el tamano del icono de la insignia */
-.days-left-badge i {
+.lista-eventos-badge-dias i {
   font-size: 1rem;
 }
 
 /* Señala con mayor urgencia los eventos cercanos */
-.days-left-badge.urgent {
+.lista-eventos-badge-dias.urgente {
   background: #FEF2F2 !important;
   color: #DC2626 !important;
   border-color: #FECACA !important;
 }
 
 /* Refuerza el contraste del estado urgente al pasar el cursor */
-.days-left-badge.urgent:hover {
+.lista-eventos-badge-dias.urgente:hover {
   background: #DC2626 !important;
   color: #FFFFFF !important;
 }
 
 /* Define la animacion del icono de urgencia */
-@keyframes hourglass-flip {
+@keyframes reloj-arena-animacion {
   0% { transform: rotate(0); }
   50% { transform: rotate(180deg); }
   100% { transform: rotate(360deg); }
 }
 
 /* Anima el reloj de arena en eventos urgentes */
-.days-left-badge.urgent i {
-  animation: hourglass-flip 3s infinite ease-in-out;
+.lista-eventos-badge-dias.urgente i {
+  animation: reloj-arena-animacion 3s infinite ease-in-out;
 }
 
-/* Ajusta la tarjeta visual de cada evento */
-.tarjeta {
+/* Completa el ancho y la interaccion de cada tarjeta */
+.lista-eventos-tarjeta {
   overflow: hidden;
   border-radius: 24px !important;
   border: 5px solid #E9D5FF !important;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* Completa el ancho y la interaccion de cada tarjeta */
-.lista-eventos-card {
   width: 380px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.lista-eventos-card .tarjeta-body {
+.lista-eventos-tarjeta .tarjeta-body {
   position: relative;
   padding: 30px;
 }
@@ -314,7 +310,7 @@
 }
 
 /* Indica quien ha invitado al usuario al evento */
-.invited-by {
+.lista-eventos-invitado-por {
   height: 20px;
   margin-top: 38px;
   margin-bottom: 12px;
@@ -328,11 +324,11 @@
 }
 
 /* Mantiene el icono del invitador en el color de marca */
-.invited-by i {
+.lista-eventos-invitado-por i {
   color: #9D50BB;
 }
 
-.lista-eventos-card h2 {
+.lista-eventos-tarjeta h2 {
   width: 100%;
   margin-top: 10px;
   white-space: nowrap;
@@ -340,29 +336,17 @@
   text-overflow: ellipsis;
 }
 
-.lista-eventos-card .event-meta {
+.lista-eventos-tarjeta .evento-fecha {
   margin-bottom: 1.5rem;
   color: #9D50BB;
   font-size: 1.1rem;
   font-weight: 700;
 }
 
-.lista-eventos-card p {
+.lista-eventos-tarjeta p {
   color: #4A5568;
   font: 1rem 'Open Sans';
   line-height: 1.6;
-}
-
-/* Separa la ubicacion del resto del contenido */
-.lista-eventos-card-location {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #F5F3FF;
-}
-
-.lista-eventos-card-location p {
-  margin: 0;
-  color: #718096;
 }
 
 /* Construye el bloque de cierre inferior del listado */

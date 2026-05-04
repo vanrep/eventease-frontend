@@ -1,5 +1,5 @@
 /* Centra la pantalla de registro sobre el fondo comun de autenticacion */
-.login-wrapper {
+.form-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
 }
 
 /* Ajusta la tarjeta para el formulario de alta */
-.login-card {
+.form-card {
   max-width: 700px !important;
   width: 100%;
   padding: 26px 26px 3rem 26px !important;
@@ -28,7 +28,7 @@ form {
 }
 
 /* Presenta el logo encima del encabezado */
-.login-logo {
+.form-logo {
   width: 120px;
   border-radius: 20px;
   margin-bottom: 25px;
@@ -58,7 +58,7 @@ form {
 }
 
 /* Coloca las dos contrasenas en paralelo cuando hay espacio */
-.password-row {
+.fila-contrasena {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
@@ -88,7 +88,7 @@ form {
 }
 
 /* Marca visualmente los campos obligatorios */
-.required-mark {
+.obligatorio {
   color: #DC2626;
 }
 
@@ -111,7 +111,7 @@ select {
 }
 
 /* Posiciona el boton para mostrar u ocultar la contrasena */
-.toggle-password-btn {
+.visibilidad-password-btn {
   position: absolute;
   top: 50%;
   right: 16px;
@@ -127,7 +127,7 @@ select {
 }
 
 /* Refuerza el estado hover del boton de visibilidad */
-.toggle-password-btn:hover {
+.visibilidad-password-btn:hover {
   color: #5B21B6;
 }
 
@@ -208,7 +208,7 @@ select:focus {
 }
 
 /* Comunica errores con contraste alto */
-.error-alert {
+.alerta-error {
   background: #FEF2F2;
   color: #DC2626;
   padding: 15px 20px;
@@ -222,7 +222,7 @@ select:focus {
 }
 
 /* Comunica confirmaciones positivas del registro */
-.success-alert {
+.alerta-ok {
   background: #ECFDF5;
   color: #047857;
   padding: 15px 20px;
@@ -236,7 +236,7 @@ select:focus {
 }
 
 /* Aplica una sacudida breve a los errores principales */
-.animate-shake {
+.animacion-shake {
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
@@ -265,7 +265,7 @@ select:focus {
 }
 
 @media (max-width: 768px) {
-  .password-row {
+  .fila-contrasena {
     grid-template-columns: 1fr;
     gap: 0;
   }

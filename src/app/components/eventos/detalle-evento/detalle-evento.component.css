@@ -1,16 +1,5 @@
 /* Contenedor principal del formulario de detalle */
-.section-snap {
-  min-height: 100vh;
-  display: block; /* Permite un scroll natural en formularios largos */
-  background: linear-gradient(rgba(245, 243, 255, 0.95), rgba(245, 243, 255, 0.95)), url('/assets/images/Banner.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding: 120px 24px 80px; /* Deja espacio para la navbar fija */
-  scroll-snap-align: none; /* Evita el snap en pantallas largas */
-}
-
-.section-snap {
+.detalle-evento-seccion {
   min-height: 100vh;
   display: block; /* Permite un scroll natural en formularios largos */
   padding: 60px 24px 80px;
@@ -36,15 +25,11 @@
 /* Cabecera principal del bloque editable */
 .form-header {
   text-align: left;
-  margin-bottom: 40px;
   border-bottom: 2px solid #F5F3FF;
-  padding-bottom: 20px;
-}
-
-.form-header {
   margin-bottom: 30px;
   border: none;
   padding: 0;
+  padding-bottom: 20px;
 }
 
 .form-header label,
@@ -104,7 +89,7 @@
 }
 
 /* Permite que un bloque ocupe todo el ancho del grid */
-.full-width {
+.detalle-evento-ancho-completo {
   grid-column: span 2;
 }
 
@@ -165,20 +150,20 @@ input:focus, textarea:focus {
   box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
 }
 
-.seleccion-lugares,
+.detalle-evento-lugares,
 .detalle-evento-lugar-input {
   margin-top: 15px;
 }
 
-.lista-lugares {
+.detalle-evento-lista-lugares {
   max-height: 400px;
 }
 
-.lista-lugares h4 {
+.detalle-evento-lista-lugares h4 {
   font-size: 1.1rem;
 }
 
-.lista-lugares p {
+.detalle-evento-lista-lugares p {
   font-size: 0.85rem;
 }
 
@@ -295,8 +280,8 @@ input:focus, textarea:focus {
   background: #FEE2E2;
 }
 
-.success-alert,
-.error-alert {
+.detalle-evento-alerta-ok,
+.detalle-evento-alerta-error {
   margin-top: 40px;
   margin-bottom: 30px;
 }
@@ -413,26 +398,26 @@ input:focus, textarea:focus {
   color: #4F46E5;
 }
 
-.detalle-evento-footer {
+.form-actions-footer {
   padding: 80px 24px;
   color: #E9D5FF;
   text-align: center;
   background-color: #1E1B4B;
 }
 
-.detalle-evento-footer > div {
+.form-actions-footer > div {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.detalle-evento-footer h2 {
+.form-actions-footer h2 {
   margin-bottom: 1rem;
   color: #FFFFFF;
   font-family: 'Oswald';
   font-size: 2.5rem;
 }
 
-.detalle-evento-footer p {
+.form-actions-footer p {
   color: #718096;
 }
 
@@ -441,7 +426,7 @@ input:focus, textarea:focus {
   .form-grid {
     grid-template-columns: 1fr;
   }
-  .full-width, .form-actions {
+  .detalle-evento-ancho-completo, .detalle-evento-acciones {
     grid-column: span 1;
   }
 }

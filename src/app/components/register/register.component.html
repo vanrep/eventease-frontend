@@ -1,8 +1,8 @@
-<section class="section-snap login-wrapper">
-    <div class="form-card login-card">
+<section class="seccion-scroll form-wrapper">
+    <div class="form-card">
         <!-- Encabezado del formulario de registro -->
         <div class="form-header">
-            <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
+            <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="form-logo">
             <h1>CREAR CUENTA</h1>
             <p>Empieza a organizar y vivir tus eventos</p>
         </div>
@@ -10,7 +10,7 @@
         <form (ngSubmit)="registrar()" #registerForm="ngForm">
             <!-- Datos obligatorios para crear la cuenta -->
             <div class="form-group">
-                <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRONICO <span class="required-mark">*</span></label>
+                <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRONICO <span class="obligatorio">*</span></label>
                 <div class="input-with-icon">
                     <input
                         type="email"
@@ -23,9 +23,9 @@
             </div>
 
             <!-- Bloque de contrasena y confirmacion -->
-            <div class="password-row">
+            <div class="fila-contrasena">
                 <div class="form-group">
-                    <label for="password"><i class="fa-solid fa-lock"></i> CONTRASENA <span class="required-mark">*</span></label>
+                    <label for="password"><i class="fa-solid fa-lock"></i> CONTRASENA <span class="obligatorio">*</span></label>
                     <div class="input-with-icon">
                         <input
                             [type]="mostrarPassword ? 'text' : 'password'"
@@ -34,14 +34,14 @@
                             placeholder="Elige una contraseña"
                             [(ngModel)]="usuario.password"
                             required>
-                        <button *ngIf="usuario.password" type="button" class="toggle-password-btn" (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarPassword()" [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+                        <button *ngIf="usuario.password" type="button" class="visibilidad-password-btn" (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarPassword()" [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
                             <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </button>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmarPassword"><i class="fa-solid fa-lock"></i> CONFIRMA TU CONTRASENA <span class="required-mark">*</span></label>
+                    <label for="confirmarPassword"><i class="fa-solid fa-lock"></i> CONFIRMA TU CONTRASENA <span class="obligatorio">*</span></label>
                     <div class="input-with-icon">
                         <input
                             [type]="mostrarConfirmacion ? 'text' : 'password'"
@@ -50,14 +50,14 @@
                             placeholder="Confirma tu contraseña"
                             [(ngModel)]="confirmarPassword"
                             required>
-                        <button *ngIf="confirmarPassword" type="button" class="toggle-password-btn" (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarConfirmacion()" [attr.aria-label]="mostrarConfirmacion ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+                        <button *ngIf="confirmarPassword" type="button" class="visibilidad-password-btn" (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarConfirmacion()" [attr.aria-label]="mostrarConfirmacion ? 'Ocultar contraseña' : 'Mostrar contraseña'">
                             <i class="fa-solid" [ngClass]="mostrarConfirmacion ? 'fa-eye-slash' : 'fa-eye'"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div *ngIf="confirmarPassword && !passwordsCoinciden()" class="error-alert password-error">
+            <div *ngIf="confirmarPassword && !passwordsCoinciden()" class="alerta-error password-error">
                 <i class="fa-solid fa-circle-exclamation"></i> Las contraseñas no coinciden
             </div>
 
@@ -76,11 +76,11 @@
                 </div>
             </div>
 
-            <div *ngIf="mensajeOk" class="success-alert">
+            <div *ngIf="mensajeOk" class="alerta-ok">
                 <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
             </div>
 
-            <div *ngIf="mensajeError" class="error-alert animate-shake">
+            <div *ngIf="mensajeError" class="alerta-error animacion-shake">
                 <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
             </div>
 

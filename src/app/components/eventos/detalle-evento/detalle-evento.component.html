@@ -1,4 +1,4 @@
-<section class="section-snap">
+<section class="detalle-evento-seccion">
   <div class="form-card">
 
     <!-- Formulario principal del detalle del evento -->
@@ -6,7 +6,7 @@
 
       <!-- Cabecera editable con el nombre del evento -->
       <div class="form-header">
-        <div class="form-group full-width">
+        <div class="form-group detalle-evento-ancho-completo">
           <label><i class="fa-solid fa-pen-nib"></i> NOMBRE DEL EVENTO</label>
           <input type="text" id="titulo" name="titulo" placeholder="Ej: Gran Gala de Aniversario"
             [(ngModel)]="evento.titulo" required [readonly]="!esOrganizador">
@@ -14,7 +14,7 @@
       </div>
 
       <!-- Descripcion general del evento -->
-      <div class="form-group full-width detalle-evento-section-gap">
+      <div class="form-group detalle-evento-ancho-completo detalle-evento-section-gap">
         <label><i class="fa-solid fa-align-left"></i> DESCRIPCIÓN DEL EVENTO</label>
         <textarea id="descripcion" name="descripcion" placeholder="Escribe aquí todos los detalles de tu celebración..."
           [(ngModel)]="evento.descripcion" required rows="4" [readonly]="!esOrganizador"></textarea>
@@ -36,12 +36,12 @@
       </div>
 
       <!-- Seleccion del lugar mediante lista y mapa -->
-      <div class="form-group full-width detalle-evento-section-gap">
+      <div class="form-group detalle-evento-ancho-completo detalle-evento-section-gap">
         <label><i class="fa-solid fa-map-location-dot"></i> SELECCIÓN DE LUGAR</label>
 
-        <div class="seleccion-lugares">
+        <div class="seleccion-lugares detalle-evento-lugares">
           <!-- LISTA DE LUGARES -->
-          <div class="lista-lugares" *ngIf="esOrganizador">
+          <div class="detalle-evento-lista-lugares" *ngIf="esOrganizador">
             <div class="lugar-item" *ngFor="let lugar of lugares" [class.selected]="lugarSeleccionado?.id === lugar.id"
               (click)="seleccionarLugar(lugar)">
               <h4>{{ lugar.nombre }}</h4>
@@ -61,7 +61,7 @@
       </div>
 
       <!-- Gestion de invitaciones visible solo para el organizador -->
-      <div class="form-group full-width detalle-evento-invitations-section" *ngIf="esOrganizador">
+      <div class="form-group detalle-evento-ancho-completo detalle-evento-invitations-section" *ngIf="esOrganizador">
         <div class="detalle-evento-invitations-header">
           <label><i class="fa-solid fa-envelope-open-text"></i> GESTIÓN DE INVITACIONES</label>
           <button type="button" (click)="agregarInvitado()" class="detalle-evento-agregar-invitado-button">
@@ -74,7 +74,7 @@
           No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
         </div>
 
-        <div class="invitados-list detalle-evento-lista-invitados">
+        <div class="detalle-evento-lista-invitados">
           <div *ngFor="let invitado of invitados; let i = index">
             <div class="detalle-evento-fila-invitado">
               <div class="detalle-evento-status-invitado">
@@ -114,10 +114,10 @@
       </div>
 
       <!-- Mensajes de confirmacion o error -->
-      <div *ngIf="mensajeOk" class="success-alert">
+      <div *ngIf="mensajeOk" class="detalle-evento-alerta-ok">
         <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
       </div>
-      <div *ngIf="mensajeError" class="error-alert">
+      <div *ngIf="mensajeError" class="detalle-evento-alerta-error">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 

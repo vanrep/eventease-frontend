@@ -1,12 +1,12 @@
-<section class="section-snap">
-  <div class="form-card">
+<section class="crear-evento-seccion">
+  <div class="crear-evento-contenedor">
 
     <!-- Formulario principal para crear un evento -->
     <form (ngSubmit)="guardar()" #eventoForm="ngForm">
 
       <!-- Cabecera editable con el nombre del evento -->
-      <div class="form-header">
-        <div class="form-group full-width">
+      <div class="crear-evento-cabecera">
+        <div class="crear-evento-grupo crear-evento-ancho-completo">
           <label><i class="fa-solid fa-pen-nib"></i> NOMBRE DEL EVENTO</label>
           <input type="text" id="titulo" name="titulo" 
                  placeholder="Ej: Gran Gala de Aniversario" 
@@ -16,7 +16,7 @@
       </div>
 
       <!-- Descripcion general del evento -->
-      <div class="form-group full-width form-group-section-gap">
+      <div class="crear-evento-grupo crear-evento-ancho-completo crear-evento-separador">
         <label><i class="fa-solid fa-align-left"></i> DESCRIPCIÓN DEL EVENTO</label>
         <textarea id="descripcion" name="descripcion" 
                   placeholder="Escribe aquí todos los detalles de tu celebración..." 
@@ -24,14 +24,14 @@
       </div>
 
               <!-- Bloque con fecha y capacidad del evento -->
-      <div class="form-grid">
-        <div class="form-group crear-evento-info-card">
+      <div class="crear-evento-grid">
+        <div class="crear-evento-grupo crear-evento-info-card">
           <label for="fecha"><i class="fa-solid fa-calendar-check"></i> ¿CUÁNDO SERÁ?</label>
           <input type="datetime-local" id="fecha" name="fecha" [(ngModel)]="evento.fecha" required
                  class="crear-evento-info-input">
         </div>
 
-        <div class="form-group crear-evento-info-card">
+        <div class="crear-evento-grupo crear-evento-info-card">
           <label for="capacidad"><i class="fa-solid fa-users-line"></i> ¿CUÁNTOS ASISTIRÁN?</label>
           <input type="number" id="capacidad" name="capacidad" [(ngModel)]="evento.capacidad" placeholder="Ej: 50" required
                  class="crear-evento-info-input">
@@ -39,12 +39,12 @@
       </div>
 
       <!-- Seleccion del lugar mediante lista y mapa -->
-      <div class="form-group full-width form-group-section-gap">
+      <div class="crear-evento-grupo crear-evento-ancho-completo crear-evento-separador">
         <label><i class="fa-solid fa-map-location-dot"></i> SELECCIÓN DE LUGAR</label>
         
-        <div class="seleccion-lugares">
+        <div class="seleccion-lugares crear-evento-lugares">
           <!-- Lista de lugares disponibles -->
-          <div class="lista-lugares">
+          <div class="crear-evento-lista-lugares">
             <div class="lugar-item" 
                  *ngFor="let lugar of lugares" 
                  [class.selected]="lugarSeleccionado?.id === lugar.id"
@@ -55,7 +55,7 @@
           </div>
 
           <!-- Mapa interactivo para seleccionar la ubicacion -->
-          <div class="contenedor-mapa" 
+          <div class="crear-evento-contenedor-mapa" 
                leaflet 
                [leafletOptions]="options"
                (leafletMapReady)="onMapReady($event)">
@@ -68,7 +68,7 @@
       </div>
 
             <!-- Gestion de invitaciones a enviar tras crear el evento -->
-      <div class="form-group full-width crear-evento-invitations-section">
+      <div class="crear-evento-grupo crear-evento-ancho-completo crear-evento-invitations-section">
         <div class="crear-evento-invitations-header">
           <label><i class="fa-solid fa-envelope-open-text"></i> GESTIÓN DE INVITACIONES</label>
           <button type="button" (click)="agregarInvitado()"
@@ -82,7 +82,7 @@
           No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
         </div>
 
-        <div class="invitados-list">
+        <div class="crear-evento-lista-invitados">
           <div *ngFor="let invitado of emailsInvitados; let i = index">
             <div class="crear-evento-fila-invitado">
               <div class="crear-evento-guest-input-contenedor">
@@ -105,15 +105,15 @@
       </div>
 
       <!-- Mensajes de confirmacion o error -->
-      <div *ngIf="mensajeOk" class="success-alert">
+      <div *ngIf="mensajeOk" class="crear-evento-alerta-ok">
         <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
       </div>
-      <div *ngIf="mensajeError" class="error-alert">
+      <div *ngIf="mensajeError" class="crear-evento-alerta-error">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 
       <!-- Acciones finales para crear o cancelar -->
-      <div class="form-actions">
+      <div class="crear-evento-acciones">
         <button type="submit" class="btn-cta" [disabled]="!eventoForm.valid">
           <i class="fa-solid fa-cloud-arrow-up"></i> CREAR EVENTO
         </button>

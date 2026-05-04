@@ -1,5 +1,5 @@
 /* Centra la pantalla de acceso sobre el fondo comun de autenticacion */
-.login-wrapper {
+.form-wrapper {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
 }
 
 /* Ajusta la tarjeta principal del formulario de login */
-.login-card {
+.form-card {
   max-width: 700px !important;
   width: 100%;
   padding: 60px !important;
@@ -22,7 +22,7 @@
 }
 
 /* Muestra el logo sobre el encabezado del formulario */
-.login-logo {
+.form-logo {
   width: 120px;
   border-radius: 20px;
   margin-bottom: 25px;
@@ -78,7 +78,7 @@ input {
 }
 
 /* Coloca el boton de visibilidad dentro del campo */
-.toggle-password-btn {
+.visibilidad-password-btn {
   position: absolute;
   top: 50%;
   right: 18px;
@@ -92,7 +92,7 @@ input {
 }
 
 /* Refuerza el hover del boton de visibilidad */
-.toggle-password-btn:hover {
+.visibilidad-password-btn:hover {
   color: #5B21B6;
 }
 
@@ -167,7 +167,7 @@ input:focus {
 }
 
 /* Muestra el error de acceso con contraste alto */
-.error-alert {
+.alerta-error {
   background: #FEF2F2;
   color: #DC2626;
   padding: 15px 20px;
@@ -181,7 +181,7 @@ input:focus {
 }
 
 /* Aplica una sacudida breve cuando hay error */
-.animate-shake {
+.animacion-shake {
   animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
 }
 

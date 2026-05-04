@@ -1,7 +1,7 @@
-<section class="section-snap login-wrapper">
-  <div class="form-card login-card">
+<section class="seccion-scroll login-wrapper">
+  <div class="login-card login-card">
     <!-- Encabezado del formulario de acceso -->
-    <div class="form-header">
+    <div class="login-header">
       <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
       <h1>BIENVENIDO</h1>
       <p>Organiza tus mejores momentos</p>
@@ -9,7 +9,7 @@
 
     <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
       <!-- Campo de email para iniciar sesion -->
-      <div class="form-group">
+      <div class="login-group">
         <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRÓNICO</label>
         <div class="input-with-icon">
           <input type="email" id="email" name="email" 
@@ -19,7 +19,7 @@
       </div>
 
       <!-- Campo de contraseña con opcion para mostrar/ocultar el valor -->
-      <div class="form-group">
+      <div class="login-group">
         <label for="password"><i class="fa-solid fa-lock"></i> CONTRASEÑA</label>
         <div class="input-with-icon">
           <input [type]="mostrarPassword ? 'text' : 'password'" id="password" name="password" 
@@ -32,12 +32,12 @@
       </div>
       
       <!-- Muestra el mensaje de error cuando el login falla -->
-      <div *ngIf="mensajeError" class="error-alert animate-shake">
+      <div *ngIf="mensajeError" class="alerta-error animacion-shake">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 
       <!-- Accion principal para enviar el formulario -->
-      <div class="form-actions">
+      <div>
         <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!loginForm.valid">
           ENTRAR <i class="fa-solid fa-arrow-right-to-bracket"></i>
         </button>

@@ -663,7 +663,7 @@ html {
   display: none;
 }
 
-.section-snap {
+.seccion-scroll {
   min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
@@ -778,38 +778,38 @@ main.snap-active {
   background-color: rgba(31, 31, 31, 0.95);
 }
 
-.section-snap .articulo-text h2,
-.section-snap .hero-content h1,
-.section-snap #footer h2 {
+.seccion-scroll .articulo-text h2,
+.seccion-scroll .hero-content h1,
+.seccion-scroll #footer h2 {
   opacity: 0;
   transform: translateY(80px);
   transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.section-snap .articulo-text p,
-.section-snap .hero-content p,
-.section-snap #footer p {
+.seccion-scroll .articulo-text p,
+.seccion-scroll .hero-content p,
+.seccion-scroll #footer p {
   opacity: 0;
   transform: translateY(60px);
   transition: all 2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
 }
 
-.section-snap .btn-cta,
-.section-snap .btn-secondary,
-.section-snap .articulo-img,
-.section-snap .social {
+.seccion-scroll .btn-cta,
+.seccion-scroll .btn-secondary,
+.seccion-scroll .articulo-img,
+.seccion-scroll .social {
   opacity: 0;
   transform: scale(0.9) translateY(30px);
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s;
 }
 
-.section-snap.active h2,
-.section-snap.active h1,
-.section-snap.active p,
-.section-snap.active .btn-cta,
-.section-snap.active .btn-secondary,
-.section-snap.active .articulo-img,
-.section-snap.active .social {
+.seccion-scroll.active h2,
+.seccion-scroll.active h1,
+.seccion-scroll.active p,
+.seccion-scroll.active .btn-cta,
+.seccion-scroll.active .btn-secondary,
+.seccion-scroll.active .articulo-img,
+.seccion-scroll.active .social {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
