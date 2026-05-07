@@ -1,0 +1,131 @@
+<section class="admin-page">
+  <div class="admin-card">
+    <div class="admin-header">
+      <h1 class="admin-title">Panel de administración</h1>
+    </div>
+
+    <div class="admin-layout">
+      <aside class="admin-sidebar" aria-label="Secciones de administración">
+        <ng-container *ngFor="let seccion of secciones">
+          <a *ngIf="!seccion.disabled; else seccionDeshabilitada"
+             class="admin-nav-item"
+             [class.active]="seccionActiva === seccion.id"
+             [routerLink]="['/admin']"
+             [queryParams]="{ section: seccion.id }">
+            <i class="fa-solid" [ngClass]="seccion.icono"></i>
+            <span>{{ seccion.label }}</span>
+          </a>
+
+          <ng-template #seccionDeshabilitada>
+            <span class="admin-nav-item admin-nav-item-disabled" aria-disabled="true" title="Disponible próximamente">
+              <i class="fa-solid" [ngClass]="seccion.icono"></i>
+              <span>{{ seccion.label }}</span>
+            </span>
+          </ng-template>
+        </ng-container>
+      </aside>
+
+      <div class="admin-content">
+        <div class="admin-panel" *ngIf="seccionActiva === 'usuarios'">
+          <div class="admin-panel-header">
+            <h2>Lista de usuarios registrados</h2>
+          </div>
+
+          <div *ngIf="mensajeErrorUsuarios" class="alerta-error admin-alerta-error">
+            <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeErrorUsuarios }}
+          </div>
+
+          <div class="admin-loading" *ngIf="cargandoUsuarios && !mensajeErrorUsuarios">
+            Cargando usuarios...
+          </div>
+
+          <div class="empty-box admin-empty-box" *ngIf="!cargandoUsuarios && !mensajeErrorUsuarios && usuarios.length === 0">
+            <i class="fa-solid fa-users"></i>
+            No hay usuarios para mostrar.
+          </div>
+
+          <table class="admin-table" *ngIf="!cargandoUsuarios && usuarios.length > 0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.id }}</td>
+                <td>{{ usuario.nombre || 'Sin nombre' }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn-accion btn-rechazar"
+                    [disabled]="eliminandoUsuarioId === usuario.id"
+                    (click)="eliminarUsuario(usuario.id)">
+                    <i class="fa-solid fa-trash"></i>
+                    {{ eliminandoUsuarioId === usuario.id ? 'Eliminando...' : 'Eliminar' }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="admin-panel" *ngIf="seccionActiva === 'eventos'">
+          <div class="admin-panel-header">
+            <h2>Lista de eventos</h2>
+          </div>
+
+          <div *ngIf="mensajeErrorEventos" class="alerta-error admin-alerta-error">
+            <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeErrorEventos }}
+          </div>
+
+          <div class="admin-loading" *ngIf="cargandoEventos && !mensajeErrorEventos">
+            Cargando eventos...
+          </div>
+
+          <div class="empty-box admin-empty-box" *ngIf="!cargandoEventos && !mensajeErrorEventos && eventos.length === 0">
+            <i class="fa-solid fa-calendar-days"></i>
+            No hay eventos para mostrar.
+          </div>
+
+          <table class="admin-table" *ngIf="!cargandoEventos && eventos.length > 0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Fecha</th>
+                <th>Ubicación</th>
+                <th>Organizador</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let evento of eventos">
+                <td>{{ evento.id }}</td>
+                <td>{{ evento.titulo }}</td>
+                <td>{{ evento.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ evento.ubicacion }}</td>
+                <td>{{ evento.clienteEmail || 'Sin email' }}</td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn-accion btn-rechazar"
+                    [disabled]="eliminandoEventoId === evento.id"
+                    (click)="eliminarEvento(evento.id!)">
+                    <i class="fa-solid fa-trash"></i>
+                    {{ eliminandoEventoId === evento.id ? 'Eliminando...' : 'Eliminar' }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

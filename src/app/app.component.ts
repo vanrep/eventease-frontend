@@ -38,7 +38,7 @@ export class AppComponent {
       // Marca las rutas donde se activa la presentacion principal del sitio
       this.isInicio = this.currentUrl === '/inicio' || this.currentUrl === '/' || 
                       this.currentUrl.includes('inicio') || this.currentUrl.includes('crear') ||
-                      this.currentUrl.includes('/eventos') || this.currentUrl.includes('/invitaciones');
+                      this.currentUrl.includes('/eventos') || this.currentUrl.includes('/invitaciones') || this.currentUrl.includes('admin');
     });
   }
 

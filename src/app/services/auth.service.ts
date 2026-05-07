@@ -58,6 +58,10 @@ export class AuthService {
     return String(payload['rol'] || payload['role'] || payload['authorities'] || '') || null;
   }
 
+  esAdmin(): boolean {
+    return this.obtenerRol() === 'ADMIN';
+  }
+
   // Obtiene el email principal almacenado en el token
   obtenerEmail(): string {
     const payload = this.obtenerPayloadToken();

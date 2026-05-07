@@ -28,6 +28,12 @@
           INVITACIONES
         </a>
       </li>
+      <li *ngIf="authService.esAdmin()">
+        <a routerLink="/admin" routerLinkActive="active" class="admin-menu-link">
+          <i class="fa fa-user-shield icono-fa" aria-hidden="true"></i>
+          ADMIN
+        </a>
+      </li>
     </ul>
 
     <!-- Controles de sesion y accesos rapidos del usuario -->

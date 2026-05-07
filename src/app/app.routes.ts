@@ -7,6 +7,9 @@ import { ListaEventosComponent } from './components/eventos/lista-eventos/lista-
 import { CrearEventoComponent } from './components/eventos/crear-evento/crear-evento.component';
 import { DetalleEventoComponent } from './components/eventos/detalle-evento/detalle-evento.component';
 import { ListaInvitacionesComponent } from './components/invitaciones/lista-invitaciones/lista-invitaciones.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ErrorPaginaComponent } from './components/error-pagina/error-pagina.component';
 
 export const routes: Routes = [
 
@@ -15,6 +18,7 @@ export const routes: Routes = [
 
   // Rutas publicas de acceso y bienvenida
   { path: 'inicio', component: InicioComponent },
+  { path: 'about-us', component: AboutUsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
@@ -26,6 +30,9 @@ export const routes: Routes = [
   // Ruta para consultar las invitaciones del usuario
   { path: 'invitaciones', component: ListaInvitacionesComponent },
 
-  // Redirige cualquier ruta desconocida a inicio
-  { path: '**', redirectTo: 'inicio' }
+  // Ruta para el panel del administrador
+  { path: 'admin', component: AdminComponent },
+
+  // Muestra una pagina de error para cualquier ruta desconocida
+  { path: '**', component: ErrorPaginaComponent }
 ];

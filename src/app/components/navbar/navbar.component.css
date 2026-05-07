@@ -83,3 +83,24 @@
   background: #EF4444;
   color: #FFFFFF;
 }
+
+.admin-menu-link {
+  color: #B91C1C !important;
+}
+
+.admin-menu-link i {
+  color: #DC2626 !important;
+}
+
+.admin-menu-link:hover {
+  color: #DC2626 !important;
+}
+
+.admin-menu-link.active {
+  color: #DC2626 !important;
+  border-bottom-color: #DC2626 !important;
+}
+
+.admin-menu-link.active i {
+  color: #DC2626 !important;
+}

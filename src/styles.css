@@ -160,6 +160,22 @@ html::-webkit-scrollbar {
   box-shadow: 0 8px 20px rgba(110, 72, 170, 0.3);
 }
 
+.btn-cta:disabled,
+.btn-cta[disabled] {
+  background: #D8B4E2!important;
+  color: rgba(255, 255, 255, 0.85)!important;
+  box-shadow: none!important;
+  cursor: not-allowed!important;
+  opacity: 0.7!important;
+}
+
+.btn-cta:disabled:hover,
+.btn-cta[disabled]:hover {
+  background: #D8B4E2!important;
+  transform: none!important;
+  box-shadow: none!important;
+}
+
 .btn-secondary {
   background: white;
   color: #9D50BB;

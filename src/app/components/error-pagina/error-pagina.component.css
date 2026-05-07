@@ -1,0 +1,76 @@
+.error-pagina-page {
+  min-height: 100dvh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+  background: linear-gradient(rgba(248, 247, 255, 0.9), rgba(248, 247, 255, 0.95)), url('/assets/images/Banner.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.error-pagina-card {
+  width: min(720px, 100%);
+  padding: 56px 40px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #E9D5FF;
+  border-radius: 28px;
+  box-shadow: 0 24px 60px rgba(91, 33, 182, 0.12);
+}
+
+.error-pagina-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: #F3E8FF;
+  color: #7C3AED;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.error-pagina-title {
+  margin: 0;
+  color: #5B21B6;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.2rem;
+  line-height: 1.05;
+}
+
+.error-pagina-copy {
+  max-width: 520px;
+  margin: 20px auto 32px;
+  color: #6B7280;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.error-pagina-cta {
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .error-pagina-page {
+    padding: 110px 16px 56px;
+  }
+
+  .error-pagina-card {
+    padding: 40px 24px;
+  }
+
+  .error-pagina-title {
+    font-size: 2.4rem;
+  }
+
+  .error-pagina-copy {
+    font-size: 0.98rem;
+  }
+}

@@ -5,7 +5,7 @@
   <div class="dot" [class.active]="activeSection === 'invita'" (click)="scrollToSection('invita')" title="Invita"></div>
   <div class="dot" [class.active]="activeSection === 'participa'" (click)="scrollToSection('participa')" title="Participa"></div>
   <div class="dot" [class.active]="activeSection === 'info'" (click)="scrollToSection('info')" title="Información"></div>
-  <div class="dot" [class.active]="activeSection === 'footer'" (click)="scrollToSection('footer')" title="Contacto"></div>
+  <div class="dot" [class.active]="activeSection === 'footer'" (click)="scrollToSection('footer')" title="Conócenos"></div>
 </div>
 
 <!-- Seccion principal de bienvenida -->
@@ -40,7 +40,6 @@
         Crea eventos y mantén el control total de los detalles y asistentes. 
         Nuestra plataforma te permite gestionar horarios, ubicaciones y descripciones con total facilidad.
       </p>
-      <a class="btn-cta inicio-article-button" routerLink="/eventos">GESTIONAR AHORA</a>
     </div>
   </div>
 </section>
@@ -55,7 +54,6 @@
         Envía invitaciones a usuarios para que asistan a tus eventos. 
         Sigue en tiempo real quién ha aceptado o rechazado tus propuestas.
       </p>
-      <a class="btn-cta inicio-article-button" routerLink="/eventos">ENVIAR INVITACIÓN</a>
     </div>
   </div>
 </section>
@@ -70,7 +68,6 @@
         Acepta o rechaza invitaciones y mantén un registro de tu asistencia. 
         No te pierdas ninguna de las celebraciones importantes de tus amigos.
       </p>
-      <a class="btn-cta inicio-article-button" routerLink="/invitaciones">VER MIS INVITACIONES</a>
     </div>
   </div>
 </section>
@@ -106,7 +103,7 @@
         <ul class="inicio-footer-links">
           <li><a href="#" class="inicio-footer-link">Privacidad</a></li>
           <li><a href="#" class="inicio-footer-link">Cookies</a></li>
-          <li><a href="#" class="inicio-footer-link">Contacto</a></li>
+          <li><a routerLink="/about-us" class="inicio-footer-link">Conócenos</a></li>
         </ul>
         <p class="inicio-footer-copy">© 2026 EventEase. Todos los derechos reservados.</p>
     </div>

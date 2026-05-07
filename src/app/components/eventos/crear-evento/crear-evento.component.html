@@ -20,7 +20,7 @@
         <label><i class="fa-solid fa-align-left"></i> DESCRIPCIÓN DEL EVENTO</label>
         <textarea id="descripcion" name="descripcion" 
                   placeholder="Escribe aquí todos los detalles de tu celebración..." 
-                  [(ngModel)]="evento.descripcion" required rows="4"></textarea>
+                  [(ngModel)]="evento.descripcion" rows="4"></textarea>
       </div>
 
               <!-- Bloque con fecha y capacidad del evento -->
@@ -62,9 +62,14 @@
           </div>
         </div>
 
-        <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="evento.ubicacion" 
-               placeholder="Selecciona en el mapa..." required readonly
-               class="crear-evento-lugar-input">
+        <div class="crear-evento-lugar-accion">
+          <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="evento.ubicacion" 
+                 placeholder="Selecciona en el mapa..." required readonly
+                 class="crear-evento-lugar-input">
+          <button *ngIf="evento.ubicacion" type="submit" class="btn-cta crear-evento-precios-boton" disabled>
+            <i class="fa-solid fa-euro-sign"></i> Consultar precios
+          </button>
+        </div>
       </div>
 
             <!-- Gestion de invitaciones a enviar tras crear el evento -->
