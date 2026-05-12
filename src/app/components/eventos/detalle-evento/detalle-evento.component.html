@@ -69,7 +69,7 @@
           </button>
         </div>
 
-        <div *ngIf="invitados.length === 0" class="detalle-evento-mensaje-vacio">
+        <div *ngIf="invitados.length === 0" class="empty-state-box" style="margin: 20px 0;">
           <i class="fa-solid fa-users"></i>
           No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
         </div>
@@ -114,10 +114,10 @@
       </div>
 
       <!-- Mensajes de confirmacion o error -->
-      <div *ngIf="mensajeOk" class="detalle-evento-alerta-ok">
+      <div *ngIf="mensajeOk" class="alerta-ok">
         <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
       </div>
-      <div *ngIf="mensajeError" class="detalle-evento-alerta-error">
+      <div *ngIf="mensajeError" class="alerta-error">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 
@@ -151,7 +151,7 @@
 </section>
 
 <!-- Cierre visual de la pagina de detalle -->
-<section id="footer" class="detalle-evento-footer">
+<section id="footer" class="simple-footer">
   <div>
     <h2>EVENT EASE</h2>
     <p>Tu celebración, perfectamente organizada.</p>

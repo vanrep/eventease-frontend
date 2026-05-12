@@ -13,8 +13,8 @@
     </h1>
 
     <!-- Estado vacio cuando no hay invitaciones para mostrar -->
-    <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-box">
-      <i class="fa-solid fa-inbox" style="font-size: 2rem; margin-bottom: 15px; display: block;"></i>
+    <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-state-box">
+      <i class="fa-solid fa-inbox"></i>
       No tienes invitaciones.
     </div>
 
@@ -84,11 +84,11 @@
 </section>
 
 <!-- Cierre visual de la pagina de listado -->
-<section id="footer" class="lista-invitaciones-footer">
+<section id="footer" class="marketing-footer">
   <div>
     <img src="/assets/images/Logo_EventEase.jpg" alt="Logo">
     <h2>¿TIENES UN NUEVO PLAN?</h2>
-    <p class="lista-invitaciones-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
+    <p class="marketing-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
     
     <div class="social">
         <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
@@ -96,7 +96,7 @@
         <a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a>
     </div>
 
-    <div class="lista-invitaciones-footer-bottom">
+    <div class="marketing-footer-bottom">
         <ul>
           <li><a href="#">Términos</a></li>
           <li><a href="#">Privacidad</a></li>

@@ -222,21 +222,6 @@ input:focus, textarea:focus {
   font-size: 1.2rem;
 }
 
-.detalle-evento-mensaje-vacio {
-  padding: 40px;
-  color: #718096;
-  text-align: center;
-  background: #FDFBFF;
-  border: 2px dashed #E9D5FF;
-  border-radius: 20px;
-}
-
-.detalle-evento-mensaje-vacio i {
-  display: block;
-  margin-bottom: 15px;
-  color: #E9D5FF;
-  font-size: 2rem;
-}
 
 .detalle-evento-lista-invitados {
   display: flex;
@@ -280,11 +265,6 @@ input:focus, textarea:focus {
   background: #FEE2E2;
 }
 
-.detalle-evento-alerta-ok,
-.detalle-evento-alerta-error {
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
 
 /* Franja final con acciones disponibles segun el rol */
 .form-actions {
@@ -299,25 +279,10 @@ input:focus, textarea:focus {
 }
 
 /* Ajusta el estilo comun de los botones del formulario */
-.form-actions .btn-cta, .form-actions .btn-secondary {
-  padding: 18px 45px;
-  font-family: 'Oswald', sans-serif;
+.form-actions .btn-cta, .form-actions .btn-secondary, .form-actions .btn-danger {
   font-size: 1.1rem;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
   min-width: 200px;
   justify-content: center;
-  /* FORCE VISIBILITY */
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  animation: none !important;
-  transition: none !important;
 }
 
 .detalle-evento-primary-action {
@@ -335,91 +300,6 @@ input:focus, textarea:focus {
   padding: 18px;
 }
 
-/* Boton principal para guardar o aceptar */
-.btn-cta {
-  background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%) !important;
-  color: white !important;
-  border: none !important;
-}
-
-/* Boton secundario para volver */
-.btn-secondary {
-  background: white !important;
-  border: 2px solid #E9D5FF !important;
-  color: #4C1D95 !important;
-}
-
-/* Refuerza el hover del boton secundario */
-.btn-secondary:hover {
-  background: #FDFBFF;
-  border-color: #9D50BB;
-}
-
-/* Variante destructiva para eliminar o rechazar */
-.btn-danger {
-  background: white !important;
-  border: 2px solid #EF4444 !important;
-  color: #EF4444 !important;
-}
-
-/* Refuerza el hover de la accion destructiva */
-.btn-danger:hover {
-  background: #FEF2F2 !important;
-}
-
-/* Insignia comun para mostrar el estado de cada invitacion */
-.badge-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-}
-
-/* Colores por estado de la invitacion */
-.aceptada {
-  background: #DCFCE7;
-  color: #16A34A;
-}
-
-.pendiente {
-  background: #FEF3C7;
-  color: #D97706;
-}
-
-.rechazada {
-  background: #FEE2E2;
-  color: #DC2626;
-}
-
-.nueva {
-  background: #E0E7FF;
-  color: #4F46E5;
-}
-
-.form-actions-footer {
-  padding: 80px 24px;
-  color: #E9D5FF;
-  text-align: center;
-  background-color: #1E1B4B;
-}
-
-.form-actions-footer > div {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.form-actions-footer h2 {
-  margin-bottom: 1rem;
-  color: #FFFFFF;
-  font-family: 'Oswald';
-  font-size: 2.5rem;
-}
-
-.form-actions-footer p {
-  color: #718096;
-}
 
 /* Ajustes para pantallas moviles */
 @media (max-width: 768px) {

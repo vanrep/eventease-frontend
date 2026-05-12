@@ -72,7 +72,7 @@
     <div *ngIf="eventos | filtroEventos:textoBusqueda:filtroPendiente:filtroAceptada:filtroRechazada as eventosVisibles">
 
       <!-- Estado vacio cuando la busqueda o los filtros no devuelven resultados -->
-      <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="lista-eventos-sin-resultados">
+      <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="empty-state-box">
         <i class="fa-solid fa-filter"></i>
         No hay eventos que coincidan con la búsqueda o el filtro seleccionado.
       </div>
@@ -90,7 +90,8 @@
         <div class="tarjeta-body">
 
           <div *ngIf="!esOrganizador(evento)"
-              class="badge-invitacion"
+              class="badge-status"
+              style="position: absolute; top: 15px; right: 15px; z-index: 10;"
               [ngClass]="{
                 'aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
                 'pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
@@ -151,11 +152,11 @@
 </div>
 
 <!-- Cierre visual de la pagina de listado -->
-<section id="footer" class="lista-eventos-footer">
+<section id="footer" class="marketing-footer">
   <div>
     <img src="/assets/images/Logo_EventEase.jpg" alt="Logo">
     <h2>¿TIENES UN NUEVO PLAN?</h2>
-    <p class="lista-eventos-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
+    <p class="marketing-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
     
     <div class="social">
         <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
@@ -163,7 +164,7 @@
         <a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a>
     </div>
 
-    <div class="lista-eventos-footer-bottom">
+    <div class="marketing-footer-bottom">
         <ul>
           <li><a href="#">Términos</a></li>
           <li><a href="#">Privacidad</a></li>

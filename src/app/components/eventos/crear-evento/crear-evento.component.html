@@ -1,52 +1,56 @@
-<section class="crear-evento-seccion">
-  <div class="crear-evento-contenedor">
+<!-- Seccion del formulario de creacion -->
+<section class="seccion">
+  <div class="contenedor">
 
-    <!-- Formulario principal para crear un evento -->
-    <form (ngSubmit)="guardar()" #eventoForm="ngForm">
+    <!-- Formulario que llama a guardar() al enviarse -->
+    <form (ngSubmit)="guardar()">
 
-      <!-- Cabecera editable con el nombre del evento -->
-      <div class="crear-evento-cabecera">
-        <div class="crear-evento-grupo crear-evento-ancho-completo">
+      <!-- Campo nombre del evento -->
+      <div class="cabecera">
+        <div class="grupo ancho-completo">
           <label><i class="fa-solid fa-pen-nib"></i> NOMBRE DEL EVENTO</label>
-          <input type="text" id="titulo" name="titulo" 
-                 placeholder="Ej: Gran Gala de Aniversario" 
-                 [(ngModel)]="evento.titulo" required
-                 >
+          <input type="text" id="titulo" name="titulo"
+                 placeholder="Ej: Gran Gala de Aniversario"
+                 [(ngModel)]="evento.titulo" required>
         </div>
       </div>
 
-      <!-- Descripcion general del evento -->
-      <div class="crear-evento-grupo crear-evento-ancho-completo crear-evento-separador">
+      <!-- Campo descripcion del evento -->
+      <div class="grupo ancho-completo separador">
         <label><i class="fa-solid fa-align-left"></i> DESCRIPCIÓN DEL EVENTO</label>
-        <textarea id="descripcion" name="descripcion" 
-                  placeholder="Escribe aquí todos los detalles de tu celebración..." 
+        <textarea id="descripcion" name="descripcion"
+                  placeholder="Escribe aquí todos los detalles de tu celebración..."
                   [(ngModel)]="evento.descripcion" rows="4"></textarea>
       </div>
 
-              <!-- Bloque con fecha y capacidad del evento -->
-      <div class="crear-evento-grid">
-        <div class="crear-evento-grupo crear-evento-info-card">
+      <!-- Campos de fecha y capacidad en dos columnas -->
+      <div class="grid">
+
+        <!-- Selector de fecha y hora -->
+        <div class="grupo info-card">
           <label for="fecha"><i class="fa-solid fa-calendar-check"></i> ¿CUÁNDO SERÁ?</label>
-          <input type="datetime-local" id="fecha" name="fecha" [(ngModel)]="evento.fecha" required
-                 class="crear-evento-info-input">
+          <input type="datetime-local" id="fecha" name="fecha"
+                 [(ngModel)]="evento.fecha" required class="info-input">
         </div>
 
-        <div class="crear-evento-grupo crear-evento-info-card">
+        <!-- Numero maximo de asistentes -->
+        <div class="grupo info-card">
           <label for="capacidad"><i class="fa-solid fa-users-line"></i> ¿CUÁNTOS ASISTIRÁN?</label>
-          <input type="number" id="capacidad" name="capacidad" [(ngModel)]="evento.capacidad" placeholder="Ej: 50" required
-                 class="crear-evento-info-input">
+          <input type="number" id="capacidad" name="capacidad"
+                 [(ngModel)]="evento.capacidad" placeholder="Ej: 50" required class="info-input">
         </div>
       </div>
 
-      <!-- Seleccion del lugar mediante lista y mapa -->
-      <div class="crear-evento-grupo crear-evento-ancho-completo crear-evento-separador">
+      <!-- Seleccion de lugar con lista y mapa -->
+      <div class="grupo ancho-completo separador">
         <label><i class="fa-solid fa-map-location-dot"></i> SELECCIÓN DE LUGAR</label>
-        
-        <div class="seleccion-lugares crear-evento-lugares">
-          <!-- Lista de lugares disponibles -->
-          <div class="crear-evento-lista-lugares">
-            <div class="lugar-item" 
-                 *ngFor="let lugar of lugares" 
+
+        <div class="seleccion-lugares">
+
+          <!-- Lista de lugares disponibles, uno se resalta al seleccionarlo -->
+          <div class="lista-lugares">
+            <div class="lugar-item"
+                 *ngFor="let lugar of lugares"
                  [class.selected]="lugarSeleccionado?.id === lugar.id"
                  (click)="seleccionarLugar(lugar)">
               <h4>{{ lugar.nombre }}</h4>
@@ -54,72 +58,80 @@
             </div>
           </div>
 
-          <!-- Mapa interactivo para seleccionar la ubicacion -->
-          <div class="crear-evento-contenedor-mapa" 
-               leaflet 
+          <!-- Mapa interactivo de Leaflet -->
+          <div class="mapa"
+               leaflet
                [leafletOptions]="options"
                (leafletMapReady)="onMapReady($event)">
           </div>
         </div>
 
-        <div class="crear-evento-lugar-accion">
-          <input type="text" id="ubicacion" name="ubicacion" [(ngModel)]="evento.ubicacion" 
+        <!-- Campo que muestra la ubicacion elegida en el mapa (solo lectura) -->
+        <div class="lugar-accion">
+          <input type="text" id="ubicacion" name="ubicacion"
+                 [(ngModel)]="evento.ubicacion"
                  placeholder="Selecciona en el mapa..." required readonly
-                 class="crear-evento-lugar-input">
-          <button *ngIf="evento.ubicacion" type="submit" class="btn-cta crear-evento-precios-boton" disabled>
+                 class="lugar-input">
+
+          <!-- Boton de consulta de precios, visible solo si hay ubicacion seleccionada -->
+          <button *ngIf="evento.ubicacion" type="button" class="btn-cta precios-boton" disabled>
             <i class="fa-solid fa-euro-sign"></i> Consultar precios
           </button>
         </div>
       </div>
 
-            <!-- Gestion de invitaciones a enviar tras crear el evento -->
-      <div class="crear-evento-grupo crear-evento-ancho-completo crear-evento-invitations-section">
-        <div class="crear-evento-invitations-header">
+      <!-- Seccion de invitados -->
+      <div class="grupo ancho-completo invitaciones">
+        <div class="invitaciones-header">
           <label><i class="fa-solid fa-envelope-open-text"></i> GESTIÓN DE INVITACIONES</label>
-          <button type="button" (click)="agregarInvitado()"
-                  class="crear-evento-anadir-invitado-button">
+          <!-- Boton para añadir un nuevo invitado -->
+          <button type="button" (click)="agregarInvitado()" class="btn-anadir">
             <i class="fa-solid fa-plus"></i>
           </button>
         </div>
 
-        <div *ngIf="emailsInvitados.length === 0" class="crear-evento-lista-vacia">
-          <i class="fa-solid fa-users"></i>
-          No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
-        </div>
+          <!-- Estado inicial sin invitados -->
+          <div *ngIf="emailsInvitados.length === 0" class="empty-state-box" style="margin: 20px 0;">
+            <i class="fa-solid fa-users"></i>
+            No has añadido invitados aún. Pulsa el botón <b>+</b> para empezar.
+          </div>
 
-        <div class="crear-evento-lista-invitados">
+        <!-- Recorremos la lista de invitados con email y boton de eliminar -->
+        <div class="lista-invitados">
           <div *ngFor="let invitado of emailsInvitados; let i = index">
-            <div class="crear-evento-fila-invitado">
-              <div class="crear-evento-guest-input-contenedor">
-                <i class="fa-solid fa-envelope crear-evento-guest-input-icon"></i>
+            <div class="fila-invitado">
+              <div class="email-contenedor">
+                <i class="fa-solid fa-envelope email-icon"></i>
+                <!-- Borde rojo si el email tiene error -->
                 <input type="email" [(ngModel)]="invitado.email" [name]="'invitado' + i"
                        placeholder="correo@ejemplo.com"
-                       [style.border-color]="invitado.error ? '#EF4444' : ''"
-                       >
+                       [style.border-color]="invitado.error ? '#EF4444' : ''">
               </div>
-              <button type="button" (click)="quitarInvitado(i)"
-                      class="crear-evento-quitar-invitado-button">
+              <!-- Boton para quitar este invitado -->
+              <button type="button" (click)="quitarInvitado(i)" class="btn-quitar">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </div>
-            <p *ngIf="invitado.error" class="crear-evento-invitado-error">
+            <!-- Mensaje de error del email del invitado -->
+            <p *ngIf="invitado.error" class="error-invitado">
               <i class="fa-solid fa-circle-exclamation"></i> {{ invitado.error }}
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Mensajes de confirmacion o error -->
-      <div *ngIf="mensajeOk" class="crear-evento-alerta-ok">
+      <!-- Mensaje de exito tras guardar -->
+      <div *ngIf="mensajeOk" class="alerta-ok">
         <i class="fa-solid fa-circle-check"></i> {{ mensajeOk }}
       </div>
-      <div *ngIf="mensajeError" class="crear-evento-alerta-error">
+      <!-- Mensaje de error si algo falla -->
+      <div *ngIf="mensajeError" class="alerta-error">
         <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
       </div>
 
-      <!-- Acciones finales para crear o cancelar -->
-      <div class="crear-evento-acciones">
-        <button type="submit" class="btn-cta" [disabled]="!eventoForm.valid">
+      <!-- Botones de enviar y cancelar -->
+      <div class="acciones">
+        <button type="submit" class="btn-cta">
           <i class="fa-solid fa-cloud-arrow-up"></i> CREAR EVENTO
         </button>
         <a routerLink="/eventos" class="btn-secondary">
@@ -131,8 +143,8 @@
   </div>
 </section>
 
-<!-- Cierre visual de la pagina de creacion -->
-<section id="footer">
+<!-- Cierre visual de la pagina -->
+<section id="footer" class="simple-footer">
   <div>
     <h2>EVENT EASE</h2>
     <p>Tu celebración, perfectamente organizada.</p>

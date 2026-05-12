@@ -14,10 +14,10 @@
 
 /* Ajusta la tarjeta para el formulario de alta */
 .form-card {
-  max-width: 700px !important;
+  max-width: 700px;
   width: 100%;
-  padding: 26px 26px 3rem 26px !important;
-  box-shadow: 0 30px 60px -12px rgba(76, 29, 149, 0.2) !important;
+  padding: 26px 26px 3rem 26px;
+  box-shadow: 0 30px 60px -12px rgba(76, 29, 149, 0.2);
   text-align: center;
 }
 
@@ -25,14 +25,6 @@
 form {
   max-width: 610px;
   margin: 0 auto;
-}
-
-/* Presenta el logo encima del encabezado */
-.form-logo {
-  width: 120px;
-  border-radius: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Destaca el titulo principal del alta */
@@ -77,92 +69,51 @@ form {
   margin-bottom: 18px;
 }
 
-/* Refuerza la lectura de cada etiqueta del formulario */
-.form-group label {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-  color: #4C1D95;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
 /* Marca visualmente los campos obligatorios */
 .obligatorio {
   color: #DC2626;
 }
 
-/* Sirve de ancla para iconos y acciones dentro del input */
-.input-with-icon {
-  position: relative;
-}
-
 /* Uniforma el estilo de inputs y select del registro */
 input,
 select {
-  width: 100% !important;
-  box-sizing: border-box !important;
-  padding: 12px 48px 12px 16px !important;
-  background: #FDFBFF !important;
-  border: 2px solid #E9D5FF !important;
-  border-radius: 16px !important;
-  font-size: 1rem !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Posiciona el boton para mostrar u ocultar la contrasena */
-.visibilidad-password-btn {
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  transform: translateY(-50%);
-  border: none;
-  background: transparent;
-  color: #7C3AED;
-  cursor: pointer;
-  font-size: 0.95rem;
-  padding: 0;
-  z-index: 2;
-  pointer-events: auto;
-}
-
-/* Refuerza el estado hover del boton de visibilidad */
-.visibilidad-password-btn:hover {
-  color: #5B21B6;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 48px 12px 16px;
+  background: #FDFBFF;
+  border: 2px solid #E9D5FF;
+  border-radius: 16px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 /* Resalta el campo activo con color y halo */
 input:focus,
 select:focus {
-  border-color: #9D50BB !important;
-  background: white !important;
-  box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1) !important;
+  border-color: #9D50BB;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
   outline: none;
 }
 
 /* Define el boton principal de registro */
 .btn-cta {
   width: 100%;
-  padding: 18px !important;
-  background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 50px !important;
-  font-family: 'Oswald', sans-serif !important;
-  font-size: 1.15rem !important;
-  font-weight: 700 !important;
+  padding: 18px;
+  background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
   cursor: pointer;
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 15px 30px rgba(157, 80, 187, 0.3) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  animation: none !important;
-  transition: none !important;
+  box-shadow: 0 15px 30px rgba(157, 80, 187, 0.3);
 }
 
 /* Mantiene el contenedor del boton como bloque unico */
@@ -170,100 +121,23 @@ select:focus {
   display: block;
 }
 
-/* Presenta el enlace alternativo hacia el login */
-.auth-switch-text {
-  margin-top: 18px;
-  margin-bottom: 0;
-  color: #718096;
-  font-size: 0.95rem;
-  text-align: center;
-}
-
-/* Destaca el enlace de cambio de flujo */
-.auth-switch-text a {
-  color: #7C3AED;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-/* Muestra subrayado al pasar por el enlace alternativo */
-.auth-switch-text a:hover {
-  text-decoration: underline;
-}
-
 /* Eleva ligeramente el boton activo al pasar el cursor */
 .btn-cta:hover:not(:disabled) {
   transform: translateY(-3px);
-  box-shadow: 0 18px 34px rgba(157, 80, 187, 0.38) !important;
+  box-shadow: 0 18px 34px rgba(157, 80, 187, 0.38);
 }
 
 /* Atenua el boton cuando el formulario no puede enviarse */
 .btn-cta:disabled {
   opacity: 1;
   cursor: not-allowed;
-  background: #CFC5E6 !important;
-  color: #F8F6FC !important;
-  box-shadow: none !important;
+  background: #CFC5E6;
+  color: #F8F6FC;
+  box-shadow: none;
   filter: none;
 }
 
-/* Comunica errores con contraste alto */
-.alerta-error {
-  background: #FEF2F2;
-  color: #DC2626;
-  padding: 15px 20px;
-  border-radius: 14px;
-  border-left: 5px solid #DC2626;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 600;
-}
-
-/* Comunica confirmaciones positivas del registro */
-.alerta-ok {
-  background: #ECFDF5;
-  color: #047857;
-  padding: 15px 20px;
-  border-radius: 14px;
-  border-left: 5px solid #10B981;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 600;
-}
-
-/* Aplica una sacudida breve a los errores principales */
-.animacion-shake {
-  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
-}
-
-/* Define la animacion */
-@keyframes shake {
-  10%,
-  90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-
-  20%,
-  80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%,
-  50%,
-  70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%,
-  60% {
-    transform: translate3d(4px, 0, 0);
-  }
-}
-
+/* Adaptación para dispositivos móviles: las contraseñas se apilan verticalmente y se elimina el espacio entre ellas */
 @media (max-width: 768px) {
   .fila-contrasena {
     grid-template-columns: 1fr;

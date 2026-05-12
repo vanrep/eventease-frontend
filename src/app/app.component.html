@@ -1,13 +1,19 @@
-﻿<!-- navbar -->
+<!-- Barra de navegacion principal -->
 <app-navbar></app-navbar>
-<!-- router outlet, componente principal -->
-<main [class.snap-active]="isInicio" [class.auth-page]="isAuthPage">
+
+<!-- Contenedor principal: carga el componente segun la ruta activa -->
+<!-- Si estamos en inicio activa el scroll tipo snap, si es pagina de auth aplica estilo especial -->
+<main [class.snap-active]="isMainPage" [class.auth-page]="isAuthPage">
+  <!-- Aqui se renderiza el componente de la ruta actual -->
   <router-outlet></router-outlet>
 </main>
 
-<!-- Footer -->
+<!-- Pie de pagina -->
+<!-- Se oculta en la pagina de inicio -->
 <!-- Cambia entre el estilo normal y el estilo compacto segun la ruta -->
-<footer *ngIf="!isInicio" [class.site-footer]="!isAuthPage" [class.auth-footer]="isAuthPage">
+<footer *ngIf="!isMainPage" [class.site-footer]="!isAuthPage" [class.auth-footer]="isAuthPage">
+
+  <!-- Enlaces legales -->
   <nav aria-label="Enlaces legales">
     <ul class="footer-links">
       <li><a href="#">Política de cookies</a></li>
@@ -16,6 +22,7 @@
     </ul>
   </nav>
 
+  <!-- Iconos de redes sociales -->
   <div class="social" aria-label="Redes sociales">
     <a href="https://www.facebook.com/" aria-label="Facebook">
       <i class="fa-brands fa-facebook" aria-hidden="true"></i>
@@ -30,6 +37,8 @@
 </footer>
 
 <!-- Boton flotante para volver al inicio de la pagina -->
+<!-- Solo se muestra cuando el usuario ha bajado por la pagina -->
 <button class="fab-top" [class.visible]="btnSubir" (click)="scrollToTop()" aria-label="Volver arriba">
+  <!-- Icono de flecha hacia arriba -->
   <i class="fa fa-chevron-up" aria-hidden="true"></i>
 </button>

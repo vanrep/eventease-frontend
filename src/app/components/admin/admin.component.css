@@ -195,118 +195,8 @@
   text-align: center;
 }
 
-.btn-accion {
-  border: none;
-  border-radius: 12px;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.85rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
 
-.btn-rechazar {
-  background: #FEE2E2;
-  color: #DC2626;
-}
 
-.btn-accion:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-.empty-box {
-  text-align: center;
-  padding: 50px;
-  border: 2px dashed #E9D5FF;
-  border-radius: 20px;
-  color: #718096;
-  background: #FDFBFF;
-}
-
-.alerta-error {
-  background: #FEF2F2;
-  color: #991B1B;
-  padding: 18px;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: 600;
-}
-
-.admin-footer {
-  padding: 100px 24px;
-  color: #E9D5FF;
-  text-align: center;
-  background-color: #1E1B4B;
-  border-top: 4px solid #9D50BB;
-}
-
-.admin-footer > div {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.admin-footer img {
-  width: 220px;
-  margin: 0 auto 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.admin-footer h2 {
-  margin-bottom: 1.5rem;
-  color: #FFFFFF;
-  font: 3rem 'Oswald';
-  text-transform: uppercase;
-}
-
-.admin-footer-lead {
-  margin-bottom: 3rem;
-  font-size: 1.2rem;
-  opacity: 0.8;
-}
-
-.admin-footer .social {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-bottom: 4rem;
-}
-
-.admin-footer .social a {
-  color: #E9D5FF;
-  font-size: 2.8rem;
-  transition: color 0.3s;
-}
-
-.admin-footer-bottom {
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.admin-footer-bottom ul {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 0;
-  list-style: none;
-  font-family: 'Open Sans';
-  font-weight: 600;
-}
-
-.admin-footer-bottom a {
-  color: #718096;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.admin-footer-bottom p {
-  margin-top: 2rem;
-  color: #4A5568;
-  font-size: 0.95rem;
-}
 
 @media (max-width: 768px) {
   .admin-page {
@@ -335,14 +225,5 @@
 
   .admin-panel-header h2 {
     font-size: 2.2rem;
-  }
-
-  .admin-footer {
-    padding: 72px 16px;
-  }
-
-  .admin-footer-bottom ul {
-    gap: 1.25rem;
-    flex-wrap: wrap;
   }
 }

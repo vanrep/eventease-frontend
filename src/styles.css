@@ -130,9 +130,53 @@ html::-webkit-scrollbar {
   color: #9D50BB;
 }
 
-/* Sistema global de botones */
-.btn-cta,
+/* ============ BOTONES SECUNDARIOS ============ */
 .btn-secondary {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  color: #9D50BB;
+  border: 2px solid #E9D5FF;
+}
+
+.btn-secondary:hover {
+  border-color: #9D50BB;
+  background: #FDFBFF;
+}
+
+/* ============ BOTONES PELIGRO (DANGER) ============ */
+.btn-danger {
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 2px solid #EF4444;
+  color: #EF4444;
+}
+
+.btn-danger:hover {
+  background: #FEF2F2;
+}
+
+/* Sistema global de botones */
+.btn-cta {
   padding: 12px 28px;
   border-radius: 50px;
   /* Forma de pastilla */
@@ -146,9 +190,6 @@ html::-webkit-scrollbar {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
-}
-
-.btn-cta {
   background: #9D50BB;
   color: #FFFFFF;
   box-shadow: 0 4px 12px rgba(157, 80, 187, 0.2);
@@ -1004,3 +1045,277 @@ main.snap-active {
   color: #718096;
 }
 
+
+/* ============ ALERTAS ============ */
+
+/* Mensaje de confirmacion verde */
+.alerta-ok {
+  background: #ECFDF5;
+  color: #047857;
+  padding: 15px 20px;
+  border-radius: 14px;
+  border-left: 5px solid #10B981;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+/* Mensaje de error rojo */
+.alerta-error {
+  background: #FEF2F2;
+  color: #DC2626;
+  padding: 15px 20px;
+  border-radius: 14px;
+  border-left: 5px solid #DC2626;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+/* ============ FORMULARIOS DE AUTENTICACION ============ */
+
+/* Logo encima del formulario */
+.form-logo {
+  width: 120px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiqueta de cada campo del formulario */
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: #4C1D95;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Contenedor de input con icono dentro */
+.input-with-icon {
+  position: relative;
+}
+
+/* Boton de mostrar/ocultar contrasena */
+.visibilidad-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #7C3AED;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  z-index: 2;
+}
+
+.visibilidad-password-btn:hover {
+  color: #5B21B6;
+}
+
+/* Texto y enlace para cambiar entre login y registro */
+.auth-switch-text {
+  margin-top: 20px;
+  margin-bottom: 0;
+  color: #718096;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.auth-switch-text a {
+  color: #7C3AED;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-switch-text a:hover {
+  text-decoration: underline;
+}
+
+/* ============ ANIMACION SHAKE ============ */
+
+/* Agita el elemento brevemente para indicar error */
+.animacion-shake {
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* ============ COMMON FOOTERS ============ */
+.marketing-footer {
+  padding: 100px 24px;
+  color: #E9D5FF;
+  text-align: center;
+  background-color: #1E1B4B;
+  border-top: 4px solid #9D50BB;
+}
+.marketing-footer > div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.marketing-footer img {
+  width: 220px;
+  margin: 0 auto 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.marketing-footer h2 {
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+.marketing-footer-lead {
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+.marketing-footer .social {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+.marketing-footer .social a {
+  color: #E9D5FF;
+  font-size: 2.8rem;
+  transition: color 0.3s;
+}
+.marketing-footer-bottom {
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.marketing-footer-bottom ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 0;
+  list-style: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+.marketing-footer-bottom a {
+  color: #718096;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.marketing-footer-bottom p {
+  margin-top: 2rem;
+  color: #4A5568;
+  font-size: 0.95rem;
+}
+
+.simple-footer {
+  padding: 80px 24px;
+  color: #E9D5FF;
+  text-align: center;
+  background-color: #1E1B4B;
+}
+.simple-footer > div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.simple-footer h2 {
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+.simple-footer p {
+  color: #718096;
+}
+
+/* ============ COMMON EMPTY STATES ============ */
+.empty-state-box {
+  text-align: center;
+  padding: 50px;
+  border: 2px dashed #E9D5FF;
+  border-radius: 20px;
+  color: #718096;
+  background: #FDFBFF;
+  margin: 50px auto;
+  max-width: 600px;
+  font-weight: 600;
+}
+.empty-state-box i {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 15px;
+  color: #9D50BB;
+}
+
+/* ============ BADGES & TABLE BUTTONS ============ */
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.badge-status.aceptada {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+.badge-status.pendiente {
+  background: #FEF3C7;
+  color: #D97706;
+}
+.badge-status.rechazada {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+.badge-status.nueva {
+  background: #E0E7FF;
+  color: #4F46E5;
+}
+
+.btn-accion {
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-accion.btn-aceptar {
+  background: #DCFCE7;
+  color: #16A34A;
+}
+.btn-accion.btn-rechazar {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+.btn-accion:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Ajustes Responsive Footer */
+@media (max-width: 768px) {
+  .marketing-footer {
+    padding: 72px 16px;
+  }
+  .marketing-footer-bottom ul {
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+}

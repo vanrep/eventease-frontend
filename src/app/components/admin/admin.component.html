@@ -39,7 +39,7 @@
             Cargando usuarios...
           </div>
 
-          <div class="empty-box admin-empty-box" *ngIf="!cargandoUsuarios && !mensajeErrorUsuarios && usuarios.length === 0">
+          <div class="empty-state-box admin-empty-box" *ngIf="!cargandoUsuarios && !mensajeErrorUsuarios && usuarios.length === 0">
             <i class="fa-solid fa-users"></i>
             No hay usuarios para mostrar.
           </div>
@@ -87,7 +87,7 @@
             Cargando eventos...
           </div>
 
-          <div class="empty-box admin-empty-box" *ngIf="!cargandoEventos && !mensajeErrorEventos && eventos.length === 0">
+          <div class="empty-state-box admin-empty-box" *ngIf="!cargandoEventos && !mensajeErrorEventos && eventos.length === 0">
             <i class="fa-solid fa-calendar-days"></i>
             No hay eventos para mostrar.
           </div>

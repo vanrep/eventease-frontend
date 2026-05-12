@@ -107,69 +107,11 @@
   color: #DC2626;
 }
 
-/* Define el boton principal para crear un evento */
-.btn-cta {
-  padding: 12px 28px !important;
-  font-family: 'Oswald', sans-serif !important;
-  font-size: 1.1rem !important;
-  font-weight: 700 !important;
-  background: #9D50BB !important;
-  color: #FFFFFF !important;
-  border-radius: 50px !important;
-  border: none !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  box-shadow: 0 10px 15px -3px rgba(157, 80, 187, 0.3) !important;
-  transition: all 0.3s ease !important;
-  text-transform: uppercase !important;
-  text-decoration: none !important;
-}
-
-/* Refuerza el hover del boton principal */
-.btn-cta:hover {
-  background: #6E48AA !important;
-  transform: translateY(-3px);
-  box-shadow: 0 15px 20px -5px rgba(110, 72, 170, 0.4) !important;
-}
-
 /* Ajusta el tamano del icono del boton */
 .btn-cta i {
   font-size: 1.1rem;
 }
 
-/* Muestra errores de carga con contraste alto */
-.alerta-error {
-  background-color: #FEF2F2;
-  color: #991B1B;
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid #FECACA;
-  text-align: center;
-  font-weight: 600;
-  max-width: 600px;
-  margin: 2rem auto;
-}
-
-/* Presenta el estado vacio cuando no hay coincidencias */
-.lista-eventos-sin-resultados {
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: center;
-  padding: 40px;
-  background: #FFFFFF;
-  border-radius: 24px;
-  border: 2px dashed #E9D5FF;
-  color: #718096;
-  font-weight: 600;
-}
-
-.lista-eventos-sin-resultados i {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 15px;
-  color: #9D50BB;
-}
 
 /* Define el contenedor de tarjetas visibles */
 .lista-eventos-grid {
@@ -278,36 +220,6 @@
   border: 5px solid #DC2626 !important;
 }
 
-/* Muestra el estado de la invitacion como insignia */
-.badge-invitacion {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  z-index: 10;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Colores por estado dentro de la insignia */
-.badge-invitacion.aceptada {
-  background: #DCFCE7;
-  color: #16A34A;
-}
-
-.badge-invitacion.pendiente {
-  background: #FEF3C7;
-  color: #D97706;
-}
-
-.badge-invitacion.rechazada {
-  background: #FEE2E2;
-  color: #DC2626;
-}
 
 /* Indica quien ha invitado al usuario al evento */
 .lista-eventos-invitado-por {
@@ -348,79 +260,4 @@
   font: 1rem 'Open Sans';
   line-height: 1.6;
 }
-
-/* Construye el bloque de cierre inferior del listado */
-.lista-eventos-footer {
-  padding: 100px 24px;
-  color: #E9D5FF;
-  text-align: center;
-  background-color: #1E1B4B;
-  border-top: 4px solid #9D50BB;
-}
-
-.lista-eventos-footer > div {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.lista-eventos-footer img {
-  width: 220px;
-  margin: 0 auto 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-.lista-eventos-footer h2 {
-  margin-bottom: 1.5rem;
-  color: #FFFFFF;
-  font: 3rem 'Oswald';
-  text-transform: uppercase;
-}
-
-/* Introduce la llamada final con un texto de apoyo */
-.lista-eventos-footer-lead {
-  margin-bottom: 3rem;
-  font-size: 1.2rem;
-  opacity: 0.8;
-}
-
-.lista-eventos-footer .social {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  margin-bottom: 4rem;
-}
-
-.lista-eventos-footer .social a {
-  color: #E9D5FF;
-  font-size: 2.8rem;
-  transition: color 0.3s;
-}
-
-/* Agrupa enlaces legales y firma final */
-.lista-eventos-footer-bottom {
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.lista-eventos-footer-bottom ul {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 0;
-  list-style: none;
-  font-family: 'Open Sans';
-  font-weight: 600;
-}
-
-.lista-eventos-footer-bottom a {
-  color: #718096;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.lista-eventos-footer-bottom p {
-  margin-top: 2rem;
-  color: #4A5568;
-  font-size: 0.95rem;
-}
+

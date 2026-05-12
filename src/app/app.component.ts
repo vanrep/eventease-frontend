@@ -12,10 +12,10 @@ import { filter } from 'rxjs/operators';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  isInicio = false;
-  isAuthPage = false;
-  currentUrl = '';
-  btnSubir = false;
+  isMainPage = false;  // true cuando estamos en rutas principales de la app
+  isAuthPage = false;  // true cuando estamos en login o registro
+  currentUrl = '';     // almacena la ruta activa actual
+  btnSubir = false;    // controla la visibilidad del boton de volver arriba
 
   constructor(private router: Router) {
     // Recupera el tema guardado y lo aplica al cargar la aplicacion
@@ -25,23 +25,27 @@ export class AppComponent {
       document.body.setAttribute('data-theme', 'dark');
     }
 
+    // Escucha cada cambio de ruta y actualiza el estado del componente
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
+      // Guarda la URL final tras posibles redirecciones
       this.currentUrl = event.urlAfterRedirects || event.url;
 
       // Lleva la vista al inicio en cada cambio de ruta
       window.scrollTo(0, 0);
 
+      // Detecta si la ruta actual es una pagina de autenticacion
       this.isAuthPage = this.currentUrl === '/login' || this.currentUrl === '/register';
 
       // Marca las rutas donde se activa la presentacion principal del sitio
-      this.isInicio = this.currentUrl === '/inicio' || this.currentUrl === '/' || 
-                      this.currentUrl.includes('inicio') || this.currentUrl.includes('crear') ||
-                      this.currentUrl.includes('/eventos') || this.currentUrl.includes('/invitaciones') || this.currentUrl.includes('admin');
+      this.isMainPage = this.currentUrl === '/inicio' || this.currentUrl === '/' || 
+                        this.currentUrl.includes('inicio') || this.currentUrl.includes('crear') ||
+                        this.currentUrl.includes('/eventos') || this.currentUrl.includes('/invitaciones') || this.currentUrl.includes('admin');
     });
   }
 
+  // Detecta el scroll de la ventana para mostrar u ocultar el boton de subir
   @HostListener('window:scroll', [])
   onWindowScroll() {
     // Muestra el boton flotante cuando el usuario ya ha bajado suficiente

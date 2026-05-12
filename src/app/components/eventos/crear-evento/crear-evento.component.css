@@ -1,4 +1,5 @@
-.crear-evento-seccion {
+/* Fondo principal de la pagina */
+.seccion {
   min-height: 100vh;
   display: block;
   background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
@@ -9,7 +10,8 @@
   scroll-snap-align: none;
 }
 
-.crear-evento-contenedor {
+/* Tarjeta blanca central del formulario */
+.contenedor {
   width: 100%;
   max-width: 1000px;
   margin: 100px auto;
@@ -20,44 +22,51 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
-.crear-evento-cabecera {
+/* Cabecera con el campo del nombre */
+.cabecera {
   text-align: left;
   margin-bottom: 30px;
   border: none;
   padding: 0;
 }
 
-.crear-evento-grid {
+/* Grid de dos columnas para fecha y capacidad */
+.grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
 
-.crear-evento-grupo {
+/* Agrupacion vertical de label + campo */
+.grupo {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.crear-evento-ancho-completo {
+/* Hace que el elemento ocupe las dos columnas del grid */
+.ancho-completo {
   grid-column: span 2;
 }
 
-.crear-evento-grid,
-.crear-evento-separador {
+/* Separacion vertical entre secciones */
+.grid,
+.separador {
   margin-bottom: 40px;
 }
 
-.crear-evento-cabecera label,
-.crear-evento-invitations-header label {
+/* Tamaño de label en cabecera y en invitaciones */
+.cabecera label,
+.invitaciones-header label {
   font-size: 1.2rem;
 }
 
-.crear-evento-cabecera label {
+.cabecera label {
   letter-spacing: 1px;
 }
 
-.crear-evento-cabecera input {
+/* Input del titulo con estilo de cabecera */
+.cabecera input {
   padding: 10px 0;
   font-size: 2rem;
   font-weight: 700;
@@ -68,12 +77,14 @@
   background: transparent;
 }
 
-.crear-evento-separador textarea {
+/* Textarea de descripcion */
+.separador textarea {
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
-.crear-evento-info-card {
+/* Tarjeta para los campos de fecha y capacidad */
+.info-card {
   padding: 25px;
   background: #FDFBFF;
   border: 1px solid #E9D5FF;
@@ -81,6 +92,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
+/* Estilo general de todos los labels */
 label {
   display: flex;
   align-items: center;
@@ -93,11 +105,13 @@ label {
   letter-spacing: 0.5px;
 }
 
+/* Color morado para iconos de labels y del input de email */
 label i,
-.crear-evento-guest-input-icon {
+.email-icon {
   color: #9D50BB;
 }
 
+/* Estilo base de inputs y textareas */
 input,
 textarea {
   width: 100%;
@@ -108,9 +122,10 @@ textarea {
   border-radius: 14px;
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Foco en inputs y textareas */
 input:focus,
 textarea:focus {
   outline: none;
@@ -119,51 +134,55 @@ textarea:focus {
   box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
 }
 
-.crear-evento-info-input {
+/* Input dentro de las tarjetas de fecha y capacidad */
+.info-input {
   margin-top: 10px;
   border-color: #F3E8FF;
 }
 
-.crear-evento-seleccion-lugares,
-.crear-evento-lugar-input {
+/* Input de ubicacion seleccionada en el mapa */
+.lugar-input {
   margin-top: 15px;
-}
-
-.crear-evento-lista-lugares {
-  max-height: 400px;
-}
-
-.crear-evento-lista-lugares h4 {
-  font-size: 1.1rem;
-}
-
-.crear-evento-lista-lugares p,
-.crear-evento-invitado-error {
-  font-size: 0.85rem;
-}
-
-.crear-evento-contenedor-mapa {
-  height: 400px;
-}
-
-.crear-evento-lugar-input {
   color: #9D50BB;
   font-weight: 600;
   border-style: dashed;
   background: #F8F7FF;
 }
 
-.crear-evento-lugar-accion {
+/* Lista de lugares disponibles */
+.lista-lugares {
+  max-height: 400px;
+}
+
+.lista-lugares h4 {
+  font-size: 1.1rem;
+}
+
+/* Texto pequeño para direcciones y errores */
+.lista-lugares p,
+.error-invitado {
+  font-size: 0.85rem;
+}
+
+/* Contenedor del mapa de Leaflet */
+.mapa {
+  height: 400px;
+}
+
+/* Contenedor del input de ubicacion con boton flotante */
+.lugar-accion {
   position: relative;
   margin-top: 15px;
 }
 
-.crear-evento-lugar-accion .crear-evento-lugar-input {
+/* Deja espacio a la derecha para el boton de precios */
+.lugar-accion .lugar-input {
   margin-top: 0;
   padding-right: 250px;
 }
 
-.crear-evento-precios-boton {
+/* Boton de consultar precios (posicion absoluta dentro del input) */
+.precios-boton {
   position: absolute;
   top: 50%;
   right: 12px;
@@ -172,39 +191,44 @@ textarea:focus {
   font-size: 0.95rem;
 }
 
-.crear-evento-precios-boton:disabled:hover,
-.crear-evento-precios-boton[disabled]:hover {
-  background: #D8B4E2!important;
-  transform: translateY(-50%)!important;
-  box-shadow: none!important;
+/* Evita que el hover mueva el boton desactivado */
+.precios-boton:disabled:hover,
+.precios-boton[disabled]:hover {
+  background: #D8B4E2 !important;
+  transform: translateY(-50%) !important;
+  box-shadow: none !important;
 }
 
-.crear-evento-invitations-section {
+/* Seccion de invitaciones con separador superior */
+.invitaciones {
   margin-top: 40px;
   padding-top: 40px;
   border-top: 2px solid #F5F3FF;
 }
 
-.crear-evento-invitations-header,
-.crear-evento-fila-invitado,
-.crear-evento-anadir-invitado-button,
-.crear-evento-quitar-invitado-button,
-.crear-evento-invitado-error {
+/* Elementos con flexbox centrado verticalmente */
+.invitaciones-header,
+.fila-invitado,
+.btn-anadir,
+.btn-quitar,
+.error-invitado {
   display: flex;
   align-items: center;
 }
 
-.crear-evento-invitations-header {
+/* Cabecera de invitaciones: label a la izquierda, boton a la derecha */
+.invitaciones-header {
   justify-content: space-between;
   margin-bottom: 25px;
 }
 
-.crear-evento-invitations-header label {
+.invitaciones-header label {
   margin: 0;
 }
 
-.crear-evento-anadir-invitado-button,
-.crear-evento-quitar-invitado-button {
+/* Tamaño compartido de los botones de añadir y quitar */
+.btn-anadir,
+.btn-quitar {
   width: 45px;
   height: 45px;
   justify-content: center;
@@ -212,77 +236,72 @@ textarea:focus {
   cursor: pointer;
 }
 
-.crear-evento-anadir-invitado-button {
+/* Boton de añadir invitado (circulo morado) */
+.btn-anadir {
   color: #fff;
   border-radius: 50%;
   background: #9D50BB;
   box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
 }
 
-.crear-evento-anadir-invitado-button i {
+.btn-anadir i {
   font-size: 1.2rem;
 }
 
-.crear-evento-lista-vacia {
-  padding: 40px;
-  color: #718096;
-  text-align: center;
-  background: #FDFBFF;
-  border: 2px dashed #E9D5FF;
-  border-radius: 20px;
-}
 
-.crear-evento-lista-vacia i {
-  display: block;
-  margin-bottom: 15px;
-  color: #E9D5FF;
-  font-size: 2rem;
-}
-
-.crear-evento-lista-invitados {
+/* Lista vertical de filas de invitados */
+.lista-invitados {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.crear-evento-fila-invitado {
+/* Fila: input de email + boton de eliminar */
+.fila-invitado {
   gap: 15px;
 }
 
-.crear-evento-guest-input-contenedor {
+/* Contenedor del input de email (para posicionar el icono dentro) */
+.email-contenedor {
   position: relative;
   flex: 1;
 }
 
-.crear-evento-guest-input-icon {
+/* Icono de email dentro del input */
+.email-icon {
   position: absolute;
   top: 50%;
   left: 18px;
   transform: translateY(-50%);
 }
 
-.crear-evento-guest-input-contenedor input {
+/* Padding para que el texto no quede bajo el icono */
+.email-contenedor input {
   padding-left: 50px;
 }
 
-.crear-evento-quitar-invitado-button {
+/* Boton de quitar invitado (rojo) */
+.btn-quitar {
   color: #EF4444;
   background: #FEE2E2;
   border-radius: 12px;
 }
 
-.crear-evento-invitado-error {
+/* Mensaje de error bajo el campo de email */
+.error-invitado {
   gap: 6px;
   margin: 6px 0 0 8px;
   color: #EF4444;
 }
 
-.crear-evento-alerta-ok,
-.crear-evento-alerta-error {
+/* Margen inferior de los mensajes de alerta */
+.alerta-ok,
+.alerta-error {
   margin-bottom: 30px;
 }
 
-.crear-evento-acciones {
+/* Fila de botones de accion final */
+.acciones {
   grid-column: span 2;
   display: flex;
   flex-wrap: wrap;
@@ -293,75 +312,32 @@ textarea:focus {
   border-top: 1px solid #F5F3FF;
 }
 
-.crear-evento-acciones .btn-cta,
-.crear-evento-acciones .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  min-width: 200px;
-  padding: 18px 45px;
-  border-radius: 50px;
-  font-family: 'Oswald', sans-serif;
+/* Estilo compartido de los botones crear y cancelar */
+.acciones .btn-cta,
+.acciones .btn-secondary {
   font-size: 1.1rem;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-  animation: none !important;
-  transition: none !important;
+  justify-content: center;
 }
 
-.crear-evento-acciones .btn-cta {
+/* Boton principal de crear evento */
+.acciones .btn-cta {
   min-width: 250px;
-  color: #fff !important;
-  border: none !important;
-  background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%) !important;
 }
 
-.crear-evento-acciones .btn-secondary {
+/* Boton secundario de cancelar */
+.acciones .btn-secondary {
   min-width: 150px;
-  color: #4C1D95 !important;
-  background: #fff !important;
-  border: 2px solid #E9D5FF !important;
 }
 
-.btn-secondary:hover {
-  background: #FDFBFF !important;
-  border-color: #9D50BB !important;
-}
 
-#footer {
-  padding: 80px 24px;
-  color: #E9D5FF;
-  text-align: center;
-  background: #1E1B4B;
-}
-
-#footer > div {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-#footer h2 {
-  margin-bottom: 1rem;
-  color: #fff;
-  font: 2.5rem 'Oswald';
-}
-
-#footer p {
-  color: #718096;
-}
-
+/* Responsive: una sola columna en movil */
 @media (max-width: 768px) {
-  .crear-evento-grid {
+  .grid {
     grid-template-columns: 1fr;
   }
 
-  .crear-evento-ancho-completo,
-  .crear-evento-acciones {
+  .ancho-completo,
+  .acciones {
     grid-column: span 1;
   }
 }

@@ -147,10 +147,22 @@ export class CrearEventoComponent {
     });
   }
 
-  // crear evento
+  // Crea el evento tras validar que los campos obligatorios tienen valor
   guardar(): void {
     this.mensajeOk = '';
     this.mensajeError = '';
+
+    // Comprobamos que los campos obligatorios no esten vacios
+    const camposFaltantes: string[] = [];
+    if (!this.evento.titulo)    camposFaltantes.push('Nombre del evento');
+    if (!this.evento.fecha)     camposFaltantes.push('Fecha');
+    if (!this.evento.capacidad) camposFaltantes.push('Capacidad');
+    if (!this.evento.ubicacion) camposFaltantes.push('Lugar');
+
+    if (camposFaltantes.length > 0) {
+      this.mensajeError = 'Faltan campos obligatorios: ' + camposFaltantes.join(', ');
+      return;
+    }
 
     this.eventoService.crearEvento(this.evento).subscribe({
       next: (response) => {
