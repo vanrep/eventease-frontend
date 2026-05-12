@@ -1,13 +1,13 @@
 <!-- Página de creación de evento -->
-<section class="seccion page-section">
-  <div class="contenedor page-card">
+<section class="seccion">
+  <div class="contenedor">
 
     <!-- Formulario principal -->
     <form (ngSubmit)="guardar()">
 
       <!-- Nombre del evento -->
-      <div class="cabecera">
-        <div class="grupo ancho-completo full-width">
+      <div class="form-header">
+        <div class="grupo full-width">
           <label for="titulo">
             <i class="fa-solid fa-pen-nib"></i>
             NOMBRE DEL EVENTO
@@ -24,7 +24,7 @@
       </div>
 
       <!-- Descripción del evento -->
-      <div class="grupo ancho-completo full-width separador section-gap">
+      <div class="grupo full-width separador section-gap">
         <label for="descripcion">
           <i class="fa-solid fa-align-left"></i>
           DESCRIPCIÓN DEL EVENTO
@@ -43,7 +43,7 @@
       <div class="grid form-grid">
 
         <!-- Fecha y hora -->
-        <div class="grupo form-group info-card">
+        <div class="info-card">
           <label for="fecha">
             <i class="fa-solid fa-calendar-check"></i>
             ¿CUÁNDO SERÁ?
@@ -55,11 +55,12 @@
             name="fecha"
             class="info-input"
             [(ngModel)]="evento.fecha"
+            [min]="minFecha"
             required>
         </div>
 
         <!-- Capacidad -->
-        <div class="grupo form-group info-card">
+        <div class="info-card">
           <label for="capacidad">
             <i class="fa-solid fa-users-line"></i>
             ¿CUÁNTOS ASISTIRÁN?
@@ -78,7 +79,7 @@
       </div>
 
       <!-- Selección de lugar -->
-      <div class="grupo ancho-completo full-width separador section-gap">
+      <div class="grupo">
         <label>
           <i class="fa-solid fa-map-location-dot"></i>
           SELECCIÓN DE LUGAR
@@ -134,7 +135,7 @@
       </div>
 
       <!-- Invitaciones -->
-      <div class="grupo ancho-completo full-width invitaciones">
+      <div class="grupo full-width invitaciones">
 
         <!-- Cabecera de invitaciones -->
         <div class="invitaciones-header">
@@ -174,7 +175,7 @@
                   placeholder="correo@ejemplo.com"
                   [(ngModel)]="invitado.email"
                   [name]="'invitado' + i"
-                  [style.border-color]="invitado.error ? '#EF4444' : ''">
+                  [style.border-color]="invitado.error ? 'var(--color-danger)' : ''">
               </div>
 
               <!-- Eliminar invitado -->

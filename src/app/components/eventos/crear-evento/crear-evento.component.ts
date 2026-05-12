@@ -24,6 +24,8 @@ interface Lugar {
   styleUrl: './crear-evento.component.css',
 })
 export class CrearEventoComponent {
+  minFecha = this.getMinFecha();
+
   evento: Evento = {
     titulo: '',
     descripcion: '',
@@ -67,6 +69,14 @@ export class CrearEventoComponent {
     private invitacionService: InvitacionService,
     private router: Router,
   ) { }
+
+  private getMinFecha(): string {
+    const now = new Date();
+    const offset = now.getTimezoneOffset();
+    const localNow = new Date(now.getTime() - offset * 60000);
+
+    return localNow.toISOString().slice(0, 16);
+  }
 
   onMapReady(map: L.Map) {
     this.map = map;

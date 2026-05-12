@@ -23,23 +23,11 @@
 .login-logo {
   width: 120px;
   margin: 0 auto 25px;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
 }
 
 
 /* Separación entre campos del login */
 .login-group {
   margin-bottom: 25px;
-}
-
-
-/* Ajustes para pantallas pequeñas */
-@media (max-width: 768px) {
-  .login-card {
-    padding: 32px 24px;
-  }
-
-  .login-header {
-    margin-bottom: 30px;
-  }
 }

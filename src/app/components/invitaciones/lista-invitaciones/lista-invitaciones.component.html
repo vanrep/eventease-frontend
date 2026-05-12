@@ -1,118 +1,118 @@
-<!-- Página de invitaciones -->
-<section class="invitaciones-page">
+<section class="seccion">
 
-  <!-- Mensaje de error -->
-  <div *ngIf="mensajeError" class="alerta-error invitaciones-alert">
-    <i class="fa-solid fa-circle-exclamation"></i>
-    {{ mensajeError }}
-  </div>
-
-  <div class="invitaciones-card">
-
-    <!-- Título principal -->
-    <h1 class="invitaciones-title">
-      <i class="fa-solid fa-envelope-open-text"></i>
-      MIS INVITACIONES
-    </h1>
-
-    <!-- Estado vacío -->
-    <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-state-box">
-      <i class="fa-solid fa-inbox"></i>
-      No tienes invitaciones.
+  <!-- Página de invitaciones -->
+  <div class="contenedor">
+  
+    <!-- Mensaje de error -->
+    <div *ngIf="mensajeError" class="alerta-error">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      {{ mensajeError }}
     </div>
-
-    <!-- Tabla de invitaciones -->
-    <table class="invitaciones-table" *ngIf="invitaciones.length > 0">
-      <thead>
-        <tr>
-          <th>Evento</th>
-          <th>Fecha</th>
-          <th>Ubicación</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let inv of invitaciones">
-
-          <!-- Evento -->
-          <td>
-            <strong class="invitaciones-evento">
-              {{ inv.eventoTitulo }}
-            </strong>
-          </td>
-
-          <!-- Fecha -->
-          <td>
-            {{ inv.eventoFecha | date:'dd/MM/yyyy HH:mm' }}
-          </td>
-
-          <!-- Ubicación -->
-          <td>
-            <i
-              class="fa-solid fa-map-location-dot invitaciones-ubicacion-icon"
-              [title]="inv.eventoUbicacion">
-            </i>
-          </td>
-
-          <!-- Estado -->
-          <td>
-            <span class="badge-status pendiente" *ngIf="inv.estado === 'PENDIENTE'">
-              <i class="fa-solid fa-clock"></i>
-              Pendiente
-            </span>
-
-            <span class="badge-status aceptada" *ngIf="inv.estado === 'ACEPTADA'">
-              <i class="fa-solid fa-circle-check"></i>
-              Aceptada
-            </span>
-
-            <span class="badge-status rechazada" *ngIf="inv.estado === 'RECHAZADA'">
-              <i class="fa-solid fa-circle-xmark"></i>
-              Rechazada
-            </span>
-          </td>
-
-          <!-- Acciones -->
-          <td>
-            <div
-              class="invitaciones-acciones"
-              *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
-
-              <button
-                type="button"
-                class="btn-accion btn-aceptar"
-                (click)="responder(inv.eventoId, true)">
-                <i class="fa-solid fa-circle-check"></i>
-                Aceptar
-              </button>
-
-              <button
-                type="button"
-                class="btn-accion btn-rechazar"
-                (click)="responder(inv.eventoId, false)">
-                <i class="fa-solid fa-circle-xmark"></i>
-                Rechazar
-              </button>
-
-            </div>
-
-            <ng-template #sinAcciones>
-              <span class="invitaciones-sin-acciones">
-                Sin acciones
+  
+    <div class="form-card">
+  
+      <!-- Título principal -->
+      <h1 class="title">
+        <i class="fa-solid fa-envelope-open-text"></i>
+        MIS INVITACIONES
+      </h1>
+  
+      <!-- Estado vacío -->
+      <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-state-box">
+        <i class="fa-solid fa-inbox"></i>
+        No tienes invitaciones.
+      </div>
+  
+      <!-- Tabla de invitaciones -->
+      <table class="table" *ngIf="invitaciones.length > 0">
+        <thead>
+          <tr>
+            <th>Evento</th>
+            <th>Fecha</th>
+            <th>Ubicación</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let inv of invitaciones">
+  
+            <!-- Evento -->
+            <td>
+              <strong class="evento">
+                {{ inv.eventoTitulo }}
+              </strong>
+            </td>
+  
+            <!-- Fecha -->
+            <td>
+              {{ inv.eventoFecha | date:'dd/MM/yyyy HH:mm' }}
+            </td>
+  
+            <!-- Ubicación -->
+            <td>
+              <i
+                class="fa-solid fa-map-location-dot ubicacion-icon"
+                [title]="inv.eventoUbicacion">
+              </i>
+            </td>
+  
+            <!-- Estado -->
+            <td>
+              <span class="badge-status pendiente" *ngIf="inv.estado === 'PENDIENTE'">
+                <i class="fa-solid fa-clock"></i>
+                Pendiente
               </span>
-            </ng-template>
-          </td>
-
-        </tr>
-      </tbody>
-    </table>
-
+  
+              <span class="badge-status aceptada" *ngIf="inv.estado === 'ACEPTADA'">
+                <i class="fa-solid fa-circle-check"></i>
+                Aceptada
+              </span>
+  
+              <span class="badge-status rechazada" *ngIf="inv.estado === 'RECHAZADA'">
+                <i class="fa-solid fa-circle-xmark"></i>
+                Rechazada
+              </span>
+            </td>
+  
+            <!-- Acciones -->
+            <td>
+              <div
+                class="lista-acciones"
+                *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
+  
+                <button
+                  type="button"
+                  class="btn-accion btn-aceptar"
+                  (click)="responder(inv.eventoId, true)">
+                  <i class="fa-solid fa-circle-check"></i>
+                  Aceptar
+                </button>
+  
+                <button
+                  type="button"
+                  class="btn-accion btn-rechazar"
+                  (click)="responder(inv.eventoId, false)">
+                  <i class="fa-solid fa-circle-xmark"></i>
+                  Rechazar
+                </button>
+  
+              </div>
+  
+              <ng-template #sinAcciones>
+                <span class="sin-acciones">
+                  Sin acciones
+                </span>
+              </ng-template>
+            </td>
+  
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
 </section>
-
 
 <!-- Footer visual del listado -->
 <section id="footer" class="marketing-footer">
@@ -145,7 +145,7 @@
       <ul>
         <li><a href="#">Términos</a></li>
         <li><a href="#">Privacidad</a></li>
-        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Conócenos</a></li>
       </ul>
 
       <p>© 2026 EventEase • Organiza. Invita. Disfruta.</p>

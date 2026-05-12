@@ -24,13 +24,13 @@
 
 /* Fondo blanco para secciones alternas */
 .inicio-section-white {
-  background-color: #FFFFFF;
+  background-color: var(--color-bg-card);
 }
 
 
 /* Fondo lila suave para secciones alternas */
 .inicio-section-tint {
-  background-color: #F5F3FF;
+  background-color: var(--color-bg-soft);
 }
 
 
@@ -59,19 +59,6 @@
   font-size: 1.5rem;
 }
 
-
-/* Sección promocional central con fondo de imagen */
-.inicio-info-section {
-  color: #FFFFFF;
-  text-align: center;
-  background-image:
-    linear-gradient(rgba(157, 80, 187, 0.85), rgba(91, 33, 182, 0.85)),
-    url('/assets/images/Banner.jpg');
-  background-position: center;
-  background-size: cover;
-}
-
-
 /* Contenedor interno de la sección promocional */
 .inicio-info-content {
   max-width: 1000px;
@@ -82,7 +69,7 @@
 /* Título principal de la sección promocional */
 .inicio-info-title {
   margin-bottom: 2rem;
-  color: #FFFFFF;
+  color: var(--color-bg-card);
   font-size: 5rem;
   font-weight: 800;
   line-height: 1;
@@ -93,7 +80,7 @@
 /* Texto de apoyo de la sección promocional */
 .inicio-info-copy {
   margin-bottom: 3rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.8rem;
   line-height: 1.6;
 }
@@ -102,41 +89,7 @@
 /* Botón claro dentro de la sección promocional */
 .inicio-info-cta {
   padding: 18px 45px;
-  color: #9D50BB;
+  color: var(--color-primary);
   font-size: 1.5rem;
-  background-color: #FFFFFF;
-}
-
-
-/* Ajustes responsive de la página de inicio */
-@media (max-width: 768px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .inicio-article-box-reverse {
-    flex-direction: column;
-  }
-
-  .inicio-article-image {
-    width: 100%;
-    height: 280px;
-  }
-
-  .inicio-article-title {
-    font-size: 3rem;
-  }
-
-  .inicio-article-copy {
-    font-size: 1.2rem;
-  }
-
-  .inicio-info-title {
-    font-size: 3rem;
-  }
-
-  .inicio-info-copy {
-    font-size: 1.3rem;
-  }
+  background-color: var(--color-bg-card);
 }

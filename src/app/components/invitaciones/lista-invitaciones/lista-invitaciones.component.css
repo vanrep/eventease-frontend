@@ -7,73 +7,57 @@
 
 
 /* Fondo principal de la página */
-.invitaciones-page {
+.seccion {
   min-height: 100vh;
-  box-sizing: border-box;
-  padding: 120px 24px 80px;
-
-  background:
-    linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)),
-    url('/assets/images/Banner.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
 }
 
 
 /* Tarjeta central del listado */
-.invitaciones-card {
+.card {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px;
 
-  background: #FFFFFF;
-  border: 1px solid #E9D5FF;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(157, 80, 187, 0.12);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px var(--color-primary-dark-faded);
 }
 
 
 /* Título principal */
-.invitaciones-title {
+.title {
   margin: 0 0 40px;
 
-  color: #4C1D95;
-  font-family: 'Oswald', sans-serif;
+  color: var(--color-primary-deep);
+  font-family: var(--font-title);
   font-size: 3rem;
   text-align: center;
 }
 
 
 /* Icono del título */
-.invitaciones-title i {
-  color: #9D50BB;
-}
-
-
-/* Mensaje de error superior */
-.invitaciones-alert {
-  max-width: 1100px;
-  margin: 0 auto 24px;
+.title i {
+  color: var(--color-primary);
 }
 
 
 /* Tabla principal */
-.invitaciones-table {
+.table {
   width: 100%;
   overflow: hidden;
 
   border-collapse: collapse;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
 }
 
 
 /* Cabecera de la tabla */
-.invitaciones-table th {
+.table th {
   padding: 16px;
 
-  background: #F5F3FF;
-  color: #4C1D95;
+  background: var(--color-bg-soft);
+  color: var(--color-primary-deep);
 
   font-size: 0.9rem;
   text-align: left;
@@ -82,37 +66,37 @@
 
 
 /* Celdas de la tabla */
-.invitaciones-table td {
+.table td {
   padding: 18px 16px;
 
-  color: #4A5568;
+  color: var(--color-text-soft);
   font-size: 0.95rem;
 
-  border-bottom: 1px solid #F5F3FF;
+  border-bottom: 1px solid var(--color-bg-soft);
 }
 
 
 /* Hover de fila */
-.invitaciones-table tr:hover {
+.table tr:hover {
   background: #FDFBFF;
 }
 
 
 /* Título del evento dentro de la tabla */
-.invitaciones-evento {
-  color: #4C1D95;
+.evento {
+  color: var(--color-primary-deep);
 }
 
 
 /* Icono de ubicación */
-.invitaciones-ubicacion-icon {
-  color: #9D50BB;
+.ubicacion-icon {
+  color: var(--color-primary);
   font-size: 1.1rem;
 }
 
 
 /* Acciones de aceptar/rechazar */
-.invitaciones-acciones {
+.lista-acciones {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -121,34 +105,8 @@
 
 
 /* Texto cuando no hay acciones disponibles */
-.invitaciones-sin-acciones {
-  color: #718096;
+.sin-acciones {
+  color: var(--color-muted);
   font-size: 0.9rem;
   font-weight: 600;
-}
-
-
-/* Ajustes responsive */
-@media (max-width: 768px) {
-  .invitaciones-page {
-    padding: 110px 16px 56px;
-  }
-
-  .invitaciones-card {
-    padding: 28px 20px;
-  }
-
-  .invitaciones-title {
-    font-size: 2.2rem;
-  }
-
-  .invitaciones-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .invitaciones-acciones {
-    flex-wrap: nowrap;
-  }
 }

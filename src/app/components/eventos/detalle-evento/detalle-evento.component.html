@@ -1,13 +1,13 @@
 <!-- Página de detalle del evento -->
-<section class="detalle-evento-seccion page-section">
-  <div class="form-card page-card">
+<section class="seccion">
+  <div class="contenedor">
 
     <!-- Formulario principal del detalle -->
     <form (ngSubmit)="guardar()" #eventoForm="ngForm" *ngIf="evento">
 
       <!-- Nombre del evento -->
       <div class="form-header">
-        <div class="form-group detalle-evento-ancho-completo full-width">
+        <div>
           <label for="titulo">
             <i class="fa-solid fa-pen-nib"></i>
             NOMBRE DEL EVENTO
@@ -25,7 +25,7 @@
       </div>
 
       <!-- Descripción del evento -->
-      <div class="form-group detalle-evento-ancho-completo full-width detalle-evento-section-gap section-gap">
+      <div class="form-group section-gap">
         <label for="descripcion">
           <i class="fa-solid fa-align-left"></i>
           DESCRIPCIÓN DEL EVENTO
@@ -46,7 +46,7 @@
       <div class="form-grid">
 
         <!-- Fecha y hora -->
-        <div class="form-group detalle-evento-info-card info-card">
+        <div class="form-group info-card">
           <label for="fecha">
             <i class="fa-solid fa-calendar-check"></i>
             ¿CUÁNDO SERÁ?
@@ -56,14 +56,14 @@
             type="datetime-local"
             id="fecha"
             name="fecha"
-            class="detalle-evento-info-input info-input"
+            class="info-input"
             [(ngModel)]="evento.fecha"
             required
             [readonly]="!esOrganizador">
         </div>
 
         <!-- Capacidad -->
-        <div class="form-group detalle-evento-info-card info-card">
+        <div class="form-group info-card">
           <label for="capacidad">
             <i class="fa-solid fa-users-line"></i>
             ¿CUÁNTOS ASISTIRÁN?
@@ -73,7 +73,7 @@
             type="number"
             id="capacidad"
             name="capacidad"
-            class="detalle-evento-info-input info-input"
+            class="info-input"
             placeholder="Ej: 50"
             [(ngModel)]="evento.capacidad"
             required
@@ -83,16 +83,16 @@
       </div>
 
       <!-- Selección de lugar -->
-      <div class="form-group detalle-evento-ancho-completo full-width detalle-evento-section-gap section-gap">
+      <div class="form-group section-gap">
         <label>
           <i class="fa-solid fa-map-location-dot"></i>
           SELECCIÓN DE LUGAR
         </label>
 
-        <div class="seleccion-lugares detalle-evento-lugares">
+        <div class="seleccion-lugares">
 
           <!-- Lista de lugares visible solo para organizador -->
-          <div class="detalle-evento-lista-lugares" *ngIf="esOrganizador">
+          <div class="lista-lugares" *ngIf="esOrganizador">
             <div
               class="lugar-item"
               *ngFor="let lugar of lugares"
@@ -107,8 +107,8 @@
           <!-- Mapa -->
           <div
             class="contenedor-mapa"
-            [class.detalle-evento-map-organizador]="esOrganizador"
-            [class.detalle-evento-map-invitado]="!esOrganizador"
+            [class.mapa-organizador]="esOrganizador"
+            [class.mapa-invitado]="!esOrganizador"
             leaflet
             [leafletOptions]="options"
             (leafletMapReady)="onMapReady($event)">
@@ -121,7 +121,7 @@
           type="text"
           id="ubicacion"
           name="ubicacion"
-          class="detalle-evento-lugar-input lugar-input"
+          class="lugar-input"
           placeholder="Ubicación del evento"
           [(ngModel)]="evento.ubicacion"
           required
@@ -130,11 +130,11 @@
 
       <!-- Invitaciones: solo organizador -->
       <div
-        class="form-group detalle-evento-ancho-completo full-width detalle-evento-invitations-section invitaciones"
+        class="form-group full-width invitations-section invitaciones"
         *ngIf="esOrganizador">
 
         <!-- Cabecera de invitaciones -->
-        <div class="detalle-evento-invitations-header invitaciones-header">
+        <div class="invitaciones-header">
           <label>
             <i class="fa-solid fa-envelope-open-text"></i>
             GESTIÓN DE INVITACIONES
@@ -142,7 +142,7 @@
 
           <button
             type="button"
-            class="detalle-evento-agregar-invitado-button btn-anadir"
+            class="btn-anadir"
             aria-label="Añadir invitado"
             (click)="agregarInvitado()">
             <i class="fa-solid fa-plus"></i>
@@ -156,14 +156,14 @@
         </div>
 
         <!-- Lista de invitados -->
-        <div class="detalle-evento-lista-invitados lista-invitados">
+        <div class="lista-invitados">
 
           <div *ngFor="let invitado of invitados; let i = index">
 
-            <div class="detalle-evento-fila-invitado fila-invitado">
+            <div class="fila-invitado">
 
               <!-- Estado de la invitación -->
-              <div class="detalle-evento-status-invitado">
+              <div class="status-invitado">
                 <div [ngSwitch]="invitado.estado">
 
                   <span *ngSwitchCase="'PENDIENTE'" title="Pendiente" class="badge-status pendiente">
@@ -190,12 +190,12 @@
               </div>
 
               <!-- Email del invitado -->
-              <div class="detalle-evento-guest-input-wrapper email-contenedor">
-                <i class="fa-solid fa-envelope detalle-evento-guest-input-icon email-icon"></i>
+              <div class="email-contenedor">
+                <i class="fa-solid fa-envelope email-icon"></i>
 
                 <input
                   type="email"
-                  class="detalle-evento-guest-input"
+                  class="guest-input"
                   placeholder="correo@ejemplo.com"
                   [(ngModel)]="invitado.emailAsistente"
                   [name]="'invitado' + i">
@@ -204,7 +204,7 @@
               <!-- Eliminar invitado -->
               <button
                 type="button"
-                class="detalle-evento-remove-guest-button btn-quitar"
+                class="btn-quitar"
                 aria-label="Quitar invitado"
                 (click)="quitarInvitado(i)">
                 <i class="fa-solid fa-trash-can"></i>
@@ -217,13 +217,13 @@
       </div>
 
       <!-- Mensaje de éxito -->
-      <div *ngIf="mensajeOk" class="alerta-ok alert-success">
+      <div *ngIf="mensajeOk" class="alerta-ok">
         <i class="fa-solid fa-circle-check"></i>
         {{ mensajeOk }}
       </div>
 
       <!-- Mensaje de error -->
-      <div *ngIf="mensajeError" class="alerta-error alert-error">
+      <div *ngIf="mensajeError" class="alerta-error">
         <i class="fa-solid fa-circle-exclamation"></i>
         {{ mensajeError }}
       </div>
@@ -235,7 +235,7 @@
         <ng-container *ngIf="esOrganizador">
           <button
             type="submit"
-            class="btn-cta detalle-evento-primary-action"
+            class="btn-cta"
             [disabled]="!eventoForm.valid">
             <i class="fa-solid fa-cloud-arrow-up"></i>
             ACTUALIZAR EVENTO
@@ -243,7 +243,7 @@
 
           <button
             type="button"
-            class="btn-danger detalle-evento-secondary-action"
+            class="btn-danger"
             (click)="eliminar()">
             <i class="fa-solid fa-trash-can"></i>
             ELIMINAR EVENTO
@@ -254,7 +254,7 @@
         <ng-container *ngIf="!esOrganizador">
           <button
             type="button"
-            class="btn-cta detalle-evento-response-action"
+            class="btn-cta"
             (click)="aceptarInvitacion()">
             <i class="fa-solid fa-circle-check"></i>
             ACEPTAR
@@ -262,7 +262,7 @@
 
           <button
             type="button"
-            class="btn-danger detalle-evento-response-action"
+            class="btn-danger"
             (click)="rechazarInvitacion()">
             <i class="fa-solid fa-circle-xmark"></i>
             RECHAZAR
@@ -270,7 +270,7 @@
         </ng-container>
 
         <!-- Volver al listado -->
-        <a routerLink="/eventos" class="btn-secondary detalle-evento-secondary-action">
+        <a routerLink="/eventos" class="btn-secondary">
           <i class="fa-solid fa-arrow-left"></i>
           VOLVER
         </a>

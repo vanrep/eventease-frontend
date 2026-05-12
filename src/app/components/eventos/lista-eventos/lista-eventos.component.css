@@ -6,35 +6,18 @@
    ========================================================= */
 
 
-/* Fondo principal del listado */
-.lista-eventos-page {
-  min-height: 100vh;
-  background:
-    linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)),
-    url('/assets/images/Banner.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-
-
-/* Mantiene altura suficiente cuando no hay eventos */
-.lista-eventos-empty-hero {
-  min-height: 85vh;
-}
-
 
 /* Bloque superior del listado */
-.lista-eventos-cabecera {
+.header {
   width: 100%;
-  padding: 140px 24px 20px;
+  padding: 80px 24px 20px;
   box-sizing: border-box;
   background: transparent;
 }
 
 
 /* Barra de buscador, botón y filtros */
-.lista-eventos-toolbar {
+.toolbar {
   max-width: 1300px;
   margin: 0 auto 16px;
 
@@ -47,47 +30,47 @@
 
 
 /* Contenedor del buscador con icono */
-.lista-eventos-buscador {
+.buscador {
   position: relative;
   width: min(320px, 100%);
 }
 
 
 /* Icono del buscador */
-.lista-eventos-buscador i {
+.buscador i {
   position: absolute;
   top: 50%;
   left: 16px;
 
-  color: #9D50BB;
+  color: var(--color-primary);
   transform: translateY(-50%);
 }
 
 
 /* Campo de búsqueda */
-.lista-eventos-buscador input {
+.buscador input {
   width: 100%;
   padding: 13px 18px 13px 45px;
 
-  background: #FFFFFF;
-  border: 2px solid #E9D5FF;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(157, 80, 187, 0.08);
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(var(--color-box-shadow) / 0.08);
 
-  color: #4A5568;
+  color: var(--color-text-soft);
   font-weight: 600;
 }
 
 
 /* Foco del campo de búsqueda */
-.lista-eventos-buscador input:focus {
+.buscador input:focus {
   outline: none;
-  border-color: #9D50BB;
+  border-color: var(--color-primary);
 }
 
 
 /* Cápsula de filtros */
-.lista-eventos-filtros {
+.filtros {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -95,20 +78,20 @@
 
   padding: 8px 12px;
 
-  background: #FFFFFF;
-  border: 2px solid #E9D5FF;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(157, 80, 187, 0.08);
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-primary-light);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 12px rgba(var(--color-box-shadow) / 0.08);
 }
 
 
 /* Checkbox individual del filtro */
-.lista-eventos-filtro-check {
+.filtro-check {
   display: flex;
   align-items: center;
   gap: 6px;
 
-  color: #4C1D95;
+  color: var(--color-primary-deep);
   font-size: 0.85rem;
   font-weight: 800;
   white-space: nowrap;
@@ -118,15 +101,15 @@
 
 
 /* Control nativo del checkbox */
-.lista-eventos-filtro-check input {
-  accent-color: #9D50BB;
+.filtro-check input {
+  accent-color: var(--color-primary);
   cursor: pointer;
 }
 
 
 /* Filtro de pendientes */
 .pendiente-check {
-  color: #D97706;
+  color: var(--color-warning);
 }
 
 
@@ -138,35 +121,38 @@
 
 /* Filtro de rechazadas */
 .rechazada-check {
-  color: #DC2626;
+  color: var(--color-danger-dark);
 }
 
 
 /* Contenedor del mensaje de error */
-.lista-eventos-alert {
+.alert {
   max-width: 900px;
   margin: 20px auto;
 }
 
 
 /* Grid de tarjetas del listado */
-.lista-eventos-grid {
+.grid {
   max-width: 1300px;
   margin: 0 auto;
   padding: 60px 24px;
   gap: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 
 /* Tarjeta individual del evento */
-.lista-eventos-tarjeta {
+.tarjeta {
   position: relative;
   width: 380px;
   overflow: hidden;
 
-  border: 5px solid #E9D5FF;
-  border-radius: 24px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: var(--color-bg);
+  border: 5px solid var(--color-primary-light);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 10px rgba(var(--color-black-rgb) / 0.05);
 
   cursor: pointer;
   transition: all 0.3s ease;
@@ -174,20 +160,20 @@
 
 
 /* Hover de tarjeta */
-.lista-eventos-tarjeta:hover {
+.tarjeta:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 30px -10px rgba(157, 80, 187, 0.2);
+  box-shadow: 0 20px 30px -10px rgba(var(--color-box-shadow) / 0.2);
 }
 
 
 /* Título en hover */
-.lista-eventos-tarjeta:hover h2 {
-  color: #9D50BB;
+.tarjeta:hover h2 {
+  color: var(--color-primary);
 }
 
 
 /* Imagen de la tarjeta */
-.lista-eventos-tarjeta img {
+.tarjeta img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -195,32 +181,35 @@
 
 
 /* Contenido interno de la tarjeta */
-.lista-eventos-tarjeta .tarjeta-body {
+.tarjeta .tarjeta-body {
   position: relative;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
 /* Borde de evento aceptado */
-.lista-eventos-tarjeta.border-aceptada {
+.tarjeta.border-aceptada {
   border-color: #16A34A;
 }
 
 
 /* Borde de evento pendiente */
-.lista-eventos-tarjeta.border-pendiente {
-  border-color: #D97706;
+.tarjeta.border-pendiente {
+  border-color: var(--color-warning);
 }
 
 
 /* Borde de evento rechazado */
-.lista-eventos-tarjeta.border-rechazada {
-  border-color: #DC2626;
+.tarjeta.border-rechazada {
+  border-color: var(--color-danger-dark);
 }
 
 
 /* Badge de estado de invitación dentro de la tarjeta */
-.lista-eventos-status-badge {
+.status-badge {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -229,7 +218,7 @@
 
 
 /* Texto que muestra quién invitó al usuario */
-.lista-eventos-invitado-por {
+.invitado-por {
   height: 20px;
   margin-top: 38px;
   margin-bottom: 12px;
@@ -239,20 +228,20 @@
   justify-content: center;
   gap: 6px;
 
-  color: #718096;
+  color: var(--color-muted);
   font-size: 0.8rem;
   font-weight: 600;
 }
 
 
 /* Icono de invitador */
-.lista-eventos-invitado-por i {
-  color: #9D50BB;
+.invitado-por i {
+  color: var(--color-primary);
 }
 
 
 /* Badge de días restantes */
-.lista-eventos-badge-dias {
+.badge-dias {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -264,12 +253,12 @@
 
   padding: 4px 10px;
 
-  background: #FFFFFF;
-  border: 1px solid rgba(157, 80, 187, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(157, 80, 187, 0.15);
+  background: var(--color-bg-card);
+  border: 1px solid rgba(var(--color-box-shadow) / 0.5);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 10px rgba(var(--color-box-shadow) / 0.15);
 
-  color: #9D50BB;
+  color: var(--color-primary);
   font-size: 0.8rem;
   font-weight: 800;
 
@@ -279,32 +268,32 @@
 
 
 /* Hover del badge de días */
-.lista-eventos-badge-dias:hover {
-  background: #9D50BB;
-  color: #FFFFFF;
+.badge-dias:hover {
+  background: var(--color-primary);
+  color: var(--color-bg-card);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
+  box-shadow: 0 4px 10px rgba(var(--color-box-shadow) / 0.3);
 }
 
 
 /* Icono del badge de días */
-.lista-eventos-badge-dias i {
+.badge-dias i {
   font-size: 1rem;
 }
 
 
 /* Variante urgente del badge de días */
-.lista-eventos-badge-dias.urgente {
+.badge-dias.urgente {
   background: #FEF2F2;
-  color: #DC2626;
-  border-color: #FECACA;
+  color: var(--color-danger-dark);
+  border: 1px solid #FECACA;
 }
 
 
 /* Hover de la variante urgente */
-.lista-eventos-badge-dias.urgente:hover {
-  background: #DC2626;
-  color: #FFFFFF;
+.badge-dias.urgente:hover {
+  background: var(--color-danger-dark);
+  color: var(--color-bg-card);
 }
 
 
@@ -325,16 +314,19 @@
 
 
 /* Reloj animado en eventos urgentes */
-.lista-eventos-badge-dias.urgente i {
+.badge-dias.urgente i {
   animation: reloj-arena-animacion 3s infinite ease-in-out;
 }
 
 
 /* Título de la tarjeta */
-.lista-eventos-tarjeta h2 {
+.tarjeta h2 {
   width: 100%;
+  margin: 0;
   margin-top: 10px;
+  color: var(--color-primary-deep);
 
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -342,45 +334,21 @@
 
 
 /* Fecha del evento */
-.lista-eventos-tarjeta .evento-fecha {
+.tarjeta .evento-fecha {
   margin-bottom: 1.5rem;
 
-  color: #9D50BB;
+  text-align: center;
+  color: var(--color-primary);
   font-size: 1.1rem;
   font-weight: 700;
 }
 
 
 /* Texto de descripción y ubicación */
-.lista-eventos-tarjeta p {
-  color: #4A5568;
-  font-family: 'Open Sans', sans-serif;
+.tarjeta p {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-}
-
-
-/* Ajustes responsive */
-@media (max-width: 768px) {
-  .lista-eventos-cabecera {
-    padding-top: 120px;
-  }
-
-  .lista-eventos-toolbar {
-    flex-direction: column;
-  }
-
-  .lista-eventos-filtros {
-    justify-content: center;
-    border-radius: 20px;
-  }
-
-  .lista-eventos-grid {
-    padding: 40px 16px;
-  }
-
-  .lista-eventos-tarjeta {
-    width: 100%;
-    max-width: 380px;
-  }
 }

@@ -6,26 +6,14 @@
    ========================================================= */
 
 
-/* Contenedor principal de la página */
-.seccion {
-  scroll-snap-align: none;
-}
-
-
-/* Tarjeta central del formulario */
-.contenedor {
-  max-width: 1000px;
-}
-
-
 /* Cabecera con el nombre del evento */
-.cabecera {
+.form-header {
   margin-bottom: 30px;
 }
 
 
 /* Campo principal del nombre del evento */
-.cabecera input {
+.form-header input {
   font-size: 2rem;
 }
 
@@ -96,14 +84,6 @@
   font-size: 0.95rem;
 }
 
-
-/* Sección de invitaciones */
-.invitaciones {
-  margin-top: 40px;
-  padding-top: 40px;
-}
-
-
 /* Cabecera de invitaciones */
 .invitaciones-header {
   margin-bottom: 25px;
@@ -167,28 +147,4 @@
 /* Botón secundario de cancelar */
 .acciones .btn-secondary {
   min-width: 150px;
-}
-
-
-/* Ajustes responsive */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ancho-completo,
-  .acciones {
-    grid-column: span 1;
-  }
-
-  .lugar-accion .lugar-input {
-    padding-right: 20px;
-  }
-
-  .precios-boton {
-    position: static;
-    width: 100%;
-    margin-top: 12px;
-    transform: none;
-  }
 }
