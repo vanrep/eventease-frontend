@@ -1,61 +1,154 @@
-/* Construye el fondo principal de la pagina de invitaciones */
+/* =========================================================
+   LISTA INVITACIONES COMPONENT
+   Solo estilos específicos del listado de invitaciones.
+   La base de página, tarjeta, alertas, badges, botones,
+   empty states y footer ya está definida en styles.css.
+   ========================================================= */
+
+
+/* Fondo principal de la página */
 .invitaciones-page {
   min-height: 100vh;
+  box-sizing: border-box;
   padding: 120px 24px 80px;
-  background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
+
+  background:
+    linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)),
+    url('/assets/images/Banner.jpg');
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 }
 
-/* Tarjeta central que contiene la tabla de invitaciones */
+
+/* Tarjeta central del listado */
 .invitaciones-card {
   max-width: 1100px;
   margin: 0 auto;
-  background: white;
-  border-radius: 24px;
   padding: 40px;
-  box-shadow: 0 10px 30px rgba(157, 80, 187, 0.12);
+
+  background: #FFFFFF;
   border: 1px solid #E9D5FF;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(157, 80, 187, 0.12);
 }
 
-/* Titulo principal de la pagina */
+
+/* Título principal */
 .invitaciones-title {
-  text-align: center;
+  margin: 0 0 40px;
+
   color: #4C1D95;
   font-family: 'Oswald', sans-serif;
   font-size: 3rem;
-  margin-bottom: 40px;
+  text-align: center;
 }
 
-/* Tabla principal con el resumen de invitaciones */
+
+/* Icono del título */
+.invitaciones-title i {
+  color: #9D50BB;
+}
+
+
+/* Mensaje de error superior */
+.invitaciones-alert {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+}
+
+
+/* Tabla principal */
 .invitaciones-table {
   width: 100%;
-  border-collapse: collapse;
   overflow: hidden;
+
+  border-collapse: collapse;
   border-radius: 16px;
 }
 
-/* Cabecera fija para cada columna de informacion */
+
+/* Cabecera de la tabla */
 .invitaciones-table th {
+  padding: 16px;
+
   background: #F5F3FF;
   color: #4C1D95;
-  padding: 16px;
-  text-align: left;
+
   font-size: 0.9rem;
+  text-align: left;
   text-transform: uppercase;
 }
 
-/* Celdas del cuerpo de la tabla */
+
+/* Celdas de la tabla */
 .invitaciones-table td {
   padding: 18px 16px;
-  border-bottom: 1px solid #F5F3FF;
+
   color: #4A5568;
   font-size: 0.95rem;
+
+  border-bottom: 1px solid #F5F3FF;
 }
 
-/* Resalta suavemente una fila al pasar el cursor */
+
+/* Hover de fila */
 .invitaciones-table tr:hover {
   background: #FDFBFF;
 }
 
-
+
+/* Título del evento dentro de la tabla */
+.invitaciones-evento {
+  color: #4C1D95;
+}
+
+
+/* Icono de ubicación */
+.invitaciones-ubicacion-icon {
+  color: #9D50BB;
+  font-size: 1.1rem;
+}
+
+
+/* Acciones de aceptar/rechazar */
+.invitaciones-acciones {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+/* Texto cuando no hay acciones disponibles */
+.invitaciones-sin-acciones {
+  color: #718096;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .invitaciones-page {
+    padding: 110px 16px 56px;
+  }
+
+  .invitaciones-card {
+    padding: 28px 20px;
+  }
+
+  .invitaciones-title {
+    font-size: 2.2rem;
+  }
+
+  .invitaciones-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .invitaciones-acciones {
+    flex-wrap: nowrap;
+  }
+}

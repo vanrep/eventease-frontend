@@ -1,54 +1,85 @@
+<!-- Pantalla de acceso -->
 <section class="form-wrapper login-wrapper">
-  <div class="form-card login-card">
-    <!-- Encabezado del formulario de acceso -->
-    <div class="form-header login-header">
-      <img src="/assets/images/Logo_EventEase.jpg" alt="Logo" class="login-logo">
+  <div class="form-card auth-card login-card">
+
+    <!-- Encabezado del formulario -->
+    <div class="form-header auth-header login-header">
+      <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase" class="form-logo login-logo">
       <h1>BIENVENIDO</h1>
       <p>Organiza tus mejores momentos</p>
     </div>
 
+    <!-- Formulario de inicio de sesión -->
     <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
-      <!-- Campo de email para iniciar sesion -->
+
+      <!-- Campo de email -->
       <div class="form-group login-group">
-        <label for="email"><i class="fa-solid fa-envelope"></i> CORREO ELECTRÓNICO</label>
+        <label for="email">
+          <i class="fa-solid fa-envelope"></i>
+          CORREO ELECTRÓNICO
+        </label>
+
         <div class="input-with-icon">
-          <input type="email" id="email" name="email" 
-                 placeholder="tu@email.com" 
-                 [(ngModel)]="loginData.email" required>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="tu@email.com"
+            [(ngModel)]="loginData.email"
+            required>
         </div>
       </div>
 
-      <!-- Campo de contraseña con opcion para mostrar/ocultar el valor -->
+      <!-- Campo de contraseña -->
       <div class="form-group login-group">
-        <label for="password"><i class="fa-solid fa-lock"></i> CONTRASEÑA</label>
+        <label for="password">
+          <i class="fa-solid fa-lock"></i>
+          CONTRASEÑA
+        </label>
+
         <div class="input-with-icon">
-          <input [type]="mostrarPassword ? 'text' : 'password'" id="password" name="password" 
-                 placeholder="••••••••" 
-                 [(ngModel)]="loginData.password" required>
-          <button type="button" class="visibilidad-password-btn" (click)="toggleMostrarPassword()" [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+          <input
+            [type]="mostrarPassword ? 'text' : 'password'"
+            id="password"
+            name="password"
+            placeholder="••••••••"
+            [(ngModel)]="loginData.password"
+            required>
+
+          <button
+            type="button"
+            class="visibilidad-password-btn password-toggle-btn"
+            (click)="toggleMostrarPassword()"
+            [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
             <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
           </button>
         </div>
       </div>
-      
-      <!-- Muestra el mensaje de error cuando el login falla -->
+
+      <!-- Mensaje de error -->
       <div *ngIf="mensajeError" class="alerta-error animacion-shake">
-        <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
+        <i class="fa-solid fa-circle-exclamation"></i>
+        {{ mensajeError }}
       </div>
 
-      <!-- Accion principal para enviar el formulario -->
-      <div>
-        <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!loginForm.valid">
-          ENTRAR <i class="fa-solid fa-arrow-right-to-bracket"></i>
+      <!-- Botón principal -->
+      <div class="form-actions auth-actions">
+        <button
+          id="btn-submit"
+          type="submit"
+          class="btn-cta"
+          [disabled]="!loginForm.valid">
+          ENTRAR
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
         </button>
       </div>
 
-      <!-- Enlace para cambiar al formulario de registro -->
+      <!-- Enlace al registro -->
       <p class="auth-switch-text">
-        No tienes cuenta con nosotros?
+        ¿No tienes cuenta con nosotros?
         <a routerLink="/register">Regístrate</a>
       </p>
+
     </form>
   </div>
-
 </section>

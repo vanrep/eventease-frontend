@@ -1,144 +1,92 @@
-/* Centra la pantalla de registro sobre el fondo comun de autenticacion */
+/* =========================================================
+   REGISTER COMPONENT
+   Solo ajustes específicos del formulario de registro.
+   La base de autenticación, tarjeta, inputs, botón, alertas
+   y enlaces ya está definida en styles.css.
+   ========================================================= */
+
+
+/* Reduce un poco la altura visual del registro porque tiene más campos */
 .form-wrapper {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(rgba(245, 243, 255, 0.8), rgba(245, 243, 255, 0.8)), url('/assets/images/Banner.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 16px 24px 64px;
-  box-sizing: border-box;
-  overflow: hidden;
+  padding-top: 96px;
+  padding-bottom: 120px;
 }
 
-/* Ajusta la tarjeta para el formulario de alta */
+
+/* Tarjeta del formulario de registro */
 .form-card {
   max-width: 700px;
-  width: 100%;
-  padding: 26px 26px 3rem 26px;
-  box-shadow: 0 30px 60px -12px rgba(76, 29, 149, 0.2);
-  text-align: center;
+  padding: 32px 26px 48px;
 }
 
-/* Limita el ancho util del formulario */
+
+/* Limita el ancho útil del formulario */
 form {
   max-width: 610px;
   margin: 0 auto;
 }
 
-/* Destaca el titulo principal del alta */
-.form-header h1 {
-  font-family: 'Oswald', sans-serif;
-  color: #4C1D95;
-  font-size: 2.8rem;
-  letter-spacing: 2px;
-  margin-bottom: 5px;
+
+/* Encabezado del registro */
+.form-header {
+  margin-bottom: 24px;
+  text-align: center;
 }
 
-/* Introduce el formulario con una descripcion breve */
+
+/* Título principal del registro */
+.form-header h1 {
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+}
+
+
+/* Texto introductorio del registro */
 .form-header p {
-  color: #718096;
-  font-size: 1.1rem;
   margin-bottom: 20px;
 }
 
-/* Ordena cada bloque de campo del formulario */
+
+/* Separación entre campos del registro */
 .form-group {
-  text-align: left;
   margin-bottom: 14px;
+  text-align: left;
 }
 
-/* Coloca las dos contrasenas en paralelo cuando hay espacio */
+
+/* Coloca contraseña y confirmación en dos columnas */
 .fila-contrasena {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
 
-/* Separa visualmente los datos de acceso del resto del perfil */
+
+/* Separador entre datos de acceso y datos de perfil */
 .form-divider {
-  border: 0;
-  border-top: 1px solid #E9D5FF;
   margin: 20px 0;
 }
 
-/* Ajusta el mensaje de error de confirmacion de contrasena */
+
+/* Ajusta el error de contraseñas */
 .password-error {
   margin-top: -2px;
   margin-bottom: 18px;
 }
 
-/* Marca visualmente los campos obligatorios */
-.obligatorio {
-  color: #DC2626;
-}
 
-/* Uniforma el estilo de inputs y select del registro */
-input,
-select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px 48px 12px 16px;
-  background: #FDFBFF;
-  border: 2px solid #E9D5FF;
-  border-radius: 16px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-/* Resalta el campo activo con color y halo */
-input:focus,
-select:focus {
-  border-color: #9D50BB;
-  background: white;
-  box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
-  outline: none;
-}
-
-/* Define el boton principal de registro */
+/* Botón principal del registro */
 .btn-cta {
-  width: 100%;
-  padding: 18px;
-  background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  cursor: pointer;
   margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 15px 30px rgba(157, 80, 187, 0.3);
 }
 
-/* Mantiene el contenedor del boton como bloque unico */
-.form-actions {
-  display: block;
-}
 
-/* Eleva ligeramente el boton activo al pasar el cursor */
-.btn-cta:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 34px rgba(157, 80, 187, 0.38);
-}
-
-/* Atenua el boton cuando el formulario no puede enviarse */
-.btn-cta:disabled {
-  opacity: 1;
-  cursor: not-allowed;
-  background: #CFC5E6;
-  color: #F8F6FC;
-  box-shadow: none;
-  filter: none;
-}
-
-/* Adaptación para dispositivos móviles: las contraseñas se apilan verticalmente y se elimina el espacio entre ellas */
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
+  .form-card {
+    padding: 32px 24px;
+  }
+
   .fila-contrasena {
     grid-template-columns: 1fr;
     gap: 0;

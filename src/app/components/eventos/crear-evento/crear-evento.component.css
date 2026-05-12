@@ -1,187 +1,92 @@
-/* Fondo principal de la pagina */
+/* =========================================================
+   CREAR EVENTO COMPONENT
+   Solo ajustes específicos de la página de creación.
+   La estructura de página, tarjeta, formularios, inputs,
+   mapa, invitados, alertas y botones ya está definida en styles.css.
+   ========================================================= */
+
+
+/* Contenedor principal de la página */
 .seccion {
-  min-height: 100vh;
-  display: block;
-  background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  padding: 60px 24px 80px;
   scroll-snap-align: none;
 }
 
-/* Tarjeta blanca central del formulario */
+
+/* Tarjeta central del formulario */
 .contenedor {
-  width: 100%;
   max-width: 1000px;
-  margin: 100px auto;
-  padding: 40px 60px 60px;
-  background: #fff;
-  border: 1px solid #E9D5FF;
-  border-radius: 32px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
-/* Cabecera con el campo del nombre */
+
+/* Cabecera con el nombre del evento */
 .cabecera {
-  text-align: left;
   margin-bottom: 30px;
-  border: none;
-  padding: 0;
 }
 
-/* Grid de dos columnas para fecha y capacidad */
+
+/* Campo principal del nombre del evento */
+.cabecera input {
+  font-size: 2rem;
+}
+
+
+/* Grid principal de fecha y capacidad */
 .grid {
-  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
 }
 
-/* Agrupacion vertical de label + campo */
-.grupo {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 
-/* Hace que el elemento ocupe las dos columnas del grid */
-.ancho-completo {
-  grid-column: span 2;
-}
-
-/* Separacion vertical entre secciones */
-.grid,
+/* Bloque de descripción y bloques separados */
 .separador {
   margin-bottom: 40px;
 }
 
-/* Tamaño de label en cabecera y en invitaciones */
-.cabecera label,
-.invitaciones-header label {
-  font-size: 1.2rem;
-}
 
-.cabecera label {
-  letter-spacing: 1px;
-}
-
-/* Input del titulo con estilo de cabecera */
-.cabecera input {
-  padding: 10px 0;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #4C1D95;
-  border: 0;
-  border-bottom: 3px solid #E9D5FF;
-  border-radius: 0;
-  background: transparent;
-}
-
-/* Textarea de descripcion */
-.separador textarea {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* Tarjeta para los campos de fecha y capacidad */
+/* Tarjetas de información rápida: fecha y capacidad */
 .info-card {
   padding: 25px;
-  background: #FDFBFF;
-  border: 1px solid #E9D5FF;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
 }
 
-/* Estilo general de todos los labels */
-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #4C1D95;
-  font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
 
-/* Color morado para iconos de labels y del input de email */
-label i,
-.email-icon {
-  color: #9D50BB;
-}
-
-/* Estilo base de inputs y textareas */
-input,
-textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 16px 20px;
-  background: #FDFBFF;
-  border: 2px solid #E9D5FF;
-  border-radius: 14px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Foco en inputs y textareas */
-input:focus,
-textarea:focus {
-  outline: none;
-  background: #fff;
-  border-color: #9D50BB;
-  box-shadow: 0 0 0 4px rgba(157, 80, 187, 0.1);
-}
-
-/* Input dentro de las tarjetas de fecha y capacidad */
+/* Input interno de las tarjetas de información */
 .info-input {
   margin-top: 10px;
-  border-color: #F3E8FF;
 }
 
-/* Input de ubicacion seleccionada en el mapa */
-.lugar-input {
-  margin-top: 15px;
-  color: #9D50BB;
-  font-weight: 600;
-  border-style: dashed;
-  background: #F8F7FF;
-}
 
-/* Lista de lugares disponibles */
+/* Lista lateral de lugares */
 .lista-lugares {
   max-height: 400px;
 }
 
-.lista-lugares h4 {
-  font-size: 1.1rem;
-}
 
-/* Texto pequeño para direcciones y errores */
-.lista-lugares p,
-.error-invitado {
-  font-size: 0.85rem;
-}
-
-/* Contenedor del mapa de Leaflet */
+/* Mapa usado al crear evento */
 .mapa {
   height: 400px;
 }
 
-/* Contenedor del input de ubicacion con boton flotante */
+
+/* Input de ubicación seleccionada */
+.lugar-input {
+  margin-top: 15px;
+}
+
+
+/* Contenedor del input de ubicación y botón de precios */
 .lugar-accion {
   position: relative;
   margin-top: 15px;
 }
 
-/* Deja espacio a la derecha para el boton de precios */
+
+/* Deja espacio para el botón de consultar precios */
 .lugar-accion .lugar-input {
   margin-top: 0;
   padding-right: 250px;
 }
 
-/* Boton de consultar precios (posicion absoluta dentro del input) */
+
+/* Botón de consultar precios dentro del input de ubicación */
 .precios-boton {
   position: absolute;
   top: 50%;
@@ -191,146 +96,81 @@ textarea:focus {
   font-size: 0.95rem;
 }
 
-/* Evita que el hover mueva el boton desactivado */
-.precios-boton:disabled:hover,
-.precios-boton[disabled]:hover {
-  background: #D8B4E2 !important;
-  transform: translateY(-50%) !important;
-  box-shadow: none !important;
-}
 
-/* Seccion de invitaciones con separador superior */
+/* Sección de invitaciones */
 .invitaciones {
   margin-top: 40px;
   padding-top: 40px;
-  border-top: 2px solid #F5F3FF;
 }
 
-/* Elementos con flexbox centrado verticalmente */
-.invitaciones-header,
-.fila-invitado,
-.btn-anadir,
-.btn-quitar,
-.error-invitado {
-  display: flex;
-  align-items: center;
-}
 
-/* Cabecera de invitaciones: label a la izquierda, boton a la derecha */
+/* Cabecera de invitaciones */
 .invitaciones-header {
-  justify-content: space-between;
   margin-bottom: 25px;
 }
 
-.invitaciones-header label {
-  margin: 0;
-}
 
-/* Tamaño compartido de los botones de añadir y quitar */
-.btn-anadir,
-.btn-quitar {
-  width: 45px;
-  height: 45px;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-}
-
-/* Boton de añadir invitado (circulo morado) */
-.btn-anadir {
-  color: #fff;
-  border-radius: 50%;
-  background: #9D50BB;
-  box-shadow: 0 4px 10px rgba(157, 80, 187, 0.3);
-}
-
+/* Botón circular para añadir invitados */
 .btn-anadir i {
   font-size: 1.2rem;
 }
 
 
-/* Lista vertical de filas de invitados */
+/* Lista vertical de invitados */
 .lista-invitados {
-  display: flex;
-  flex-direction: column;
   gap: 15px;
 }
 
-/* Fila: input de email + boton de eliminar */
+
+/* Fila de cada invitado */
 .fila-invitado {
   gap: 15px;
 }
 
-/* Contenedor del input de email (para posicionar el icono dentro) */
+
+/* Contenedor del input de email con icono */
 .email-contenedor {
   position: relative;
-  flex: 1;
 }
 
-/* Icono de email dentro del input */
+
+/* Icono dentro del input de email */
 .email-icon {
-  position: absolute;
-  top: 50%;
   left: 18px;
-  transform: translateY(-50%);
 }
 
-/* Padding para que el texto no quede bajo el icono */
+
+/* Input de email con espacio para el icono */
 .email-contenedor input {
   padding-left: 50px;
 }
 
-/* Boton de quitar invitado (rojo) */
-.btn-quitar {
-  color: #EF4444;
-  background: #FEE2E2;
-  border-radius: 12px;
-}
 
-/* Mensaje de error bajo el campo de email */
+/* Mensaje de error del email de invitado */
 .error-invitado {
-  gap: 6px;
   margin: 6px 0 0 8px;
-  color: #EF4444;
 }
 
-/* Margen inferior de los mensajes de alerta */
-.alerta-ok,
-.alerta-error {
-  margin-bottom: 30px;
-}
 
-/* Fila de botones de accion final */
+/* Zona final de botones */
 .acciones {
-  grid-column: span 2;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
   margin-top: 20px;
-  padding-top: 40px;
-  border-top: 1px solid #F5F3FF;
 }
 
-/* Estilo compartido de los botones crear y cancelar */
-.acciones .btn-cta,
-.acciones .btn-secondary {
-  font-size: 1.1rem;
-  justify-content: center;
-}
 
-/* Boton principal de crear evento */
+/* Botón principal de crear evento */
 .acciones .btn-cta {
   min-width: 250px;
 }
 
-/* Boton secundario de cancelar */
+
+/* Botón secundario de cancelar */
 .acciones .btn-secondary {
   min-width: 150px;
 }
 
 
-/* Responsive: una sola columna en movil */
+/* Ajustes responsive */
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
@@ -339,5 +179,16 @@ textarea:focus {
   .ancho-completo,
   .acciones {
     grid-column: span 1;
+  }
+
+  .lugar-accion .lugar-input {
+    padding-right: 20px;
+  }
+
+  .precios-boton {
+    position: static;
+    width: 100%;
+    margin-top: 12px;
+    transform: none;
   }
 }

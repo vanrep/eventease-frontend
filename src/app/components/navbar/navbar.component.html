@@ -1,65 +1,90 @@
+<!-- Cabecera principal -->
 <header class="site-header" [class.scrolled]="isScrolled">
   <nav class="header-nav" aria-label="Navegación principal">
-    <!-- Logo con acceso rapido a la portada -->
+
+    <!-- Logo con acceso a inicio -->
     <div id="logo">
       <a routerLink="/inicio" (click)="onInicioClick($event)">
         <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">
       </a>
     </div>
 
-    <!-- Menu principal visible solo para usuarios autenticados -->
+    <!-- Menú principal para usuarios autenticados -->
     <ul class="menu" *ngIf="authService.estaLogueado()">
+
+      <!-- Inicio -->
       <li>
         <a routerLink="/inicio" routerLinkActive="active" (click)="onInicioClick($event)">
           <i class="fa fa-house icono-fa" aria-hidden="true"></i>
           INICIO
         </a>
       </li>
-      <!-- Todos los usuarios autenticados comparten estas secciones -->
+
+      <!-- Eventos -->
       <li>
         <a routerLink="/eventos" routerLinkActive="active">
           <i class="fa fa-calendar-days icono-fa" aria-hidden="true"></i>
           EVENTOS
         </a>
       </li>
+
+      <!-- Invitaciones -->
       <li>
         <a routerLink="/invitaciones" routerLinkActive="active">
           <i class="fa fa-newspaper icono-fa" aria-hidden="true"></i>
           INVITACIONES
         </a>
       </li>
+
+      <!-- Administración -->
       <li *ngIf="authService.esAdmin()">
         <a routerLink="/admin" routerLinkActive="active" class="admin-menu-link">
           <i class="fa fa-user-shield icono-fa" aria-hidden="true"></i>
           ADMIN
         </a>
       </li>
+
     </ul>
 
-    <!-- Controles de sesion y accesos rapidos del usuario -->
+    <!-- Zona de usuario autenticado -->
     <div class="user-header" *ngIf="authService.estaLogueado()">
-      <button id="contraste" type="button" class="header-icon-btn"
-              title="Cambiar modo de contraste"
-              aria-label="Cambiar modo de contraste"
-              (click)="toggleDarkMode()">
+
+      <!-- Botón de modo claro/oscuro -->
+      <button
+        id="contraste"
+        type="button"
+        class="header-icon-btn"
+        title="Cambiar modo de contraste"
+        aria-label="Cambiar modo de contraste"
+        (click)="toggleDarkMode()">
         <i class="fa-solid fa-circle-half-stroke"></i>
       </button>
 
+      <!-- Información del usuario -->
       <div class="user-pill">
+
+        <!-- Inicial del usuario -->
         <div class="user-avatar">
           {{ authService.obtenerInicialUsuario() }}
         </div>
 
+        <!-- Email del usuario -->
         <div class="user-info">
           <span class="user-email">{{ authService.obtenerEmail() }}</span>
         </div>
-        <button type="button" class="header-icon-btn logout-btn"
-                title="Cerrar sesión"
-                aria-label="Cerrar sesión"
-                (click)="logout()">
+
+        <!-- Cerrar sesión -->
+        <button
+          type="button"
+          class="header-icon-btn logout-btn"
+          title="Cerrar sesión"
+          aria-label="Cerrar sesión"
+          (click)="logout()">
           <i class="fa-solid fa-right-from-bracket"></i>
         </button>
+
       </div>
     </div>
+
   </nav>
 </header>

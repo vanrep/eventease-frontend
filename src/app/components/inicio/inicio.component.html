@@ -1,111 +1,236 @@
-<!-- Navegacion lateral por secciones -->
-<div class="nav-dots">
-  <div class="dot" [class.active]="activeSection === 'hero'" (click)="scrollToSection('hero')" title="Inicio"></div>
-  <div class="dot" [class.active]="activeSection === 'organiza'" (click)="scrollToSection('organiza')" title="Organiza"></div>
-  <div class="dot" [class.active]="activeSection === 'invita'" (click)="scrollToSection('invita')" title="Invita"></div>
-  <div class="dot" [class.active]="activeSection === 'participa'" (click)="scrollToSection('participa')" title="Participa"></div>
-  <div class="dot" [class.active]="activeSection === 'info'" (click)="scrollToSection('info')" title="Información"></div>
-  <div class="dot" [class.active]="activeSection === 'footer'" (click)="scrollToSection('footer')" title="Conócenos"></div>
+<!-- Navegación por secciones de la página de inicio -->
+<div class="nav-dots" aria-label="Navegación por secciones">
+
+  <button
+    type="button"
+    class="dot"
+    [class.active]="activeSection === 'hero'"
+    (click)="scrollToSection('hero')"
+    title="Inicio"
+    aria-label="Ir a inicio">
+  </button>
+
+  <button
+    type="button"
+    class="dot"
+    [class.active]="activeSection === 'organiza'"
+    (click)="scrollToSection('organiza')"
+    title="Organiza"
+    aria-label="Ir a organiza">
+  </button>
+
+  <button
+    type="button"
+    class="dot"
+    [class.active]="activeSection === 'invita'"
+    (click)="scrollToSection('invita')"
+    title="Invita"
+    aria-label="Ir a invita">
+  </button>
+
+  <button
+    type="button"
+    class="dot"
+    [class.active]="activeSection === 'participa'"
+    (click)="scrollToSection('participa')"
+    title="Participa"
+    aria-label="Ir a participa">
+  </button>
+
+  <button
+    type="button"
+    class="dot"
+    [class.active]="activeSection === 'info'"
+    (click)="scrollToSection('info')"
+    title="Información"
+    aria-label="Ir a información">
+  </button>
+
+  <button
+    type="button"
+    class="dot"
+    [class.active]="activeSection === 'footer'"
+    (click)="scrollToSection('footer')"
+    title="Conócenos"
+    aria-label="Ir a conócenos">
+  </button>
+
 </div>
 
-<!-- Seccion principal de bienvenida -->
-<section id="hero" class="seccion-scroll contenedor-hero" [class.active]="activeSection === 'hero'" aria-label="Presentación de EventEase">
+
+<!-- Sección principal de bienvenida -->
+<section
+  id="hero"
+  class="seccion-scroll contenedor-hero"
+  [class.active]="activeSection === 'hero'"
+  aria-label="Presentación de EventEase">
+
   <div class="hero-content">
     <h1>
-      Gestión de Eventos Simplificada con <br>EventEase
+      Gestión de Eventos Simplificada con <br>
+      EventEase
     </h1>
+
     <p>
       Organiza, invita y asiste a eventos de manera fácil y rápida.
     </p>
 
+    <!-- Acciones para usuarios no autenticados -->
     <div class="hero-actions" *ngIf="!authService.estaLogueado()">
       <a class="btn-secondary" routerLink="/login">LOGIN</a>
       <a class="btn-cta" routerLink="/register">REGISTRO</a>
     </div>
-    
+
+    <!-- Acciones para usuarios autenticados -->
     <div class="hero-actions" *ngIf="authService.estaLogueado()">
       <a class="btn-secondary" routerLink="/eventos">MIS EVENTOS</a>
       <a class="btn-cta" routerLink="/invitaciones">MIS INVITACIONES</a>
     </div>
   </div>
+
 </section>
 
-<!-- Seccion dedicada a la organizacion de eventos -->
-<section id="organiza" class="seccion-scroll inicio-section-white" [class.active]="activeSection === 'organiza'">
+
+<!-- Sección: Organiza -->
+<section
+  id="organiza"
+  class="seccion-scroll inicio-section-white"
+  [class.active]="activeSection === 'organiza'">
+
   <div class="articulo-box inicio-article-box">
-    <img class="articulo-img inicio-article-image" src="/assets/images/Tarjeta1.jpeg" alt="Organiza Eventos">
+    <img
+      class="articulo-img inicio-article-image"
+      src="/assets/images/Tarjeta1.jpeg"
+      alt="Organiza eventos">
+
     <div class="articulo-text">
       <h2 class="inicio-article-title">ORGANIZA</h2>
+
       <p class="inicio-article-copy">
-        Crea eventos y mantén el control total de los detalles y asistentes. 
+        Crea eventos y mantén el control total de los detalles y asistentes.
         Nuestra plataforma te permite gestionar horarios, ubicaciones y descripciones con total facilidad.
       </p>
     </div>
   </div>
+
 </section>
 
-<!-- Seccion dedicada al envio de invitaciones -->
-<section id="invita" class="seccion-scroll inicio-section-tint" [class.active]="activeSection === 'invita'">
+
+<!-- Sección: Invita -->
+<section
+  id="invita"
+  class="seccion-scroll inicio-section-tint"
+  [class.active]="activeSection === 'invita'">
+
   <div class="articulo-box inicio-article-box inicio-article-box-reverse">
-    <img class="articulo-img inicio-article-image" src="/assets/images/Tarjeta2.png" alt="Invita a Amigos">
+    <img
+      class="articulo-img inicio-article-image"
+      src="/assets/images/Tarjeta2.png"
+      alt="Invita a amigos">
+
     <div class="articulo-text">
       <h2 class="inicio-article-title">INVITA</h2>
+
       <p class="inicio-article-copy">
-        Envía invitaciones a usuarios para que asistan a tus eventos. 
+        Envía invitaciones a usuarios para que asistan a tus eventos.
         Sigue en tiempo real quién ha aceptado o rechazado tus propuestas.
       </p>
     </div>
   </div>
+
 </section>
 
-<!-- Seccion dedicada a la gestion de asistencia -->
-<section id="participa" class="seccion-scroll inicio-section-white" [class.active]="activeSection === 'participa'">
+
+<!-- Sección: Participa -->
+<section
+  id="participa"
+  class="seccion-scroll inicio-section-white"
+  [class.active]="activeSection === 'participa'">
+
   <div class="articulo-box inicio-article-box">
-    <img class="articulo-img inicio-article-image" src="/assets/images/Tarjeta3.jpg" alt="Participa">
+    <img
+      class="articulo-img inicio-article-image"
+      src="/assets/images/Tarjeta3.jpg"
+      alt="Participa en eventos">
+
     <div class="articulo-text">
       <h2 class="inicio-article-title">PARTICIPA</h2>
+
       <p class="inicio-article-copy">
-        Acepta o rechaza invitaciones y mantén un registro de tu asistencia. 
+        Acepta o rechaza invitaciones y mantén un registro de tu asistencia.
         No te pierdas ninguna de las celebraciones importantes de tus amigos.
       </p>
     </div>
   </div>
+
 </section>
 
-<!-- Seccion promocional con el mensaje principal del producto -->
-<section id="info" class="seccion-scroll inicio-info-section" [class.active]="activeSection === 'info'">
+
+<!-- Sección promocional -->
+<section
+  id="info"
+  class="seccion-scroll inicio-info-section"
+  [class.active]="activeSection === 'info'">
+
   <div class="inicio-info-content">
     <h2 class="inicio-info-title">TU PLATAFORMA TOTAL</h2>
+
     <p class="inicio-info-copy">
-      EventEase es la herramienta definitiva para gestionar todo el ciclo de vida de tus eventos. 
+      EventEase es la herramienta definitiva para gestionar todo el ciclo de vida de tus eventos.
       Desde la primera idea hasta el brindis final, estamos contigo para que todo salga perfecto.
     </p>
-    <a class="btn-cta inicio-info-cta" routerLink="/register" *ngIf="!authService.estaLogueado()">
-       EMPIEZA GRATIS AHORA
+
+    <a
+      class="btn-cta inicio-info-cta"
+      routerLink="/register"
+      *ngIf="!authService.estaLogueado()">
+      EMPIEZA GRATIS AHORA
     </a>
   </div>
+
 </section>
 
-<!-- Seccion final de cierre y contacto -->
-<section id="footer" class="seccion-scroll marketing-footer" [class.active]="activeSection === 'footer'">
+
+<!-- Sección final -->
+<section
+  id="footer"
+  class="seccion-scroll marketing-footer"
+  [class.active]="activeSection === 'footer'">
+
   <div>
-    <img src="/assets/images/Logo_EventEase.jpg" alt="EventEase">
+    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">
+
     <h2>¿LISTO PARA EMPEZAR?</h2>
+
     <p class="marketing-footer-lead">
       Únete a miles de usuarios que ya organizan sus mejores momentos con EventEase.
     </p>
-    <div class="social">
-        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a>
+
+    <!-- Redes sociales -->
+    <div class="social" aria-label="Redes sociales">
+      <a href="https://www.facebook.com/" aria-label="Facebook">
+        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://www.instagram.com/" aria-label="Instagram">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://x.com/" aria-label="X">
+        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+      </a>
     </div>
+
+    <!-- Enlaces legales -->
     <div class="marketing-footer-bottom">
-        <ul>
-          <li><a href="#">Privacidad</a></li>
-          <li><a href="#">Cookies</a></li>
-          <li><a routerLink="/about-us">Conócenos</a></li>
-        </ul>
-        <p>© 2026 EventEase. Todos los derechos reservados.</p>
+      <ul>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a routerLink="/about-us">Conócenos</a></li>
+      </ul>
+
+      <p>© 2026 EventEase. Todos los derechos reservados.</p>
     </div>
   </div>
+
 </section>

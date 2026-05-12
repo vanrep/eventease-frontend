@@ -1,194 +1,173 @@
+/* =========================================================
+   ADMIN COMPONENT
+   Estilos específicos del panel de administración.
+   La base de botones, alertas y empty states ya está definida
+   en styles.css.
+   ========================================================= */
+
+
+/* Fondo principal del panel */
 .admin-page {
   min-height: 100dvh;
-  display: flex;
   box-sizing: border-box;
+
+  display: flex;
+
   padding: 120px 24px 80px;
-  background: linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)), url('/assets/images/Banner.jpg');
+
+  background:
+    linear-gradient(rgba(248, 247, 255, 0.92), rgba(248, 247, 255, 0.92)),
+    url('/assets/images/Banner.jpg');
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 }
 
+
+/* Tarjeta principal del panel */
 .admin-card {
-  width: 75vw;
+  width: min(1400px, 100%);
   margin: 0 auto;
+  padding: 40px;
+
   display: flex;
   flex-direction: column;
-  background: white;
-  border-radius: 24px;
-  padding: 40px;
-  box-shadow: 0 10px 30px rgba(157, 80, 187, 0.12);
+
+  background: #FFFFFF;
   border: 1px solid #E9D5FF;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(157, 80, 187, 0.12);
 }
 
+
+/* Cabecera del panel */
 .admin-header {
   margin-bottom: 32px;
 }
 
-.admin-eyebrow {
-  margin: 0 0 10px;
-  color: #7C3AED;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 
+/* Título principal */
 .admin-title {
   margin: 0;
+
   color: #4C1D95;
   font-family: 'Oswald', sans-serif;
   font-size: 3rem;
 }
 
+
+/* Distribución principal: menú lateral + contenido */
 .admin-layout {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: 28px;
+
   flex: 1;
   align-items: stretch;
 }
 
+
+/* Menú lateral */
 .admin-sidebar {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+
+/* Enlace del menú lateral */
 .admin-nav-item {
   display: flex;
   align-items: center;
   gap: 12px;
+
   padding: 16px 18px;
-  border: 1px solid #E9D5FF;
-  border-radius: 18px;
-  background: #FDFBFF;
+
   color: #4C1D95;
   font-weight: 700;
   text-decoration: none;
+
+  background: #FDFBFF;
+  border: 1px solid #E9D5FF;
+  border-radius: 18px;
+
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+
+/* Hover del menú lateral */
 .admin-nav-item:hover {
   transform: translateY(-1px);
-  display: flex;
   box-shadow: 0 8px 20px rgba(157, 80, 187, 0.12);
 }
 
+
+/* Sección activa del menú lateral */
 .admin-nav-item.active {
+  color: #FFFFFF;
   background: linear-gradient(135deg, #9D50BB 0%, #6E48AA 100%);
   border-color: transparent;
-  color: #FFFFFF;
 }
 
+
+/* Sección deshabilitada */
 .admin-nav-item-disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
+
+/* Zona principal de contenido */
 .admin-content {
   display: flex;
+  min-width: 0;
 }
 
+
+/* Panel interno de cada sección */
 .admin-panel {
-  display: flex;
   flex: 1;
+
+  display: flex;
   flex-direction: column;
+
+  min-width: 0;
+  padding: 32px;
+
+  background: #FFFFFF;
   border: 1px solid #E9D5FF;
   border-radius: 24px;
-  background: #FFFFFF;
-  padding: 32px;
   box-shadow: inset 0 0 0 1px rgba(233, 213, 255, 0.35);
 }
 
+
+/* Cabecera del panel interno */
 .admin-panel-header {
   margin-bottom: 24px;
 }
 
+
+/* Título del panel interno */
 .admin-panel-header h2 {
-  margin: 16px 0 0;
+  margin: 0;
+
   color: #4C1D95;
   font-family: 'Oswald', sans-serif;
   font-size: 2.5rem;
 }
 
-.admin-placeholder {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 2px dashed #D8B4FE;
-  border-radius: 24px;
-  background: linear-gradient(180deg, #FDFBFF 0%, #F7F0FF 100%);
-  padding: 40px;
-  text-align: center;
-}
 
-.admin-placeholder-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: #EDE9FE;
-  color: #6D28D9;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.admin-placeholder h2 {
-  margin: 18px 0 0;
-  color: #4C1D95;
-  font-family: 'Oswald', sans-serif;
-  font-size: 3rem;
-}
-
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.admin-table th {
-  background: #F5F3FF;
-  color: #4C1D95;
-  padding: 16px;
-  text-align: left;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-}
-
-.admin-table td {
-  padding: 18px 16px;
-  border-bottom: 1px solid #F5F3FF;
-  color: #4A5568;
-  font-size: 0.95rem;
-  vertical-align: middle;
-}
-
-.admin-table tr:hover {
-  background: #FDFBFF;
-}
-
-.admin-empty-box {
-  margin: auto 0;
-}
-
-.admin-empty-box i {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  display: block;
-}
-
+/* Mensaje de error del panel */
 .admin-alerta-error {
   max-width: none;
   margin: 0 0 24px;
 }
 
+
+/* Mensaje de carga */
 .admin-loading {
   margin: auto 0;
+
   color: #718096;
   font-size: 1rem;
   font-weight: 600;
@@ -196,15 +175,70 @@
 }
 
 
+/* Estado vacío dentro del panel */
+.admin-empty-box {
+  margin: auto 0;
+}
 
 
+/* Contenedor para que las tablas puedan desplazarse en pantallas pequeñas */
+.admin-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+/* Tabla principal */
+.admin-table {
+  width: 100%;
+  min-width: 720px;
+
+  overflow: hidden;
+
+  border-collapse: collapse;
+  border-radius: 16px;
+}
+
+
+/* Cabecera de tabla */
+.admin-table th {
+  padding: 16px;
+
+  background: #F5F3FF;
+  color: #4C1D95;
+
+  font-size: 0.9rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+
+/* Celdas de tabla */
+.admin-table td {
+  padding: 18px 16px;
+
+  color: #4A5568;
+  font-size: 0.95rem;
+  vertical-align: middle;
+
+  border-bottom: 1px solid #F5F3FF;
+}
+
+
+/* Hover de fila */
+.admin-table tr:hover {
+  background: #FDFBFF;
+}
+
+
+/* Ajustes responsive */
 @media (max-width: 768px) {
   .admin-page {
     padding: 110px 16px 56px;
   }
 
   .admin-card {
-    padding: 28px;
+    padding: 28px 20px;
   }
 
   .admin-title {
@@ -215,12 +249,8 @@
     grid-template-columns: 1fr;
   }
 
-  .admin-placeholder h2 {
-    font-size: 2.2rem;
-  }
-
   .admin-panel {
-    padding: 24px;
+    padding: 24px 18px;
   }
 
   .admin-panel-header h2 {

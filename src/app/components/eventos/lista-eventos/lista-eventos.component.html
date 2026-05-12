@@ -1,176 +1,250 @@
+<!-- Página de listado de eventos -->
 <div class="lista-eventos-page">
 
-  <!-- Estado inicial cuando todavia no existen eventos -->
+  <!-- Estado inicial cuando todavía no existen eventos -->
   <section class="contenedor-hero lista-eventos-empty-hero" *ngIf="eventos.length === 0">
     <div class="hero-content">
       <h1>MIS EVENTOS</h1>
+
       <p>Aún no tienes celebraciones programadas.</p>
+
       <a routerLink="/eventos/crear" class="btn-cta">
-        <i class="fa-solid fa-plus"></i> CREAR MI PRIMER EVENTO
+        <i class="fa-solid fa-plus"></i>
+        CREAR MI PRIMER EVENTO
       </a>
     </div>
   </section>
 
-  <div *ngIf="eventos.length > 0" [style.min-height.vh]="100">
-    <!-- Barra superior con buscador, acceso rapido y filtros -->
+
+  <!-- Contenido del listado cuando existen eventos -->
+  <div *ngIf="eventos.length > 0" class="lista-eventos-content">
+
+    <!-- Barra superior con buscador y acción principal -->
     <div class="lista-eventos-cabecera">
+
       <div class="lista-eventos-toolbar">
 
+        <!-- Buscador -->
         <div class="lista-eventos-buscador">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text"
-                placeholder="Buscar evento..."
-          [(ngModel)]="textoBusqueda">
+
+          <input
+            type="text"
+            placeholder="Buscar evento..."
+            [(ngModel)]="textoBusqueda">
         </div>
 
+        <!-- Crear evento -->
         <a routerLink="/eventos/crear" class="btn-cta">
-          <i class="fa-solid fa-plus"></i> NUEVO EVENTO
+          <i class="fa-solid fa-plus"></i>
+          NUEVO EVENTO
         </a>
 
       </div>
-      <div class="lista-eventos-toolbar">
 
+
+      <!-- Filtros por estado -->
+      <div class="lista-eventos-toolbar">
         <div class="lista-eventos-filtros">
 
           <label class="lista-eventos-filtro-check">
-            <input type="checkbox"
-                  [(ngModel)]="filtroTodos"
-                  (change)="seleccionarTodos()">
+            <input
+              type="checkbox"
+              [(ngModel)]="filtroTodos"
+              (change)="seleccionarTodos()">
             Todos
           </label>
 
           <label class="lista-eventos-filtro-check pendiente-check">
-            <input type="checkbox"
-                  [(ngModel)]="filtroPendiente"
-                  (change)="actualizarFiltros()">
+            <input
+              type="checkbox"
+              [(ngModel)]="filtroPendiente"
+              (change)="actualizarFiltros()">
             Pendiente
           </label>
 
           <label class="lista-eventos-filtro-check aceptada-check">
-            <input type="checkbox"
-                  [(ngModel)]="filtroAceptada"
-                  (change)="actualizarFiltros()">
+            <input
+              type="checkbox"
+              [(ngModel)]="filtroAceptada"
+              (change)="actualizarFiltros()">
             Aceptada
           </label>
 
           <label class="lista-eventos-filtro-check rechazada-check">
-            <input type="checkbox"
-                  [(ngModel)]="filtroRechazada"
-                  (change)="actualizarFiltros()">
+            <input
+              type="checkbox"
+              [(ngModel)]="filtroRechazada"
+              (change)="actualizarFiltros()">
             Rechazada
           </label>
 
         </div>
       </div>
+
     </div>
 
-    <!-- Mensaje de error al cargar los eventos -->
-    <div *ngIf="mensajeError" class="alerta-error">
-      <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
+
+    <!-- Mensaje de error -->
+    <div *ngIf="mensajeError" class="alerta-error lista-eventos-alert">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      {{ mensajeError }}
     </div>
 
-    <div *ngIf="eventos | filtroEventos:textoBusqueda:filtroPendiente:filtroAceptada:filtroRechazada as eventosVisibles">
 
-      <!-- Estado vacio cuando la busqueda o los filtros no devuelven resultados -->
+    <!-- Eventos filtrados -->
+    <ng-container *ngIf="eventos | filtroEventos:textoBusqueda:filtroPendiente:filtroAceptada:filtroRechazada as eventosVisibles">
+
+      <!-- Estado vacío por búsqueda o filtros -->
       <div *ngIf="eventosVisibles.length === 0 && !mensajeError" class="empty-state-box">
         <i class="fa-solid fa-filter"></i>
         No hay eventos que coincidan con la búsqueda o el filtro seleccionado.
       </div>
 
-      <!-- Tarjetas con el resumen de cada evento visible -->
-      <section class="contenedor-tarjetas lista-eventos-grid" *ngIf="eventosVisibles.length > 0">
-        <article class="tarjeta lista-eventos-tarjeta" *ngFor="let evento of eventosVisibles"
-              [ngClass]="{
-                'border-pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
-                'border-aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
-                'border-rechazada': evento.miEstadoInvitacion === 'RECHAZADA'
-              }"
-              [routerLink]="['/eventos', evento.id]">
-        <img src="/assets/images/Tarjeta1.jpeg" alt="Evento">
-        <div class="tarjeta-body">
 
-          <div *ngIf="!esOrganizador(evento)"
-              class="badge-status"
-              style="position: absolute; top: 15px; right: 15px; z-index: 10;"
+      <!-- Tarjetas de eventos -->
+      <section class="contenedor-tarjetas lista-eventos-grid" *ngIf="eventosVisibles.length > 0">
+
+        <article
+          class="tarjeta lista-eventos-tarjeta"
+          *ngFor="let evento of eventosVisibles"
+          [routerLink]="['/eventos', evento.id]"
+          [ngClass]="{
+            'border-pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
+            'border-aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
+            'border-rechazada': evento.miEstadoInvitacion === 'RECHAZADA'
+          }">
+
+          <!-- Imagen del evento -->
+          <img src="/assets/images/Tarjeta1.jpeg" alt="Imagen del evento">
+
+          <div class="tarjeta-body">
+
+            <!-- Badge de estado para invitados -->
+            <div
+              *ngIf="!esOrganizador(evento)"
+              class="badge-status lista-eventos-status-badge"
               [ngClass]="{
                 'aceptada': evento.miEstadoInvitacion === 'ACEPTADA',
                 'pendiente': evento.miEstadoInvitacion === 'PENDIENTE',
                 'rechazada': evento.miEstadoInvitacion === 'RECHAZADA'
               }">
+
               <ng-container [ngSwitch]="evento.miEstadoInvitacion">
+
                 <span *ngSwitchCase="'ACEPTADA'">
-                  <i class="fa-solid fa-circle-check"></i> ACEPTADA
+                  <i class="fa-solid fa-circle-check"></i>
+                  ACEPTADA
                 </span>
+
                 <span *ngSwitchCase="'PENDIENTE'">
-                  <i class="fa-solid fa-clock"></i> PENDIENTE
+                  <i class="fa-solid fa-clock"></i>
+                  PENDIENTE
                 </span>
+
                 <span *ngSwitchCase="'RECHAZADA'">
-                  <i class="fa-solid fa-circle-xmark"></i> RECHAZADA
+                  <i class="fa-solid fa-circle-xmark"></i>
+                  RECHAZADA
                 </span>
+
               </ng-container>
+            </div>
+
+
+            <!-- Información del invitador -->
+            <div class="lista-eventos-invitado-por">
+              <ng-container *ngIf="!esOrganizador(evento); else sinInvitador">
+                <i class="fa-solid fa-user"></i>
+                Invitado por: {{ evento.clienteEmail }}
+              </ng-container>
+
+              <ng-template #sinInvitador>
+                &nbsp;
+              </ng-template>
+            </div>
+
+
+            <!-- Días restantes -->
+            <div
+              class="lista-eventos-badge-dias urgente"
+              *ngIf="calcularDiasRestantes(evento.fecha) < 10"
+              [title]="'Quedan ' + calcularDiasRestantes(evento.fecha) + ' días'">
+
+              <i class="fa-solid fa-hourglass-half"></i>
+              <span>{{ calcularDiasRestantes(evento.fecha) }}</span>
+            </div>
+
+
+            <!-- Título -->
+            <h2 [title]="evento.titulo">
+              {{ evento.titulo }}
+            </h2>
+
+
+            <!-- Fecha -->
+            <div class="evento-fecha">
+              <i class="fa-solid fa-calendar-day"></i>
+              {{ evento.fecha | date:'dd/MM/yyyy HH:mm' }}
+            </div>
+
+
+            <!-- Descripción -->
+            <p>{{ evento.descripcion }}</p>
+
+
+            <!-- Ubicación -->
+            <p>
+              <i class="fa-solid fa-location-dot"></i>
+              {{ evento.ubicacion }}
+            </p>
+
           </div>
+        </article>
 
-          <div class="lista-eventos-invitado-por">
-            <ng-container *ngIf="!esOrganizador(evento); else emptyInviter">
-              <i class="fa-solid fa-user"></i>
-              Invitado por: {{ evento.clienteEmail }}
-            </ng-container>
-
-            <ng-template #emptyInviter>
-              &nbsp;
-            </ng-template>
-          </div>
-
-          <div class="lista-eventos-badge-dias urgente" 
-               *ngIf="calcularDiasRestantes(evento.fecha) < 10"
-               [title]="'Quedan ' + calcularDiasRestantes(evento.fecha) + ' días'">
-            <i class="fa-solid fa-hourglass-half"></i>
-            <span>{{ calcularDiasRestantes(evento.fecha) }}</span>
-          </div>
-
-          <h2
-              [title]="evento.titulo">
-            {{ evento.titulo }}
-          </h2>
-
-          <div class="evento-fecha">
-            <i class="fa-solid fa-calendar-day"></i> {{ evento.fecha | date:'dd/MM/yyyy HH:mm' }}
-          </div>
-
-          <p>{{ evento.descripcion }}</p>
-
-          <div>
-            <p><i class="fa-solid fa-location-dot"></i> {{ evento.ubicacion }}</p>
-          </div>
-
-        </div>
-      </article>
       </section>
 
-    </div>
+    </ng-container>
+
+  </div>
 
 </div>
 
-<!-- Cierre visual de la pagina de listado -->
+
+<!-- Footer visual del listado -->
 <section id="footer" class="marketing-footer">
   <div>
-    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo">
+    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">
+
     <h2>¿TIENES UN NUEVO PLAN?</h2>
-    <p class="marketing-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
-    
-    <div class="social">
-        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a>
+
+    <p class="marketing-footer-lead">
+      Crea invitaciones inolvidables en cuestión de segundos.
+    </p>
+
+    <!-- Redes sociales -->
+    <div class="social" aria-label="Redes sociales">
+      <a href="https://www.facebook.com/" aria-label="Facebook">
+        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://www.instagram.com/" aria-label="Instagram">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://x.com/" aria-label="X">
+        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+      </a>
     </div>
 
+    <!-- Enlaces del footer -->
     <div class="marketing-footer-bottom">
-        <ul>
-          <li><a href="#">Términos</a></li>
-          <li><a href="#">Privacidad</a></li>
-          <li><a href="#">Ayuda</a></li>
-        </ul>
-        <p>© 2026 EventEase • Organiza. Invita. Disfruta.</p>
+      <ul>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+
+      <p>© 2026 EventEase • Organiza. Invita. Disfruta.</p>
     </div>
   </div>
 </section>

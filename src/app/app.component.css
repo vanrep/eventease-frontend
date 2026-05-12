@@ -1,92 +1,22 @@
+/* =========================================================
+   APP COMPONENT
+   Only layout rules that belong to the Angular root shell.
+   Most navbar, footer, buttons and shared styles are now global.
+   ========================================================= */
+
+/* Root component behaves like a normal block element */
 :host {
 	display: block;
 }
 
-/* Ajusta el contenedor principal en las pantallas de autenticacion */
+/* Removes extra spacing on login/register pages */
 main.auth-page {
 	height: 100vh;
 	overflow: hidden;
 	padding-bottom: 0;
 }
 
-/* Pie compacto usado en login y registro */
-.auth-footer {
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 24px;
-	padding: 14px 24px;
-	z-index: 3000;
-	background: rgba(30, 27, 75, 0.98);
-	border-top: 1px solid rgba(157, 80, 187, 0.2);
-}
-
-/* Permite que los enlaces ocupen el ancho disponible */
-.auth-footer nav {
-	flex: 1;
-}
-
-/* Agrupa los enlaces legales del pie compacto */
-.auth-footer .footer-links {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	flex-wrap: wrap;
-}
-
-/* Mantiene el estilo de los enlaces en el pie compacto */
-.auth-footer .footer-links a {
-	color: #E9D5FF;
-	text-decoration: none;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 0.95rem;
-	transition: color 0.3s ease;
-}
-
-/* Refuerza el contraste al pasar el cursor por los enlaces */
-.auth-footer .footer-links a:hover {
-	color: #FFFFFF;
-}
-
-/* Alinea los iconos sociales al final del pie compacto */
-.auth-footer .social {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	gap: 16px;
-}
-
-/* Ajusta tamano y transicion de los iconos sociales */
-.auth-footer .social a {
-	color: #E9D5FF;
-	font-size: 1.35rem;
-	transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Amplia ligeramente el icono activo al pasar el cursor */
-.auth-footer .social a:hover {
-	color: #FFFFFF;
-	transform: scale(1.1);
-}
-
-/* Recoloca el pie compacto en pantallas pequenas */
-@media (max-width: 768px) {
-	.auth-footer {
-		flex-direction: column;
-		justify-content: center;
-		padding: 12px 16px;
-		gap: 10px;
-	}
-
-	.auth-footer .footer-links {
-		justify-content: center;
-		gap: 14px;
-	}
+/* Removes extra bottom padding on the scroll-snap homepage */
+main.snap-active {
+	padding-bottom: 0;
 }

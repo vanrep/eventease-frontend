@@ -1,8 +1,9 @@
-/* Ajusta el tamano del logo dentro de la cabecera */
-#logo img {
-  height: 40px;
-  width: auto;
-}
+/* =========================================================
+   NAVBAR COMPONENT
+   Solo estilos específicos de la zona de usuario.
+   La cabecera, el menú principal y el logo ya están en styles.css.
+   ========================================================= */
+
 
 /* Agrupa los controles del usuario en la cabecera */
 .user-header {
@@ -11,96 +12,69 @@
   gap: 12px;
 }
 
-/* Presenta el bloque principal con avatar, email y acciones */
+
+/* Contenedor con avatar, email y botón de cerrar sesión */
 .user-pill {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #FFFFFF;
-  border: 2px solid #E9D5FF;
-  border-radius: 999px;
-  padding: 6px 14px 6px 6px;
-  box-shadow: 0 4px 12px rgba(157, 80, 187, 0.12);
 }
 
-/* Muestra la inicial del usuario como avatar circular */
+
+/* Avatar circular con la inicial del usuario */
 .user-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #9D50BB;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
-/* Ordena la informacion textual del usuario */
+
+/* Contenedor del texto del usuario */
 .user-info {
   display: flex;
   flex-direction: column;
   line-height: 1.1;
 }
 
-/* Destaca el correo del usuario autenticado */
+
+/* Email del usuario autenticado */
 .user-email {
-  color: #4C1D95;
-  font-weight: 800;
-  font-size: 0.85rem;
+  white-space: nowrap;
 }
 
-/* Define los botones circulares de acciones rapidas */
-.header-icon-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 2px solid #9D50BB;
-  background: #FFFFFF;
-  color: #4C1D95;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-/* Invierte colores al pasar el cursor por una accion comun */
-.header-icon-btn:hover {
-  background: #9D50BB;
-  color: #FFFFFF;
-}
-
-/* Marca visualmente la accion destructiva de cerrar sesion */
-.logout-btn {
-  border-color: #EF4444;
-  color: #EF4444;
-}
-
-/* Refuerza el estado hover del boton de cierre de sesion */
-.logout-btn:hover {
-  background: #EF4444;
-  color: #FFFFFF;
-}
-
+/* Enlace de administración destacado */
 .admin-menu-link {
   color: #B91C1C !important;
 }
 
+
+/* Icono del enlace de administración */
 .admin-menu-link i {
   color: #DC2626 !important;
 }
 
+
+/* Estado hover del enlace de administración */
 .admin-menu-link:hover {
   color: #DC2626 !important;
 }
 
+
+/* Estado activo del enlace de administración */
 .admin-menu-link.active {
   color: #DC2626 !important;
   border-bottom-color: #DC2626 !important;
 }
 
+
+/* Icono del enlace de administración cuando está activo */
 .admin-menu-link.active i {
   color: #DC2626 !important;
+}
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .user-email {
+    display: none;
+  }
 }

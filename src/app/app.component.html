@@ -1,17 +1,23 @@
-<!-- Barra de navegacion principal -->
+<!-- Cabecera principal -->
 <app-navbar></app-navbar>
 
-<!-- Contenedor principal: carga el componente segun la ruta activa -->
-<!-- Si estamos en inicio activa el scroll tipo snap, si es pagina de auth aplica estilo especial -->
-<main [class.snap-active]="isMainPage" [class.auth-page]="isAuthPage">
-  <!-- Aqui se renderiza el componente de la ruta actual -->
+
+<!-- Contenido principal de la aplicación -->
+<main
+  [class.snap-active]="isMainPage"
+  [class.auth-page]="isAuthPage">
+
+  <!-- Aquí Angular carga el componente según la ruta activa -->
   <router-outlet></router-outlet>
+
 </main>
 
-<!-- Pie de pagina -->
-<!-- Se oculta en la pagina de inicio -->
-<!-- Cambia entre el estilo normal y el estilo compacto segun la ruta -->
-<footer *ngIf="!isMainPage" [class.site-footer]="!isAuthPage" [class.auth-footer]="isAuthPage">
+
+<!-- Footer general: se oculta en la página de inicio -->
+<footer
+  *ngIf="!isMainPage"
+  [class.site-footer]="!isAuthPage"
+  [class.auth-footer]="isAuthPage">
 
   <!-- Enlaces legales -->
   <nav aria-label="Enlaces legales">
@@ -22,23 +28,32 @@
     </ul>
   </nav>
 
-  <!-- Iconos de redes sociales -->
+  <!-- Redes sociales -->
   <div class="social" aria-label="Redes sociales">
     <a href="https://www.facebook.com/" aria-label="Facebook">
       <i class="fa-brands fa-facebook" aria-hidden="true"></i>
     </a>
+
     <a href="https://www.instagram.com/" aria-label="Instagram">
       <i class="fa-brands fa-instagram" aria-hidden="true"></i>
     </a>
-    <a href="https://x.com/" aria-label="X (Twitter)">
+
+    <a href="https://x.com/" aria-label="X">
       <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
     </a>
   </div>
+
 </footer>
 
-<!-- Boton flotante para volver al inicio de la pagina -->
-<!-- Solo se muestra cuando el usuario ha bajado por la pagina -->
-<button class="fab-top" [class.visible]="btnSubir" (click)="scrollToTop()" aria-label="Volver arriba">
-  <!-- Icono de flecha hacia arriba -->
+
+<!-- Botón flotante para volver arriba -->
+<button
+  class="fab-top"
+  [class.visible]="btnSubir"
+  type="button"
+  aria-label="Volver arriba"
+  (click)="scrollToTop()">
+
   <i class="fa fa-chevron-up" aria-hidden="true"></i>
+
 </button>

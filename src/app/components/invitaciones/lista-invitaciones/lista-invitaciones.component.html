@@ -1,24 +1,27 @@
+<!-- Página de invitaciones -->
 <section class="invitaciones-page">
 
-  <!-- Muestra un aviso cuando falla la carga o la respuesta de invitaciones -->
-  <div *ngIf="mensajeError" class="alerta-error">
-    <i class="fa-solid fa-circle-exclamation"></i> {{ mensajeError }}
+  <!-- Mensaje de error -->
+  <div *ngIf="mensajeError" class="alerta-error invitaciones-alert">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    {{ mensajeError }}
   </div>
 
   <div class="invitaciones-card">
 
-    <!-- Cabecera principal de la pagina -->
+    <!-- Título principal -->
     <h1 class="invitaciones-title">
-      <i class="fa-solid fa-envelope-open-text"></i> MIS INVITACIONES
+      <i class="fa-solid fa-envelope-open-text"></i>
+      MIS INVITACIONES
     </h1>
 
-    <!-- Estado vacio cuando no hay invitaciones para mostrar -->
+    <!-- Estado vacío -->
     <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-state-box">
       <i class="fa-solid fa-inbox"></i>
       No tienes invitaciones.
     </div>
 
-    <!-- Tabla principal con el detalle y las acciones disponibles -->
+    <!-- Tabla de invitaciones -->
     <table class="invitaciones-table" *ngIf="invitaciones.length > 0">
       <thead>
         <tr>
@@ -33,45 +36,72 @@
       <tbody>
         <tr *ngFor="let inv of invitaciones">
 
+          <!-- Evento -->
           <td>
-            <strong>{{ inv.eventoTitulo }}</strong>
+            <strong class="invitaciones-evento">
+              {{ inv.eventoTitulo }}
+            </strong>
           </td>
 
+          <!-- Fecha -->
           <td>
             {{ inv.eventoFecha | date:'dd/MM/yyyy HH:mm' }}
           </td>
 
+          <!-- Ubicación -->
           <td>
-            <i class="fa-solid fa-map-location-dot" [title]="inv.eventoUbicacion"></i>
+            <i
+              class="fa-solid fa-map-location-dot invitaciones-ubicacion-icon"
+              [title]="inv.eventoUbicacion">
+            </i>
           </td>
 
+          <!-- Estado -->
           <td>
             <span class="badge-status pendiente" *ngIf="inv.estado === 'PENDIENTE'">
-              <i class="fa-solid fa-clock"></i> Pendiente
+              <i class="fa-solid fa-clock"></i>
+              Pendiente
             </span>
 
             <span class="badge-status aceptada" *ngIf="inv.estado === 'ACEPTADA'">
-              <i class="fa-solid fa-circle-check"></i> Aceptada
+              <i class="fa-solid fa-circle-check"></i>
+              Aceptada
             </span>
 
             <span class="badge-status rechazada" *ngIf="inv.estado === 'RECHAZADA'">
-              <i class="fa-solid fa-circle-xmark"></i> Rechazada
+              <i class="fa-solid fa-circle-xmark"></i>
+              Rechazada
             </span>
           </td>
 
+          <!-- Acciones -->
           <td>
-            <div class="acciones" *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
-              <button type="button" class="btn-accion btn-aceptar" (click)="responder(inv.eventoId, true)">
-                <i class="fa-solid fa-circle-check"></i> Aceptar
+            <div
+              class="invitaciones-acciones"
+              *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
+
+              <button
+                type="button"
+                class="btn-accion btn-aceptar"
+                (click)="responder(inv.eventoId, true)">
+                <i class="fa-solid fa-circle-check"></i>
+                Aceptar
               </button>
 
-              <button type="button" class="btn-accion btn-rechazar" (click)="responder(inv.eventoId, false)">
-                <i class="fa-solid fa-circle-xmark"></i> Rechazar
+              <button
+                type="button"
+                class="btn-accion btn-rechazar"
+                (click)="responder(inv.eventoId, false)">
+                <i class="fa-solid fa-circle-xmark"></i>
+                Rechazar
               </button>
+
             </div>
 
             <ng-template #sinAcciones>
-              <span>Sin acciones</span>
+              <span class="invitaciones-sin-acciones">
+                Sin acciones
+              </span>
             </ng-template>
           </td>
 
@@ -83,26 +113,42 @@
 
 </section>
 
-<!-- Cierre visual de la pagina de listado -->
+
+<!-- Footer visual del listado -->
 <section id="footer" class="marketing-footer">
   <div>
-    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo">
+    <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">
+
     <h2>¿TIENES UN NUEVO PLAN?</h2>
-    <p class="marketing-footer-lead">Crea invitaciones inolvidables en cuestión de segundos.</p>
-    
-    <div class="social">
-        <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
-        <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a>
+
+    <p class="marketing-footer-lead">
+      Crea invitaciones inolvidables en cuestión de segundos.
+    </p>
+
+    <!-- Redes sociales -->
+    <div class="social" aria-label="Redes sociales">
+      <a href="https://www.facebook.com/" aria-label="Facebook">
+        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://www.instagram.com/" aria-label="Instagram">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://x.com/" aria-label="X">
+        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+      </a>
     </div>
 
+    <!-- Enlaces del footer -->
     <div class="marketing-footer-bottom">
-        <ul>
-          <li><a href="#">Términos</a></li>
-          <li><a href="#">Privacidad</a></li>
-          <li><a href="#">Ayuda</a></li>
-        </ul>
-        <p>© 2026 EventEase • Organiza. Invita. Disfruta.</p>
+      <ul>
+        <li><a href="#">Términos</a></li>
+        <li><a href="#">Privacidad</a></li>
+        <li><a href="#">Ayuda</a></li>
+      </ul>
+
+      <p>© 2026 EventEase • Organiza. Invita. Disfruta.</p>
     </div>
   </div>
 </section>
