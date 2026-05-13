@@ -1,68 +1,35 @@
 <!-- Navegación por secciones de la página de inicio -->
 <div class="nav-dots" aria-label="Navegación por secciones">
 
-  <button
-    type="button"
-    class="dot"
-    [class.active]="activeSection === 'hero'"
-    (click)="scrollToSection('hero')"
-    title="Inicio"
-    aria-label="Ir a inicio">
+  <button type="button" class="dot" [class.active]="activeSection === 'hero'" (click)="scrollToSection('hero')"
+    title="Inicio" aria-label="Ir a inicio">
   </button>
 
-  <button
-    type="button"
-    class="dot"
-    [class.active]="activeSection === 'organiza'"
-    (click)="scrollToSection('organiza')"
-    title="Organiza"
-    aria-label="Ir a organiza">
+  <button type="button" class="dot" [class.active]="activeSection === 'organiza'" (click)="scrollToSection('organiza')"
+    title="Organiza" aria-label="Ir a organiza">
   </button>
 
-  <button
-    type="button"
-    class="dot"
-    [class.active]="activeSection === 'invita'"
-    (click)="scrollToSection('invita')"
-    title="Invita"
-    aria-label="Ir a invita">
+  <button type="button" class="dot" [class.active]="activeSection === 'invita'" (click)="scrollToSection('invita')"
+    title="Invita" aria-label="Ir a invita">
   </button>
 
-  <button
-    type="button"
-    class="dot"
-    [class.active]="activeSection === 'participa'"
-    (click)="scrollToSection('participa')"
-    title="Participa"
-    aria-label="Ir a participa">
+  <button type="button" class="dot" [class.active]="activeSection === 'participa'"
+    (click)="scrollToSection('participa')" title="Participa" aria-label="Ir a participa">
   </button>
 
-  <button
-    type="button"
-    class="dot"
-    [class.active]="activeSection === 'info'"
-    (click)="scrollToSection('info')"
-    title="Información"
-    aria-label="Ir a información">
+  <button type="button" class="dot" [class.active]="activeSection === 'info'" (click)="scrollToSection('info')"
+    title="Información" aria-label="Ir a información">
   </button>
 
-  <button
-    type="button"
-    class="dot"
-    [class.active]="activeSection === 'footer'"
-    (click)="scrollToSection('footer')"
-    title="Conócenos"
-    aria-label="Ir a conócenos">
+  <button type="button" class="dot" [class.active]="activeSection === 'footer'" (click)="scrollToSection('footer')"
+    title="Conócenos" aria-label="Ir a conócenos">
   </button>
 
 </div>
 
 
 <!-- Sección principal de bienvenida -->
-<section
-  id="hero"
-  class="seccion-scroll contenedor-hero"
-  [class.active]="activeSection === 'hero'"
+<section id="hero" class="seccion-scroll contenedor-hero" [class.active]="activeSection === 'hero'"
   aria-label="Presentación de EventEase">
 
   <div class="hero-content">
@@ -92,16 +59,10 @@
 
 
 <!-- Sección: Organiza -->
-<section
-  id="organiza"
-  class="seccion-scroll inicio-section-white"
-  [class.active]="activeSection === 'organiza'">
+<section id="organiza" class="seccion-scroll inicio-section-white" [class.active]="activeSection === 'organiza'">
 
   <div class="articulo-box inicio-article-box">
-    <img
-      class="articulo-img inicio-article-image"
-      src="/assets/images/Tarjeta1.jpeg"
-      alt="Organiza eventos">
+    <img class="articulo-img inicio-article-image" src="/assets/images/Tarjeta1.jpeg" alt="Organiza eventos">
 
     <div class="articulo-text">
       <h2 class="inicio-article-title">ORGANIZA</h2>
@@ -117,16 +78,10 @@
 
 
 <!-- Sección: Invita -->
-<section
-  id="invita"
-  class="seccion-scroll inicio-section-tint"
-  [class.active]="activeSection === 'invita'">
+<section id="invita" class="seccion-scroll inicio-section-tint" [class.active]="activeSection === 'invita'">
 
   <div class="articulo-box inicio-article-box inicio-article-box-reverse">
-    <img
-      class="articulo-img inicio-article-image"
-      src="/assets/images/Tarjeta2.png"
-      alt="Invita a amigos">
+    <img class="articulo-img inicio-article-image" src="/assets/images/Tarjeta2.png" alt="Invita a amigos">
 
     <div class="articulo-text">
       <h2 class="inicio-article-title">INVITA</h2>
@@ -142,16 +97,10 @@
 
 
 <!-- Sección: Participa -->
-<section
-  id="participa"
-  class="seccion-scroll inicio-section-white"
-  [class.active]="activeSection === 'participa'">
+<section id="participa" class="seccion-scroll inicio-section-white" [class.active]="activeSection === 'participa'">
 
   <div class="articulo-box inicio-article-box">
-    <img
-      class="articulo-img inicio-article-image"
-      src="/assets/images/Tarjeta3.jpg"
-      alt="Participa en eventos">
+    <img class="articulo-img inicio-article-image" src="/assets/images/Tarjeta3.jpg" alt="Participa en eventos">
 
     <div class="articulo-text">
       <h2 class="inicio-article-title">PARTICIPA</h2>
@@ -167,10 +116,7 @@
 
 
 <!-- Sección promocional -->
-<section
-  id="info"
-  class="seccion-scroll inicio-info-section"
-  [class.active]="activeSection === 'info'">
+<section id="info" class="seccion-scroll inicio-info-section" [class.active]="activeSection === 'info'">
 
   <div class="inicio-info-content">
     <h2 class="inicio-info-title">TU PLATAFORMA TOTAL</h2>
@@ -180,10 +126,7 @@
       Desde la primera idea hasta el brindis final, estamos contigo para que todo salga perfecto.
     </p>
 
-    <a
-      class="btn-cta inicio-info-cta"
-      routerLink="/register"
-      *ngIf="!authService.estaLogueado()">
+    <a class="btn-cta inicio-info-cta" routerLink="/register" *ngIf="!authService.estaLogueado()">
       EMPIEZA GRATIS AHORA
     </a>
   </div>
@@ -192,10 +135,7 @@
 
 
 <!-- Sección final -->
-<section
-  id="footer"
-  class="seccion-scroll marketing-footer"
-  [class.active]="activeSection === 'footer'">
+<section id="footer" class="seccion-scroll marketing-footer" [class.active]="activeSection === 'footer'">
 
   <div>
     <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">

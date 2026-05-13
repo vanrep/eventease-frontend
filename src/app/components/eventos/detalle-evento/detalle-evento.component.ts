@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { EventoService } from '../../../services/evento.service';
 import { AuthService } from '../../../services/auth.service';
 import { InvitacionService } from '../../../services/invitacion.service';
-import { Evento } from '../../../models/evento.model';
 import * as L from 'leaflet';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { Invitacion } from '../../../models/invitacion.model';

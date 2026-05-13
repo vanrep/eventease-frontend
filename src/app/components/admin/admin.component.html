@@ -17,11 +17,8 @@
         <ng-container *ngFor="let seccion of secciones">
 
           <!-- Sección disponible -->
-          <a
-            *ngIf="!seccion.disabled; else seccionDeshabilitada"
-            class="admin-nav-item"
-            [class.active]="seccionActiva === seccion.id"
-            [routerLink]="['/admin']"
+          <a *ngIf="!seccion.disabled; else seccionDeshabilitada" class="admin-nav-item"
+            [class.active]="seccionActiva === seccion.id" [routerLink]="['/admin']"
             [queryParams]="{ section: seccion.id }">
 
             <i class="fa-solid" [ngClass]="seccion.icono"></i>
@@ -30,10 +27,7 @@
 
           <!-- Sección deshabilitada -->
           <ng-template #seccionDeshabilitada>
-            <span
-              class="admin-nav-item admin-nav-item-disabled"
-              aria-disabled="true"
-              title="Disponible próximamente">
+            <span class="admin-nav-item admin-nav-item-disabled" aria-disabled="true" title="Disponible próximamente">
 
               <i class="fa-solid" [ngClass]="seccion.icono"></i>
               <span>{{ seccion.label }}</span>
@@ -67,8 +61,7 @@
           </div>
 
           <!-- Estado vacío de usuarios -->
-          <div
-            class="empty-state-box admin-empty-box"
+          <div class="empty-state-box admin-empty-box"
             *ngIf="!cargandoUsuarios && !mensajeErrorUsuarios && usuarios.length === 0">
 
             <i class="fa-solid fa-users"></i>
@@ -93,11 +86,8 @@
                   <td>{{ usuario.nombre || 'Sin nombre' }}</td>
                   <td>{{ usuario.email }}</td>
                   <td>
-                    <button
-                      type="button"
-                      class="btn-accion btn-rechazar"
-                      [disabled]="eliminandoUsuarioId === usuario.id"
-                      (click)="eliminarUsuario(usuario.id)">
+                    <button type="button" class="btn-accion btn-rechazar"
+                      [disabled]="eliminandoUsuarioId === usuario.id" (click)="eliminarUsuario(usuario.id)">
 
                       <i class="fa-solid fa-trash"></i>
                       {{ eliminandoUsuarioId === usuario.id ? 'Eliminando...' : 'Eliminar' }}
@@ -130,8 +120,7 @@
           </div>
 
           <!-- Estado vacío de eventos -->
-          <div
-            class="empty-state-box admin-empty-box"
+          <div class="empty-state-box admin-empty-box"
             *ngIf="!cargandoEventos && !mensajeErrorEventos && eventos.length === 0">
 
             <i class="fa-solid fa-calendar-days"></i>
@@ -160,10 +149,7 @@
                   <td>{{ evento.ubicacion }}</td>
                   <td>{{ evento.clienteEmail || 'Sin email' }}</td>
                   <td>
-                    <button
-                      type="button"
-                      class="btn-accion btn-rechazar"
-                      [disabled]="eliminandoEventoId === evento.id"
+                    <button type="button" class="btn-accion btn-rechazar" [disabled]="eliminandoEventoId === evento.id"
                       (click)="eliminarEvento(evento.id!)">
 
                       <i class="fa-solid fa-trash"></i>
