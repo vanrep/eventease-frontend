@@ -1,8 +1,7 @@
 import { Evento } from './evento.model';
 import { Invitacion } from './invitacion.model';
 
-// Anade la lista de invitaciones al evento
+// Modelo de evento con sus invitaciones
 export interface EventoDetalles extends Evento {
-  // Guarda las invitaciones del evento
   invitaciones?: Invitacion[];
 }

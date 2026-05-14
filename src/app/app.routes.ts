@@ -12,7 +12,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ErrorPaginaComponent } from './components/error-pagina/error-pagina.component';
 
 export const routes: Routes = [
-
   // Redirige la ruta raiz a la pagina de inicio
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
 
@@ -34,5 +33,5 @@ export const routes: Routes = [
   { path: 'admin', component: AdminComponent },
 
   // Muestra una pagina de error para cualquier ruta desconocida
-  { path: '**', component: ErrorPaginaComponent }
+  { path: '**', component: ErrorPaginaComponent },
 ];

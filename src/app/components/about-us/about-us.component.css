@@ -98,7 +98,7 @@
       rgba(216, 180, 254, 0));
 }
 
-    /* Lista de enlaces de contacto */
+/* Lista de enlaces de contacto */
 .contactos {
   display: flex;
   flex-wrap: wrap;

@@ -1,11 +1,3 @@
-/* =========================================================
-   INICIO COMPONENT
-   Solo estilos específicos de la página de inicio.
-   La estructura general del hero, secciones, botones, puntos
-   de navegación y footer ya está definida en styles.css.
-   ========================================================= */
-
-
 /* Limita y centra el contenido principal del hero */
 .hero-content {
   max-width: 800px;

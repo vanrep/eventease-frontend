@@ -13,7 +13,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}
-  
+
   // Registra un nuevo usuario en el backend
   register(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.apiUrl}/register`, usuario);
@@ -21,7 +21,10 @@ export class AuthService {
 
   // Envía login y recibe el token
   login(datosLogin: LoginRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, datosLogin);
+    return this.http.post<AuthResponse>(
+      `${this.apiUrl}/auth/login`,
+      datosLogin,
+    );
   }
 
   // Guarda el token en localStorage
@@ -53,9 +56,14 @@ export class AuthService {
   // Extrae el rol del token
   obtenerRol(): string | null {
     const payload = this.obtenerPayloadToken();
-    if (!payload) return null;
-
-    return String(payload['rol'] || payload['role'] || payload['authorities'] || '') || null;
+    if (!payload) {
+      return null;
+    }
+    return (
+      String(
+        payload['rol'] || payload['role'] || payload['authorities'] || '',
+      ) || null
+    );
   }
 
   esAdmin(): boolean {

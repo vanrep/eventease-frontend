@@ -1,23 +1,13 @@
-/* =========================================================
-   LOGIN COMPONENT
-   Solo ajustes específicos del formulario de acceso.
-   La base de autenticación, tarjeta, inputs, botón, alertas
-   y enlaces ya está definida en styles.css.
-   ========================================================= */
-
-
 /* Tarjeta del formulario de login */
 .login-card {
   max-width: 700px;
   padding: 60px;
 }
 
-
 /* Encabezado del login */
 .login-header {
   margin-bottom: 40px;
 }
-
 
 /* Logo del formulario de login */
 .login-logo {
@@ -25,7 +15,6 @@
   margin: 0 auto 25px;
   border-radius: var(--radius-lg);
 }
-
 
 /* Separación entre campos del login */
 .login-group {

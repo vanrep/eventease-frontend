@@ -1,23 +1,16 @@
 <!-- Muestra la barra superior -->
 <app-navbar></app-navbar>
 
-
 <!-- Zona principal de la app -->
-<main
-  [class.snap-active]="isMainPage"
-  [class.auth-page]="isAuthPage">
+<main [class.snap-active]="isMainPage" [class.auth-page]="isAuthPage">
 
   <!-- Aqui Angular carga la ruta actual -->
   <router-outlet></router-outlet>
 
 </main>
 
-
 <!-- Muestra el footer fuera de inicio -->
-<footer
-  *ngIf="!isMainPage"
-  [class.site-footer]="!isAuthPage"
-  [class.auth-footer]="isAuthPage">
+<footer *ngIf="!isMainPage" [class.site-footer]="!isAuthPage" [class.auth-footer]="isAuthPage">
 
   <!-- Links legales -->
   <nav aria-label="Enlaces legales">
@@ -45,14 +38,8 @@
 
 </footer>
 
-
 <!-- Boton para volver arriba -->
-<button
-  class="fab-top"
-  [class.visible]="btnSubir"
-  type="button"
-  aria-label="Volver arriba"
-  (click)="scrollToTop()">
+<button class="fab-top" [class.visible]="btnSubir" type="button" aria-label="Volver arriba" (click)="scrollToTop()">
 
   <i class="fa fa-chevron-up" aria-hidden="true"></i>
 

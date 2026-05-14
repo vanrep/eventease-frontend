@@ -1,5 +1,5 @@
+// Modelo con los datos que se envian en el login
 export interface LoginRequest {
-  // Guarda los datos del login
   email: string;
   password: string;
 }

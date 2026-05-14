@@ -1,11 +1,3 @@
-/* =========================================================
-   LISTA INVITACIONES COMPONENT
-   Solo estilos específicos del listado de invitaciones.
-   La base de página, tarjeta, alertas, badges, botones,
-   empty states y footer ya está definida en styles.css.
-   ========================================================= */
-
-
 /* Fondo principal de la página */
 .seccion {
   min-height: 100vh;
@@ -28,7 +20,6 @@
 /* Título principal */
 .title {
   margin: 0 0 40px;
-
   color: var(--color-primary-deep);
   font-family: var(--font-title);
   font-size: 3rem;
@@ -46,7 +37,6 @@
 .table {
   width: 100%;
   overflow: hidden;
-
   border-collapse: collapse;
   border-radius: var(--radius-lg);
 }
@@ -55,10 +45,8 @@
 /* Cabecera de la tabla */
 .table th {
   padding: 16px;
-
   background: var(--color-bg-soft);
   color: var(--color-primary-deep);
-
   font-size: 0.9rem;
   text-align: left;
   text-transform: uppercase;
@@ -68,10 +56,8 @@
 /* Celdas de la tabla */
 .table td {
   padding: 18px 16px;
-
   color: var(--color-text-soft);
   font-size: 0.95rem;
-
   border-bottom: 1px solid var(--color-bg-soft);
 }
 

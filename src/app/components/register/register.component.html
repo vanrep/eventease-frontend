@@ -21,13 +21,7 @@
         </label>
 
         <div class="input-with-icon">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="tu@email.com"
-            [(ngModel)]="usuario.email"
-            required>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" [(ngModel)]="usuario.email" required>
         </div>
       </div>
 
@@ -43,20 +37,11 @@
           </label>
 
           <div class="input-with-icon">
-            <input
-              [type]="mostrarPassword ? 'text' : 'password'"
-              id="password"
-              name="password"
-              placeholder="Elige una contraseña"
-              [(ngModel)]="usuario.password"
-              required>
+            <input [type]="mostrarPassword ? 'text' : 'password'" id="password" name="password"
+              placeholder="Elige una contraseña" [(ngModel)]="usuario.password" required>
 
-            <button
-              *ngIf="usuario.password"
-              type="button"
-              class="visibilidad-password-btn password-toggle-btn"
-              (mousedown)="$event.preventDefault()"
-              (click)="$event.preventDefault(); toggleMostrarPassword()"
+            <button *ngIf="usuario.password" type="button" class="visibilidad-password-btn password-toggle-btn"
+              (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarPassword()"
               [attr.aria-label]="mostrarPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'">
               <i class="fa-solid" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
             </button>
@@ -72,20 +57,11 @@
           </label>
 
           <div class="input-with-icon">
-            <input
-              [type]="mostrarConfirmacion ? 'text' : 'password'"
-              id="confirmarPassword"
-              name="confirmarPassword"
-              placeholder="Confirma tu contraseña"
-              [(ngModel)]="confirmarPassword"
-              required>
+            <input [type]="mostrarConfirmacion ? 'text' : 'password'" id="confirmarPassword" name="confirmarPassword"
+              placeholder="Confirma tu contraseña" [(ngModel)]="confirmarPassword" required>
 
-            <button
-              *ngIf="confirmarPassword"
-              type="button"
-              class="visibilidad-password-btn password-toggle-btn"
-              (mousedown)="$event.preventDefault()"
-              (click)="$event.preventDefault(); toggleMostrarConfirmacion()"
+            <button *ngIf="confirmarPassword" type="button" class="visibilidad-password-btn password-toggle-btn"
+              (mousedown)="$event.preventDefault()" (click)="$event.preventDefault(); toggleMostrarConfirmacion()"
               [attr.aria-label]="mostrarConfirmacion ? 'Ocultar contraseña' : 'Mostrar contraseña'">
               <i class="fa-solid" [ngClass]="mostrarConfirmacion ? 'fa-eye-slash' : 'fa-eye'"></i>
             </button>
@@ -94,7 +70,7 @@
 
       </div>
 
-  <!-- Muestra si las contraseñas no coinciden -->
+      <!-- Muestra si las contraseñas no coinciden -->
       <div *ngIf="confirmarPassword && !passwordsCoinciden()" class="alerta-error password-error">
         <i class="fa-solid fa-circle-exclamation"></i>
         Las contraseñas no coinciden
@@ -111,12 +87,7 @@
         </label>
 
         <div class="input-with-icon">
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            placeholder="Tu nombre completo"
-            [(ngModel)]="usuario.nombre">
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" [(ngModel)]="usuario.nombre">
         </div>
       </div>
 
@@ -134,11 +105,7 @@
 
       <!-- Boton de registrar -->
       <div class="form-actions auth-actions">
-        <button
-          id="btn-submit"
-          type="submit"
-          class="btn-cta"
-          [disabled]="!registerForm.valid || !passwordsCoinciden()">
+        <button id="btn-submit" type="submit" class="btn-cta" [disabled]="!registerForm.valid || !passwordsCoinciden()">
           REGISTRAR
           <i class="fa-solid fa-user-plus"></i>
         </button>

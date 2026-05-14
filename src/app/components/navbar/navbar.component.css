@@ -1,17 +1,9 @@
-/* =========================================================
-   NAVBAR COMPONENT
-   Solo estilos específicos de la zona de usuario.
-   La cabecera, el menú principal y el logo ya están en styles.css.
-   ========================================================= */
-
-
 /* Agrupa los controles del usuario en la cabecera */
 .user-header {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 
 /* Contenedor con avatar, email y botón de cerrar sesión */
 .user-pill {
@@ -20,12 +12,10 @@
   gap: 10px;
 }
 
-
 /* Avatar circular con la inicial del usuario */
 .user-avatar {
   flex-shrink: 0;
 }
-
 
 /* Contenedor del texto del usuario */
 .user-info {
@@ -33,7 +23,6 @@
   flex-direction: column;
   line-height: 1.1;
 }
-
 
 /* Email del usuario autenticado */
 .user-email {

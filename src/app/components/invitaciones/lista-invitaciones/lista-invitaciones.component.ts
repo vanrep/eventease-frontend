@@ -8,7 +8,7 @@ import { Invitacion } from '../../../models/invitacion.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './lista-invitaciones.component.html',
-  styleUrl: './lista-invitaciones.component.css'
+  styleUrl: './lista-invitaciones.component.css',
 })
 export class ListaInvitacionesComponent implements OnInit {
   // Guarda el array de invitaciones

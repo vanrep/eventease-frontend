@@ -8,6 +8,7 @@ import { Evento } from '../../../models/evento.model';
 import * as L from 'leaflet';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 
+// Guarda los datos de cada lugar del mapa
 interface Lugar {
   nombre: string;
   direccion: string;
@@ -197,14 +198,19 @@ export class CrearEventoComponent {
   enviarInvitaciones(eventoId: number): void {
     this.emailsInvitados.forEach((invitado, index) => {
       const email = invitado.email.trim();
+
+      // Si el campo esta vacio, no envia nada
       if (!email) return;
 
       this.invitacionService.invitarUsuario(eventoId, email).subscribe({
         next: () => {
+          // Marca la invitacion como enviada en la lista
           this.emailsInvitados[index].email = '✓ Enviado';
         },
         error: (err) => {
           console.error(`Error invitando a ${email}:`, err);
+
+          // Guarda un mensaje segun el error que devuelve el backend
           if (err.status === 409) {
             this.mensajeError = 'Ya hay invitaciones repetidas';
           } else if (err.status === 404) {
@@ -243,9 +249,13 @@ export class CrearEventoComponent {
     this.eventoService.crearEvento(this.evento).subscribe({
       next: (response) => {
         this.mensajeOk = 'Evento creado correctamente';
+
+        // Si el evento se crea con id, envia las invitaciones
         if (response.id) {
           this.enviarInvitaciones(response.id);
         }
+
+        // Espera un momento y vuelve al listado
         setTimeout(() => {
           this.router.navigate(['/eventos']);
         }, 1500);

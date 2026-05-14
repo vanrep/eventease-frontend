@@ -50,13 +50,8 @@
     <div class="user-header" *ngIf="authService.estaLogueado()">
 
       <!-- Botón de modo claro/oscuro -->
-      <button
-        id="contraste"
-        type="button"
-        class="header-icon-btn"
-        title="Cambiar modo de contraste"
-        aria-label="Cambiar modo de contraste"
-        (click)="toggleDarkMode()">
+      <button id="contraste" type="button" class="header-icon-btn" title="Cambiar modo de contraste"
+        aria-label="Cambiar modo de contraste" (click)="toggleDarkMode()">
         <i class="fa-solid fa-circle-half-stroke"></i>
       </button>
 
@@ -74,11 +69,7 @@
         </div>
 
         <!-- Cerrar sesión -->
-        <button
-          type="button"
-          class="header-icon-btn logout-btn"
-          title="Cerrar sesión"
-          aria-label="Cerrar sesión"
+        <button type="button" class="header-icon-btn logout-btn" title="Cerrar sesión" aria-label="Cerrar sesión"
           (click)="logout()">
           <i class="fa-solid fa-right-from-bracket"></i>
         </button>

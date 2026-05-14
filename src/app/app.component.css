@@ -1,22 +1,16 @@
-/* =========================================================
-   APP COMPONENT
-   Only layout rules that belong to the Angular root shell.
-   Most navbar, footer, buttons and shared styles are now global.
-   ========================================================= */
-
-/* Root component behaves like a normal block element */
+/* El componente raiz se comporta como un bloque normal */
 :host {
 	display: block;
 }
 
-/* Removes extra spacing on login/register pages */
+/* Quita el espacio extra en login y registro */
 main.auth-page {
 	height: 100vh;
 	overflow: hidden;
 	padding-bottom: 0;
 }
 
-/* Removes extra bottom padding on the scroll-snap homepage */
+/* Quita el relleno inferior extra en la portada con scroll por secciones */
 main.snap-active {
 	padding-bottom: 0;
 }

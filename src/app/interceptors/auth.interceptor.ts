@@ -16,8 +16,8 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   if (token) {
     authReq = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
   }
 
@@ -25,7 +25,9 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse) => {
       // Si la sesion ya no es valida, limpia el token y redirige al login
       if (error.status === 401 || error.status === 403) {
-        console.warn('Sesión expirada o no autorizada. Redirigiendo a login...');
+        console.warn(
+          'Sesión expirada o no autorizada. Redirigiendo a login...',
+        );
 
         // Elimina el token almacenado
         authService.logout();

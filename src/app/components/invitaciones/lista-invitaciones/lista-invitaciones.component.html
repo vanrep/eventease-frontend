@@ -2,27 +2,27 @@
 
   <!-- Página de invitaciones -->
   <div class="contenedor">
-  
+
     <!-- Muestra el error si lo hay -->
     <div *ngIf="mensajeError" class="alerta-error">
       <i class="fa-solid fa-circle-exclamation"></i>
       {{ mensajeError }}
     </div>
-  
+
     <div class="form-card">
-  
+
       <!-- Título principal -->
       <h1 class="title">
         <i class="fa-solid fa-envelope-open-text"></i>
         MIS INVITACIONES
       </h1>
-  
+
       <!-- Muestra si no hay invitaciones -->
       <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-state-box">
         <i class="fa-solid fa-inbox"></i>
         No tienes invitaciones.
       </div>
-  
+
       <!-- Tabla de invitaciones -->
       <table class="table" *ngIf="invitaciones.length > 0">
         <thead>
@@ -34,79 +34,70 @@
             <th>Acciones</th>
           </tr>
         </thead>
-  
+
         <tbody>
           <tr *ngFor="let inv of invitaciones">
-  
+
             <!-- Columna del evento -->
             <td>
               <strong class="evento">
                 {{ inv.eventoTitulo }}
               </strong>
             </td>
-  
+
             <!-- Columna de la fecha -->
             <td>
               {{ inv.eventoFecha | date:'dd/MM/yyyy HH:mm' }}
             </td>
-  
+
             <!-- Columna de la ubicacion -->
             <td>
-              <i
-                class="fa-solid fa-map-location-dot ubicacion-icon"
-                [title]="inv.eventoUbicacion">
+              <i class="fa-solid fa-map-location-dot ubicacion-icon" [title]="inv.eventoUbicacion">
               </i>
             </td>
-  
+
             <!-- Columna del estado -->
             <td>
               <span class="badge-status pendiente" *ngIf="inv.estado === 'PENDIENTE'">
                 <i class="fa-solid fa-clock"></i>
                 Pendiente
               </span>
-  
+
               <span class="badge-status aceptada" *ngIf="inv.estado === 'ACEPTADA'">
                 <i class="fa-solid fa-circle-check"></i>
                 Aceptada
               </span>
-  
+
               <span class="badge-status rechazada" *ngIf="inv.estado === 'RECHAZADA'">
                 <i class="fa-solid fa-circle-xmark"></i>
                 Rechazada
               </span>
             </td>
-  
+
             <!-- Columna de acciones -->
             <td>
-              <div
-                class="lista-acciones"
+              <div class="lista-acciones"
                 *ngIf="inv.estado === 'PENDIENTE' || inv.estado === 'NUEVA'; else sinAcciones">
-  
-                <button
-                  type="button"
-                  class="btn-accion btn-aceptar"
-                  (click)="responder(inv.eventoId, true)">
+
+                <button type="button" class="btn-accion btn-aceptar" (click)="responder(inv.eventoId, true)">
                   <i class="fa-solid fa-circle-check"></i>
                   Aceptar
                 </button>
-  
-                <button
-                  type="button"
-                  class="btn-accion btn-rechazar"
-                  (click)="responder(inv.eventoId, false)">
+
+                <button type="button" class="btn-accion btn-rechazar" (click)="responder(inv.eventoId, false)">
                   <i class="fa-solid fa-circle-xmark"></i>
                   Rechazar
                 </button>
-  
+
               </div>
-  
+
               <ng-template #sinAcciones>
                 <span class="sin-acciones">
                   Sin acciones
                 </span>
               </ng-template>
             </td>
-  
+
           </tr>
         </tbody>
       </table>

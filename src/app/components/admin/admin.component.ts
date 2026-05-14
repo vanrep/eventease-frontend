@@ -13,7 +13,6 @@ import { AdminService } from '../../services/admin.service';
   styleUrl: './admin.component.css',
 })
 export class AdminComponent implements OnInit {
-  
   // Seccion activa y datos mostrados
   seccionActiva: string = 'usuarios';
   usuarios: AdminUsuario[] = [];
@@ -32,8 +31,18 @@ export class AdminComponent implements OnInit {
   // Secciones del panel
   readonly secciones = [
     { id: 'usuarios', label: 'Usuarios', icono: 'fa-users', disabled: false },
-    { id: 'eventos', label: 'Eventos', icono: 'fa-calendar-days', disabled: false },
-    { id: 'lugares', label: 'Lugares', icono: 'fa-map-location-dot', disabled: true }
+    {
+      id: 'eventos',
+      label: 'Eventos',
+      icono: 'fa-calendar-days',
+      disabled: false,
+    },
+    {
+      id: 'lugares',
+      label: 'Lugares',
+      icono: 'fa-map-location-dot',
+      disabled: true,
+    },
   ];
 
   constructor(
