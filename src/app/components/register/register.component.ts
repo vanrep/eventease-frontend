@@ -13,19 +13,19 @@ import { Usuario } from '../../models/usuario.model';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  // Modelo enlazado al formulario de registro
+  // Guarda los datos del registro
   usuario: Usuario = {
     nombre: '',
     email: '',
     password: '',
   };
 
-  // Estados auxiliares para validacion y visibilidad de contrasenas
+  // Guarda la confirmacion y el estado de visibilidad
   confirmarPassword: string = '';
   mostrarPassword: boolean = false;
   mostrarConfirmacion: boolean = false;
 
-  // Mensajes mostrados tras intentar registrar al usuario
+  // Guarda los mensajes del formulario
   mensajeOk: string = '';
   mensajeError: string = '';
 
@@ -34,22 +34,22 @@ export class RegisterComponent {
     private router: Router,
   ) {}
 
-  // Comprueba si ambas contrasenas introducidas coinciden
+  // Comprueba si las dos contraseñas coinciden
   passwordsCoinciden(): boolean {
     return this.usuario.password === this.confirmarPassword;
   }
 
-  // Alterna la visibilidad de la contrasena principal
+  // Cambia si se ve la contraseña principal
   toggleMostrarPassword(): void {
     this.mostrarPassword = !this.mostrarPassword;
   }
 
-  // Alterna la visibilidad de la contrasena de confirmacion
+  // Cambia si se ve la contraseña de confirmacion
   toggleMostrarConfirmacion(): void {
     this.mostrarConfirmacion = !this.mostrarConfirmacion;
   }
 
-  // Envía el formulario de registro al backend
+  // Envía el registro
   registrar(): void {
     this.mensajeOk = '';
     this.mensajeError = '';
@@ -63,7 +63,7 @@ export class RegisterComponent {
       next: () => {
         this.mensajeOk = 'Usuario registrado correctamente';
 
-        // Vuelve al login tras mostrar el mensaje de confirmacion
+        // Espera un poco y vuelve al login
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 1000);

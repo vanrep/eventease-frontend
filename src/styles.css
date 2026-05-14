@@ -1,14 +1,6 @@
-/* =========================================================
-   EVENTEASE GLOBAL STYLES
-   Shared visual system for layout, navbar, buttons, forms,
-   alerts, homepage sections, maps and footers.
-   ========================================================= */
+/* ============ VARIABLES DE DISENO ============ */
 
-
-/* =========================================================
-   1. DESIGN VARIABLES
-   ========================================================= */
-
+/* Variables globales de colores, tipografias, radios y sombras */
 :root {
   --color-bg: #F8F7FF;
   --color-bg-rgb: 248 247 255;
@@ -77,20 +69,21 @@
 }
 
 
-/* =========================================================
-   2. BASE PAGE RESET
-   ========================================================= */
+/* ============ AJUSTES BASE DE LA PAGINA ============ */
 
+/* Comportamiento general del documento y ocultacion de la barra */
 html {
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
+/* Oculta la barra en navegadores basados en WebKit */
 html::-webkit-scrollbar {
   display: none;
 }
 
+/* Estilos base del cuerpo de la pagina */
 body {
   width: 100%;
   min-height: 100vh;
@@ -102,21 +95,24 @@ body {
   background: var(--color-bg);
 }
 
+/* Contenedor principal de la aplicacion */
 main {
   min-height: 100vh;
   background-color: var(--color-bg);
-  padding-bottom: 4rem;
 }
 
+/* Ajuste general para imagenes */
 img {
   max-width: 100%;
   display: block;
 }
 
+/* Hace que los enlaces hereden el color del contenedor */
 a {
   color: inherit;
 }
 
+/* Iguala la tipografia en controles de formulario */
 button,
 input,
 textarea,
@@ -125,10 +121,9 @@ select {
 }
 
 
-/* =========================================================
-   3. GLOBAL BUTTONS
-   ========================================================= */
+/* ============ BOTONES GLOBALES ============ */
 
+/* Base comun para botones principales, secundarios y de peligro */
 .btn-cta,
 .btn-secondary,
 .btn-danger {
@@ -149,6 +144,7 @@ select {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Boton principal de llamada a la accion */
 .btn-cta {
   border: none;
   background: var(--color-primary);
@@ -156,36 +152,42 @@ select {
   box-shadow: 0 4px 12px rgb(var(--color-primary-rgb) / 0.2);
 }
 
+/* Hover del boton principal cuando esta activo */
 .btn-cta:hover:not(:disabled) {
   background: var(--color-primary-dark);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgb(var(--color-primary-dark-rgb) / 0.3);
 }
 
+/* Boton secundario con fondo claro y borde visible */
 .btn-secondary {
   background: var(--color-bg-card);
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
 }
 
+/* Hover del boton secundario */
 .btn-secondary:hover {
   background: var(--color-primary);
   color: var(--color-bg-card);
   transform: translateY(-2px);
 }
 
+/* Boton de acciones destructivas */
 .btn-danger {
   background: var(--color-bg-card);
   color: var(--color-danger);
   border: 2px solid var(--color-danger);
 }
 
+/* Hover del boton de peligro */
 .btn-danger:hover {
   background: var(--color-danger);
   color: var(--color-bg-card);
   transform: translateY(-2px);
 }
 
+/* Estado desactivado comun para los botones */
 .btn-cta:disabled,
 .btn-cta[disabled],
 .btn-secondary:disabled,
@@ -198,6 +200,7 @@ select {
   box-shadow: none;
 }
 
+/* Ajuste visual del boton principal desactivado */
 .btn-cta:disabled,
 .btn-cta[disabled] {
   background: var(--color-primary-disabled);
@@ -205,10 +208,9 @@ select {
 }
 
 
-/* =========================================================
-   4. NAVBAR / HEADER
-   ========================================================= */
+/* ============ BARRA SUPERIOR ============ */
 
+/* Cabecera fija de la aplicacion */
 .site-header {
   position: fixed;
   top: 0;
@@ -224,6 +226,7 @@ select {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Ajuste de la cabecera cuando la pagina hace scroll */
 .site-header.scrolled {
   padding: 5px 0;
   background-color: rgb(var(--color-header-bg-rgb) / 0.95);
@@ -231,6 +234,7 @@ select {
   box-shadow: 0 4px 6px -1px rgb(var(--color-black-rgb) / 0.1);
 }
 
+/* Distribucion interna de la navegacion principal */
 .header-nav {
   max-width: 1400px;
   margin: 0 auto;
@@ -241,6 +245,7 @@ select {
   justify-content: space-between;
 }
 
+/* Tamano y animacion del logo */
 #logo img {
   height: 45px;
   width: auto;
@@ -248,19 +253,20 @@ select {
   transition: transform 0.3s ease;
 }
 
+/* Hover del logo */
 #logo img:hover {
   transform: scale(1.05);
 }
 
+/* Reduce el logo cuando la cabecera se compacta */
 .site-header.scrolled #logo img {
   height: 40px;
 }
 
 
-/* =========================================================
-   5. MAIN MENU
-   ========================================================= */
+/* ============ MENU PRINCIPAL ============ */
 
+/* Lista principal de enlaces de navegacion */
 .menu {
   list-style: none;
   margin: 0;
@@ -273,6 +279,7 @@ select {
   border-radius: var(--radius-xxl);
 }
 
+/* Enlaces del menu principal */
 .menu a {
   display: inline-flex;
   align-items: center;
@@ -290,29 +297,35 @@ select {
   transition: all 0.3s ease;
 }
 
+/* Iconos de los enlaces del menu */
 .menu a i {
   color: var(--color-primary);
   font-size: 1.1rem;
 }
 
+/* Hover de los enlaces del menu */
 .menu a:hover {
   color: var(--color-primary);
   transform: translateY(-2px);
 }
 
+/* Estado activo del enlace actual */
 .menu a.active {
   color: var(--color-primary);
   border-bottom: 2px solid var(--color-primary);
 }
 
+/* Color del icono cuando el enlace esta activo */
 .menu a.active i {
   color: var(--color-primary);
 }
 
+/* Enlace especial de administracion */
 .admin-menu-link {
   color: #B91C1C !important;
 }
 
+/* Variante roja para el acceso de administracion */
 .admin-menu-link i,
 .admin-menu-link:hover,
 .admin-menu-link.active,
@@ -320,21 +333,22 @@ select {
   color: var(--color-danger-dark) !important;
 }
 
+/* Subrayado activo del enlace de administracion */
 .admin-menu-link.active {
   border-bottom-color: var(--color-danger-dark) !important;
 }
 
 
-/* =========================================================
-   6. USER HEADER CONTROLS
-   ========================================================= */
+/* ============ CONTROLES DEL USUARIO EN LA CABECERA ============ */
 
+/* Zona derecha con acciones del usuario */
 .user-header {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+/* Pastilla con el avatar y el correo */
 .user-pill {
   display: flex;
   align-items: center;
@@ -348,6 +362,7 @@ select {
   box-shadow: var(--shadow-sm);
 }
 
+/* Circulo con la inicial del usuario */
 .user-avatar {
   width: 38px;
   height: 38px;
@@ -365,18 +380,21 @@ select {
   font-weight: 800;
 }
 
+/* Columna con la informacion del usuario */
 .user-info {
   display: flex;
   flex-direction: column;
   line-height: 1.1;
 }
 
+/* Texto del correo mostrado en la cabecera */
 .user-email {
   color: var(--color-primary-deep);
   font-size: 0.85rem;
   font-weight: 800;
 }
 
+/* Botones redondos de acciones rapidas */
 .header-icon-btn {
   width: 42px;
   height: 42px;
@@ -394,38 +412,43 @@ select {
   transition: all 0.3s ease;
 }
 
+/* Hover de los botones de icono */
 .header-icon-btn:hover {
   background: var(--color-primary);
   color: var(--color-bg-card);
 }
 
+/* Variante para el boton de cerrar sesion */
 .logout-btn {
   border-color: var(--color-danger);
   color: var(--color-danger);
 }
 
+/* Hover del boton de cerrar sesion */
 .logout-btn:hover {
   background: var(--color-danger);
   color: var(--color-bg-card);
 }
 
+/* Espacio del boton de contraste respecto al resto */
 #contraste {
   margin-left: 15px;
 }
 
+/* Giro decorativo del boton de contraste */
 #contraste:hover {
   transform: rotate(180deg);
 }
 
 
-/* =========================================================
-   7. HOMEPAGE SNAP SCROLL
-   ========================================================= */
+/* ============ DESPLAZAMIENTO POR SECCIONES EN INICIO ============ */
 
+/* Quita el relleno inferior cuando la portada usa snap */
 main.snap-active {
   padding-bottom: 0;
 }
 
+/* Contenedor con desplazamiento por secciones */
 .snap-container {
   height: 100vh;
   overflow-y: scroll;
@@ -435,10 +458,12 @@ main.snap-active {
   -ms-overflow-style: none;
 }
 
+/* Oculta la barra del contenedor snap en WebKit */
 .snap-container::-webkit-scrollbar {
   display: none;
 }
 
+/* Base comun de cada seccion a pantalla completa */
 .seccion-scroll {
   min-height: 100vh;
   position: relative;
@@ -451,10 +476,9 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   8. HOMEPAGE HERO
-   ========================================================= */
+/* ============ HERO DE LA PAGINA DE INICIO ============ */
 
+/* Portada principal con imagen de fondo */
 .contenedor-hero {
   min-height: 100vh;
   box-sizing: border-box;
@@ -475,11 +499,13 @@ main.snap-active {
   border-bottom: 3px solid var(--color-primary-light);
 }
 
+/* Caja centrada del contenido principal */
 .hero-content {
   max-width: 800px;
   text-align: center;
 }
 
+/* Titulo principal de la portada */
 .contenedor-hero h1 {
   margin: 0 0 15px;
   color: var(--color-primary-title);
@@ -488,6 +514,7 @@ main.snap-active {
   text-transform: uppercase;
 }
 
+/* Texto de apoyo de la portada */
 .contenedor-hero p {
   margin: 0 0 25px;
   color: var(--color-primary-deep);
@@ -495,6 +522,7 @@ main.snap-active {
   font-weight: 500;
 }
 
+/* Grupo de botones del hero */
 .hero-actions {
   display: flex;
   justify-content: center;
@@ -503,18 +531,19 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   9. HOMEPAGE ARTICLE SECTIONS
-   ========================================================= */
+/* ============ BLOQUES INFORMATIVOS DE INICIO ============ */
 
+/* Fondo claro para las secciones blancas */
 .inicio-section-white {
   background-color: var(--color-bg-card);
 }
 
+/* Fondo suave para las secciones alternas */
 .inicio-section-tint {
   background-color: var(--color-bg-soft);
 }
 
+/* Contenedor comun de las piezas informativas */
 .articulo-box,
 .inicio-article-box {
   width: min(1300px, 90%);
@@ -531,10 +560,12 @@ main.snap-active {
   box-shadow: none;
 }
 
+/* Variante con el contenido en orden inverso */
 .inicio-article-box-reverse {
   flex-direction: row-reverse;
 }
 
+/* Columna de texto de los bloques de inicio */
 .articulo-text {
   flex: 1;
 
@@ -546,6 +577,7 @@ main.snap-active {
   text-align: center;
 }
 
+/* Imagen principal de cada bloque informativo */
 .articulo-img,
 .inicio-article-image {
   flex: 1;
@@ -558,6 +590,7 @@ main.snap-active {
   box-shadow: 0 20px 25px -5px rgb(var(--color-black-rgb) / 0.1);
 }
 
+/* Titulo grande de los bloques informativos */
 .inicio-article-title {
   margin: 0 0 1.5rem;
   color: var(--color-primary-title);
@@ -565,6 +598,7 @@ main.snap-active {
   text-transform: uppercase;
 }
 
+/* Texto descriptivo de cada bloque */
 .inicio-article-copy {
   margin: 0;
   color: var(--color-text-soft);
@@ -573,10 +607,9 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   10. HOMEPAGE INFO SECTION
-   ========================================================= */
+/* ============ SECCION INFORMATIVA DE INICIO ============ */
 
+/* Banda destacada con mensaje principal */
 .inicio-info-section {
   display: flex;
   align-items: center;
@@ -592,11 +625,13 @@ main.snap-active {
   background-size: cover;
 }
 
+/* Contenido centrado del bloque informativo */
 .inicio-info-content {
   max-width: 1000px;
   padding: 40px;
 }
 
+/* Titulo del bloque informativo principal */
 .inicio-info-title {
   margin: 0 0 2rem;
   color: var(--color-bg-card);
@@ -606,6 +641,7 @@ main.snap-active {
   text-transform: uppercase;
 }
 
+/* Texto de apoyo del bloque informativo */
 .inicio-info-copy {
   margin: 0 0 3rem;
   font-family: var(--font-body);
@@ -613,6 +649,7 @@ main.snap-active {
   line-height: 1.6;
 }
 
+/* Boton destacado de la seccion informativa */
 .inicio-info-cta {
   padding: 18px 45px;
   color: var(--color-primary);
@@ -621,10 +658,9 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   11. HOMEPAGE NAV DOTS
-   ========================================================= */
+/* ============ PUNTOS DE NAVEGACION DE INICIO ============ */
 
+/* Contenedor flotante con los puntos de seccion */
 .nav-dots {
   position: fixed;
   left: 50%;
@@ -645,6 +681,7 @@ main.snap-active {
   transform: translateX(-50%);
 }
 
+/* Boton circular de cada punto de navegacion */
 .dot {
   width: 12px;
   height: 12px;
@@ -658,21 +695,22 @@ main.snap-active {
   transition: all 0.3s ease;
 }
 
+/* Estado hover y activo de los puntos */
 .dot:hover,
 .dot.active {
   background-color: var(--color-primary);
 }
 
+/* Punto marcado como seccion actual */
 .dot.active {
   border-color: var(--color-bg-card);
   transform: scale(1.5);
 }
 
 
-/* =========================================================
-   12. HOMEPAGE ANIMATIONS
-   ========================================================= */
+/* ============ ANIMACIONES DE INICIO ============ */
 
+/* Estado inicial de los titulos antes de entrar en pantalla */
 .seccion-scroll .articulo-text h2,
 .seccion-scroll .hero-content h1,
 .seccion-scroll #footer h2 {
@@ -681,6 +719,7 @@ main.snap-active {
   transition: all 2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Estado inicial de los textos antes de activarse */
 .seccion-scroll .articulo-text p,
 .seccion-scroll .hero-content p,
 .seccion-scroll #footer p {
@@ -689,6 +728,7 @@ main.snap-active {
   transition: all 2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
 }
 
+/* Estado inicial de botones, imagenes y redes */
 .seccion-scroll .btn-cta,
 .seccion-scroll .btn-secondary,
 .seccion-scroll .articulo-img,
@@ -698,6 +738,7 @@ main.snap-active {
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.8s;
 }
 
+/* Estado final cuando la seccion entra en vista */
 .seccion-scroll.active h1,
 .seccion-scroll.active h2,
 .seccion-scroll.active p,
@@ -710,10 +751,9 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   13. COMMON PAGE BACKGROUND
-   ========================================================= */
+/* ============ FONDO COMUN DE LAS PAGINAS ============ */
 
+/* Fondo general para las paginas interiores */
 .seccion {
   min-height: 100vh;
   display: block;
@@ -731,10 +771,9 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   14. COMMON CARDS
-   ========================================================= */
+/* ============ TARJETAS COMUNES ============ */
 
+/* Caja principal que envuelve formularios y contenido */
 .contenedor {
   width: 100%;
   max-width: 1000px;
@@ -750,10 +789,9 @@ main.snap-active {
 }
 
 
-/* =========================================================
-   15. COMMON FORM STRUCTURE
-   ========================================================= */
+/* ============ ESTRUCTURA COMUN DE FORMULARIOS ============ */
 
+/* Cabecera principal de los formularios */
 .form-header,
 .cabecera {
   margin-bottom: 30px;
@@ -762,6 +800,7 @@ main.snap-active {
   border: none;
 }
 
+/* Titulo principal del formulario */
 .form-header h1 {
   margin: 0 0 0.5rem;
   color: var(--color-primary-deep);
@@ -770,12 +809,14 @@ main.snap-active {
   text-transform: uppercase;
 }
 
+/* Texto auxiliar de la cabecera */
 .form-header p {
   margin: 0;
   color: var(--color-muted);
   font-size: 1.1rem;
 }
 
+/* Rejilla comun para distribuir campos en columnas */
 .form-grid,
 .grid {
   display: grid;
@@ -784,6 +825,7 @@ main.snap-active {
   margin-bottom: 40px;
 }
 
+/* Grupo base de cada campo de formulario */
 .form-group,
 .grupo {
   display: flex;
@@ -791,15 +833,18 @@ main.snap-active {
   gap: 12px;
 }
 
+/* Elemento que ocupa el ancho completo de la rejilla */
 .full-width {
   grid-column: span 2;
 }
 
+/* Separacion vertical entre bloques */
 .section-gap,
 .separador {
   margin-bottom: 40px;
 }
 
+/* Etiquetas comunes de los formularios */
 label {
   display: flex;
   align-items: center;
@@ -813,16 +858,16 @@ label {
   text-transform: uppercase;
 }
 
+/* Color de los iconos dentro de las etiquetas */
 label i,
 .email-icon {
   color: var(--color-primary);
 }
 
 
-/* =========================================================
-   16. COMMON INPUTS
-   ========================================================= */
+/* ============ CAMPOS DE ENTRADA COMUNES ============ */
 
+/* Estilo base para inputs, areas de texto y selects */
 input,
 textarea,
 select {
@@ -842,6 +887,7 @@ select {
   transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+/* Estado de foco de los campos */
 input:focus,
 textarea:focus,
 select:focus {
@@ -851,15 +897,18 @@ select:focus {
   box-shadow: 0 0 0 4px rgb(var(--color-primary-rgb) / 0.1);
 }
 
+/* Permite redimensionar los textarea en vertical */
 textarea {
   resize: vertical;
 }
 
+/* Mantiene un cursor neutro en campos de solo lectura */
 input[readonly],
 textarea[readonly] {
   cursor: default;
 }
 
+/* Variante de input integrada en la cabecera del formulario */
 .cabecera input,
 .form-header input {
   padding: 10px 0;
@@ -874,6 +923,7 @@ textarea[readonly] {
   border-radius: var(--radius-0);
 }
 
+/* Tamano del texto en textarea de bloques amplios */
 .separador textarea,
 .section-gap textarea {
   font-size: 1.1rem;
@@ -881,10 +931,9 @@ textarea[readonly] {
 }
 
 
-/* =========================================================
-   17. INFO FIELD CARDS
-   ========================================================= */
+/* ============ TARJETAS DE CAMPOS INFORMATIVOS ============ */
 
+/* Tarjetas para agrupar datos breves del formulario */
 .info-card {
   padding: 25px;
 
@@ -894,16 +943,16 @@ textarea[readonly] {
   box-shadow: 0 4px 12px rgb(var(--color-black-rgb) / 0.02);
 }
 
+/* Ajuste visual del campo dentro de la tarjeta */
 .info-input {
   margin-top: 10px;
   border-color: #F3E8FF;
 }
 
 
-/* =========================================================
-   18. MAP AND PLACE SELECTOR
-   ========================================================= */
+/* ============ MAPA Y SELECTOR DE LUGARES ============ */
 
+/* Distribucion entre la lista de lugares y el mapa */
 .seleccion-lugares {
   width: 100%;
   margin-bottom: 30px;
@@ -913,10 +962,15 @@ textarea[readonly] {
   gap: 24px;
 }
 
+/* Lista desplazable de lugares disponibles */
 .lista-lugares {
   max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 1rem;
 }
 
+/* Tarjeta de cada lugar disponible */
 .lugar-item {
   margin-bottom: 12px;
   padding: 15px;
@@ -929,6 +983,7 @@ textarea[readonly] {
   transition: all 0.3s ease;
 }
 
+/* Hover y estado seleccionado del lugar */
 .lugar-item:hover,
 .lugar-item.selected {
   background: var(--color-bg-soft);
@@ -936,10 +991,12 @@ textarea[readonly] {
   transform: translateX(5px);
 }
 
+/* Sombra extra para el lugar elegido */
 .lugar-item.selected {
   box-shadow: 0 4px 12px rgb(var(--color-primary-rgb) / 0.1);
 }
 
+/* Nombre principal de cada lugar */
 .lugar-item h4 {
   margin: 0 0 5px;
   color: var(--color-primary-deep);
@@ -947,12 +1004,14 @@ textarea[readonly] {
   font-size: 1.1rem;
 }
 
+/* Direccion breve del lugar */
 .lugar-item p {
   margin: 0;
   color: var(--color-muted);
   font-size: 0.85rem;
 }
 
+/* Caja del mapa y sus variantes */
 .contenedor-mapa,
 .mapa {
   width: 100%;
@@ -965,6 +1024,7 @@ textarea[readonly] {
   box-shadow: inset 0 0 10px rgb(var(--color-black-rgb) / 0.05);
 }
 
+/* Campo que muestra el lugar elegido */
 .lugar-input {
   margin-top: 15px;
 
@@ -975,16 +1035,19 @@ textarea[readonly] {
   background: var(--color-bg);
 }
 
+/* Contenedor del campo de lugar y la accion lateral */
 .lugar-accion {
   position: relative;
   margin-top: 15px;
 }
 
+/* Espacio extra para el boton lateral dentro del campo */
 .lugar-accion .lugar-input {
   margin-top: 0;
   padding-right: 250px;
 }
 
+/* Boton lateral para acciones sobre el lugar */
 .precios-boton {
   position: absolute;
   top: 50%;
@@ -996,6 +1059,7 @@ textarea[readonly] {
   transform: translateY(-50%);
 }
 
+/* Mantiene la posicion del boton cuando esta desactivado */
 .precios-boton:disabled:hover,
 .precios-boton[disabled]:hover {
   background: var(--color-primary-disabled);
@@ -1004,16 +1068,16 @@ textarea[readonly] {
 }
 
 
-/* =========================================================
-   19. INVITATIONS / GUEST ROWS
-   ========================================================= */
+/* ============ INVITACIONES Y FILAS DE INVITADOS ============ */
 
+/* Bloque general de gestion de invitaciones */
 .invitaciones {
   margin-top: 40px;
   padding-top: 40px;
   border-top: 2px solid var(--color-bg-soft);
 }
 
+/* Cabecera del bloque de invitaciones */
 .invitaciones-header {
   margin-bottom: 25px;
 
@@ -1022,28 +1086,33 @@ textarea[readonly] {
   justify-content: space-between;
 }
 
+/* Tamano de la etiqueta principal del bloque */
 .invitaciones-header label {
   margin: 0;
   font-size: 1.2rem;
 }
 
+/* Lista vertical con las filas de invitados */
 .lista-invitados {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Fila individual de cada invitado */
 .fila-invitado {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
+/* Contenedor del icono y el campo de correo */
 .email-contenedor {
   position: relative;
   flex: 1;
 }
 
+/* Icono del correo dentro del campo */
 .email-icon {
   position: absolute;
   top: 50%;
@@ -1051,10 +1120,12 @@ textarea[readonly] {
   transform: translateY(-50%);
 }
 
+/* Espacio interior para que no tape el icono */
 .email-contenedor input {
   padding-left: 50px;
 }
 
+/* Base comun de los botones de anadir y quitar */
 .btn-anadir,
 .btn-quitar {
   width: 45px;
@@ -1068,6 +1139,7 @@ textarea[readonly] {
   cursor: pointer;
 }
 
+/* Boton para anadir una nueva fila */
 .btn-anadir {
   color: var(--color-bg-card);
   border-radius: var(--radius-50);
@@ -1075,6 +1147,7 @@ textarea[readonly] {
   box-shadow: 0 4px 10px rgb(var(--color-primary-rgb) / 0.3);
 }
 
+/* Boton para quitar un invitado */
 .btn-quitar {
   color: var(--color-danger);
   background: var(--color-danger-soft);
@@ -1082,10 +1155,9 @@ textarea[readonly] {
 }
 
 
-/* =========================================================
-   20. FORM ACTION AREAS
-   ========================================================= */
+/* ============ ZONAS DE ACCIONES DE FORMULARIO ============ */
 
+/* Area inferior con las acciones principales del formulario */
 .acciones,
 .form-actions {
   grid-column: span 2;
@@ -1101,6 +1173,7 @@ textarea[readonly] {
   border-top: 1px solid var(--color-bg-soft);
 }
 
+/* Tamano minimo de los botones dentro del area de acciones */
 .acciones .btn-cta,
 .acciones .btn-secondary,
 .form-actions .btn-cta,
@@ -1111,25 +1184,27 @@ textarea[readonly] {
   font-size: 1.1rem;
 }
 
+/* Ancho reforzado para el boton principal */
 .acciones .btn-cta {
   min-width: 250px;
 }
 
+/* Ancho reducido para el boton secundario */
 .acciones .btn-secondary {
   min-width: 150px;
 }
 
 
-/* =========================================================
-   21. AUTH PAGES
-   ========================================================= */
+/* ============ PAGINAS DE AUTENTICACION ============ */
 
+/* Ajuste del main en login y registro */
 main.auth-page {
   height: 100vh;
   overflow: hidden;
   padding-bottom: 0;
 }
 
+/* Fondo general de las paginas de acceso */
 .form-wrapper,
 .auth-page-wrapper {
   min-height: 100vh;
@@ -1150,6 +1225,7 @@ main.auth-page {
   overflow: hidden;
 }
 
+/* Tarjeta principal del formulario de acceso */
 .auth-card {
   max-width: 700px;
   width: 100%;
@@ -1163,16 +1239,19 @@ main.auth-page {
   box-shadow: 0 30px 60px -12px rgb(var(--color-primary-deep-rgb) / 0.2);
 }
 
+/* Variante del contenedor cuando usa la tarjeta auth */
 .contenedor.auth-card {
   margin: 0;
 }
 
+/* Cabecera centrada de login y registro */
 .auth-header,
 .form-header.auth-header {
   margin-bottom: 40px;
   text-align: center;
 }
 
+/* Titulo principal de las paginas de acceso */
 .auth-header h1 {
   margin: 0 0 5px;
 
@@ -1183,12 +1262,14 @@ main.auth-page {
   text-transform: uppercase;
 }
 
+/* Texto secundario bajo el titulo */
 .auth-header p {
   margin: 0;
   color: var(--color-muted);
   font-size: 1.1rem;
 }
 
+/* Logo mostrado en los formularios de acceso */
 .form-logo,
 .login-logo {
   width: 120px;
@@ -1197,26 +1278,31 @@ main.auth-page {
   box-shadow: 0 10px 20px rgb(var(--color-black-rgb) / 0.1);
 }
 
+/* Limita el ancho del formulario dentro de la tarjeta */
 .auth-card form {
   max-width: 610px;
   margin: 0 auto;
 }
 
+/* Separacion vertical entre campos del formulario */
 .auth-card .form-group {
   margin-bottom: 25px;
   text-align: left;
 }
 
+/* Tamano de los campos en login y registro */
 .auth-card input,
 .auth-card select {
   padding: 18px 56px 18px 25px;
   font-size: 1.1rem;
 }
 
+/* Contenedor relativo para iconos dentro del input */
 .input-with-icon {
   position: relative;
 }
 
+/* Boton para mostrar u ocultar la contrasena */
 .visibilidad-password-btn,
 .password-toggle-btn {
   position: absolute;
@@ -1235,11 +1321,13 @@ main.auth-page {
   transform: translateY(-50%);
 }
 
+/* Hover del boton de visibilidad */
 .visibilidad-password-btn:hover,
 .password-toggle-btn:hover {
   color: var(--color-primary-title);
 }
 
+/* Boton principal dentro de la tarjeta de acceso */
 .auth-card .btn-cta {
   width: 100%;
   margin-top: 20px;
@@ -1251,11 +1339,13 @@ main.auth-page {
   box-shadow: 0 15px 30px rgb(var(--color-primary-rgb) / 0.3);
 }
 
+/* Hover del boton principal en auth */
 .auth-card .btn-cta:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 18px 34px rgb(var(--color-primary-rgb) / 0.38);
 }
 
+/* Estado desactivado del boton en auth */
 .auth-card .btn-cta:disabled {
   opacity: 1;
   background: #CFC5E6;
@@ -1264,6 +1354,7 @@ main.auth-page {
   filter: none;
 }
 
+/* Texto para cambiar entre login y registro */
 .auth-switch-text {
   margin: 20px 0 0;
   color: var(--color-muted);
@@ -1271,16 +1362,19 @@ main.auth-page {
   text-align: center;
 }
 
+/* Enlace del texto de cambio de pantalla */
 .auth-switch-text a {
   color: #7C3AED;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Hover del enlace secundario de auth */
 .auth-switch-text a:hover {
   text-decoration: underline;
 }
 
+/* Rejilla para los campos de contrasena */
 .password-grid,
 .fila-contrasena {
   display: grid;
@@ -1288,26 +1382,28 @@ main.auth-page {
   gap: 18px;
 }
 
+/* Separador visual dentro del formulario */
 .form-divider {
   margin: 20px 0;
   border: 0;
   border-top: 1px solid var(--color-primary-light);
 }
 
+/* Marca de campo obligatorio */
 .obligatorio {
   color: var(--color-danger-dark);
 }
 
+/* Espacio del mensaje de error de contrasena */
 .password-error {
   margin-top: -2px;
   margin-bottom: 18px;
 }
 
 
-/* =========================================================
-   22. ALERTS
-   ========================================================= */
+/* ============ ALERTAS ============ */
 
+/* Mensaje de exito general */
 .alerta-ok,
 .alert-success {
   margin-bottom: 25px;
@@ -1325,36 +1421,33 @@ main.auth-page {
   border-radius: var(--radius-md);
 }
 
-.alerta-error,
-.alert-error {
+/* Mensaje de error general */
+.alerta-error {
+  margin-top: 25px;
   margin-bottom: 25px;
   padding: 15px 20px;
-
   display: flex;
   align-items: center;
   gap: 12px;
-
   color: var(--color-danger-dark);
   font-weight: 600;
-
   background: #FEF2F2;
   border-left: 5px solid var(--color-danger-dark);
   border-radius: var(--radius-md);
 }
 
+/* Texto breve de error en formularios */
 .error-message {
   margin-top: 0.5rem;
-
   color: #EC4899;
   font-size: 0.9rem;
   text-align: center;
 }
 
 
-/* =========================================================
-   23. EMPTY STATES
-   ========================================================= */
+/* ============ ESTADOS VACIOS ============ */
 
+/* Caja para mensajes cuando no hay contenido */
 .empty-state-box {
   max-width: 600px;
   margin: 50px auto;
@@ -1369,6 +1462,7 @@ main.auth-page {
   border-radius: var(--radius-lg);
 }
 
+/* Icono principal del estado vacio */
 .empty-state-box i {
   display: block;
   margin-bottom: 15px;
@@ -1378,10 +1472,9 @@ main.auth-page {
 }
 
 
-/* =========================================================
-   24. BADGES AND SMALL ACTION BUTTONS
-   ========================================================= */
+/* ============ ETIQUETAS Y BOTONES DE ACCION PEQUENOS ============ */
 
+/* Estilo base de las etiquetas de estado */
 .badge-status {
   display: inline-flex;
   align-items: center;
@@ -1394,26 +1487,31 @@ main.auth-page {
   font-weight: 700;
 }
 
+/* Etiqueta para estado aceptado */
 .badge-status.aceptada {
   background: #DCFCE7;
   color: #16A34A;
 }
 
+/* Etiqueta para estado pendiente */
 .badge-status.pendiente {
   background: var(--color-warning-soft);
   color: var(--color-warning);
 }
 
+/* Etiqueta para estado rechazado */
 .badge-status.rechazada {
   background: var(--color-danger-soft);
   color: var(--color-danger-dark);
 }
 
+/* Etiqueta para invitacion nueva */
 .badge-status.nueva {
   background: #E0E7FF;
   color: #4F46E5;
 }
 
+/* Base comun de los botones de accion pequenos */
 .btn-accion {
   display: inline-flex;
   align-items: center;
@@ -1430,26 +1528,28 @@ main.auth-page {
   cursor: pointer;
 }
 
+/* Boton pequeno para aceptar */
 .btn-accion.btn-aceptar {
   background: #DCFCE7;
   color: #16A34A;
 }
 
+/* Boton pequeno para rechazar */
 .btn-accion.btn-rechazar {
   background: var(--color-danger-soft);
   color: var(--color-danger-dark);
 }
 
+/* Estado desactivado de los botones pequenos */
 .btn-accion:disabled {
   cursor: not-allowed;
   opacity: 0.7;
 }
 
 
-/* =========================================================
-   25. FOOTERS
-   ========================================================= */
+/* ============ PIES DE PAGINA ============ */
 
+/* Pie principal para paginas interiores */
 .site-footer {
   margin-top: auto;
   padding: 32px 24px;
@@ -1461,16 +1561,19 @@ main.auth-page {
   background-color: var(--color-footer);
 }
 
+/* Reparto horizontal de navegacion y redes en el footer */
 .site-footer nav,
 .site-footer .social {
   width: 33%;
 }
 
+/* Alinea las redes a la derecha en el footer principal */
 .site-footer .social {
   display: flex;
   justify-content: flex-end;
 }
 
+/* Lista de enlaces del pie de pagina */
 .footer-links {
   list-style: none;
   margin: 0;
@@ -1481,32 +1584,38 @@ main.auth-page {
   gap: 24px;
 }
 
+/* Enlaces del pie de pagina */
 .footer-links a {
   color: var(--color-primary-light);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
+/* Hover de los enlaces del pie */
 .footer-links a:hover {
   color: var(--color-bg-card);
 }
 
+/* Contenedor base de iconos sociales */
 .social {
   display: flex;
   gap: 20px;
 }
 
+/* Enlaces de redes sociales */
 .social a {
   color: var(--color-primary-light);
   font-size: 32px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Hover de los iconos sociales */
 .social a:hover {
   color: var(--color-bg-card);
   transform: scale(1.2);
 }
 
+/* Pie fijo para las pantallas de acceso */
 .auth-footer {
   position: fixed;
   left: 0;
@@ -1525,31 +1634,37 @@ main.auth-page {
   border-top: 1px solid rgb(var(--color-primary-rgb) / 0.2);
 }
 
+/* Navegacion flexible del pie auth */
 .auth-footer nav {
   flex: 1;
 }
 
+/* Ajuste de la lista de enlaces en auth */
 .auth-footer .footer-links {
   align-items: center;
   gap: 20px;
 }
 
+/* Enlaces del pie auth */
 .auth-footer .footer-links a {
   color: var(--color-primary-light);
   font-family: var(--font-body);
   font-size: 0.95rem;
 }
 
+/* Posicion de las redes en el pie auth */
 .auth-footer .social {
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
 }
 
+/* Tamano de los iconos sociales en auth */
 .auth-footer .social a {
   font-size: 1.35rem;
 }
 
+/* Base compartida del pie promocional y el pie simple */
 .marketing-footer,
 .simple-footer {
   color: var(--color-primary-light);
@@ -1557,17 +1672,20 @@ main.auth-page {
   background-color: var(--color-footer);
 }
 
+/* Pie promocional grande para cierres de pagina */
 .marketing-footer {
   padding: 100px 24px;
   border-top: 4px solid var(--color-primary);
 }
 
+/* Limita el ancho interior de los pies centrados */
 .marketing-footer>div,
 .simple-footer>div {
   max-width: 800px;
   margin: 0 auto;
 }
 
+/* Logo mostrado en el pie promocional */
 .marketing-footer img {
   width: 220px;
   margin: 0 auto 2.5rem;
@@ -1575,6 +1693,7 @@ main.auth-page {
   box-shadow: 0 10px 20px rgb(var(--color-black-rgb) / 0.3);
 }
 
+/* Titulos principales de los pies */
 .marketing-footer h2,
 .simple-footer h2 {
   margin: 0 0 1rem;
@@ -1583,43 +1702,52 @@ main.auth-page {
   text-transform: uppercase;
 }
 
+/* Tamano grande del titulo promocional */
 .marketing-footer h2 {
   font-size: 3rem;
 }
 
+/* Variante simple del pie final */
 .simple-footer {
   padding: 80px 24px;
 }
 
+/* Titulo del pie simple */
 .simple-footer h2 {
   font-size: 2.5rem;
 }
 
+/* Texto secundario del pie simple */
 .simple-footer p {
   color: var(--color-muted);
 }
 
+/* Frase destacada del pie promocional */
 .marketing-footer-lead {
   margin-bottom: 3rem;
   font-size: 1.2rem;
   opacity: 0.8;
 }
 
+/* Redes centradas dentro del pie promocional */
 .marketing-footer .social {
   justify-content: center;
   gap: 2.5rem;
   margin-bottom: 4rem;
 }
 
+/* Tamano de los iconos en el pie promocional */
 .marketing-footer .social a {
   font-size: 2.8rem;
 }
 
+/* Zona inferior con enlaces y cierre legal */
 .marketing-footer-bottom {
   padding-top: 3rem;
   border-top: 1px solid rgb(var(--color-bg-card-rgb) / 0.1);
 }
 
+/* Lista horizontal de enlaces en el cierre del footer */
 .marketing-footer-bottom ul {
   list-style: none;
   margin: 0;
@@ -1633,11 +1761,13 @@ main.auth-page {
   font-weight: 600;
 }
 
+/* Enlaces del cierre del pie */
 .marketing-footer-bottom a {
   color: var(--color-muted);
   text-decoration: none;
 }
 
+/* Texto legal del cierre del pie */
 .marketing-footer-bottom p {
   margin-top: 2rem;
   color: var(--color-text-soft);
@@ -1645,10 +1775,9 @@ main.auth-page {
 }
 
 
-/* =========================================================
-   26. FLOATING BACK TO TOP BUTTON
-   ========================================================= */
+/* ============ BOTON FLOTANTE PARA VOLVER ARRIBA ============ */
 
+/* Boton flotante para regresar al inicio de la pagina */
 .fab-top {
   position: fixed;
   right: 30px;
@@ -1675,35 +1804,36 @@ main.auth-page {
   transition: all 0.3s ease;
 }
 
+/* Estado visible del boton flotante */
 .fab-top.visible {
   opacity: 1;
   visibility: visible;
 }
 
+/* Hover del boton flotante */
 .fab-top:hover {
   background-color: var(--color-primary-dark);
   transform: translateY(-5px);
 }
 
 
-/* =========================================================
-   27. PASSWORD INPUT BROWSER FIX
-   ========================================================= */
+/* ============ AJUSTE DEL CAMPO DE CONTRASENA EN EL NAVEGADOR ============ */
 
+/* Oculta los controles propios de Edge e Internet Explorer */
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none;
 }
 
 
-/* =========================================================
-   28. SHAKE ANIMATION
-   ========================================================= */
+/* ============ ANIMACION DE SACUDIDA ============ */
 
+/* Aplica la animacion de error */
 .animacion-shake {
   animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
+/* Fotogramas de la animacion de sacudida */
 @keyframes shake {
 
   10%,
@@ -1729,42 +1859,48 @@ input[type="password"]::-ms-clear {
 }
 
 
-/* =========================================================
-   29. DARK MODE
-   ========================================================= */
+/* ============ MODO OSCURO ============ */
 
+/* Colores base del tema oscuro */
 [data-theme="dark"] {
   background-color: #121212;
   color: #E2E8F0;
 }
 
+/* Fondo principal en modo oscuro */
 [data-theme="dark"] main {
   background-color: #121212;
 }
 
+/* Cabecera principal en modo oscuro */
 [data-theme="dark"] .site-header {
   background-color: #1F1F1F;
   border-bottom-color: #333333;
 }
 
+/* Variante compacta de la cabecera en modo oscuro */
 [data-theme="dark"] .site-header.scrolled {
   background-color: rgb(var(--color-dark-surface-rgb) / 0.95);
 }
 
+/* Enlaces del menu en modo oscuro */
 [data-theme="dark"] .menu a {
   color: #CBD5E0;
 }
 
+/* Hover y estado activo del menu en modo oscuro */
 [data-theme="dark"] .menu a:hover,
 [data-theme="dark"] .menu a.active {
   color: #A78BFA;
 }
 
+/* Iconos del menu en modo oscuro */
 [data-theme="dark"] .menu a i,
 [data-theme="dark"] .menu a.active i {
   color: #A78BFA;
 }
 
+/* Portada principal adaptada al modo oscuro */
 [data-theme="dark"] .contenedor-hero {
   background-image:
     linear-gradient(rgb(var(--color-dark-base-rgb) / 0.85), rgb(var(--color-dark-base-rgb) / 0.85)),
@@ -1772,6 +1908,7 @@ input[type="password"]::-ms-clear {
   border-bottom-color: #333333;
 }
 
+/* Titulos destacados en modo oscuro */
 [data-theme="dark"] .contenedor-hero h1,
 [data-theme="dark"] .inicio-article-title,
 [data-theme="dark"] .form-header h1,
@@ -1779,10 +1916,12 @@ input[type="password"]::-ms-clear {
   color: #A78BFA;
 }
 
+/* Texto secundario del hero en modo oscuro */
 [data-theme="dark"] .contenedor-hero p {
   color: #C4B5FD;
 }
 
+/* Tarjetas y cajas principales en modo oscuro */
 [data-theme="dark"] .contenedor,
 [data-theme="dark"] .auth-card,
 [data-theme="dark"] .info-card,
@@ -1793,6 +1932,7 @@ input[type="password"]::-ms-clear {
   box-shadow: 0 4px 20px rgb(var(--color-black-rgb) / 0.5);
 }
 
+/* Campos de formulario en modo oscuro */
 [data-theme="dark"] input,
 [data-theme="dark"] textarea,
 [data-theme="dark"] select {
@@ -1801,6 +1941,7 @@ input[type="password"]::-ms-clear {
   color: var(--color-bg-card);
 }
 
+/* Estado de foco de los campos en modo oscuro */
 [data-theme="dark"] input:focus,
 [data-theme="dark"] textarea:focus,
 [data-theme="dark"] select:focus {
@@ -1808,6 +1949,7 @@ input[type="password"]::-ms-clear {
   border-color: #A78BFA;
 }
 
+/* Pies de pagina en modo oscuro */
 [data-theme="dark"] .site-footer,
 [data-theme="dark"] .auth-footer,
 [data-theme="dark"] .marketing-footer,
@@ -1816,20 +1958,24 @@ input[type="password"]::-ms-clear {
   border-top-color: #333333;
 }
 
+/* Boton secundario en modo oscuro */
 [data-theme="dark"] .btn-secondary {
   background-color: var(--color-text);
   color: #A78BFA;
   border-color: #A78BFA;
 }
 
+/* Hover del boton secundario en modo oscuro */
 [data-theme="dark"] .btn-secondary:hover {
   background-color: #374151;
 }
 
+/* Punto inactivo de navegacion en modo oscuro */
 [data-theme="dark"] .dot {
   background-color: rgb(var(--color-dark-accent-rgb) / 0.3);
 }
 
+/* Punto activo de navegacion en modo oscuro */
 [data-theme="dark"] .dot.active {
   background-color: #A78BFA;
   border-color: var(--color-bg-card);

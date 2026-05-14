@@ -9,13 +9,13 @@ import { EventoDetalles } from '../models/evento-detalles';
   providedIn: 'root',
 })
 export class EventoService {
-  // Endpoint base para las operaciones relacionadas con eventos
+  // Guarda la URL base de eventos
   private apiUrl = 'http://localhost:8080/eventos';
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+  ) {}
 
   // Obtiene los eventos asociados al usuario autenticado
   obtenerEventos(): Observable<Evento[]> {

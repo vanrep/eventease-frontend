@@ -24,8 +24,13 @@ interface Lugar {
   styleUrl: './crear-evento.component.css',
 })
 export class CrearEventoComponent {
+  // Email tiene que contener @
+  emailRegex = /^[^\s@]+@[^\s@]+$/;
+
+  // Fecha minima permitida en el formulario
   minFecha = this.getMinFecha();
 
+  // Datos del evento enlazados al formulario
   evento: Evento = {
     titulo: '',
     descripcion: '',
@@ -34,110 +39,165 @@ export class CrearEventoComponent {
     capacidad: 1,
   };
 
+  // Mensajes y lista de invitados
   mensajeOk: string = '';
   mensajeError: string = '';
-  emailsInvitados: { email: string; error?: string }[] = [];
+  emailsInvitados: { email: string }[] = [];
 
-  // Configuración de Leaflet
+  // Estado del mapa y marcadores de lugares
   map?: L.Map;
   lugaresMarkers: { [key: number]: L.Marker } = {};
-  
+
+  // Lugares que se pueden elegir
   lugares: Lugar[] = [
-    { id: 1, nombre: 'Oceanogràfic Valencia', direccion: 'Carrer d Eduardo Primo Yúfera, 1', lat: 39.453, lng: -0.347 },
-    { id: 2, nombre: 'Estadio de Mestalla', direccion: 'Av. de Suècia, s/n', lat: 39.474, lng: -0.358 },
-    { id: 3, nombre: 'Palacio de Congresos', direccion: 'Av. de les Corts Valencianes, 60', lat: 39.489, lng: -0.402 },
-    { id: 4, nombre: 'Bioparc Valencia', direccion: 'Av. Pío Baroja, 3', lat: 39.478, lng: -0.407 }
+    {
+      id: 1,
+      nombre: 'Pia Eventos',
+      direccion: 'C/ Pío XI, 29',
+      lat: 39.464,
+      lng: -0.395,
+    },
+    {
+      id: 2,
+      nombre: 'NIU Events',
+      direccion: 'La Zaidía, Valencia',
+      lat: 39.487,
+      lng: -0.374,
+    },
+    {
+      id: 3,
+      nombre: 'La Sala Olimpia',
+      direccion: 'Valencia centro',
+      lat: 39.47,
+      lng: -0.376,
+    },
+    {
+      id: 4,
+      nombre: 'Hotel Primus Valencia',
+      direccion: 'C/ Menorca, 22',
+      lat: 39.458,
+      lng: -0.345,
+    },
+    {
+      id: 5,
+      nombre: 'Palau Alameda',
+      direccion: 'Carrer de l’Arquitecte Mora, 2',
+      lat: 39.472,
+      lng: -0.364,
+    },
+    {
+      id: 6,
+      nombre: 'Palacio de Congresos de Valencia',
+      direccion: 'Av. de les Corts Valencianes, 60',
+      lat: 39.489,
+      lng: -0.402,
+    },
   ];
 
+  // Lugar elegido por el usuario
   lugarSeleccionado?: Lugar;
 
+  // Configuracion inicial del mapa
   options = {
     layers: [
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
         minZoom: 12,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      })
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }),
     ],
     zoom: 14,
     center: L.latLng(39.4697, -0.3774),
-    scrollWheelZoom: false // Prevent page scroll trapping
+    scrollWheelZoom: false, // Evita que la rueda del raton atrape el scroll de la pagina
   };
 
   constructor(
     private eventoService: EventoService,
     private invitacionService: InvitacionService,
     private router: Router,
-  ) { }
+  ) {}
 
+  // Genera la fecha minima en formato local
   private getMinFecha(): string {
     const now = new Date();
-    const offset = now.getTimezoneOffset();
-    const localNow = new Date(now.getTime() - offset * 60000);
-
-    return localNow.toISOString().slice(0, 16);
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    return now.toISOString().slice(0, 16);
   }
 
+  // Guarda la referencia del mapa y crea los marcadores
   onMapReady(map: L.Map) {
     this.map = map;
-    
-    // FIX: Common Leaflet + Angular issue - markers and tiles might not align until a resize is triggered
+
+    // Fuerza un reajuste para que el mapa se pinte bien
     setTimeout(() => {
       map.invalidateSize();
     }, 200);
 
-    // FIX: Redundant icon fix inside onMapReady
+    // Icono por defecto para los marcadores
     const iconDefault = L.icon({
-      iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+      iconRetinaUrl:
+        'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
       iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-      shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+      shadowUrl:
+        'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
-      shadowSize: [41, 41]
+      shadowSize: [41, 41],
     });
-    
-    // Añadir marcadores
-    this.lugares.forEach(lugar => {
+
+    // Anade los marcadores de cada lugar
+    this.lugares.forEach((lugar) => {
       const marker = L.marker([lugar.lat, lugar.lng], { icon: iconDefault })
         .addTo(map)
         .bindPopup(`<b>${lugar.nombre}</b><br>${lugar.direccion}`);
-      
+
       this.lugaresMarkers[lugar.id] = marker;
-      
+
       marker.on('click', () => {
         this.seleccionarLugar(lugar);
       });
     });
   }
 
+  // Guarda el lugar elegido y centra el mapa en el
   seleccionarLugar(lugar: Lugar) {
     this.lugarSeleccionado = lugar;
     this.evento.ubicacion = `${lugar.nombre} (${lugar.direccion})`;
-    
+
     if (this.map) {
       this.map.flyTo([lugar.lat, lugar.lng], 16, {
         animate: true,
-        duration: 1.5
+        duration: 1.5,
       });
       this.lugaresMarkers[lugar.id].openPopup();
     }
   }
 
+  // Anade una fila nueva de invitado
   agregarInvitado(): void {
     this.emailsInvitados.push({ email: '' });
   }
 
+  // Quita un invitado de la lista
   quitarInvitado(index: number): void {
     this.emailsInvitados.splice(index, 1);
   }
 
+  // Revisa que los emails escritos tengan un formato valido
+  private hayEmailsInvalidos(): boolean {
+    return this.emailsInvitados.some((invitado) => {
+      const email = invitado.email.trim();
+      return !!email && !this.emailRegex.test(email);
+    });
+  }
+
+  // Envia las invitaciones a los emails validos
   enviarInvitaciones(eventoId: number): void {
     this.emailsInvitados.forEach((invitado, index) => {
       const email = invitado.email.trim();
       if (!email) return;
-
-      this.emailsInvitados[index].error = undefined;
 
       this.invitacionService.invitarUsuario(eventoId, email).subscribe({
         next: () => {
@@ -146,31 +206,37 @@ export class CrearEventoComponent {
         error: (err) => {
           console.error(`Error invitando a ${email}:`, err);
           if (err.status === 409) {
-            this.emailsInvitados[index].error = 'Ya está invitado';
+            this.mensajeError = 'Ya hay invitaciones repetidas';
           } else if (err.status === 404) {
-            this.emailsInvitados[index].error = 'Usuario no encontrado';
+            this.mensajeError = 'Hay emails de invitados que no existen';
           } else {
-            this.emailsInvitados[index].error = 'No se pudo enviar';
+            this.mensajeError = 'No se pudo enviar alguna invitacion';
           }
         },
       });
     });
   }
 
-  // Crea el evento tras validar que los campos obligatorios tienen valor
+  // Crea el evento si los campos obligatorios estan completos
   guardar(): void {
     this.mensajeOk = '';
     this.mensajeError = '';
 
-    // Comprobamos que los campos obligatorios no esten vacios
+    // Revisa si falta algun campo obligatorio
     const camposFaltantes: string[] = [];
-    if (!this.evento.titulo)    camposFaltantes.push('Nombre del evento');
-    if (!this.evento.fecha)     camposFaltantes.push('Fecha');
+    if (!this.evento.titulo) camposFaltantes.push('Nombre del evento');
+    if (!this.evento.fecha) camposFaltantes.push('Fecha');
     if (!this.evento.capacidad) camposFaltantes.push('Capacidad');
     if (!this.evento.ubicacion) camposFaltantes.push('Lugar');
 
     if (camposFaltantes.length > 0) {
-      this.mensajeError = 'Faltan campos obligatorios: ' + camposFaltantes.join(', ');
+      this.mensajeError =
+        'Faltan campos obligatorios: ' + camposFaltantes.join(', ');
+      return;
+    }
+
+    if (this.hayEmailsInvalidos()) {
+      this.mensajeError = 'Revisa los emails de las invitaciones';
       return;
     }
 

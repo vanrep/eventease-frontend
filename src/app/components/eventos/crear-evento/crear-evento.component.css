@@ -1,80 +1,66 @@
-/* =========================================================
-   CREAR EVENTO COMPONENT
-   Solo ajustes específicos de la página de creación.
-   La estructura de página, tarjeta, formularios, inputs,
-   mapa, invitados, alertas y botones ya está definida en styles.css.
-   ========================================================= */
-
-
-/* Cabecera con el nombre del evento */
+/* Espacio bajo la cabecera */
 .form-header {
   margin-bottom: 30px;
 }
 
 
-/* Campo principal del nombre del evento */
+/* Hace mas grande el campo del titulo */
 .form-header input {
   font-size: 2rem;
 }
 
 
-/* Grid principal de fecha y capacidad */
+/* Reparte fecha y capacidad en dos columnas */
 .grid {
   grid-template-columns: repeat(2, 1fr);
 }
 
 
-/* Bloque de descripción y bloques separados */
+/* Deja separacion entre bloques */
 .separador {
   margin-bottom: 40px;
 }
 
 
-/* Tarjetas de información rápida: fecha y capacidad */
+/* Tarjetas de fecha y capacidad */
 .info-card {
   padding: 25px;
 }
 
 
-/* Input interno de las tarjetas de información */
+/* Espacio sobre los inputs de las tarjetas */
 .info-input {
   margin-top: 10px;
 }
 
 
-/* Lista lateral de lugares */
-.lista-lugares {
-  max-height: 400px;
-}
-
-
-/* Mapa usado al crear evento */
+/* Altura fija del mapa */
 .mapa {
   height: 400px;
 }
 
 
-/* Input de ubicación seleccionada */
+/* Espacio sobre el campo de ubicacion */
 .lugar-input {
   margin-top: 15px;
 }
 
 
-/* Contenedor del input de ubicación y botón de precios */
+/* Contenedor del campo y el boton de precios */
 .lugar-accion {
   position: relative;
   margin-top: 15px;
 }
 
 
-/* Deja espacio para el botón de consultar precios */
+/* Reserva espacio para el boton lateral */
 .lugar-accion .lugar-input {
   margin-top: 0;
   padding-right: 250px;
 }
 
 
-/* Botón de consultar precios dentro del input de ubicación */
+/* Coloca el boton dentro del campo */
 .precios-boton {
   position: absolute;
   top: 50%;
@@ -84,67 +70,67 @@
   font-size: 0.95rem;
 }
 
-/* Cabecera de invitaciones */
+/* Espacio bajo la cabecera de invitaciones */
 .invitaciones-header {
   margin-bottom: 25px;
 }
 
 
-/* Botón circular para añadir invitados */
+/* Tamano del icono de anadir */
 .btn-anadir i {
   font-size: 1.2rem;
 }
 
 
-/* Lista vertical de invitados */
+/* Espacio entre invitados */
 .lista-invitados {
   gap: 15px;
 }
 
 
-/* Fila de cada invitado */
+/* Espacio dentro de cada fila */
 .fila-invitado {
   gap: 15px;
 }
 
 
-/* Contenedor del input de email con icono */
+/* Base para colocar el icono dentro del campo */
 .email-contenedor {
   position: relative;
 }
 
 
-/* Icono dentro del input de email */
+/* Ajusta la posicion del icono */
 .email-icon {
   left: 18px;
 }
 
 
-/* Input de email con espacio para el icono */
+/* Deja hueco para el icono */
 .email-contenedor input {
   padding-left: 50px;
 }
 
 
-/* Mensaje de error del email de invitado */
+/* Margen del error bajo el email */
 .error-invitado {
   margin: 6px 0 0 8px;
 }
 
 
-/* Zona final de botones */
+/* Espacio antes de los botones finales */
 .acciones {
   margin-top: 20px;
 }
 
 
-/* Botón principal de crear evento */
+/* Ancho minimo del boton principal */
 .acciones .btn-cta {
   min-width: 250px;
 }
 
 
-/* Botón secundario de cancelar */
+/* Ancho minimo del boton secundario */
 .acciones .btn-secondary {
   min-width: 150px;
 }

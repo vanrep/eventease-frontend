@@ -1,18 +1,18 @@
-<!-- Pantalla de acceso -->
+<!-- Pagina de login -->
 <section class="form-wrapper login-wrapper">
   <div class="contenedor auth-card login-card">
 
-    <!-- Encabezado del formulario -->
+    <!-- Cabecera del formulario -->
     <div class="form-header auth-header login-header">
       <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase" class="form-logo login-logo">
       <h1>BIENVENIDO</h1>
       <p>Organiza tus mejores momentos</p>
     </div>
 
-    <!-- Formulario de inicio de sesión -->
+    <!-- Formulario de login -->
     <form (ngSubmit)="iniciarSesion()" #loginForm="ngForm">
 
-      <!-- Campo de email -->
+      <!-- Campo del email -->
       <div class="form-group login-group">
         <label for="email">
           <i class="fa-solid fa-envelope"></i>
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <!-- Campo de contraseña -->
+      <!-- Campo de la password -->
       <div class="form-group login-group">
         <label for="password">
           <i class="fa-solid fa-lock"></i>
@@ -56,13 +56,13 @@
         </div>
       </div>
 
-      <!-- Mensaje de error -->
+      <!-- Muestra el error si lo hay -->
       <div *ngIf="mensajeError" class="alerta-error animacion-shake">
         <i class="fa-solid fa-circle-exclamation"></i>
         {{ mensajeError }}
       </div>
 
-      <!-- Botón principal -->
+      <!-- Boton para entrar -->
       <div class="form-actions auth-actions">
         <button
           id="btn-submit"
@@ -74,7 +74,7 @@
         </button>
       </div>
 
-      <!-- Enlace al registro -->
+      <!-- Link al registro -->
       <p class="auth-switch-text">
         ¿No tienes cuenta con nosotros?
         <a routerLink="/register">Regístrate</a>

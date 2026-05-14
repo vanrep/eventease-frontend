@@ -6,12 +6,13 @@ import { routes } from './app.routes';
 import { authInterceptor } from './interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  // Registra los proveedores globales que usa toda la aplicacion
+  // Registra los providers globales
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    // Aplica el interceptor de autenticacion a todas las peticiones HTTP
+
+    // Aplica el interceptor a todas las peticiones
     provideHttpClient(withInterceptors([authInterceptor])),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
   ],
 };

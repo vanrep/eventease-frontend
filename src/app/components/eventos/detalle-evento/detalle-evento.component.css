@@ -1,11 +1,4 @@
-/* =========================================================
-   DETALLE EVENTO COMPONENT
-   Solo ajustes específicos de la página de detalle.
-   La estructura de página, tarjeta, formularios, inputs,
-   mapa, invitados, alertas, badges y botones ya está definida en styles.css.
-   ========================================================= */
-
-
+/* Hace que el mapa ocupe todo el ancho para invitados */
 .mapa-invitado {
   width: 100%;
 }

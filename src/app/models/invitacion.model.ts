@@ -1,17 +1,17 @@
 export interface Invitacion {
-  // Identificador de la invitacion cuando ya existe en el backend
+  // Guarda el id de la invitacion
   id?: number;
 
-  // Estado actual de la invitacion usado en vistas y acciones del usuario
+  // Guarda el estado de la invitacion
   estado: 'PENDIENTE' | 'ACEPTADA' | 'RECHAZADA' | 'NUEVA';
 
-  // Relaciona la invitacion con el evento correspondiente
+  // Guarda el id del evento
   eventoId: number;
 
-  // Email del asistente invitado al evento
+  // Guarda el email del invitado
   emailAsistente: string;
 
-  // Datos ampliados que el backend puede enviar para mostrar la invitacion
+  // Guarda datos extra del evento
   eventoTitulo?: string;
   eventoFecha?: string;
   eventoUbicacion?: string;

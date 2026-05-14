@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
@@ -11,15 +11,20 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './inicio.component.css',
 })
 export class InicioComponent implements OnInit {
+  // Guarda la seccion activa
   activeSection = 'hero';
+
+  // Guarda el orden de las secciones
   sections = ['hero', 'organiza', 'invita', 'participa', 'info', 'footer'];
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {}
 
+  // Activa el modo snap al entrar en la pagina
   ngOnInit(): void {
     document.documentElement.classList.add('snap-page');
   }
 
+  // Detecta la seccion visible al hacer scroll
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const scrollPosition = window.pageYOffset + window.innerHeight * 0.4;
@@ -37,6 +42,7 @@ export class InicioComponent implements OnInit {
     }
   }
 
+  // Hace scroll hasta la seccion elegida
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {

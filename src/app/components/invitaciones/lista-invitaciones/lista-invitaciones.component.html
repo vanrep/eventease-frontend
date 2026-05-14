@@ -3,7 +3,7 @@
   <!-- Página de invitaciones -->
   <div class="contenedor">
   
-    <!-- Mensaje de error -->
+    <!-- Muestra el error si lo hay -->
     <div *ngIf="mensajeError" class="alerta-error">
       <i class="fa-solid fa-circle-exclamation"></i>
       {{ mensajeError }}
@@ -17,7 +17,7 @@
         MIS INVITACIONES
       </h1>
   
-      <!-- Estado vacío -->
+      <!-- Muestra si no hay invitaciones -->
       <div *ngIf="invitaciones.length === 0 && !mensajeError" class="empty-state-box">
         <i class="fa-solid fa-inbox"></i>
         No tienes invitaciones.
@@ -38,19 +38,19 @@
         <tbody>
           <tr *ngFor="let inv of invitaciones">
   
-            <!-- Evento -->
+            <!-- Columna del evento -->
             <td>
               <strong class="evento">
                 {{ inv.eventoTitulo }}
               </strong>
             </td>
   
-            <!-- Fecha -->
+            <!-- Columna de la fecha -->
             <td>
               {{ inv.eventoFecha | date:'dd/MM/yyyy HH:mm' }}
             </td>
   
-            <!-- Ubicación -->
+            <!-- Columna de la ubicacion -->
             <td>
               <i
                 class="fa-solid fa-map-location-dot ubicacion-icon"
@@ -58,7 +58,7 @@
               </i>
             </td>
   
-            <!-- Estado -->
+            <!-- Columna del estado -->
             <td>
               <span class="badge-status pendiente" *ngIf="inv.estado === 'PENDIENTE'">
                 <i class="fa-solid fa-clock"></i>
@@ -76,7 +76,7 @@
               </span>
             </td>
   
-            <!-- Acciones -->
+            <!-- Columna de acciones -->
             <td>
               <div
                 class="lista-acciones"
@@ -114,7 +114,7 @@
   </div>
 </section>
 
-<!-- Footer visual del listado -->
+<!-- Pie visual del listado -->
 <section id="footer" class="marketing-footer">
   <div>
     <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase">

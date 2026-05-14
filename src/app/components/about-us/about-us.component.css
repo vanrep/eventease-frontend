@@ -1,26 +1,17 @@
-/* =========================================================
-   ABOUT US COMPONENT
-   Estilos específicos de la página "Sobre nosotros".
-   La base de página, tarjetas y botones compartidos ya está
-   definida en styles.css.
-   ========================================================= */
-
-/* Fondo principal de la página */
+/* Espacio superior e inferior de la pagina */
 .about-us-seccion {
   padding: 120px 24px 80px;
 }
 
-/* Cabecera de la página */
+/* Centra la cabecera */
 .form-header {
   text-align: center;
 }
 
 
-/* Título principal */
+/* Titulo principal */
 .titulo {
-  margin: 0;
   color: var(--color-primary-title);
-  font-family: var(--font-title);
   font-size: 3.3rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -28,7 +19,7 @@
 }
 
 
-/* Bloque principal de información */
+/* Tarjeta principal con la informacion */
 .bloque {
   padding: 56px 48px;
   display: flex;
@@ -43,7 +34,7 @@
 }
 
 
-/* Paneles internos de marca y empresa */
+/* Bloques internos para marca y empresa */
 .panel-logo,
 .panel-intermodulares {
   width: 100%;
@@ -54,10 +45,8 @@
 }
 
 
-/* Estilo base de los logos */
+/* Ajuste comun de las imagenes */
 .logo {
-  display: block;
-  height: auto;
   object-fit: contain;
 }
 
@@ -78,7 +67,7 @@
 }
 
 
-/* Texto descriptivo */
+/* Texto principal de cada bloque */
 .texto-normal {
   max-width: 720px;
   margin: 0;
@@ -90,7 +79,7 @@
 }
 
 
-/* Texto de empresa */
+/* Texto destacado de la empresa */
 .texto-color {
   max-width: 560px;
   color: var(--color-primary-title);
@@ -99,18 +88,17 @@
 }
 
 
-/* Separador entre marca y empresa */
+/* Linea que separa ambos bloques */
 .separador {
   width: min(180px, 100%);
   height: 1px;
-
   background: linear-gradient(90deg,
       rgba(216, 180, 254, 0),
       rgba(var(--color-box-shadow) / 0.75),
       rgba(216, 180, 254, 0));
 }
 
-/* Lista de enlaces de contacto */
+    /* Lista de enlaces de contacto */
 .contactos {
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +106,7 @@
   gap: 14px;
 }
 
-/* Enlace individual de contacto */
+/* Estilo de cada enlace */
 .contactos-chip {
   min-height: 46px;
   padding: 0 18px;
@@ -130,13 +118,12 @@
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
-  background: rgba(var(--color-bg), 0.85);
   border: 1px solid var(--color-primary-light);
   border-radius: var(--radius-pill);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-/* Hover del enlace de contacto */
+/* Efecto al pasar por un enlace */
 .contactos-chip:hover {
   transform: translateY(-1px);
   border-color: #C084FC;

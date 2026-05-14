@@ -1,18 +1,18 @@
-<!-- Pantalla de registro -->
+<!-- Pagina de registro -->
 <section class="form-wrapper register-wrapper">
   <div class="auth-card">
 
-    <!-- Encabezado del formulario -->
+    <!-- Cabecera del formulario -->
     <div class="auth-header">
       <img src="/assets/images/Logo_EventEase.jpg" alt="Logo de EventEase" class="form-logo register-logo">
       <h1>CREAR CUENTA</h1>
       <p>Empieza a organizar y vivir tus eventos</p>
     </div>
 
-    <!-- Formulario de registro -->
+    <!-- Formulario principal -->
     <form (ngSubmit)="registrar()" #registerForm="ngForm">
 
-      <!-- Campo de email -->
+      <!-- Campo del email -->
       <div class="form-group">
         <label for="email">
           <i class="fa-solid fa-envelope"></i>
@@ -31,10 +31,10 @@
         </div>
       </div>
 
-      <!-- Contraseña y confirmación -->
+      <!-- Bloque de contraseña -->
       <div class="fila-contrasena password-grid">
 
-        <!-- Campo de contraseña -->
+        <!-- Campo de la contraseña -->
         <div class="form-group">
           <label for="password">
             <i class="fa-solid fa-lock"></i>
@@ -63,7 +63,7 @@
           </div>
         </div>
 
-        <!-- Campo de confirmación de contraseña -->
+        <!-- Campo de confirmar contraseña -->
         <div class="form-group">
           <label for="confirmarPassword">
             <i class="fa-solid fa-lock"></i>
@@ -94,16 +94,16 @@
 
       </div>
 
-      <!-- Error de coincidencia de contraseñas -->
+  <!-- Muestra si las contraseñas no coinciden -->
       <div *ngIf="confirmarPassword && !passwordsCoinciden()" class="alerta-error password-error">
         <i class="fa-solid fa-circle-exclamation"></i>
         Las contraseñas no coinciden
       </div>
 
-      <!-- Separador visual -->
+      <!-- Linea separadora -->
       <hr class="form-divider">
 
-      <!-- Campo opcional de nombre completo -->
+      <!-- Campo opcional del nombre -->
       <div class="form-group">
         <label for="nombre">
           <i class="fa-solid fa-user"></i>
@@ -120,19 +120,19 @@
         </div>
       </div>
 
-      <!-- Mensaje de éxito -->
+      <!-- Muestra el mensaje ok -->
       <div *ngIf="mensajeOk" class="alerta-ok">
         <i class="fa-solid fa-circle-check"></i>
         {{ mensajeOk }}
       </div>
 
-      <!-- Mensaje de error -->
+      <!-- Muestra el mensaje de error -->
       <div *ngIf="mensajeError" class="alerta-error animacion-shake">
         <i class="fa-solid fa-circle-exclamation"></i>
         {{ mensajeError }}
       </div>
 
-      <!-- Botón principal -->
+      <!-- Boton de registrar -->
       <div class="form-actions auth-actions">
         <button
           id="btn-submit"

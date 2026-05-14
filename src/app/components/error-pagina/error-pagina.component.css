@@ -1,59 +1,41 @@
-/* =========================================================
-   ERROR PÁGINA COMPONENT
-   Estilos específicos para la página 404.
-   Los botones principales ya están definidos en styles.css.
-   ========================================================= */
-
-
-/* Fondo centrado de la página de error */
+/* Centra el contenido en la pagina de error */
 .error-pagina-page {
   box-sizing: border-box;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 120px 24px 80px;
 }
 
-
-/* Tarjeta central del error */
+/* Tarjeta principal del mensaje */
 .error-pagina-card {
   width: min(720px, 100%);
   padding: 56px 40px;
-
   text-align: center;
-  
   border: 1px solid var(--color-primary-light);
   border-radius: var(--radius-xl);
   box-shadow: 0 24px 60px rgba(91, 33, 182, 0.12);
 }
 
-
-/* Código pequeño del error */
+/* Estilo del numero 404 */
 .error-pagina-code {
   margin-bottom: 18px;
   padding: 8px 14px;
-
   font-size: 2rem;
   font-weight: 700;
-  
   color: var(--color-primary-title);
 }
 
-
-/* Título principal del error */
+/* Titulo principal del aviso */
 .error-pagina-title {
   margin: 0;
-
   color: var(--color-primary-title);
   font-family: var(--font-title);
   font-size: 3.2rem;
   line-height: 1.05;
 }
 
-
-/* Texto explicativo del error */
+/* Texto explicativo debajo del titulo */
 .error-pagina-texto {
   max-width: 520px;
   margin: 20px auto 32px;

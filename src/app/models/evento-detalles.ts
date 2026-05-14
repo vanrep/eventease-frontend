@@ -1,8 +1,8 @@
 import { Evento } from './evento.model';
 import { Invitacion } from './invitacion.model';
 
-// Amplia el modelo base del evento con la lista de invitaciones asociadas
+// Anade la lista de invitaciones al evento
 export interface EventoDetalles extends Evento {
-  // Invitaciones del evento cuando el backend devuelve el detalle completo
+  // Guarda las invitaciones del evento
   invitaciones?: Invitacion[];
 }

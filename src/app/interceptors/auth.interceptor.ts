@@ -4,9 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
-/**
- * Interceptor que adjunta el token JWT y gestiona errores de autenticacion
- */
+// Anade el token y controla errores de sesion
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const authService = inject(AuthService);
@@ -32,13 +30,13 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         // Elimina el token almacenado
         authService.logout();
 
-        // Envía al usuario a la pantalla de acceso
+        // Redirige al login
         if (router.url !== '/login') {
           router.navigate(['/login']);
         }
       }
 
       return throwError(() => error);
-    })
+    }),
   );
 };

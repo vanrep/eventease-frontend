@@ -13,16 +13,23 @@ import { AdminService } from '../../services/admin.service';
   styleUrl: './admin.component.css',
 })
 export class AdminComponent implements OnInit {
+  
+  // Seccion activa y datos mostrados
   seccionActiva: string = 'usuarios';
   usuarios: AdminUsuario[] = [];
   eventos: Evento[] = [];
+
+  // Estados de carga y errores
   cargandoUsuarios = false;
   cargandoEventos = false;
   mensajeErrorUsuarios = '';
   mensajeErrorEventos = '';
+
+  // Elementos que se estan eliminando
   eliminandoUsuarioId: number | null = null;
   eliminandoEventoId: number | null = null;
 
+  // Secciones del panel
   readonly secciones = [
     { id: 'usuarios', label: 'Usuarios', icono: 'fa-users', disabled: false },
     { id: 'eventos', label: 'Eventos', icono: 'fa-calendar-days', disabled: false },
@@ -34,9 +41,11 @@ export class AdminComponent implements OnInit {
     private adminService: AdminService,
   ) {}
 
+  // Lee la seccion de la URL y carga sus datos
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       const seccion = params.get('section');
+      // Comprueba si la sección es válida, si no, redirige a 'usuarios'
       this.seccionActiva = this.esSeccionValida(seccion) ? seccion : 'usuarios';
 
       if (this.seccionActiva === 'usuarios') {
@@ -47,6 +56,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Carga los usuarios
   private cargarUsuarios(): void {
     this.cargandoUsuarios = true;
     this.mensajeErrorUsuarios = '';
@@ -63,6 +73,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Carga los eventos
   private cargarEventos(): void {
     this.cargandoEventos = true;
     this.mensajeErrorEventos = '';
@@ -79,6 +90,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Elimina un usuario y actualiza la lista
   eliminarUsuario(id: number): void {
     this.eliminandoUsuarioId = id;
     this.mensajeErrorUsuarios = '';
@@ -95,6 +107,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Elimina un evento y actualiza la lista
   eliminarEvento(id: number): void {
     this.eliminandoEventoId = id;
     this.mensajeErrorEventos = '';
@@ -111,6 +124,7 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  // Comprueba si la seccion es valida
   private esSeccionValida(seccion: string | null): seccion is string {
     return this.secciones.some((item) => item.id === seccion && !item.disabled);
   }

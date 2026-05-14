@@ -1,13 +1,4 @@
-/* =========================================================
-   LISTA EVENTOS COMPONENT
-   Solo estilos específicos del listado de eventos.
-   La base de botones, tarjetas, hero, alertas, badges,
-   empty states y footer ya está definida en styles.css.
-   ========================================================= */
-
-
-
-/* Bloque superior del listado */
+/* Parte superior del listado */
 .header {
   width: 100%;
   padding: 80px 24px 20px;
@@ -16,11 +7,10 @@
 }
 
 
-/* Barra de buscador, botón y filtros */
+/* Fila con buscador, boton y filtros */
 .toolbar {
   max-width: 1300px;
-  margin: 0 auto 16px;
-
+  margin: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,55 +19,50 @@
 }
 
 
-/* Contenedor del buscador con icono */
+/* Buscador con icono dentro */
 .buscador {
   position: relative;
   width: min(320px, 100%);
 }
 
 
-/* Icono del buscador */
+/* Coloca el icono dentro del buscador */
 .buscador i {
   position: absolute;
   top: 50%;
   left: 16px;
-
   color: var(--color-primary);
   transform: translateY(-50%);
 }
 
 
-/* Campo de búsqueda */
+/* Campo de busqueda */
 .buscador input {
   width: 100%;
   padding: 13px 18px 13px 45px;
-
   background: var(--color-bg-card);
   border: 2px solid var(--color-primary-light);
   border-radius: var(--radius-pill);
   box-shadow: 0 4px 12px rgba(var(--color-box-shadow) / 0.08);
-
   color: var(--color-text-soft);
   font-weight: 600;
 }
 
 
-/* Foco del campo de búsqueda */
+/* Estilo al enfocar el buscador */
 .buscador input:focus {
   outline: none;
   border-color: var(--color-primary);
 }
 
 
-/* Cápsula de filtros */
+/* Caja de filtros */
 .filtros {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-
   padding: 8px 12px;
-
   background: var(--color-bg-card);
   border: 2px solid var(--color-primary-light);
   border-radius: var(--radius-pill);
@@ -85,54 +70,52 @@
 }
 
 
-/* Checkbox individual del filtro */
+/* Estilo de cada filtro */
 .filtro-check {
   display: flex;
   align-items: center;
   gap: 6px;
-
   color: var(--color-primary-deep);
   font-size: 0.85rem;
   font-weight: 800;
   white-space: nowrap;
-
   cursor: pointer;
 }
 
 
-/* Control nativo del checkbox */
+/* Ajusta el checkbox nativo */
 .filtro-check input {
   accent-color: var(--color-primary);
   cursor: pointer;
 }
 
 
-/* Filtro de pendientes */
+/* Color del filtro pendiente */
 .pendiente-check {
   color: var(--color-warning);
 }
 
 
-/* Filtro de aceptadas */
+/* Color del filtro aceptada */
 .aceptada-check {
   color: #16A34A;
 }
 
 
-/* Filtro de rechazadas */
+/* Color del filtro rechazada */
 .rechazada-check {
   color: var(--color-danger-dark);
 }
 
 
-/* Contenedor del mensaje de error */
+/* Margen del mensaje de error */
 .alert {
   max-width: 900px;
   margin: 20px auto;
 }
 
 
-/* Grid de tarjetas del listado */
+/* Zona donde van las tarjetas */
 .grid {
   max-width: 1300px;
   margin: 0 auto;
@@ -143,36 +126,34 @@
 }
 
 
-/* Tarjeta individual del evento */
+/* Tarjeta de cada evento */
 .tarjeta {
   position: relative;
   width: 380px;
   overflow: hidden;
-
   background-color: var(--color-bg);
   border: 5px solid var(--color-primary-light);
   border-radius: var(--radius-xl);
   box-shadow: 0 4px 10px rgba(var(--color-black-rgb) / 0.05);
-
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 
-/* Hover de tarjeta */
+/* Efecto al pasar por la tarjeta */
 .tarjeta:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 30px -10px rgba(var(--color-box-shadow) / 0.2);
 }
 
 
-/* Título en hover */
+/* Cambia el titulo al pasar por la tarjeta */
 .tarjeta:hover h2 {
   color: var(--color-primary);
 }
 
 
-/* Imagen de la tarjeta */
+/* Imagen superior de la tarjeta */
 .tarjeta img {
   width: 100%;
   height: 200px;
@@ -190,25 +171,25 @@
 }
 
 
-/* Borde de evento aceptado */
+/* Borde para invitacion aceptada */
 .tarjeta.border-aceptada {
   border-color: #16A34A;
 }
 
 
-/* Borde de evento pendiente */
+/* Borde para invitacion pendiente */
 .tarjeta.border-pendiente {
   border-color: var(--color-warning);
 }
 
 
-/* Borde de evento rechazado */
+/* Borde para invitacion rechazada */
 .tarjeta.border-rechazada {
   border-color: var(--color-danger-dark);
 }
 
 
-/* Badge de estado de invitación dentro de la tarjeta */
+/* Posicion del estado dentro de la tarjeta */
 .status-badge {
   position: absolute;
   top: 15px;
@@ -217,57 +198,50 @@
 }
 
 
-/* Texto que muestra quién invitó al usuario */
+/* Texto con el nombre del invitador */
 .invitado-por {
   height: 20px;
   margin-top: 38px;
   margin-bottom: 12px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-
   color: var(--color-muted);
   font-size: 0.8rem;
   font-weight: 600;
 }
 
 
-/* Icono de invitador */
+/* Color del icono del invitador */
 .invitado-por i {
   color: var(--color-primary);
 }
 
 
-/* Badge de días restantes */
+/* Badge con los dias restantes */
 .badge-dias {
   position: absolute;
   top: 15px;
   left: 15px;
   z-index: 10;
-
   display: flex;
   align-items: center;
   gap: 6px;
-
   padding: 4px 10px;
-
   background: var(--color-bg-card);
   border: 1px solid rgba(var(--color-box-shadow) / 0.5);
   border-radius: var(--radius-sm);
   box-shadow: 0 4px 10px rgba(var(--color-box-shadow) / 0.15);
-
   color: var(--color-primary);
   font-size: 0.8rem;
   font-weight: 800;
-
   cursor: help;
   transition: all 0.3s ease;
 }
 
 
-/* Hover del badge de días */
+/* Efecto al pasar por el badge */
 .badge-dias:hover {
   background: var(--color-primary);
   color: var(--color-bg-card);
@@ -276,13 +250,13 @@
 }
 
 
-/* Icono del badge de días */
+/* Tamano del icono del badge */
 .badge-dias i {
   font-size: 1rem;
 }
 
 
-/* Variante urgente del badge de días */
+/* Variante urgente del badge */
 .badge-dias.urgente {
   background: #FEF2F2;
   color: var(--color-danger-dark);
@@ -297,7 +271,7 @@
 }
 
 
-/* Animación del reloj de arena */
+/* Animacion del reloj de arena */
 @keyframes reloj-arena-animacion {
   0% {
     transform: rotate(0);
@@ -313,13 +287,13 @@
 }
 
 
-/* Reloj animado en eventos urgentes */
+/* Anima el reloj en eventos urgentes */
 .badge-dias.urgente i {
   animation: reloj-arena-animacion 3s infinite ease-in-out;
 }
 
 
-/* Título de la tarjeta */
+/* Titulo de la tarjeta */
 .tarjeta h2 {
   width: 100%;
   margin: 0;
@@ -333,7 +307,7 @@
 }
 
 
-/* Fecha del evento */
+/* Fecha visible del evento */
 .tarjeta .evento-fecha {
   margin-bottom: 1.5rem;
 
@@ -344,7 +318,7 @@
 }
 
 
-/* Texto de descripción y ubicación */
+/* Texto de descripcion y ubicacion */
 .tarjeta p {
   text-align: center;
   color: var(--color-text-soft);

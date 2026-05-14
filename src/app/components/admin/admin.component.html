@@ -1,66 +1,63 @@
-<!-- Página del panel de administración -->
+<!-- Pagina principal de administracion -->
 <section class="seccion admin-page">
   <div class="contenedor admin-card">
 
-    <!-- Cabecera principal -->
+    <!-- Cabecera de la pagina -->
     <div class="admin-header">
       <h1 class="form-header admin-titulo">
         Panel de administración
       </h1>
     </div>
 
+    <!-- Zona con menu lateral y contenido -->
     <div class="admin-layout">
 
-      <!-- Menú lateral de secciones -->
+      <!-- Menu con las secciones del panel -->
       <aside class="admin-sidebar" aria-label="Secciones de administración">
-
+        <!-- Recorre las secciones disponibles -->
         <ng-container *ngFor="let seccion of secciones">
 
-          <!-- Sección disponible -->
+          <!-- Enlace normal si la seccion esta activa -->
           <a *ngIf="!seccion.disabled; else seccionDeshabilitada" class="admin-nav-item"
             [class.active]="seccionActiva === seccion.id" [routerLink]="['/admin']"
             [queryParams]="{ section: seccion.id }">
-
             <i class="fa-solid" [ngClass]="seccion.icono"></i>
             <span>{{ seccion.label }}</span>
           </a>
 
-          <!-- Sección deshabilitada -->
+          <!-- Opcion deshabilitada si aun no esta disponible -->
           <ng-template #seccionDeshabilitada>
             <span class="admin-nav-item admin-nav-item-disabled" aria-disabled="true" title="Disponible próximamente">
-
               <i class="fa-solid" [ngClass]="seccion.icono"></i>
               <span>{{ seccion.label }}</span>
             </span>
           </ng-template>
-
         </ng-container>
-
       </aside>
 
-
-      <!-- Contenido principal -->
+      <!-- Contenido de la seccion elegida -->
       <div class="admin-content">
 
         <!-- Panel de usuarios -->
         <div class="admin-panel" *ngIf="seccionActiva === 'usuarios'">
 
+          <!-- Titulo del bloque -->
           <div class="admin-panel-header">
             <h2>Lista de usuarios registrados</h2>
           </div>
 
-          <!-- Error al cargar usuarios -->
+          <!-- Error si falla la carga -->
           <div *ngIf="mensajeErrorUsuarios" class="alerta-error admin-alerta-error">
             <i class="fa-solid fa-circle-exclamation"></i>
             {{ mensajeErrorUsuarios }}
           </div>
 
-          <!-- Cargando usuarios -->
+          <!-- Mensaje mientras se cargan los usuarios -->
           <div class="admin-loading" *ngIf="cargandoUsuarios && !mensajeErrorUsuarios">
             Cargando usuarios...
           </div>
 
-          <!-- Estado vacío de usuarios -->
+          <!-- Mensaje si no hay usuarios -->
           <div class="empty-state-box admin-empty-box"
             *ngIf="!cargandoUsuarios && !mensajeErrorUsuarios && usuarios.length === 0">
 
@@ -68,9 +65,10 @@
             No hay usuarios para mostrar.
           </div>
 
-          <!-- Tabla de usuarios -->
+          <!-- Tabla con los usuarios cargados -->
           <div class="admin-table-wrapper" *ngIf="!cargandoUsuarios && usuarios.length > 0">
             <table class="admin-table">
+              <!-- Cabecera de la tabla -->
               <thead>
                 <tr>
                   <th>ID</th>
@@ -80,12 +78,14 @@
                 </tr>
               </thead>
 
+              <!-- Filas con cada usuario -->
               <tbody>
                 <tr *ngFor="let usuario of usuarios">
                   <td>{{ usuario.id }}</td>
                   <td>{{ usuario.nombre || 'Sin nombre' }}</td>
                   <td>{{ usuario.email }}</td>
                   <td>
+                    <!-- Boton para borrar el usuario -->
                     <button type="button" class="btn-accion btn-rechazar"
                       [disabled]="eliminandoUsuarioId === usuario.id" (click)="eliminarUsuario(usuario.id)">
 
@@ -97,39 +97,38 @@
               </tbody>
             </table>
           </div>
-
         </div>
-
 
         <!-- Panel de eventos -->
         <div class="admin-panel" *ngIf="seccionActiva === 'eventos'">
 
+          <!-- Titulo del bloque -->
           <div class="admin-panel-header">
             <h2>Lista de eventos</h2>
           </div>
 
-          <!-- Error al cargar eventos -->
+          <!-- Error si falla la carga -->
           <div *ngIf="mensajeErrorEventos" class="alerta-error admin-alerta-error">
             <i class="fa-solid fa-circle-exclamation"></i>
             {{ mensajeErrorEventos }}
           </div>
 
-          <!-- Cargando eventos -->
+          <!-- Mensaje mientras se cargan los eventos -->
           <div class="admin-loading" *ngIf="cargandoEventos && !mensajeErrorEventos">
             Cargando eventos...
           </div>
 
-          <!-- Estado vacío de eventos -->
+          <!-- Mensaje si no hay eventos -->
           <div class="empty-state-box admin-empty-box"
             *ngIf="!cargandoEventos && !mensajeErrorEventos && eventos.length === 0">
-
             <i class="fa-solid fa-calendar-days"></i>
             No hay eventos para mostrar.
           </div>
 
-          <!-- Tabla de eventos -->
+          <!-- Tabla con los eventos cargados -->
           <div class="admin-table-wrapper" *ngIf="!cargandoEventos && eventos.length > 0">
             <table class="admin-table">
+              <!-- Cabecera de la tabla -->
               <thead>
                 <tr>
                   <th>ID</th>
@@ -141,6 +140,7 @@
                 </tr>
               </thead>
 
+              <!-- Filas con cada evento -->
               <tbody>
                 <tr *ngFor="let evento of eventos">
                   <td>{{ evento.id }}</td>
@@ -149,9 +149,9 @@
                   <td>{{ evento.ubicacion }}</td>
                   <td>{{ evento.clienteEmail || 'Sin email' }}</td>
                   <td>
+                    <!-- Boton para borrar el evento -->
                     <button type="button" class="btn-accion btn-rechazar" [disabled]="eliminandoEventoId === evento.id"
                       (click)="eliminarEvento(evento.id!)">
-
                       <i class="fa-solid fa-trash"></i>
                       {{ eliminandoEventoId === evento.id ? 'Eliminando...' : 'Eliminar' }}
                     </button>
@@ -162,9 +162,7 @@
           </div>
 
         </div>
-
       </div>
-
     </div>
 
   </div>

@@ -11,26 +11,31 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
+  // Indica si la navbar tiene scroll
   isScrolled = false;
 
   constructor(
     public authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
+  // Detecta el scroll de la ventana
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = window.pageYOffset > 50;
   }
 
+  // Si ya estas en inicio, hace scroll arriba
   onInicioClick(event: Event) {
     if (this.router.url === '/inicio' || this.router.url === '/') {
       event.preventDefault();
-      // Mueve la página hasta arriba del todo
+
+      // Mueve la pagina arriba del todo
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
 
+  // Cambia entre light y dark mode
   toggleDarkMode() {
     const isDark = document.body.getAttribute('data-theme') === 'dark';
     if (isDark) {
@@ -42,6 +47,7 @@ export class NavbarComponent {
     }
   }
 
+  // Cierra sesion y manda al login
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);

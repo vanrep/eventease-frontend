@@ -1,25 +1,25 @@
-<!-- Cabecera principal -->
+<!-- Muestra la barra superior -->
 <app-navbar></app-navbar>
 
 
-<!-- Contenido principal de la aplicación -->
+<!-- Zona principal de la app -->
 <main
   [class.snap-active]="isMainPage"
   [class.auth-page]="isAuthPage">
 
-  <!-- Aquí Angular carga el componente según la ruta activa -->
+  <!-- Aqui Angular carga la ruta actual -->
   <router-outlet></router-outlet>
 
 </main>
 
 
-<!-- Footer general: se oculta en la página de inicio -->
+<!-- Muestra el footer fuera de inicio -->
 <footer
   *ngIf="!isMainPage"
   [class.site-footer]="!isAuthPage"
   [class.auth-footer]="isAuthPage">
 
-  <!-- Enlaces legales -->
+  <!-- Links legales -->
   <nav aria-label="Enlaces legales">
     <ul class="footer-links">
       <li><a href="#">Política de cookies</a></li>
@@ -28,7 +28,7 @@
     </ul>
   </nav>
 
-  <!-- Redes sociales -->
+  <!-- Links de redes -->
   <div class="social" aria-label="Redes sociales">
     <a href="https://www.facebook.com/" aria-label="Facebook">
       <i class="fa-brands fa-facebook" aria-hidden="true"></i>
@@ -46,7 +46,7 @@
 </footer>
 
 
-<!-- Botón flotante para volver arriba -->
+<!-- Boton para volver arriba -->
 <button
   class="fab-top"
   [class.visible]="btnSubir"

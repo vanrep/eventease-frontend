@@ -1,12 +1,4 @@
-/* =========================================================
-   ADMIN COMPONENT
-   Estilos específicos del panel de administración.
-   La base de botones, alertas y empty states ya está definida
-   en styles.css.
-   ========================================================= */
-
-
-/* Fondo principal del panel */
+/* Base de la pagina de admin */
 .admin-page {
   box-sizing: border-box;
   display: flex;
@@ -14,36 +6,32 @@
   padding: 120px 24px 80px;
 }
 
-
-/* Tarjeta principal del panel */
+/* Tarjeta principal */
 .admin-card {
   max-width: 90vw;
-
   display: flex;
   flex-direction: column;
 }
 
-/* Título principal */
+/* Titulo principal */
 .admin-titulo {
   margin: 0;
   margin-bottom: 30px;
-
   color: var(--color-primary-deep)
 }
 
 
-/* Distribución principal: menú lateral + contenido */
+/* Distribucion del menu y el contenido */
 .admin-layout {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: 28px;
-
   flex: 1;
   align-items: stretch;
 }
 
 
-/* Menú lateral */
+/* Menu lateral */
 .admin-sidebar {
   display: flex;
   flex-direction: column;
@@ -51,34 +39,30 @@
 }
 
 
-/* Enlace del menú lateral */
+/* Enlace del menu */
 .admin-nav-item {
   display: flex;
   align-items: center;
   gap: 12px;
-
   padding: 16px 18px;
-
   color: var(--color-primary-deep);
   font-weight: 700;
   text-decoration: none;
-
   background: #FDFBFF;
   border: 1px solid var(--color-primary-light);
   border-radius: var(--radius-md);
-
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 
-/* Hover del menú lateral */
+/* Efecto al pasar por el menu */
 .admin-nav-item:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px var(--color-primary-dark-faded);
 }
 
 
-/* Sección activa del menú lateral */
+/* Estado activo del menu */
 .admin-nav-item.active {
   color: var(--color-bg-card);
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
@@ -86,20 +70,20 @@
 }
 
 
-/* Sección deshabilitada */
+/* Estado deshabilitado */
 .admin-nav-item-disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 
-/* Zona principal de contenido */
+/* Zona donde va el contenido */
 .admin-content {
   display: flex;
 }
 
 
-/* Panel interno de cada sección */
+/* Panel de cada seccion */
 .admin-panel {
   width: 100%;
   min-width: 0;
@@ -110,31 +94,29 @@
 }
 
 
-/* Cabecera del panel interno */
+/* Cabecera del panel */
 .admin-panel-header {
   margin-bottom: 24px;
 }
 
 
-/* Título del panel interno */
+/* Titulo del panel */
 .admin-panel-header h2 {
   margin: 0;
-
   color: var(--color-primary-deep);
 }
 
 
-/* Mensaje de error del panel */
+/* Mensaje de error */
 .admin-alerta-error {
   max-width: none;
   margin: 0 0 24px;
 }
 
 
-/* Mensaje de carga */
+/* Texto de carga */
 .admin-loading {
   margin: auto 0;
-
   color: var(--color-muted);
   font-size: 1rem;
   font-weight: 600;
@@ -142,13 +124,13 @@
 }
 
 
-/* Estado vacío dentro del panel */
+/* Estado vacio */
 .admin-empty-box {
   margin: auto 0;
 }
 
 
-/* Contenedor para que las tablas puedan desplazarse en pantallas pequeñas */
+/* Contenedor para mover la tabla en pantallas pequenas */
 .admin-table-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -159,40 +141,34 @@
 .admin-table {
   width: 100%;
   min-width: 720px;
-
   overflow: hidden;
-
   border-collapse: collapse;
   border-radius: var(--radius-lg);
 }
 
 
-/* Cabecera de tabla */
+/* Cabecera de la tabla */
 .admin-table th {
   padding: 16px;
-
   background: var(--color-bg-soft);
   color: var(--color-primary-deep);
-
   font-size: 0.9rem;
   text-align: left;
   text-transform: uppercase;
 }
 
 
-/* Celdas de tabla */
+/* Celdas de la tabla */
 .admin-table td {
   padding: 18px 16px;
-
   color: var(--color-text-soft);
   font-size: 0.95rem;
   vertical-align: middle;
-
   border-bottom: 1px solid var(--color-bg-soft);
 }
 
 
-/* Hover de fila */
+/* Efecto al pasar por una fila */
 .admin-table tr:hover {
   background: #FDFBFF;
 }

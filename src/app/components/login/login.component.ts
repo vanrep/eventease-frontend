@@ -13,13 +13,16 @@ import { LoginRequest } from '../../models/login-request';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  // Guarda los datos del login
   loginData: LoginRequest = {
     email: '',
     password: '',
   };
 
+  // Controla si se ve la contraseña
   mostrarPassword: boolean = false;
 
+  // Guarda el mensaje de error
   mensajeError: string = '';
 
   constructor(
@@ -27,11 +30,12 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
+  // Cambia si se ve o no la contraseña
   toggleMostrarPassword(): void {
     this.mostrarPassword = !this.mostrarPassword;
   }
 
-  // enviar login
+  // Envía el login
   iniciarSesion(): void {
     this.mensajeError = '';
 

@@ -1,19 +1,20 @@
 export interface Evento {
-  // Identificador del evento cuando ya existe en el backend
+  // Guarda el id del evento
   id?: number;
 
-  // Datos principales del evento que se usan en formularios y listados
+  // Guarda los datos principales del evento
   titulo: string;
   descripcion: string;
   fecha: string;
   ubicacion: string;
   capacidad: number;
 
-  // Datos del organizador que el backend puede incluir en la respuesta
+  // Guarda el id del creador
   clienteId?: number;
 
+  // Guarda el email del creador
   clienteEmail?: string
 
-  // Estado de la invitacion del usuario actual cuando el evento llega por invitacion
+  // Guarda el estado de la invitacion del usuario actual
   miEstadoInvitacion?: 'PENDIENTE' | 'ACEPTADA' | 'RECHAZADA' | 'NUEVA'
 }
